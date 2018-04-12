@@ -1,0 +1,11 @@
+[ 2017-02-21T09:08:14+08:00 ] 127.0.0.1 /thinkphp_3.2.3_full/index.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000031s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000817s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001061s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001134s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.012949s ]
+INFO: [ app_end ] --END-- [ RunTime:0.013033s ]
+
