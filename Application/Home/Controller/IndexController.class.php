@@ -2,7 +2,9 @@
 namespace Home\Controller;
 use Think\Controller;
 class IndexController extends Controller {
+	/*首页*/
     public function index(){
+
     	// echo session('username');
   //   	$role_id = get_role_id();
   //   	// echo $role_id;
@@ -27,5 +29,6 @@ class IndexController extends Controller {
 		// $this->assign('list', $listmain);
 		// $this->assign('volist', $volist);
     	$this->display();
+
     }
 }
