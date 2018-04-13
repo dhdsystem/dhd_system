@@ -1,5 +1,6 @@
 <?php
 return array(
+
 		//'配置项'=>'配置值'
 	
 	'DB_TYPE'   => 'mysql',				// 数据库类型
@@ -14,3 +15,4 @@ return array(
 	
 	'URL_HTML_SUFFIX'=>'',				//伪静态后缀
 );
+
