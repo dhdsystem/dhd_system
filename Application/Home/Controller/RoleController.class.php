@@ -8,7 +8,7 @@ class RoleController extends Controller {
     }
      /*添加角色*/
     public function  user_adas(){
-    ]
+    
 
         echo"2222";
     }
