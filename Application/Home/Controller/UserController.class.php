@@ -6,4 +6,12 @@ class UserController extends Controller {
     public function user_index(){
        $this->display();
     }
+
+    // 用户添加
+    public function add(){
+    	$post = I('post.');
+    	var_dump($post);
+    	$user_time = time();
+    }
+
 }
