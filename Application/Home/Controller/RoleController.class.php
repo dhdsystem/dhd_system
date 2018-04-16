@@ -6,4 +6,10 @@ class RoleController extends Controller {
     public function role_index(){
        $this->display();
     }
+     /*添加角色*/
+    public function  user_adas(){
+    ]
+
+        echo"2222";
+    }
 }
