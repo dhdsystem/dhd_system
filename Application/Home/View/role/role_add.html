@@ -8,6 +8,7 @@
 	<script type="text/javascript" src="__JS__/jquery.js"></script>
 	<script type="text/javascript" src="__JS__/Public.js"></script>
 	<script type="text/javascript" src="__JS__/winpop.js"></script>
+	<!-- 新增验证js -->
 	<script type="text/javascript" src="__JS__/jquery.validate.js"></script>
 	<!-- 角色管理 -->
 	<style>
@@ -19,24 +20,24 @@
 	    .error{float: left;color:red;line-height: 40px;}
 	</style>
 	<script type="text/javascript">
-		$(document).ready(function(){
-			$("#infor").validate({  
-		        rules: {  
-					role_name : {
-						required : true,
-					}
-				},
-				 messages :{
-					role_name : {
-						required : '不能为空'
-					} 
-				}
-			});
-			$(".button").click(function(){   //submit是提交按钮，给他绑定函数
-	            $("#infor").submit();   //验证该ID的form表单，上边的所有需要验证的表单标签都要包含在这个form里边
-	            $(":input").blur();
-	        }); 
-		})
+		// $(document).ready(function(){
+		// 	$("#infor").validate({  
+		//         rules: {  
+		// 			role_name : {
+		// 				required : true,
+		// 			}
+		// 		},
+		// 		 messages :{
+		// 			role_name : {
+		// 				required : '不能为空'
+		// 			} 
+		// 		}
+		// 	});
+		// 	$(".button").click(function(){   //submit是提交按钮，给他绑定函数
+	 //            $("#infor").submit();   //验证该ID的form表单，上边的所有需要验证的表单标签都要包含在这个form里边
+	 //            $(":input").blur();
+	 //        }); 
+		// })
 	</script>
 </head>
 <body>

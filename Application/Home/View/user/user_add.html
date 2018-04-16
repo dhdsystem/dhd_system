@@ -68,16 +68,18 @@
                 roleid : {required:true},
                 username : {required : true,rangelength:[2,12]},
                 password : {required : true,rangelength:[6,18]},
-                real_name : { required : true}
+                real_name : { required : true},
+                description : {rangelength : [0,30]}
             },
             messages : {
                 roleid : {required:'请选择用户角色'},
                 username : { required : '用户名不得为空！',    rangelength : '用户名长度需要在 {0}-{1} 位之间！'},
                 password : {required : '密码不得为空！',rangelength : '长度需要在 {0}-{1} 位之间！'},
-                real_name : {required : '姓名不得为空！'}    
+                real_name : {required : '姓名不得为空！'},
+                description : {rangelength : '描述请在30个字符以内'}    
             },
             submitHandler: function(form) { //通过之后回调
-               var roleid=$('#dl dd .select').val();
+                var roleid=$('#dl dd .select').val();
                 var username=$('#dl dd .qtext').eq(0).val();
                 var password=$('#dl dd .qtext').eq(1).val();
                 var real_name=$('#dl dd .qtext').eq(2).val();
