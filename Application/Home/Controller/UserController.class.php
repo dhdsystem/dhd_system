@@ -18,8 +18,10 @@ class UserController extends CommonController {
 
     // 用户添加
     public function useradd_do(){
-        $post = 1111;
-        return $post;
+        $post = I('post.');
+        // return $post;
+        print_r( json_encode($post));
+
         // var_dump($post);die;
     }
 }
