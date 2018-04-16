@@ -60,6 +60,9 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $("#add").validate({
+        //     onsubmit:true,// 是否在提交是验证
+        // 　　onfocusout:false,// 是否在获取焦点时验证
+        // 　　onkeyup :false,// 是否在敲击键盘时验证
             rules : {
                 roleid : {required:true},
                 username : {required : true,rangelength:[2,12]},
@@ -71,35 +74,36 @@
                 username : { required : '用户名不得为空！',    rangelength : '用户名长度需要在 {0}-{1} 位之间！'},
                 password : {required : '密码不得为空！',rangelength : '长度需要在 {0}-{1} 位之间！'},
                 real_name : {required : '姓名不得为空！'}    
+            },
+            submitHandler: function(form) { //通过之后回调
+               var roleid=$('#dl dd .select').val();
+                var username=$('#dl dd .qtext').eq(0).val();
+                var password=$('#dl dd .qtext').eq(1).val();
+                var real_name=$('#dl dd .qtext').eq(2).val();
+                var description=$('#dl dd .textarea').val();
+
+                // wintq('正在添加，请稍后...',4,20000,0,'');
+                $.ajax({
+                    url:'__APP__/User/useradd_do/',
+                    dataType:'json',
+                    type:'POST',
+                    data:'roleid='+roleid+'&username='+username+'&password='+password+'&real_name='+real_name+'&description='+description,
+                    success: function(data) {
+                        // alert(data)
+                        if (data=='ok') {
+                            wintq('添加成功',1,1500,0,'__APP__/User/add/');
+                        }else {
+                            wintq(data.s,3,1000,1,'');
+                        }
+                    }
+                }); 
             }
         });
 
-        $('.button').click(function() {
-            $("#add").submit();   //验证该ID的form表单，上边的所有需要验证的表单标签都要包含在这个form里边 
-            $(":input").blur();
-            var roleid=$('#dl dd .select').val();
-            var username=$('#dl dd .qtext').eq(0).val();
-            var password=$('#dl dd .qtext').eq(1).val();
-            var real_name=$('#dl dd .qtext').eq(2).val();
-            var description=$('#dl dd .textarea').val();
-
-            
-            wintq('正在添加，请稍后...',4,20000,0,'');
-            $.ajax({
-                url:'__APP__/User/useradd_do/',
-                dataType:'json',
-                type:'POST',
-                data:'roleid='+roleid+'&username='+username+'&password='+password+'&real_name='+real_name+'&description='+description,
-                success: function(data) {
-                    // alert(data)
-                    if (data=='ok') {
-                        wintq('添加成功',1,1500,0,'__APP__/User/add/');
-                    }else {
-                        wintq(data.s,3,1000,1,'');
-                    }
-                }
-            });
-        });
+        // $('.button').click(function() {
+        //     $("#add").submit();   //验证该ID的form表单，上边的所有需要验证的表单标签都要包含在这个form里边 
+        //     $(":input").blur();
+        // });
     })
 </script>
 </html>
