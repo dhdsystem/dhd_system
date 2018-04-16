@@ -9,60 +9,67 @@
 <script type="text/javascript" src="__JS__/Public.js"></script>
 <script type="text/javascript" src="__JS__/winpop.js"></script>
 <script type="text/javascript" src="__JS__/jquery.validate.js"></script>
-<!-- <script type="text/javascript" src="__JS__/check.js"></script> -->
 <style>
 	body{background: #fff;}	
 	.error{float: left;color:red;line-height: 40px;}
 </style>
 <script>
-$(document).ready(function() {
+function validform(){
 	jQuery.validator.addMethod("english", function(value, element) {
 	    var chrnum = /^([a-zA-Z]+)$/;
 	    return this.optional(element) || (chrnum.test(value));
 	}, "只能输入字母");
-	$("#add").validate({
-            rules : {
-                sid : {required:true },
-                cname : { required : true},
-                controller : { required : true, english:["a","f"]},
-                action : { required : true, english:["a","f"] },
-                grade : {required : true,number:true}
-            },
-            messages : {
-                sid : {required:'请选择权限分类' },
-                cname : { required : '权限名称不得为空！'   },
-                controller : { required : '控制器不得为空！', },
-                action : { required : '方法不得为空！' },
-                grade : {required : '不能为空',number:'请输入合法的数字' }  
-            },
-            submitHandler: function(form) {
-            	var sid=$('#dl dd .select').val();
-				var cname=$('#cname').val();
-				var controller=$('#controller').val();
-				var action=$('#action').val();
-				var grade=$('#grade').val();
-				var description=$('#dl dd .textarea').val();
+	return $("#add").validate({  
+        rules : {
+            sid : {required:true },
+            cname : { required : true},
+            controller : { required : true, english:["a","f"]},
+            action : { required : true, english:["a","f"],rangelength:[2,20] },
+            grade : {required : true,number:true}
+        },
+        messages : {
+            sid : {required:'请选择权限分类' },
+            cname : { required : '权限名称不得为空！'   },
+            controller : { required : '控制器不得为空！',english : '格式不正确' },
+            action : { required : '方法不得为空！' ,english : '格式不正确',rangelength : '长度需要在 {0}-{1} 位之间！'},
+            grade : {required : '不能为空',number:'请输入合法的数字' }  
+        }
+	});
+}
+$(document).ready(function() {
+	
+	$(validform());
+	$(".button").click(function(){
+     	if(validform().form()) {
+      		//通过表单验证，以下编写自己的代码
+            var sid=$('#dl dd .select').val();
+			var cname=$('#cname').val();
+			var controller=$('#controller').val();
+			var action=$('#action').val();
+			var grade=$('#grade').val();
+			var description=$('#dl dd .textarea').val();
 
-				wintq('正在添加，请稍后...',4,20000,0,'');
-				$.ajax({
-					url:'__APP__/Diction/cadd_do/',
-					dataType:'json',
-					type:'POST',
-					data:'sid='+sid+'&cname='+cname+'&description='+description+'&controller='+controller+'&action='+action+'&grade='+grade,
-					success: function(data) {
-						if (data.s=='ok') {
-							wintq('添加成功',1,1500,0,'__APP__/Diction/add/');
-						}else {
-							wintq(data.s,3,1500,1,'');
-						}
+			wintq('正在添加，请稍后...',4,20000,0,'');
+			$.ajax({
+				url:'__APP__/Diction/cadd_do/',
+				dataType:'json',
+				type:'POST',
+				data:'sid='+sid+'&cname='+cname+'&description='+description+'&controller='+controller+'&action='+action+'&grade='+grade+'&description='+description,
+				success: function(data) {
+					if (data.s=='ok') {
+						wintq('添加成功',1,1500,0,'__APP__/Diction/add/');
+					}else {
+						wintq(data.s,3,1500,1,'');
 					}
-				});
-            }
-        });
+				}
+			});
+     	} else {
+      	//校验不通过，什么都不用做，校验信息已经正常显示在表单上
+     	}
+    });
+
 
 	// $('.button').click(function() {
-	// 	$("#add").submit(); 
-	// 	$(":input").blur();
 		
 		
 		// if (!tcheck(sid,'','权限获取失败')) { return false; }
