@@ -20,24 +20,49 @@
 	    .error{float: left;color:red;line-height: 40px;}
 	</style>
 	<script type="text/javascript">
-		// $(document).ready(function(){
-		// 	$("#infor").validate({  
-		//         rules: {  
-		// 			role_name : {
-		// 				required : true,
-		// 			}
-		// 		},
-		// 		 messages :{
-		// 			role_name : {
-		// 				required : '不能为空'
-		// 			} 
-		// 		}
-		// 	});
-		// 	$(".button").click(function(){   //submit是提交按钮，给他绑定函数
-	 //            $("#infor").submit();   //验证该ID的form表单，上边的所有需要验证的表单标签都要包含在这个form里边
-	 //            $(":input").blur();
-	 //        }); 
-		// })
+		function validform(){
+			return $("#infor").validate({  
+		        rules: {  
+					role_name : {
+						required : true,
+					}
+				},
+				 messages :{
+					role_name : {
+						required : '不能为空'
+					} 
+				}
+			});
+		}
+		$(document).ready(function(){
+			$(validform());
+	        $(".button").click(function(){
+	         if(validform().form()) {
+	          //通过表单验证，以下编写自己的代码
+	                var pid=$('#dl dd .select').val();
+	                var role_name=$('#dl dd .qtext').eq(1).val();
+	                var role_name=$('#dl dd .textarea').val();
+
+	                wintq('正在添加，请稍后...',4,20000,0,'');
+	                $.ajax({
+	                    url:'__APP__/User/useradd_do/',
+	                    dataType:'json',
+	                    type:'POST',
+	                    data:'pid='+pid+'&role_name='+role_name+'&textarea='+textarea,
+	                    success: function(data) {
+	                        // alert(data)
+	                        if (data=='ok') {
+	                            wintq('添加成功',1,1500,0,'__APP__/User/add/');
+	                        }else {
+	                            wintq(data.s,3,1000,1,'');
+	                        }
+	                    }
+	                }); 
+	         } else {
+	          //校验不通过，什么都不用做，校验信息已经正常显示在表单上
+	         }
+	        });
+		})
 	</script>
 </head>
 <body>
