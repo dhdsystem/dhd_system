@@ -15,8 +15,11 @@
     .error{float: left;color:red;line-height: 40px;}
 </style>
 <script>
-$(document).ready(function() {
-    $(".save").validate({
+    function validform(){
+        return $("#add").validate({
+        //     onsubmit:true,// 是否在提交时验证
+        // 　　onfocusout:false,// 是否在获取焦点时验证
+        // 　　onkeyup :false,// 是否在敲击键盘时验证
             rules : {
                 roleid : {required:true},
                 username : {required : true,rangelength:[2,12]},
@@ -26,45 +29,47 @@ $(document).ready(function() {
             },
             messages : {
                 roleid : {required:'请选择用户角色'},
-                username : { required : '用户名不得为空！',rangelength : '用户名长度需要在 {0}-{1} 位之间！'},
+                username : { required : '用户名不得为空！',    rangelength : '用户名长度需要在 {0}-{1} 位之间！'},
                 password : {required : '密码不得为空！',rangelength : '长度需要在 {0}-{1} 位之间！'},
                 real_name : {required : '姓名不得为空！'},
-                description : {rangelength : '描述请在30个字符以内'}   
-            },
-            submitHandler: function(form) { //通过之后回调
-                var id=$('#dl input:hidden').val();
+                description : {rangelength : '描述请在30个字符以内'}    
+            }
+        })
+    }
+    
+
+    $(document).ready(function(){
+        $(validform());
+        $(".button").click(function(){
+        if(validform().form()) {
+          //通过表单验证，以下编写自己的代码
                 var roleid=$('#dl dd .select').val();
-                var username=$('#dl dd .qtext').eq(0).val();
-                var password=$('#dl dd .qtext').eq(1).val();
+                var username=$('#dl dd .qtext').eq(1).val();
+                var password=$('#dl dd .qtext').eq(2).val();
+                var real_name=$('#dl dd .qtext').eq(3).val();
                 var description=$('#dl dd .textarea').val();
                 var state=$('#dl dd .state:checked').val();
-                
-                // if (!tcheck(description,'0,30','描述请在30个字符以内','length')) { return false; }
-                
-                wintq('正在修改，请稍后...',4,1000,0,'');
+                wintq('正在修改，请稍后...',4,20000,0,'');
                 $.ajax({
-                    url:'__APP__/User/save_douser/',
+                    url:'__APP__/User/useradd_do/',
                     dataType:'json',
                     type:'POST',
-                    data:'id='+id+'&r_id='+roleid+'&username='+username+'&password='+password+'&description='+description+'&state='+state,
+                    data:'roleid='+roleid+'&username='+username+'&password='+password+'&real_name='+real_name+'&description='+description'&state='+state,
                     success: function(data) {
-
                         // alert(data);
-                        // return false;
-                     if (data.s=='ok') {
-                        wintq('修改成功',1,1500,0,'__APP__/User/saveuser/id/'+id);
-                    }else {
+                        if (data.s=='ok') {
+                            wintq('修改成功',1,1500,0,'__APP__/User/user_save/id/'+id);
+                        }else {
 
-                        wintq('修改失败',3,1000,1,'');
-                     }
-                     }
-                });
-            }
+                            wintq('修改失败',3,1000,1,'');
+                        }
+                    }
+                }); 
+         } else {
+          //校验不通过，什么都不用做，校验信息已经正常显示在表单上
+         }
         });
-    // $('.button').click(function() {
-        
-    // });
-});
+    })
 </script>
 </head>
 <body>
