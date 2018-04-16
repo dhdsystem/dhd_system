@@ -1,17 +1,25 @@
 <?php
 namespace Home\Controller;
 use Think\Controller;
-class UserController extends Controller {
+class UserController extends CommonController {
 	/*用户*/
     public function user_index(){
        $this->display();
     }
 
-    // 用户添加
+    // 用户添加页面
     public function add(){
-    	$post = I('post.');
-    	var_dump($post);
-    	$user_time = time();
+        $role = M('role')->select();
+        // var_dump($role);die;
+        $roletree = $this->GetTree($role,0,0);
+        $this->assign('volist',$roletree);
+    	$this->display('User/user_add');
     }
 
+    // 用户添加
+    public function useradd_do(){
+        $post = 1111;
+        return $post;
+        // var_dump($post);die;
+    }
 }
