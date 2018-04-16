@@ -22,54 +22,47 @@ $(document).ready(function() {
 	}, "只能输入字母");
 	$("#add").validate({
             rules : {
-                sid : {
-                    required:true
-                },
-                cname : {
-                    required : true
-                },
-                controller : {
-                    required : true,
-                    english:["a","f"]
-                },
-                action : {
-                    required : true,
-                    english:["a","f"]
-                },
-                grade : {
-                	required : true,
-                	number:true
-                }
+                sid : {required:true },
+                cname : { required : true},
+                controller : { required : true, english:["a","f"]},
+                action : { required : true, english:["a","f"] },
+                grade : {required : true,number:true}
             },
             messages : {
-                sid : {
-                    required:'请选择权限分类'
-                },
-                cname : {
-                    required : '权限名称不得为空！'  
-                },
-                controller : {
-                    required : '控制器不得为空！',
-                },
-                action : {
-                    required : '方法不得为空！'
-                },
-                grade : {
-                	required : '不能为空',
-                	number:'请输入合法的数字'
-                }  
+                sid : {required:'请选择权限分类' },
+                cname : { required : '权限名称不得为空！'   },
+                controller : { required : '控制器不得为空！', },
+                action : { required : '方法不得为空！' },
+                grade : {required : '不能为空',number:'请输入合法的数字' }  
+            },
+            submitHandler: function(form) {
+            	var sid=$('#dl dd .select').val();
+				var cname=$('#cname').val();
+				var controller=$('#controller').val();
+				var action=$('#action').val();
+				var grade=$('#grade').val();
+				var description=$('#dl dd .textarea').val();
+
+				wintq('正在添加，请稍后...',4,20000,0,'');
+				$.ajax({
+					url:'__APP__/Diction/cadd_do/',
+					dataType:'json',
+					type:'POST',
+					data:'sid='+sid+'&cname='+cname+'&description='+description+'&controller='+controller+'&action='+action+'&grade='+grade,
+					success: function(data) {
+						if (data.s=='ok') {
+							wintq('添加成功',1,1500,0,'__APP__/Diction/add/');
+						}else {
+							wintq(data.s,3,1500,1,'');
+						}
+					}
+				});
             }
         });
 
-	$('.button').click(function() {
-		$("#add").submit(); 
-		$(":input").blur();
-		var sid=$('#dl dd .select').val();
-		var cname=$('#cname').val();
-		var controller=$('#controller').val();
-		var action=$('#action').val();
-		var grade=$('#grade').val();
-		var description=$('#dl dd .textarea').val();
+	// $('.button').click(function() {
+	// 	$("#add").submit(); 
+	// 	$(":input").blur();
 		
 		
 		// if (!tcheck(sid,'','权限获取失败')) { return false; }
@@ -86,22 +79,7 @@ $(document).ready(function() {
 		// 	if (!tcheck(controller,'2,20','控制器请在20个字符以内','length')) { return false; }
 		// 	if (!tcheck(action,'2,20','方法请在20个字符以内','length')) { return false; }
 		// }
-		
-		wintq('正在添加，请稍后...',4,20000,0,'');
-		$.ajax({
-			url:'__APP__/Diction/cadd_do/',
-			dataType:'json',
-			type:'POST',
-			data:'sid='+sid+'&cname='+cname+'&description='+description+'&controller='+controller+'&action='+action+'&grade='+grade,
-			success: function(data) {
-				if (data.s=='ok') {
-					wintq('添加成功',1,1500,0,'__APP__/Diction/add/');
-				}else {
-					wintq(data.s,3,1500,1,'');
-				}
-			}
-		});
-	});
+	// });
 });
 </script>
 </head>
