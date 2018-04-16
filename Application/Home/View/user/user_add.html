@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css" href="__CSS__/public.css"  />
 <script type="text/javascript" src="__JS__/jquery.js"></script>
 <script type="text/javascript" src="__JS__/Public.js"></script>
+<script type="text/javascript" src="__JS__/winpop.js"></script>
 <!-- 新增验证js -->
 <script type="text/javascript" src="__JS__/jquery.validate.js"></script>
 <style>
@@ -82,7 +83,7 @@
                 var real_name=$('#dl dd .qtext').eq(2).val();
                 var description=$('#dl dd .textarea').val();
 
-                // wintq('正在添加，请稍后...',4,20000,0,'');
+                wintq('正在添加，请稍后...',4,20000,0,'');
                 $.ajax({
                     url:'__APP__/User/useradd_do/',
                     dataType:'json',
