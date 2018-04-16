@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加流程</title>
+    <link rel="stylesheet" type="text/css" href="../style/content.css"/>
+    <script type="text/javascript" src="../js/jquery.js"></script>
+</head>
+<body>
+<div class="contract_cont"  id="content">
+    <h1>首页 > 审核流程管理 > 审核流程 > 添加流程 </h1>
+    <h2>
+        <div class="h2_left">
+            <a href="__ACTION__" class="whole">全部</a>
+            <a href="javascript:history.back();" class="Retreat">后退</a>
+        </div>
+    </h2>
+
+        <form action="__APP__/Flow/flow_add_do/" method="post" id="addInfo">
+        <dl id="cdl">
+            <dd>
+                <span class="dd_left">对应权限：</span>
+                <span class="dd_right">
+                    <select name="cost_id" class="tab_select" style="width: 754px;height: 40px;" id="cost">
+                    	<option value="0">选择权限</option>
+		        		<?php foreach ($compet as $k => $v): ?>
+		        			<option value="<{$v.id}>"><{$v.opera_name}></option>
+		        		<?php endforeach ?>
+                    </select>
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">审核等级：</span>
+                <span class="dd_right">
+					<input type="text" class="qtext" id="lv">
+                </span>
+            </dd>
+            <dd>
+                <input type="submit" value="提交" class="submit" />
+            </dd>
+
+        </dl>
+    </form>
+</div>
+
+<script type="text/javascript">
+	$(document).on('blur','#lv',function(){
+		var lv = $(this).val();
+		var h = "";
+        var cost = $('#cost').val();
+        for (var i = 1; i <= lv; i++) {
+            if(i==1 && cost==37)
+            {
+            h+='<dd class="d"><span class="dd_left">第'+i+'级审核职位：</span><span class="dd_right"><select name="r_id[]" style="width: 140px;height: 25px;"><option value="0">本部审核</option></select></span></dd>';
+            }else
+            {
+        	   h+='<dd class="d"><span class="dd_left">第'+i+'级审核职位：</span><span class="dd_right"><select name="r_id[]" style="width: 140px;height: 25px;"><option value="0">选择职位</option><?php foreach ($role as $k => $v): ?><option value="<{$v.id}>"><{$v.name}><{$v.role_name}></option><?php endforeach ?></select></span></dd>';
+            }
+        }
+        $('.d').remove();
+        $(this).parent().parent().after(h);
+	})
+</script>
+</body>
+</html>

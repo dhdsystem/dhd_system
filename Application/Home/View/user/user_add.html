@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>添加用户|<{$configcache['Title']}></title>
+<link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
+<link rel="stylesheet" type="text/css" href="__CSS__/public.css"  />
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript" src="__JS__/Public.js"></script>
+<!-- 新增验证js -->
+<script type="text/javascript" src="__JS__/jquery.validate.js"></script>
+<style>
+	body{background: #fff;}	
+    .error{float: left;color:red;line-height: 40px;}
+</style>
+</head>
+<body>
+<div id="content" class="content_box">
+    <form id="add" method="post" action="">
+    	<dl id="dl">
+        	
+            <dd>
+            	<span class="dd_left">用户角色：</span>
+                <span class="dd_right">
+                	<select name="roleid" class="select qtext" style="height: 40px; width: 363px;">
+                        <volist name='volist' id='vo'>
+                        <option value="<{$vo.id}>"><{$vo.name}><{$vo.role_name}></option>
+                        </volist>
+                    </select>
+                </span>
+            </dd>
+            <dd>
+            	<span class="dd_left">用户名：</span>
+            	<span class="dd_right">
+            		<input type="text" placeholder="* 2～12位英文数字组合" class="qtext" maxlength="12" style="height: 40px; width: 350px;-webkit-box-shadow: 0 0 0px 1000px white inset;" name="username"/>
+            	</span>
+            </dd>
+            <dd>
+            	<span class="dd_left">密码：</span>
+            	<span class="dd_right">
+            		<input type="password" placeholder="* 6~18位密码组合" class="qtext" maxlength="18" style="height: 40px; width: 350px;" name="password"/>
+            	</span>
+            </dd>
+            <dd>
+            	<span class="dd_left">真实姓名：</span>
+            	<span class="dd_right">
+            		<input type="text" class="qtext" maxlength="30" style="height: 40px; width: 350px;" name="real_name" />
+            	</span>
+            </dd>
+            <dd>
+            	<span class="dd_left">用户说明：</span>
+                <span class="dd_right"><textarea name="description" class="textarea" style="width: 606px;"></textarea></span>
+            </dd>
+           
+            <dd><input type="button" class="button" value="提 交" /></dd>
+        </dl>
+    </form>
+</div>
+</body>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#add").validate({
+            rules : {
+                roleid : {required:true},
+                username : {required : true,rangelength:[2,12]},
+                password : {required : true,rangelength:[6,18]},
+                real_name : { required : true}
+            },
+            messages : {
+                roleid : {required:'请选择用户角色'},
+                username : { required : '用户名不得为空！',    rangelength : '用户名长度需要在 {0}-{1} 位之间！'},
+                password : {required : '密码不得为空！',rangelength : '长度需要在 {0}-{1} 位之间！'},
+                real_name : {required : '姓名不得为空！'}    
+            }
+        });
+
+        $('.button').click(function() {
+            $("#add").submit();   //验证该ID的form表单，上边的所有需要验证的表单标签都要包含在这个form里边 
+            $(":input").blur();
+            var roleid=$('#dl dd .select').val();
+            var username=$('#dl dd .qtext').eq(0).val();
+            var password=$('#dl dd .qtext').eq(1).val();
+            var real_name=$('#dl dd .qtext').eq(2).val();
+            var description=$('#dl dd .textarea').val();
+
+            
+            wintq('正在添加，请稍后...',4,20000,0,'');
+            $.ajax({
+                url:'__APP__/User/useradd_do/',
+                dataType:'json',
+                type:'POST',
+                data:'roleid='+roleid+'&username='+username+'&password='+password+'&real_name='+real_name+'&description='+description,
+                success: function(data) {
+                    // alert(data)
+                    if (data=='ok') {
+                        wintq('添加成功',1,1500,0,'__APP__/User/add/');
+                    }else {
+                        wintq(data.s,3,1000,1,'');
+                    }
+                }
+            });
+        });
+    })
+</script>
+</html>
