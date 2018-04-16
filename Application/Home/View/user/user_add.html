@@ -87,27 +87,27 @@
         $(".button").click(function(){
          if(validform().form()) {
           //通过表单验证，以下编写自己的代码
-                var roleid=$('#dl dd .select').val();
-                var username=$('#dl dd .qtext').eq(1).val();
-                var password=$('#dl dd .qtext').eq(2).val();
-                var real_name=$('#dl dd .qtext').eq(3).val();
-                var description=$('#dl dd .textarea').val();
+            var roleid=$('#dl dd .select').val();
+            var username=$('#dl dd .qtext').eq(1).val();
+            var password=$('#dl dd .qtext').eq(2).val();
+            var real_name=$('#dl dd .qtext').eq(3).val();
+            var description=$('#dl dd .textarea').val();
 
-                wintq('正在添加，请稍后...',4,20000,0,'');
-                $.ajax({
-                    url:'__APP__/User/useradd_do/',
-                    dataType:'json',
-                    type:'POST',
-                    data:'roleid='+roleid+'&username='+username+'&password='+password+'&real_name='+real_name+'&description='+description,
-                    success: function(data) {
-                        // alert(data);
-                        if (data=='ok') {
-                            wintq('添加成功',1,1500,0,'__APP__/User/add/');
-                        }else {
-                            wintq(data.s,3,1000,1,'');
-                        }
+            wintq('正在添加，请稍后...',4,20000,0,'');
+            $.ajax({
+                url:'__APP__/User/useradd_do/',
+                dataType:'json',
+                type:'POST',
+                data:'r_id='+roleid+'&username='+username+'&password='+password+'&real_name='+real_name+'&description='+description,
+                success: function(data) {
+                    // alert(data);
+                    if (data=='ok') {
+                        wintq('添加成功',1,1500,0,'__APP__/User/user_index');
+                    }else {
+                        wintq(data.s,3,1000,1,'');
                     }
-                }); 
+                }
+            }); 
          } else {
           //校验不通过，什么都不用做，校验信息已经正常显示在表单上
          }
