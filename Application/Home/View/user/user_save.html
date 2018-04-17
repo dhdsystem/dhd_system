@@ -17,9 +17,6 @@
 <script>
     function validform(){
         return $("#add").validate({
-        //     onsubmit:true,// 是否在提交时验证
-        // 　　onfocusout:false,// 是否在获取焦点时验证
-        // 　　onkeyup :false,// 是否在敲击键盘时验证
             rules : {
                 roleid : {required:true},
                 username : {required : true,rangelength:[2,12]},
