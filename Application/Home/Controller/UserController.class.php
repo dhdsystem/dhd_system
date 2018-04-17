@@ -1,4 +1,10 @@
 <?php
+
+
+// 2018.4.16
+// dingxinjaing
+// User用户管理中心
+
 namespace Home\Controller;
 use Think\Controller;
 class UserController extends CommonController {
@@ -70,17 +76,30 @@ class UserController extends CommonController {
 
     }
 
-
-
-    // 用户修改
+    // 用户修改页面
     public function saveuser(){
-        $volist['id'] = I('get.id');
-        $result = M('user')->where('id='.$volist['id'])->select();
+        $u_id = I('get.id');
+        $result = M('user')->where('id='.$u_id)->find();
         $role = M('role')->select();
         // var_dump($role);die;
-        $roletree = $this->GetTree($role,0,0);
-        $this->assign('volist',$roletree);
+        $volist = $this->GetTree($role,0,0);
+        $this->assign('volist',$volist);
         $this->assign('result',$result);
         $this->display('User/user_save');
     }
+
+    // 用户修改方法
+    public function usersave_do(){
+        $data = I('post.');
+        // print_r( json_encode($data));
+        $save = M('user')->where('id='.$data['id'])->save($data);
+        if($save){
+            $post['s'] = 'ok';
+            print_r( json_encode($post));
+        }else{
+            $post['s'] = '修改失败';
+            print_r( json_encode($post));
+        }
+    }
+
 }
