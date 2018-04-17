@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>材料管理|<{$configcache['Title']}></title>
+    <link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
+    <link rel="csssheet" type="text/css" href="__CSS__/public.css"  />
+    <script type="text/javascript" src="__JS__/jquery.js"></script>
+    <script type="text/javascript" src="__JS__/Public.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#content #table .tr .edit').click(function(event) {
+                event.preventDefault();
+                var id=$(this).attr('href');
+                if (id=='' || isNaN(id)) {
+                    wintq('ID参数不正确',3,1000,1,'');
+                    return false;
+                }else {
+                    popload('修改分类信息',800,300,'__APP__/Classify/Catesave/id/'+id);
+                    addDiv($('#iframe_pop'));
+                    popclose();
+                }
+            });
+            $('#content #table .tr .del').click(function(event) {
+                event.preventDefault();
+                if (!confirm('确定要删除该数据吗？')) {
+                    return false;
+                }
+                var id=$(this).attr('href');
+                if (id=='' || isNaN(id)) {
+                    wintq('ID参数不正确',3,1000,1,'');
+                    return false;
+                }else {
+                    wintq('正在删除，请稍后...',4,20000,0,'');
+                    window.location.href='__APP__/Classify/Cate_del/id/'+id;
+                }
+            });
+            $('.operation').hover(function(){
+                $(this).find('.operarea').toggle();
+            })
+        });
+    </script>
+</head>
+<body>
+<div id="content">
+    <div class="topFix">
+        <h1>首页 > 产品管理 > 材料管理</h1>
+        <h2>
+            <div class="h2_left">
+                <a href="javascript:;" class="add">添加</a>
+                <a href="javascript:history.back();" class="Retreat">后退</a>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </h2>
+
+    </div>
+    <div class="tableBox">
+		<table id="table" border="1" bordercolor="#CCCCCC" cellpadding="0" cellspacing="0" style="width:100%">
+            <tr>
+                <th>项目</th>
+                <th>地址</th>
+                <th>预出份数</th>
+                <th>已使用份数</th>
+                <th>时间</th>
+                <th>操作</th>
+            </tr>
+            <volist name="volist" id="vo">
+                <tr class="tr" value="1">
+                    <td class="tc"></td>
+                    <td class="tc"></td>
+                    <td class="tc"></td>
+                    <td class="tc"><div class="operation"><a href="" class="chakan oper">查看</a></div></div></td>
+                    <td class="tc"></td>
+                    <td class="tc fixed_w">
+                        <a href="<{$vo.id}>" class="edit oper">修改</a>
+                        <a href="<{$vo.id}>" class="del oper">删除</a>
+                    </td>
+                </tr>
+            </volist>
+        </table>	
+	</div>	
+    <div id="page">
+        
+    </div>
+</div>
+</body>
+</html>
