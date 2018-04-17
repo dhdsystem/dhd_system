@@ -66,3 +66,31 @@ function curls($url, $ispg='get' ,$data, $type=false, $time=120) {
 	if(!$type) $data = json_encode($data);
 	return $data;
 }
+
+
+/**
+     * Action: 分页方法
+     * User: sy
+     * Date: 2017/12/7
+     * Time: 上午 9:34
+     */
+    function pagess($table,$where="1=1",$pattern,$size=15)
+    {
+        $User = M($table); // 实例化User对象
+        $count = $User->where($where)->count();// 查询满足要求的总记录数
+        $Page = new \Think\Page($count,$size,$pattern);// 实例化分页类 传入总记录数和每页显示的记录数(25)
+
+        // $Page->setConfig('header','<li class="disabled hwh-page-info"><a>共<em>%TOTAL_ROW%</em>条  <em>%NOW_PAGE%</em>/%TOTAL_PAGE%页</a><>');
+        $Page->setConfig('prev','上一页');
+        $Page->setConfig('next','下一页');
+        $Page->setConfig('last','末页');
+        $Page->setConfig('first','首页');
+       
+
+        // print_r($Page);die;
+        $show = $Page->show();// 分页显示输出
+        return array('show'=>$show,'firstRow'=>$Page->firstRow,'listRows'=>$Page->listRows);
+    }
+
+    /**/
+   
