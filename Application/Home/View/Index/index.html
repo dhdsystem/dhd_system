@@ -14,6 +14,7 @@
 .dowebok li { overflow: hidden; zoom: 1;}
 .dowebok a { color: #333; text-decoration: none;}
 .dowebok a:hover { color: #000;}
+.subnav {display: none; overflow: hidden; height: 160px; padding-top: 8px; margin-top: 0px; padding-bottom: 8px; margin-bottom: 0px;}
 </style>
 <script type="text/javascript" src="__JS__/jquery.js"></script>
 <script type="text/javascript" src="__JS__/Public.js"></script>
@@ -110,15 +111,20 @@ $(function() {
     </div>
     <div id="left">
     	<ul id="ul">
-    		<li>
-               	<a class="a lia" href="javascript:;" target="c">权限管理</a>
-            	<dl style="display: none; overflow: hidden; height: 160px; padding-top: 8px; margin-top: 0px; padding-bottom: 8px; margin-bottom: 0px;">
-                	<dd><a href="">用户管理 </a></dd>
-                	<dd><a href="">权限管理 </a></dd>
-                	<dd><a href="">职位管理 </a></dd>
-                	<dd><a href="">审核流程管理 </a></dd>                
-                </dl>
-            </li>
+    		<foreach name="list" item="vo" >
+	    		<li>
+	               	<a class="a lia" href="__APP__/{$vo.controller}/{$vo.action}" target="c">{$vo.opera_name}</a>
+	            	<dl class="subnav" >
+	            		<foreach name="vo.san" item="v" >
+						   <dd>
+						   <a target="c" href="__APP__/{$v.controller}/{$v.action}">{$v.opera_name}</a>
+						   </dd>
+						</foreach>
+	                	
+	         
+	                </dl>
+	            </li>
+            </foreach>
         </ul>
     </div>
 	<div class="wrap">
