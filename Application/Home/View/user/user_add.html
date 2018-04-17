@@ -11,12 +11,18 @@
 <!-- 新增验证js -->
 <script type="text/javascript" src="__JS__/jquery.validate.js"></script>
 <style>
-	body{background: #fff;}	
+	/*body{background: #fff;}	*/
     .error{float: left;color:red;line-height: 40px;}
 </style>
 </head>
 <body>
-<div id="content" class="content_box">
+<div id="content">
+    <h1>首页 &gt; 用户管理 &gt; 权限管理&gt; 添加用户</h1>
+    <h2>
+        <div class="h2_left">
+            <a href="javascript:history.back();" class="Retreat">后退</a>
+        </div>
+    </h2>
     <form id="add" method="post" action="">
     	<dl id="dl">
         	
@@ -54,6 +60,7 @@
             </dd>
            
             <dd><input type="button" class="button" value="提 交" /></dd>
+            <div style="clear:both;"></div>
         </dl>
     </form>
 </div>
@@ -103,6 +110,7 @@
                     // alert(data);
                     if (data=='ok') {
                         wintq('添加成功',1,1500,0,'__APP__/User/user_index');
+                        
                     }else {
                         wintq(data.s,3,1000,1,'');
                     }

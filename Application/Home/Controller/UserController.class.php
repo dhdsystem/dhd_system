@@ -14,12 +14,12 @@ class UserController extends CommonController {
     }
 
     // 用户添加页面
-    public function add(){
+    public function user_add(){
         $role = M('role')->select();
         // var_dump($role);die;
         $roletree = $this->GetTree($role,0,0);
         $this->assign('volist',$roletree);
-    	$this->display('User/user_add');
+    	$this->display();
     }
 
     // 用户添加

@@ -10,11 +10,11 @@
 <script type="text/javascript" src="__JS__/winpop.js"></script>
 <script>
 $(document).ready(function() {
-    $('#content h2 .add').click(function() {
-		popload('添加管理用户',800,380,'__APP__/User/add/');
-		addDiv($('#iframe_pop'));
-		popclose();
-	});
+ //    $('#content h2 .add').click(function() {
+	// 	popload('添加管理用户',800,380,'__APP__/User/add/');
+	// 	addDiv($('#iframe_pop'));
+	// 	popclose();
+	// });
 	$('#content #table .tr .edit').click(function(event) {
 		event.preventDefault();
 		var id=$(this).attr('href');
@@ -92,7 +92,7 @@ $(document).ready(function() {
     <h2>
     	<div class="h2_left">
         	<a href="__ACTION__" class="whole">全部</a>
-            <a href="javascript:;" class="add">新增</a>
+            <a href="__APP__/User/user_add" class="add">新增</a>
             <a href="javascript:history.back();" class="Retreat">后退</a>
             <a href="javascript:history.go(1);" class="Advance">前进</a>
         </div>
