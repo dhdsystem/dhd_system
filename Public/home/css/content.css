@@ -10,7 +10,7 @@ body { margin:0; padding:0; background:#eff0f4; }
     overflow: hidden;
     padding: 25px 30px 20px 0 !important;
 }
-
+.clear{clear:both;}
 #content h2 { width:100%; height:48px; line-height:40px; position:relative; margin-top:10px; font-size:12px; color:#333; font-weight:400; text-align:left; }
 #content h2 .h2_left {height:40px; float:left;}
 #content h2 .h2_left2 { width:auto; height:30px;position: relative;top: 6px;}
@@ -69,10 +69,7 @@ input,textarea,select { font-size:12px; text-indent:4px; color:#111; }
 #content .select option { text-indent:4px; height:20px; line-height:20px; padding-right:14px; }
 #content .submit2{margin-left: -14px;width: 62px;}
 
-/*gaidongguo*/
-.topFix{position: fixed;top:25px;left:20px;width:100%;background: #fff;}
-.clear{clear:both;}
-.swiper-container{padding-top:113px;}
+
 /*新增样式*/
 #content .tableBox{width:100%;overflow-x: scroll;height:700px;overflow-y: scroll;}
 #content #table { width: 2000px;height:auto;margin-top:15px; border-collapse:collapse; border:none;margin-bottom: 40px;}
@@ -97,12 +94,32 @@ input,textarea,select { font-size:12px; text-indent:4px; color:#111; }
 #content #table .tr .tc img { padding:0px 6px; }
 #content #table .tr .tl { text-align:left; text-indent:8px; }
 #content #table .tr .tl img { padding:0px 6px; position:relative; top:4px; }
-#content #table .tr .fixed_w { width:100px; }
+#content #table .tr .fixed_w { width:270px; }
+/*操作更多按钮*/
+#content #table .tr .fixed_w .operation{width:46px;height:33px;color: #060;background: #56A74D;color: #fff;
+position: relative;text-align: center;line-height: 33px;margin:auto;cursor: pointer}
+#content #table .tr .fixed_w .operarea{width:100px;height:auto;position:absolute;top:0px;left:46px;background: #E6E4E4;
+border-radius: 8px;display: none;}
+
 #content #table .tr .fixed_w .oper {     padding: 6px 8px;color: #060;border-radius: 10%;background: #45aaff;color: #fff;
  text-decoration: none;}
 #content #table .tr .fixed_w .oper:hover{background: #2c92e8;}
+#content #table .tr .fixed_w .oper2 {color: #060;background: #D8DFE4;color: #666;
+ text-decoration: none;display: block;width:100%;height:33px;}
+#content #table .tr .fixed_w .oper2:hover{background: #A2A7AB;color:#000;}
 #content #table .tr .fixed_w .del{background: #ff6b6b;}
 #content #table .tr .fixed_w .del:hover{background: #d64343;}
+#content #table .tr .fixed_w .del2{background: #D8DFE4;}
+#content #table .tr .fixed_w .del2:hover{background: #A2A7AB;}
+
+#content #table .tr  .operation{width:46px;height:33px;color: #060;background: #56A74D;color: #fff;
+position: relative;text-align: center;line-height: 33px;margin:auto;cursor: pointer}
+#content #table .tr  .operarea{width:100px;height:auto;position:absolute;top:0px;left:46px;background: #E6E4E4;
+border-radius: 8px;display: none;}
+#content #table .tr  .chakan {color: #060;background: #D8DFE4;color: #666;
+ text-decoration: none;display: block;width:100%;height:33px;}
+#content #table .tr  .chakan:hover{background: #A2A7AB;color:#000;}
+
 #content #table .tr .fixed_w .When{background: #7ed321;}
 #content #table .tr .fixed_w .When:hover{background: #66ad1a;}
 #content #table .tr .fixed_w .Reserve{background: #741fe2;}
@@ -123,7 +140,7 @@ input,textarea,select { font-size:12px; text-indent:4px; color:#111; }
 #content #dl dd .dd_left {line-height:24px; float:left; text-align:right; font-weight:400; color:#444; width: 100px; padding: 9px 15px; font-size: 14px;}
 #content #cdl dd .dd_left:before{content: '*';color: red;position: absolute;margin-left: -9px;font-weight: bold;line-height: 1.8em;margin-top: 8px;}
 #content #dl dd .dd_left:after{content: '*';color: red;position: absolute;margin-left: 4px;font-weight: bold;line-height: 1.8em;}
-#content #dl dd .dd_right { display:block; width:auto; line-height:24px; float:left; text-align:left; padding-left:6px; }
+#content #dl dd .dd_right { display:block; width:auto; line-height:24px; float:left; text-align:left; padding-left:6px;}
 #content #dl dd .dd_right label { margin-right:15px; display:block; float:left; }
 
 #content #dl dd font { color:#777; margin-left:10px; }
