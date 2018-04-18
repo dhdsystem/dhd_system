@@ -2,6 +2,55 @@
 namespace Home\Controller;
 use Think\Controller;
 class CommonController extends Controller {
+    /**
+     * 
+     * 验证登录
+     * sy
+     */
+    function __construct() {
+        parent::__construct();
+        set_time_limit(0);
+
+        if($id= get_user_id()) {
+            // echo $id;die;
+            $role_id = get_role_id();
+            // echo $role_id;die;
+            if($role_id!=1){
+                $controller=CONTROLLER_NAME;
+                $action=ACTION_NAME;
+                if($controller!='Index'){
+                    $opera_list=M('role_node')->field('controller,action')->join('dhd_node on dhd_role_node.o_id=dhd_node.id')->where('r_id='.$role_id)->select();
+                    foreach($opera_list as $k=>$v){
+                        foreach($v as $key=>$val){
+                            $arr2[]=$val;
+                        }
+                    }
+                    if(!in_array($controller,$arr2)){
+                        $this->error("抱歉，您没有权限访问该控制器");
+                    }
+                    if($action!='index'){
+                        $arrs = $this->arr();
+                        if(in_array($action,$arrs)){
+                            if(!in_array($action,$arr2)){
+                                $this->error("抱歉，您不能进行该操作");
+                            }
+                        }
+                    }
+                    
+                }
+                
+            }
+        }else{
+            
+            if(IS_AJAX){
+                $this->error("您还没有登录！", U("Login/login"));
+            }else{
+                $this->redirect('Login/login');
+            }
+        }
+
+    }
+
    /*公共*/
     public function common_index(){
        $this->display();
@@ -46,4 +95,5 @@ class CommonController extends Controller {
         }
         return $tree;                                  //返回新数组
     }
+
 }

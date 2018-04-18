@@ -41,11 +41,12 @@ class RoleController extends CommonController {
             }
              $this->success('角色创建成功',U('role/role_index'));
         }else{
-            $role = M('Role')->select();
-            $node = M('Node')->select();
+            $role = M('role')->select();
+            $node = M('node')->select();
             $roletree=$this->GetTree($role,0,0);
             $node=$this->get_attr($node);
             $data=json_encode($node);
+            // print_r($role);die;
             $this->assign('role',$roletree);
             $this->assign('volist',$data);
             $this->display('role_add');
@@ -99,7 +100,6 @@ class RoleController extends CommonController {
                 $id=I('get.id');
                 // print_r($id);die;
                 $datas=M('role')->where('id='.$id)->find();
-                //print_r($data);die;
                 /*权限名称展示*/
                 $role = M('Role')->select();
                 $node = M('Node')->select();

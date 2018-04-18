@@ -85,7 +85,7 @@
 		        	<select name="pid" class="select qtext" style="height: 40px; width: 605px;">
 		        		<option value="0">顶级分类</option>
 		        		<?php foreach ($role as $k => $v): ?>
-		        			<option value="<{$v.id}>"><{$v.name}><{$v.role_name}></option>
+		        			<option value="{$v.id}">{$v.name}{$v.role_name}</option>
 		        		<?php endforeach ?>
 		        	</select>
 	        	</span>
@@ -114,7 +114,7 @@
 	</form>
 </div>
 <script type="text/javascript">
-	var json=<{$volist}>;
+	var json={$volist};
 		// alert(json);
 		/*进行循环的代码在这里 @楠楠*/
 		$(json).each(function(i){

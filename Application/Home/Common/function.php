@@ -1,4 +1,38 @@
 <?php
+
+function get_user_id() { //获取当前登录用户的ID
+    return intval(session('user_id'));
+}
+function get_role_id() { //获取当前登录用户的ID
+    return intval(session('role_id'));
+}
+/**
+ * /操作成功ajax调用
+ * @person 史炎
+ * @param  [type] $info [返回值]
+ * @param  [type] $data [返回数据]
+ * @return [type]       [json字符串]
+ * @time 2018/4/18 11:09
+ */
+
+function success_ajax($info='', $data='') { //成功提示
+    exit(json_encode(array('info' => $info, 'data' => $data, 's' => 'ok')));
+}
+
+
+/**
+ * /操作失败ajax调用
+ * @person sy
+ * @param  [type] $info [返回值]
+ * @param  [type] $data [返回数据]
+ * @return [type]       [json字符串]
+ * @time 2018/4/18 11:11
+ */
+
+function error_ajax($info,  $data='') { //失败提示
+     exit(json_encode(array('info' => $info, 'data' => $data, 's' => 'no')));
+}
+
 //密钥生成，用于接口校验以及前台用户密码生成
 function token($data=array(), $state=false) { 
 	$token = '';
@@ -92,5 +126,5 @@ function curls($url, $ispg='get' ,$data, $type=false, $time=120) {
         return array('show'=>$show,'firstRow'=>$Page->firstRow,'listRows'=>$Page->listRows);
     }
 
-    /**/
+ 
    
