@@ -65,7 +65,52 @@ class RoleController extends CommonController {
     }
 
     /*修改展示*/
-    public function  roleedit(){
+    public function  role_save(){
+        if(IS_POST){
+                    $id=I('post.id');
+                    M('role_node')->where(array('r_id'=>$id))->delete();
+                    $roledata['role_name']=I('post.role_name','');
+                    $roledata['description']=I('post.description','');
+                    $roledata['dtime']=time();
+                    $roledata['state']='1';
+                    $roledata['pid']=I('post.pid');
+                    $res=M('role')->where(array('id'=>$id))->save($roledata);
+             
+                    if(!$res){
+                        return $this->error(json_encode('角色修改失败'));
+                    }
+                    $operalist=I('one','');//获取角色下的权限
+                    foreach ($operalist as $key => $val) {
+                        $arr[$key]['o_id']=$val;
+                        $arr[$key]['r_id']=$id;
+                        $arr[$key]['time']=time();
 
-    }
+                    }
+                    $re=M('role_node')->addAll($arr);
+
+                    if(!$re){
+
+                         $this->error('角色修改权限失败');
+                    }
+                     $this->success('角色修改权限成功',U('role/role_index'));
+                        // print_r(json_encode($data));die;
+                
+            }else{
+                $id=I('get.id');
+                // print_r($id);die;
+                $datas=M('role')->where('id='.$id)->find();
+                //print_r($data);die;
+                /*权限名称展示*/
+                $role = M('Role')->select();
+                $node = M('Node')->select();
+                $roletree=$this->GetTree($role,0,0);
+                $node=$this->get_attr($node);
+                $data=json_encode($node);
+                $this->assign('role',$roletree);
+                $this->assign('datas',$datas);
+                $this->assign('volist',$data);
+                $this->display('role_save');
+            }
+        }
+    
 }
