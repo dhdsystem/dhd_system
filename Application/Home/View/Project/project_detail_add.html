@@ -7,10 +7,8 @@
     <link rel="csssheet" type="text/css" href="__CSS__/public.css"  />
     <script type="text/javascript" src="__JS__/jquery.js"></script>
     <script type="text/javascript" src="__JS__/Public.js"></script>
-    <script type="text/javascript" src="__JS__/jquery.validate.js"></script>
-    <script type="text/javascript" src="__JS__/winpop.js"></script>
     <style type="text/css">
-        .jia,.jian{border: 1px solid #e6e6e6;font-size: 14px;display: block;width:30px;height:38px;float: left;text-align: center;line-height: 38px;cursor: pointer;margin-left: 10px;text-indent: 0;}
+        .jia1,.jian,.jia2{border: 1px solid #e6e6e6;font-size: 14px;display: block;width:30px;height:38px;float: left;text-align: center;line-height: 38px;cursor: pointer;margin-left: 10px;}
     </style>
 </head>
 <body>
@@ -33,40 +31,62 @@
             </dd>
             <dd>
                 <span class="dd_left">销售注册号</span>
-                <span class="dd_right"><input type="text" name="area" class="qtext" value="" style="width:360px;"/></span>
+                <span class="dd_right"><input type="text" name="area" class="qtext" value="" style="width:360px;"/></textarea></span>
             </dd>
-            <dd class="dmj">
-                <span class="dd_left">大面积房间号</span>
-                <span class="dd_right"><input type="text" name="area" class="qtext" value="" style="width:230px;"/></span>
-                <span class="dd_left" style="width:60px;">房间面积</span>
-                <span class="dd_right"><input type="text" name="area" class="qtext" value="" style="width:230px;"/></span> 
-                <input type="button" value="+" class="jia">
-                <input type="button" value="-" class="jian">
-            </dd>
-            <dd class="xfjh">
-                <span class="dd_left">小房间号</span>
-                <span class="dd_right"><input type="text" name="area" class="qtext" value="" style="width:230px;"/></span>
-                <span class="dd_left" style="width:60px;">房间面积</span>
-                <span class="dd_right"><input type="text" name="area" class="qtext" value="" style="width:230px;"/></span> 
-                <input type="button" value="+" class="jia">
-                <input type="button" value="-" class="jian">
-            </dd>
+            <div class="jjarea">
+                <dd>
+                    <span class="dd_left">大面积房间号</span>
+                    <span class="dd_right"><input type="text" name="area" class="qtext" value="" style="width:230px;"/></textarea></span>
+                    <span class="dd_left" style="width:60px;">房间面积</span>
+                    <span class="dd_right"><input type="text" name="area" class="qtext" value="" style="width:230px;"/></textarea></span> 
+                    <input type="button" value="+" class="jia1">
+                </dd>
+                <dd>
+                    <span class="dd_left">小房间号</span>
+                    <span class="dd_right"><input type="text" name="area" class="qtext" value="" style="width:230px;"/></textarea></span>
+                    <span class="dd_left" style="width:60px;">房间面积</span>
+                    <span class="dd_right"><input type="text" name="area" class="qtext" value="" style="width:230px;"/></textarea></span> 
+                    <input type="button" value="+" class="jia2">
+                </dd>
+            </div>
             <dd>
                 <span class="dd_left">工位</span>
-                <span class="dd_right"><input type="text" name="area" class="qtext" value="" style="width:360px;"/></span>
+                <span class="dd_right"><input type="text" name="area" class="qtext" value="" style="width:360px;"/></textarea></span>
             </dd>
             <dd><input type="submit" class="button" value="提 交" /></dd>
             <div class="clear"></div>
         </dl>
     </form>
-    
+    <div style="display: none;" class="more_data">
+        <dd>
+            <span class="dd_left">大面积房间号</span>
+            <span class="dd_right"><input type="text" name="area" class="qtext" value="" style="width:230px;"/></textarea></span>
+            <span class="dd_left" style="width:60px;">房间面积</span>
+            <span class="dd_right"><input type="text" name="area" class="qtext" value="" style="width:230px;"/></textarea></span> 
+            <input type="button" value="+" class="jia1">
+            <input type="button" value="-" class="jian">
+        </dd>
+    </div>
+    <div style="display: none;" class="more_data2">
+        <dd>
+            <span class="dd_left">小房间号</span>
+            <span class="dd_right"><input type="text" name="area" class="qtext" value="" style="width:230px;"/></textarea></span>
+            <span class="dd_left" style="width:60px;">房间面积</span>
+            <span class="dd_right"><input type="text" name="area" class="qtext" value="" style="width:230px;"/></textarea></span> 
+            <input type="button" value="+" class="jia2">
+            <input type="button" value="-" class="jian">
+        </dd>
+    </div>
 </div>
 <script type="text/javascript">
-    $(document).on('click','.jia',function(){
-        var html = $(this).parent().clone();
-        $(this).parent().after(html);    
+    $(document).on('click','.jia1',function(){
+        var html = $('.more_data').find('dd').clone();
+        $(this).parent().after(html);   
     })
-
+    $(document).on('click','.jia2',function(){
+        var html = $('.more_data2').find('dd').clone();
+        $(this).parent().after(html);   
+    })
     $(document).on('click','.jian',function(){
         $(this).parent().remove();
     })
