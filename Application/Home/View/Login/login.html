@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>登录-东辉达财务管理系统</title>
+<link rel="stylesheet" type="text/css" href="__CSS__/login.css"  />
+<link rel="stylesheet" type="text/css" href="__CSS__/public.css"  />
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript" src="__JS__/Public.js"></script>
+<script type="text/javascript" src="__JS__/winpop.js"></script>
+<script>
+$(function() {
+	$('.button').click(function(event) {
+		event.preventDefault();
+		var username=$('#content .utext').val();
+		var password=$('#content .ptext').val();
+		var code=$('#content .code').val();
+		if (!/^[a-zA-Z0-9_-]|[\u4e00-\u9fa5]{2,16}$/.test(username)) {
+			wintq('请输入正确的用户名',2,2000,1,'');
+			$('#content .utext').focus();
+			return;
+		}
+		if (password.length<6) {
+			wintq('请输入6位数以上的密码',2,2000,1,'');
+			$('#content .ptext').focus();
+			return;
+		}
+		if (!/^[a-zA-Z0-9]{4}$/.test(code)) {
+			wintq('请输入正确的验证码',2,2000,1,'');
+			$('#content .code').focus();
+			return;
+		}
+		wintq('正在登录，请稍后...',4,20000,0,'');
+		$.ajax({
+			url:'__APP__/Login/login_do',
+			dataType:"json",
+			type:'POST',
+			cache:false,
+			data:'username='+username+'&password='+password+'&code='+code,
+			success: function(data) {
+				// alert(data.s);
+				if (data.s=='ok') {
+
+					wintq('登录成功',1,2000,0,'__APP__/Index/index');
+				}else {
+					rcode($('#verify'));
+					wintq(data.s,3,2000,1,'');
+				}
+			}
+		});
+	});
+	//更换验证码
+	function rcode(obj) {
+		obj.attr('src','__APP__/Login/verify/'+Math.random());
+	}
+	$('#verify').click(function() {
+		rcode($(this));
+	});
+});
+</script>
+</head>
+<body>
+<div class="Gradient"></div>
+<div id="content">
+	<div class="box_img"><img src="/oa/Public/image/home/login_logo.png" alt=""></div>
+	<form action="__APP__/Index/login_do" method="post">
+	<dl>
+    
+    	<dd>
+       		<label class="label1"></label>
+        	<input type="text" name="username" class="utext" placeholder="请输入用户名" maxlength="12" value="test" />
+        </dd>
+        <dd>
+        	<label class="label2"></label>
+        	<input type="password" name="password" placeholder="请输入密码" class="ptext" maxlength="18" value="123456" />
+        </dd>
+        <dd style="border: none;">
+        	<div style="width: 230px;border-bottom: 1px solid #e7e7e7;overflow: hidden;float: left;">
+        		<label class="label3"></label>
+        		<input type="text" name="code" class="code" placeholder="请输入验证码" maxlength="4" style="float: left;" /> 
+        	</div>
+        	<img src="__APP__/Login/verify/" border="1" id="verify"  style="float: right;" />
+        </dd>
+        <dd>
+        	<input type="submit" name="login" value="登 录" class="button" />
+        </dd>
+       
+    </dl>
+    </form>
+</div>
+</body>
+</html>

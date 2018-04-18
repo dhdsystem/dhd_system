@@ -1,7 +1,7 @@
 @charset "utf-8";
 /* CSS Document */
 * { margin:0; padding:0; }
-/*body { margin:0; padding:0; background:url(../../image/home/login_bg1.jpg) no-repeat center top; font-family:"微软雅黑"; }*/
+/*body { margin:0; padding:0; background:url(../images/home/login_bg1.jpg) no-repeat center top; font-family:"微软雅黑"; }*/
 body{background: #f1faff;}
 .Gradient{
 	width: 100%;
@@ -16,9 +16,9 @@ body{background: #f1faff;}
 #content dl dt { font-size:26px; height:30px; line-height:30px; margin-bottom:24px; font-weight:400; font-family:"微软雅黑"; color:#5297f2; }
 #content dl dd { height:42px; text-align:left; margin-top: 20px; position:relative; color:#444;border-bottom: 1px solid #e7e7e7; }
 #content dl dd a { text-decoration:none; color:#060}
-#content dl dd label{width: 22px;height: 25px;float: left;    position: relative;top: 8px; background:#fff url(../../image/home/login_yhm.png) no-repeat;}
-#content dl dd .label2{background:#fff url(../../image/home/login_mima.png) no-repeat;}
-#content dl dd .label3{background:#fff url(../../image/home/login_yzm.png) no-repeat; }
+#content dl dd label{width: 22px;height: 25px;float: left;    position: relative;top: 8px; background:#fff url(../images/home/login_yhm.png) no-repeat;}
+#content dl dd .label2{background:#fff url(../images/home/login_mima.png) no-repeat;}
+#content dl dd .label3{background:#fff url(../images/home/login_yzm.png) no-repeat; }
 
 #content dl dd input{float: right;}
 #content .utext, .ptext { width:308px; height:42px;   box-sizing: border-box; line-height:42px; border:none;outline: 0;  }
