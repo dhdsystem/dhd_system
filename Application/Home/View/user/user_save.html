@@ -89,7 +89,7 @@
                 <span class="dd_left">用户名：</span>
                 <span class="dd_right">
                 	
-    				<input type="text" placeholder="* 2～12位英文数字组合" class="qtext" maxlength="12" value="<{$result['username']}>" style="height: 40px; width: 595px;" name="username"/>
+    				<input type="text" placeholder="* 2～12位英文数字组合" class="qtext" maxlength="12" value="{$result['username']}" style="height: 40px; width: 595px;" name="username"/>
 
                 </span>
             </dd>
@@ -102,7 +102,7 @@
             <dd>
                 <span class="dd_left">用户说明：</span>
                 <span class="dd_right">
-                <textarea name="description" class="textarea" style=" width: 605px;" ><{$result['description']}></textarea>
+                <textarea name="description" class="textarea" style=" width: 605px;" >{$result['description']}</textarea>
                 <input type="hidden" name="field＿name" class="hiddenid" value="<{$result['id']}>">
                 </span>
                
@@ -119,7 +119,7 @@
                     <font  style="height: 40px;line-height: 40px;">* 提示：如果没有修改任何信息，则会提示“数据修改失败”</font>
                 </span>
             </dd>
-            <input type="hidden" value="<{$result['id']}>" />
+            <input type="hidden" value="{$result['id']}" />
             <dd><input type="button" class="button" value="提 交" /></dd>
         </dl>
     </form>

@@ -115,11 +115,11 @@ $(document).ready(function() {
 	        <volist name="volist" id="vo">
 	        <tr class="tr <eq name="mod" value="1">tr2</eq>">
 	        	<td class="tc"><input type="checkbox" class="delid" value="<{$vo.id}>" /></td>
-	            <td class="tc"><{$vo.id}></td>
-	            <td class="tc"><{$vo.username}></td>
-	            <td class="tc"><{$vo.real_name}></td>
-	            <td class="tc"><{$vo.role_name}></td>
-	            <td class="tc"><{$vo.description}></td>
+	            <td class="tc">{$vo.id}</td>
+	            <td class="tc">{$vo.username}</td>
+	            <td class="tc">{$vo.real_name}</td>
+	            <td class="tc">{$vo.role_name}</td>
+	            <td class="tc">{$vo.description}</td>
 	            <td class="tc">
 	            <if condition="$vo.state eq 0">
 	            <img src="__IMAGE__/home/yes.png" border="0" title="正常" />
@@ -127,10 +127,10 @@ $(document).ready(function() {
 	            <img src="__IMAGE__/home/no.png" border="0" title="锁定" />
 	            </if>
 	            </td>
-	            <td class="tc"><{$vo.dtime|date='Y-m-d H:i:s',###}></td>
+	            <td class="tc">{$vo.dtime|date='Y-m-d H:i:s',###}</td>
 	            <td class="tc fixed_w">
-					<a href="<{$vo.id}>" class="edit oper">修改</a>
-					<a href="<{$vo.id}>" class="del oper">删除</a>
+					<a href="{$vo.id}" class="edit oper">修改</a>
+					<a href="{$vo.id}" class="del oper">删除</a>
 	            </td>
 	        </tr>
 	        </volist>

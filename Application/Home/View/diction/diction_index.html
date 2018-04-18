@@ -86,10 +86,10 @@ $(document).ready(function() {
             <!--顶级数据-->
             <volist name="node" id="vo">
             <tr class="tr tr2">
-                <td class="tc"><{$vo.id}></td>
+                <td class="tc">{$vo.id}</td>
                 <!-- <td class="tc"><{$vo.opera_name}></td> -->
-                <td class="tc"><{$vo.name}><{$vo.opera_name}></td>
-                <td class="tc"><{$vo.explain}></td>
+                <td class="tc">{$vo.name}{$vo.opera_name}</td>
+                <td class="tc">{$vo.explain}</td>
                 <td class="tc">
                 <if condition="$vo.Status eq 0">
                 <img src="__IMAGE__/home/yes.png" border="0" title="正常" />
@@ -98,8 +98,8 @@ $(document).ready(function() {
                 </if>
                 </td>
                 <td class="tc fixed_w">
-    				<a href="__ROOT__/home/diction/diction_save/id/<{$vo.id}>" class="edit oper">修改</a>
-    				<a href="<{$vo.id}>" class="del oper">删除</a>
+    				<a href="__ROOT__/home/diction/diction_save/id/{$vo.id}" class="edit oper">修改</a>
+    				<a href="{$vo.id}" class="del oper">删除</a>
                 </td>
             </tr>
             <!--二级数据-->
@@ -109,8 +109,8 @@ $(document).ready(function() {
             <tr class="tr">
                 <td class="tc"><{$s.id}></td>
                 <!-- <td></td> -->
-                <td class="tc">|————<{$s.opera_name}></td>
-                <td class="tc"><{$s.explain}></td>
+                <td class="tc">|————{$s.opera_name}</td>
+                <td class="tc">{$s.explain}</td>
                 <td class="tc">
                 <if condition="$s.Status eq 0">
                 <img src="__IMAGE__/home/yes.png" border="0" title="正常" />
@@ -119,8 +119,8 @@ $(document).ready(function() {
                 </if>
                 </td>
                 <td class="tc fixed_w">
-                <a href="<{$s.id}>" class="edit oper">修改</a>
-                <a href="<{$s.id}>" class="del oper">删除</a>
+                <a href="{$s.id}" class="edit oper">修改</a>
+                <a href="{$s.id}" class="del oper">删除</a>
                 </td>
             </tr>
             </if>

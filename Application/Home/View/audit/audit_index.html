@@ -97,9 +97,9 @@ $(document).ready(function() {
 	        <!--顶级数据-->
 	        <volist name="volist" id="vo">
 	        <tr class="tr <eq name="mod" value="1">tr2</eq>">
-	            <td class="tc"><{$vo.id}></td>
-	            <td class="tc"><{$vo.cost}></td>
-	            <td class="tc"><{$vo.role}></td>
+	            <td class="tc">{$vo.id}</td>
+	            <td class="tc">{$vo.cost}</td>
+	            <td class="tc">{$vo.role}</td>
 	            <td class="tc fixed_w">
 	            <!-- <a href="<{$vo.id}>" class="edit"><img src="__IMAGE__/edit.png" border="0" title="修改" /></a> -->
 	            <a href="<{$vo.id}>" class="del oper">删除</a>
