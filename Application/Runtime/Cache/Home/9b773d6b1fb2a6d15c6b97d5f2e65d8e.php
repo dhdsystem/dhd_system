@@ -1,0 +1,187 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>添加角色|<<?php echo ($configcache['Title']); ?>></title>
+	<link rel="stylesheet" type="text/css" href="/dhd_system/Public/home/css/content.css"  />
+	<link rel="stylesheet" type="text/css" href="/dhd_system/Public/home/css/public.css"  />
+	<script type="text/javascript" src="/dhd_system/Public/home/js/jquery.js"></script>
+	<script type="text/javascript" src="/dhd_system/Public/home/js/Public.js"></script>
+	<script type="text/javascript" src="/dhd_system/Public/home/js/winpop.js"></script>
+	<!-- 新增验证js -->
+	<script type="text/javascript" src="/dhd_system/Public/home/js/jquery.validate.js"></script>
+	<!-- 角色管理 -->
+	<style>
+		.dtree{margin-left: 46px;padding-right: 58px;margin-bottom: 20px;}
+		.yiji{display: inline-block;width: 160px;float: left;cursor: pointer;}
+	    .erji{margin-left: 30px;display:none ;}
+	    .sanji{margin-left: 20px;display:none ;;}
+	    .title{font-size: 14px;color:#000;}
+	    .error{float: left;color:red;line-height: 40px;}
+	</style>
+	<script type="text/javascript">
+		function validform(){
+			return $("#infor").validate({  
+		        rules: {  
+					role_name : {
+						required : true,
+					}
+				},
+				 messages :{
+					role_name : {
+						required : '不能为空'
+					} 
+				}
+			});
+		}
+		$(document).ready(function(){
+			$(validform());
+	        $(".button").click(function(){
+	         if(validform().form()) {
+	          //通过表单验证，以下编写自己的代码
+	                var pid=$('#dl dd .select').val();
+	                var role_name=$('#dl dd .qtext').eq(1).val();
+	                var role_name=$('#dl dd .textarea').val();
+
+	                wintq('正在添加，请稍后...',4,20000,0,'');
+	                $.ajax({
+	                    url:'/dhd_system/?s=Home/Role/role_add',
+	                    dataType:'json',
+	                    type:'POST',
+	                    data:'pid='+pid+'&role_name='+role_name+'&textarea='+textarea,
+	                    success: function(data) {
+	                        // alert(data)
+	                        if (data=='ok') {
+	                            wintq('添加成功',1,1500,0,'/dhd_system/?s=Home/role/role_index');
+	                        }else {
+	                            wintq(data.s,3,1000,1,'');
+	                        }
+	                    }
+	                }); 
+	         } else {
+	          //校验不通过，什么都不用做，校验信息已经正常显示在表单上
+	         }
+	        });
+		})
+	</script>
+</head>
+<body>
+
+
+<!-- 角色 -->
+<div id="content">
+	<h1>首页 &gt; 用户管理 &gt; 权限管理&gt; 添加角色</h1>
+	<h2>
+    	<div class="h2_left">
+            <a href="javascript:history.back();" class="Retreat">后退</a>
+        </div>
+    </h2>
+	<!-- 角色 -->
+	<form action="/dhd_system/?s=Home/Role/role_add" method="post" id="infor">
+		<dl id="dl">   	
+	        <dd>
+	        	<span class="dd_left">角色父级：</span>
+	        	<span class="dd_right">
+		        	<select name="pid" class="select qtext" style="height: 40px; width: 605px;">
+		        		<option value="0">顶级分类</option>
+		        		<?php foreach ($role as $k => $v): ?>
+		        			<option value="<<?php echo ($v["id"]); ?>>"><<?php echo ($v["name"]); ?>><<?php echo ($v["role_name"]); ?>></option>
+		        		<?php endforeach ?>
+		        	</select>
+	        	</span>
+	        </dd>
+	        <dd>
+	        	<span class="dd_left">角色名称：</span>
+	        	<span class="dd_right">
+					<input type="text" name="role_name" placeholder="* 输入如：来宾用户" style="height: 40px; width: 593px;" class="qtext" maxlength="20" />
+	        	</span>
+	        </dd>
+	        <dd>
+	        	<span class="dd_left">角色说明：</span>
+	            <span class="dd_right">
+	            	<textarea name="description" class="textarea" style="width: 606px;"></textarea>
+	            </span>
+	        </dd>
+	        <dd>
+		        <div class="dtree">
+		        	<p class="title">权限管理</p>
+		        	
+				</div>
+				<div class="clearBoth"></div>
+			</dd>
+	        <dd><input type="submit" class="button" value="提 交" /></dd>
+	    </dl>
+	</form>
+</div>
+<script type="text/javascript">
+	var json=<<?php echo ($volist); ?>>;
+		// alert(json);
+		/*进行循环的代码在这里 @楠楠*/
+		$(json).each(function(i){
+            console.log(json[i]);
+            var ht = "<div>";
+            ht="<div class='yiji'><h1>+<input type='checkbox' name='one[]' value="+json[i]['id']+" class='s1'><span class='fold'>"+json[i]['opera_name']+"</span></h1>";
+            if(json[i]['children']!=''){
+                var son=json[i]['children'];
+                ht+="<div class='erji'>";
+                $(son).each(function(s){
+                    ht+="<div><h3><input type='checkbox' name='one[]' value="+son[s]['id']+" class='s2'><span class='fold'>"+son[s]['opera_name']+"</span></h3>"; 
+                    if(son[s]['children']!='') {
+                        var chil = son[s]['children'];
+                        ht+="<div class='sanji'>"; 
+                         $(chil).each(function(k){
+                            ht+="<p><span><input type='checkbox' name='one[]' value="+chil[k]['id']+" class='s3'>"+chil[k]['opera_name']+"</span></p>";  
+                         });
+                         ht+="</div>";
+                    }
+                    ht+="</div>";
+                })
+                ht+="</div>";
+            } 
+            ht+="</div>";
+            $('.dtree').append(ht);
+ 		});
+
+
+		/*进行选择的代码在这里 @楠楠*/
+		$('.yiji .fold').click(function(){
+            $(this).parent().parent().find('.erji').toggle();
+        });
+        $('.erji .fold').click(function(){
+            $(this).parent().parent().find('.sanji').toggle();
+        });
+        $(".s1").click(function(){
+            if($(this).is(':checked')==false){
+                $(this).parent().parent().find('input:checkbox').attr("checked",false);
+            }else{
+                $(this).parent().parent().find('input:checkbox').attr("checked",true);
+            }
+        });
+        $(".s2").click(function(){
+            if($(this).is(':checked')==false){
+                $(this).parent().parent().find('input:checkbox').attr("checked",false);
+                var flag = 0;
+                var ppp = $(this).parent().parent().parent().find(':checkbox');
+                ppp.each(function(i){
+                  if ($(this).is(":checked")) {/*循环该一级分类下所有分类，如果有下级分类仍然是选中的状态，则将flag=1*/
+                    flag = 1;
+                  }
+                });
+                if(!flag){/*如果该一级分类下所有input都没有被选中，则把一级分类的选中状态移除*/
+                    $(this).parent().parent().parent().parent().find('h1').find('input[type=checkbox]').attr("checked",false);
+                }
+            }else{
+                $(this).parent().parent().parent().parent().find('h1').find('input:checkbox').attr("checked",true);
+                $(this).parent().parent().find('input:checkbox').attr("checked",true);
+            }
+        });
+        $(".s3").click(function(){
+            if($(this).is(':checked')!=false){
+                 $(this).parent().parent().parent().parent().find('h3').find('input:checkbox').attr("checked",true);
+                $(this).parent().parent().parent().parent().parent().parent().find('h1').find('input:checkbox').attr("checked",true);
+            }
+        });
+
+</script>
+</body>
+</html>

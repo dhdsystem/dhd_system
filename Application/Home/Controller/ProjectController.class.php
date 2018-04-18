@@ -42,4 +42,10 @@ class ProjectController extends Controller {
     	}
     }
 
+
+    // 项目修改 
+    public function project_up(){
+    	$this->display();
+    }
+
 }
