@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>角色管理|<{$configcache['Title']}></title>
+<title>角色管理</title>
 <link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
 <link rel="stylesheet" type="text/css" href="__CSS__/public.css"  />
 <script type="text/javascript" src="__JS__/jquery.js"></script>
@@ -83,9 +83,9 @@ $(document).ready(function() {
 	        <if condition="$role eq 0"><tr class="tr"><td class="tc" colspan="7">暂无数据，等待添加～！</td></tr></if>
 	        <volist name="role" id="vo">
 	        <tr class="tr <eq name="mod" value="1">tr2</eq>" >
-	            <td class="tc"><{$vo.id}></td>
-	            <td class="tc"><{$vo.name}><{$vo.role_name}></td>
-	            <td class="tc"><{$vo.description}></td>
+	            <td class="tc">{$vo.id}</td>
+	            <td class="tc">{$vo.name}{$vo.role_name}</td>
+	            <td class="tc">{$vo.description}</td>
 	            <td class="tc">
 	            <if condition="$vo.state eq 1">
 	            <img src="__IMAGE__/home/yes.png" border="0" title="正常" />

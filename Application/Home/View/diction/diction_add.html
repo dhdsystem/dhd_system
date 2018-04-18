@@ -26,14 +26,14 @@ function validform(){
                 sid : {required:true },
                 cname : { required : true},
                 controller : { required : true, english:["a","f"]},
-                action : { required : true, english:["a","f"] },
+                // action : { required : true, english:["a","f"] },
                 grade : {required : true,number:true}
             },
             messages : {
                 sid : {required:'请选择权限分类' },
                 cname : { required : '权限名称不得为空！'   },
                 controller : { required : '控制器不得为空！', },
-                action : { required : '方法不得为空！' },
+                // action : { required : '方法不得为空！' },
                 grade : {required : '不能为空',number:'请输入合法的数字' }  
             },
             	});
