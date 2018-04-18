@@ -7,6 +7,7 @@
     <link rel="csssheet" type="text/css" href="__CSS__/public.css"  />
     <script type="text/javascript" src="__JS__/jquery.js"></script>
     <script type="text/javascript" src="__JS__/Public.js"></script>
+    <script type="text/javascript" src="__JS__/winpop.js"></script>
     <script>
         $(document).ready(function() {
             $('#content h2 .add').click(function() {
@@ -21,27 +22,28 @@
                     wintq('ID参数不正确',3,1000,1,'');
                     return false;
                 }else {
-                    popload('修改分类信息',800,300,'__APP__/Classify/Catesave/id/'+id);
+                    popload('修改分类信息',800,300,'__APP__/Project/project_up/id/'+id);
                     addDiv($('#iframe_pop'));
                     popclose();
                 }
             });
-            $('#content #table .tr .del').click(function(event) {
+            $('#content #table .tr .del2').click(function(event) {
                 event.preventDefault();
                 if (!confirm('确定要删除该数据吗？')) {
                     return false;
                 }
-                var id=$(this).attr('href');
+                 var id=$(this).attr('href');
+                // console.log(id);
                 if (id=='' || isNaN(id)) {
                     wintq('ID参数不正确',3,1000,1,'');
                     return false;
                 }else {
                     wintq('正在删除，请稍后...',4,20000,0,'');
-                    window.location.href='__APP__/Classify/Cate_del/id/'+id;
+                    window.location.href='__APP__/Project/project_del/id/'+id;
                 }
             });
             $('.operation').hover(function(){
-                $('.operarea').toggle();
+                $(this).find('.operarea').toggle();
             })
         });
     </script>
@@ -53,7 +55,7 @@
         <h2>
             <div class="h2_left">
                 <a href="__ACTION__" class="whole">全部</a>
-                <a href="javascript:;" class="add">添加</a>
+                <a href="__APP__/Project/project_add" class="add">添加</a>
                 <a href="javascript:history.back();" class="Retreat">后退</a>
                 <div class="clear"></div>
             </div>
@@ -72,16 +74,16 @@
             </tr>
             <volist name="volist" id="vo">
                 <tr class="tr" value="1">
-                    <td class="tc"></td>
-                    <td class="tc"></td>
-                    <td class="tc ts"></td>
-                    <td class="tc"></td>
+                    <td class="tc">{$vo.id}</td>
+                    <td class="tc">{$vo.class_name}</td>
+                    <td class="tc ts">{$vo.class_address}</td>
+                    <td class="tc">{$vo.class_area}</td>
                     <td class="tc fixed_w">
                         <div class="operation">更多
                             <div class="operarea">
                                 <a href="" class="edit oper2">修改</a>
                                 <a href="" class="see oper2">详情</a>
-                                <a href="" class="del2 oper2">删除</a>
+                                <a href="{$vo.id}" class="del2 oper2">删除</a>
                             </div>
                         </div>
                         
