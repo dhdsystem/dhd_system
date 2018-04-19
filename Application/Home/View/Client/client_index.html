@@ -213,11 +213,11 @@
     	var ind = $('.checkBB input').index(this);
         if($(this).is(':checked') == true) {
             var text=$(this).attr('value');
-            $(this).parent().find('label').css('background','url(../images/checkBut2.png) no-repeat');
+            $(this).parent().find('label').css('background','url(__IMAGE__/checkBut2.png) no-repeat');
             // alert(typeof text);
             $('.butBox').append('<div class="secDis ind'+ind+'" value='+text+'>'+text+'</div>')
         }else if($(this).is(':checked') == false){
-            $(this).parent().find('label').css('background','url(../images/checkBut1.png) no-repeat');
+            $(this).parent().find('label').css('background','url(__IMAGE__/checkBut1.png) no-repeat');
         	$('.butBox div.ind'+ind).remove();
        
         }
@@ -225,7 +225,7 @@
     // 全部清除
     $('.alldel').click(function(){
         $('.butBox div').remove();
-        $('.checkBB label').css('background','url(../images/checkBut1.png) no-repeat');
+        $('.checkBB label').css('background','url(__IMAGE__/checkBut1.png) no-repeat');
         $('.checkBB input').attr("checked",false);
     })
 
