@@ -25,15 +25,31 @@
                 
                 <form action="/?s=Home/Client/index" method="post">
                     <input type="text" value="" name="keyword" class="text" style="border: 1px solid rgb(204, 204, 204); box-shadow: none;">
-                    <input type="submit" class="so" value="搜 索" placeholder="小贴士：输入客户/公司名称可实时搜索">
+                    <input type="submit" class="so" value="搜 索">
                 </form>
             </div>
             <a href="javascript:;" class="diy">自定义</a>
         </h2>
-
+        <div class="dgv">
+            <div class="danyuan">
+                <span class="leiMing">项目：</span>
+                <a href="javascript:;">财智国际大厦</a>
+                <a href="javascript:;">金隅嘉华大厦</a>
+                <a href="javascript:;">世纪科贸大厦</a>
+            </div>
+            <div class="danyuan">
+                <span class="leiMing">产品：</span>
+                <a href="javascript:;">大面积</a>
+                <a href="javascript:;">小面积</a>
+                <a href="javascript:;">地址</a>
+                <a href="javascript:;">记账</a>
+                <a href="javascript:;">代理</a>
+            </div>
+            
+        </div>
     </div>
     <div class="tableBox">
-		<table id="table" border="1" bordercolor="#CCCCCC" cellpadding="0" cellspacing="0" style="width:150%;height:;" >
+		<table id="table" border="1" bordercolor="#CCCCCC" cellpadding="0" cellspacing="0" style="width:150%">
             <tr>
                 <th>公司名称</th>
                 <th>注册地址</th>
@@ -88,36 +104,48 @@
 <!-- 弹窗1 -->
 <div class="popWinBox popWinBox1">
     <div class="popWin popWin1">
-        <div class="popWinTop">
-            <form action="" method="post" id="popForm">
-                <div class="popWinTopL"></div>
-                <div class="popWinTopr"><input type="submit" name="提交" id="popSub"></div>
-            </form>  
-        </div>
-        <div class="popWinBot">
-            <div class="checkBB"><input type="checkBox" name="guolv" value="财智国际大厦"><span>财智国际大厦</span></div>
-            <div class="checkBB"><input type="checkBox" name="guolv" value="金隅嘉华大厦" ><span>金隅嘉华大厦</span></div>
-            <div class="checkBB"><input type="checkBox" name="guolv" value="世纪科贸大厦"><span>世纪科贸大厦</span></div>
+        <div class="popWinTitle">自定义选择</div>
+        <div style="width:640px;margin:0 auto">
+            <div class="popWinTop">
+                <div class="checkBB">
+                    <input type="checkBox" name="guolv" value="财智国际大厦"><label for="check"></label><span>财智国际大厦</span>
+                </div>
+                <div class="checkBB">
+                    <input type="checkBox" name="guolv" value="金隅嘉华大厦" ><label for="check"></label><span>金隅嘉华大厦</span>
+                </div>
+                <div class="checkBB">
+                    <input type="checkBox" name="guolv" value="世纪科贸大厦"><label for="check"></label><span>世纪科贸大厦</span>
+                </div>
+                <div class="checkBB"><input type="checkBox" name="guolv" value="大面积"><label for="check"></label><span>大面积</span></div>
+                <div class="checkBB"><input type="checkBox" name="guolv" value="小面积"><label for="check"></label><span>小面积</span></div>
+                <div class="checkBB"><input type="checkBox" name="guolv" value="地址"><label for="check"></label><span>地址</span></div>
+                <div class="checkBB"><input type="checkBox" name="guolv" value="记账"><label for="check"></label><span>记账</span></div>
+                <div class="checkBB"><input type="checkBox" name="guolv" value="代理"><label for="check"></label><span>代理</span></div>
 
-            <div class="checkBB"><input type="checkBox" name="guolv" value="大面积"><span>大面积</span></div>
-            <div class="checkBB"><input type="checkBox" name="guolv" value="小面积"><span>小面积</span></div>
-            <div class="checkBB"><input type="checkBox" name="guolv" value="地址"><span>地址</span></div>
-            <div class="checkBB"><input type="checkBox" name="guolv" value="记账"><span>记账</span></div>
-            <div class="checkBB"><input type="checkBox" name="guolv" value="代理"><span>代理</span></div>
+                <div class="checkBB"><input type="checkBox" name="guolv" value="记账直接客户"><label for="check"></label><span>记账直接客户</span></div>
+                <div class="checkBB"><input type="checkBox" name="guolv" value="非记账直接客户"><label for="check"></label><span>非记账直接客户</span></div>
+                <div class="checkBB"><input type="checkBox" name="guolv" value=""><label for="check"></label><span>中间商</span></div>
+                <div class="checkBB"><input type="checkBox" name="guolv" value=""><label for="check"></label><span>中介</span></div>
 
-            <div class="checkBB"><input type="checkBox" name="guolv" value="记账直接客户"><span>记账直接客户</span></div>
-            <div class="checkBB"><input type="checkBox" name="guolv" value="非记账直接客户"><span>非记账直接客户</span></div>
-            <div class="checkBB"><input type="checkBox" name="guolv" value=""><span>中间商</span></div>
-            <div class="checkBB"><input type="checkBox" name="guolv" value=""><span>中介</span></div>
+                <div class="checkBB"><input type="checkBox" name="guolv" value=""><label for="check"></label><span>应收款客户</span></div>
+                <div class="checkBB"><input type="checkBox" name="guolv" value=""><label for="check"></label><span>合同到期客户</span></div>
+                <div class="checkBB"><input type="checkBox" name="guolv" value=""><label for="check"></label><span>停租客户</span></div>
+                <div class="checkBB"><input type="checkBox" name="guolv" value=""><label for="check"></label><span>拜访时间</span></div>
 
-            <div class="checkBB"><input type="checkBox" name="guolv" value=""><span>应收款客户</span></div>
-            <div class="checkBB"><input type="checkBox" name="guolv" value=""><span>合同到期客户</span></div>
-            <div class="checkBB"><input type="checkBox" name="guolv" value=""><span>停租客户</span></div>
-            <div class="checkBB"><input type="checkBox" name="guolv" value=""><span>拜访时间</span></div>
-
-            <div class="checkBB"><input type="checkBox" name="guolv" value=""><span>渠道一（人员）</span></div>
-            <div class="checkBB"><input type="checkBox" name="guolv" value=""><span>渠道二（人员）</span></div>
-            <div class="checkBB"><input type="checkBox" name="guolv" value=""><span>直销（人员）</span></div>
+                <div class="checkBB"><input type="checkBox" name="guolv" value=""><label for="check"></label><span>渠道一（人员）</span></div>
+                <div class="checkBB"><input type="checkBox" name="guolv" value=""><label for="check"></label><span>渠道二（人员）</span></div>
+                <div class="checkBB"><input type="checkBox" name="guolv" value=""><label for="check"></label><span>直销（人员）</span></div>
+                  
+            </div>
+            <div class="popWinBot">
+                <form action="" method="post" id="popForm">
+                    <div class="popWinTopL">
+                        <div class="alldel">全部清除</div>
+                        <div class="butBox"></div>
+                    </div>
+                    <div class="popWinTopr"><input type="submit" name="提交" id="popSub"></div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
@@ -164,6 +192,11 @@
             $(this).find('.operarea').toggle();
         });
     });
+    // 单选过滤
+    $('.danyuan a').click(function(){
+        $(this).addClass('active').siblings().removeClass('active');
+        $(this).parent().siblings().find('a').removeClass('active');
+    })
     // 自定义处理
     $('.diy').click(function(){
         $('.popWinBox1').show();
@@ -180,13 +213,23 @@
     	var ind = $('.checkBB input').index(this);
         if($(this).is(':checked') == true) {
             var text=$(this).attr('value');
+            $(this).parent().find('label').css('background','url(../images/checkBut2.png) no-repeat');
             // alert(typeof text);
-            $('.popWinTopL').append('<div class="secDis ind'+ind+'" value='+text+'>'+text+'</div>')
+            $('.butBox').append('<div class="secDis ind'+ind+'" value='+text+'>'+text+'</div>')
         }else if($(this).is(':checked') == false){
-        	$('.popWinTopL div.ind'+ind).remove();
+            $(this).parent().find('label').css('background','url(../images/checkBut1.png) no-repeat');
+        	$('.butBox div.ind'+ind).remove();
        
         }
     })
+    // 全部清除
+    $('.alldel').click(function(){
+        $('.butBox div').remove();
+        $('.checkBB label').css('background','url(../images/checkBut1.png) no-repeat');
+        $('.checkBB input').attr("checked",false);
+    })
+
+
     $('#popSub').click(function(){
         $('popForm').submit();
         $('.popWinBox1').hide();
