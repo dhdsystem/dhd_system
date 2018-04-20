@@ -82,3 +82,11 @@ $(function() {
 	funbox();
 	lhide();
 });
+
+// 更多操作
+$().ready(function(){
+	$('.operation').hover(function(){
+	    $(this).find('.operarea').toggle();
+	})
+})
+
