@@ -131,16 +131,9 @@
             <span class="dd_left">客户分组：</span>
             <span class="dd_right">
                 <select id="customtype" name="contracttype" class="select tab_select" style="width: 752px;height: 40px;">
-                    <foreach name="Industry" item="vo">
-                        <if condition="$vo['menuname'] eq '客户分组'">
                         <option value="">--请选择--</option>
-                            <foreach name="vo.submenu" item="v">
-                                <option value="直接客户">直接客户</option>
-                                <option value="渠道客户">渠道客户</option>
-                                <!-- <option value="中介">中介</option> -->
-                            </foreach>
-                        </if>
-                    </foreach>
+                        <option value="直接客户">直接客户</option>
+                        <option value="渠道客户">渠道客户</option>
                 </select>
             </span>
         </dd>
@@ -229,7 +222,8 @@
         $('#xu').empty()
         $('.center').remove()
         $('#contra').attr('style','display:none');
-        $('#contra *').attr('disabled',true)
+        // 控制中间部分input标签的可用性
+        // $('#contra *').attr('disabled',true)
         if(contract=='渠道客户'){
             var state = 1;
             var ht=$('#contra').html();
