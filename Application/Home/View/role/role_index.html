@@ -10,23 +10,7 @@
 <script type="text/javascript" src="__JS__/winpop.js"></script>
 <script>
 $(document).ready(function() {
- //    $('#content h2 .add').click(function() {
-	// 	popload('添加角色',800,410,'__APP__/Role/add/');
-	// 	addDiv($('#iframe_pop'));
-	// 	popclose();
-	// });
-	/*$('#content #table .tr .edit').click(function(event) {
-		event.preventDefault();
-		var id=$(this).attr('href');
-		if (id=='' || isNaN(id)) {
-			wintq('ID参数不正确',3,1000,1,'');
-			return false;
-		}else {
-			popload('修改角色信息',800,410,'__APP__/Role/roleedit/id/'+id);
-			addDiv($('#iframe_pop'));
-			popclose();
-		}
-	});*/
+ 
 	$('#content #table .tr .del').click(function(event) {
 		event.preventDefault();
 		if (!confirm('确定要删除该数据吗？')) {
@@ -61,13 +45,11 @@ $(document).ready(function() {
 </head>
 <body>
 <div id="content">
-	<h1>首页 > 用户管理 > 角色管理</h1>
+	<h1>首页 > 权限控制 > 职位管理</h1>
     <h2>
     	<div class="h2_left">
-        	<a href="javascript:;" class="f5" onclick="f5();">刷新</a>
             <a href="__APP__/Role/role_add" class="add">新增</a>
             <a href="javascript:history.back();" class="Retreat">后退</a>
-            <a href="javascript:history.go(1);" class="Advance">前进</a>
         </div>
     </h2>
     <div class="tableBox">
