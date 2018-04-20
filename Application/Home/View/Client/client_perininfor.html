@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>完善交互信息</title>
+    <link rel="stylesheet" type="text/css" href="__CSS__/content.css"/>
+    <link rel="stylesheet" type="text/css" href="__CSS__/calendar.css"/>
+    <script type="text/javascript" src="__JS__/jquery.js"></script>
+    <script type="text/javascript" src="__JS__/calendar.js"></script>
+</head>
+<script>
+    $(document).ready(function() {
+        $('#sdd').calendar({
+            trigger: '#visit_time',
+            zIndex: 999,
+            format: 'yyyy-mm-dd',
+            onSelected: function (view, date, data) {
+                console.log('event: onSelected')
+            },
+            onClose: function (view, date, data) {
+                console.log('event: onClose')
+                console.log('view:' + view)
+                console.log('date:' + date)
+                console.log('data:' + (data || 'None'));
+            }
+        });
+    });
+</script>
+<body>
+<div class="contract_cont"  id="content">
+    <h1>首页 > 客户管理 > 客户信息 > 完善交互信息 </h1>
+    <h2>
+        <div class="h2_left">
+            <a href="javascript:history.back();" class="Retreat">后退</a>
+        </div>
+    </h2>
+
+        <form action="/?s=Home/Client/interactiveadd_do/" method="post">
+        <dl id="cdl">
+            <dd>
+                <span class="dd_left">公司名称：</span>
+                <span class="dd_right">
+                    <input type="text" class="qtext" name="company_name" value="华人智慧（北京）科技有限公司" />
+                    <input type="hidden" name="client_id" value="2888">
+                    <input type="hidden" name="c_type" value="">
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">拜访时间：</span>
+                <span class="dd_right">
+                    <input type="text" class="qtext" name="visit_time" id="visit_time" />
+                    <div id="sdd" style="left: 134px;top: 39px;"></div>                
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">拜访情况：</span>
+                <span class="dd_right">
+                    <textarea name="visit_condition" rows="4" cols="37"></textarea>    
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">客户需求：</span>
+                <span class="dd_right">
+                    <textarea name="demand" rows="4" cols="37"></textarea>
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">备注：</span>
+                <span class="dd_right">
+                    <textarea name="remarks" rows="4" cols="37"></textarea>
+                </span>
+            </dd>
+            <dd>
+                <input type="submit" value="提交" class="submit" />
+            </dd>
+
+        </dl>
+    </form>
+</div>
+</body>
+</html>
