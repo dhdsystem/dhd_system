@@ -105,7 +105,7 @@ $(document).ready(function() {
             <volist name="a" id="s">
             <if condition="$s.p_id eq $vo['id']">
             <tr class="tr">
-                <td class="tc"><{$s.id}></td>
+                <td class="tc">{$s.id}</td>
                 <!-- <td></td> -->
                 <td class="tc">|————{$s.opera_name}</td>
                 <td class="tc">{$s.explain}</td>
@@ -128,7 +128,7 @@ $(document).ready(function() {
         </table>
     </div>
     
-    <div id="page"><{$page}></div>
+    <div id="page">{$page}</div>
 </div>
 </body>
 </html>

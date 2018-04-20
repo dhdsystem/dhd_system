@@ -94,11 +94,11 @@ function validform(){
 	            	<option value="0">顶级目录</option>
 	            	    <volist name='node' id='vo'>
                         <if condition="$vo.id eq $data['p_id']">
-                        <option selected value="<{$vo.id}>" selected><{$vo.opera_name}></option>
+                        <option selected value="{$vo.id}" selected>{$vo.opera_name}</option>
                         <else />
 	            	
 
-                        <option value="<{$vo.id}>"><{$vo.opera_name}></option>
+                        <option value="{$vo.id}">{$vo.opera_name}</option>
                         </if>
                         </volist>
 
@@ -108,29 +108,29 @@ function validform(){
 	        <dd>
 	        	<span class="dd_left">权限名称：</span>
 	        	<span class="dd_right">
-	        	<input type="hidden" name="id" id="ids" value="<{$data['id']}>"> 
-	        		<input type="text" id="cname" class="qtext" placeholder="* 输入如：用户管理" style="height: 40px; width: 595px;" name="cname" value="<{$data['opera_name']}>" />
+	        	<input type="hidden" name="id" id="ids" value="{$data['id']}"> 
+	        		<input type="text" id="cname" class="qtext" placeholder="* 输入如：用户管理" style="height: 40px; width: 595px;" name="cname" value="{$data['opera_name']}" />
 	        	</span>
 	        </dd>
 	        
 	        <dd>
 	        	<span class="dd_left">控制器：</span>
-	            <span class="dd_right"><input type="text"  placeholder="* 输入如：role" id="controller"  style="height: 40px; width: 595px;" class="qtext" value="<{$data['controller']}>" name="controller"/></span>
+	            <span class="dd_right"><input type="text"  placeholder="* 输入如：role" id="controller"  style="height: 40px; width: 595px;" class="qtext" value="{$data['controller']}" name="controller"/></span>
 	        </dd>
 	        <dd>
 	        	<span class="dd_left">方法：</span>
-	            <span class="dd_right"><input type="text" style="height: 40px; width: 595px;"   placeholder="* 输入如：roleadd" id="action" class="qtext" name="action" value="<{$data['action']}>" /></span>
+	            <span class="dd_right"><input type="text" style="height: 40px; width: 595px;"   placeholder="* 输入如：roleadd" id="action" class="qtext" name="action" value="{$data['action']}" /></span>
 	        </dd>
 	        <dd>
 	        	<span class="dd_left">权限优先级：</span>
 	            <span class="dd_right">
-	            	<input type="text" style="height: 40px; width: 595px;"   placeholder="*输入数字" id="grade" class="qtext" name="grade" value="<{$data['grade']}>" />
+	            	<input type="text" style="height: 40px; width: 595px;"   placeholder="*输入数字" id="grade" class="qtext" name="grade" value="{$data['grade']}" />
 				</span>
 	        </dd>       
 	        <dd>
 	        	<span class="dd_left">权限说明：</span>
 	            <span class="dd_right">
-	            	<textarea name="description" class="textarea" style="width: 606px;"><{$data['explain']}></textarea>
+	            	<textarea name="description" class="textarea" style="width: 606px;">{$data['explain']}</textarea>
 	            </span>
 	        </dd>
 	        <dd><input type="button" class="button" value="提 交" /></dd>
