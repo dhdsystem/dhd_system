@@ -1,0 +1,1445 @@
+[ 2018-04-20T14:02:53+08:00 ] 127.0.0.1 /dhd_system/?s=Home/Client/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:index
+
+[ 2018-04-20T14:02:55+08:00 ] 127.0.0.1 /dhd_system/?s=Home/Channel/channel_index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `dhd_middle` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `dhd_middle`  [ RunTime:0.0030s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-04-20T14:02:58+08:00 ] 127.0.0.1 /dhd_system/?s=Home/channel/channel_add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T14:03:06+08:00 ] 127.0.0.1 /dhd_system/?s=Home/channel/channeladd_do
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-04-20T14:06:09+08:00 ] 127.0.0.1 /dhd_system/?s=Home/channel/channeladd_do
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+ERR: Think\Controller:get_user_name方法不存在！
+
+[ 2018-04-20T14:06:21+08:00 ] 127.0.0.1 /dhd_system/?s=Home/Channel/channel_index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `dhd_middle` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `dhd_middle`  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-04-20T14:06:22+08:00 ] 127.0.0.1 /dhd_system/?s=Home/channel/channel_add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T14:06:24+08:00 ] 127.0.0.1 /dhd_system/?s=Home/channel/channeladd_do
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: Think\Controller:get_user_name方法不存在！
+
+[ 2018-04-20T14:10:24+08:00 ] 127.0.0.1 /dhd_system/?s=Home/Channel/channel_index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `dhd_middle` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `dhd_middle`  [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-04-20T14:10:25+08:00 ] 127.0.0.1 /dhd_system/?s=Home/channel/channel_add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-04-20T14:10:28+08:00 ] 127.0.0.1 /dhd_system/?s=Home/channel/channeladd_do
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T14:25:10+08:00 ] 127.0.0.1 /dhd_system/?s=Home/Channel/channel_index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `dhd_middle` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `dhd_middle`  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-04-20T14:25:12+08:00 ] 127.0.0.1 /dhd_system/?s=Home/channel/channel_add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T14:25:13+08:00 ] 127.0.0.1 /dhd_system/?s=Home/channel/channeladd_do
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `dhd_user` [ RunTime:0.0080s ]
+ERR: 1054:Unknown column 'admin' in 'where clause'
+ [ SQL语句 ] : SELECT `id` FROM `dhd_user` WHERE ( username=admin ) LIMIT 1  
+ERR: 1054:Unknown column 'admin' in 'where clause'
+ [ SQL语句 ] : SELECT `id` FROM `dhd_user` WHERE ( username=admin ) LIMIT 1  
+
+[ 2018-04-20T14:28:58+08:00 ] 127.0.0.1 /dhd_system/?s=Home/Channel/channel_index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `dhd_middle` [ RunTime:0.0150s ]
+SQL: SELECT * FROM `dhd_middle`  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T14:28:59+08:00 ] 127.0.0.1 /dhd_system/?s=Home/channel/channel_add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-04-20T14:29:00+08:00 ] 127.0.0.1 /dhd_system/?s=Home/channel/channeladd_do
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `dhd_user` [ RunTime:0.0050s ]
+ERR: 1054:Unknown column 'admin' in 'where clause'
+ [ SQL语句 ] : SELECT `id` FROM `dhd_user` WHERE ( username=admin ) LIMIT 1  
+ERR: 1054:Unknown column 'admin' in 'where clause'
+ [ SQL语句 ] : SELECT `id` FROM `dhd_user` WHERE ( username=admin ) LIMIT 1  
+
+[ 2018-04-20T14:31:47+08:00 ] 127.0.0.1 /dhd_system/?s=Home/Channel/channel_index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `dhd_middle` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `dhd_middle`  [ RunTime:0.0030s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-04-20T14:31:49+08:00 ] 127.0.0.1 /dhd_system/?s=Home/channel/channel_add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T14:31:50+08:00 ] 127.0.0.1 /dhd_system/?s=Home/channel/channeladd_do
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: id D:\phpStudy\WWW\dhd_system\Application\Home\Controller\ChannelController.class.php 第 25 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-04-20T14:32:19+08:00 ] 127.0.0.1 /dhd_system/?s=Home/Channel/channel_index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `dhd_middle` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `dhd_middle`  [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T14:32:20+08:00 ] 127.0.0.1 /dhd_system/?s=Home/channel/channel_add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T14:32:21+08:00 ] 127.0.0.1 /dhd_system/?s=Home/channel/channeladd_do
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: id D:\phpStudy\WWW\dhd_system\Application\Home\Controller\ChannelController.class.php 第 25 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T14:32:32+08:00 ] 127.0.0.1 /dhd_system/?s=Home/Channel/channel_index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `dhd_middle` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `dhd_middle`  [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T14:32:33+08:00 ] 127.0.0.1 /dhd_system/?s=Home/channel/channel_add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T14:32:34+08:00 ] 127.0.0.1 /dhd_system/?s=Home/channel/channeladd_do
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T14:37:17+08:00 ] 127.0.0.1 /dhd_system/?s=Home/channel/channeladd_do
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `dhd_middle` [ RunTime:0.0130s ]
+SQL: INSERT INTO `dhd_middle` () VALUES () [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-04-20T14:37:18+08:00 ] 127.0.0.1 /dhd_system/index.php/home/channel/channel_index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `dhd_middle` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `dhd_middle`  [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T14:38:59+08:00 ] 127.0.0.1 /dhd_system/?s=Home/channel/channel_add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T14:39:06+08:00 ] 127.0.0.1 /dhd_system/?s=Home/Channel/channel_index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `dhd_middle` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `dhd_middle`  [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T14:39:06+08:00 ] 127.0.0.1 /dhd_system/?s=Home/channel/channel_add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T14:39:18+08:00 ] 127.0.0.1 /dhd_system/?s=Home/channel/channeladd_do
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T14:42:02+08:00 ] 127.0.0.1 /dhd_system/?s=Home/channel/channeladd_do
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-04-20T14:42:12+08:00 ] 127.0.0.1 /dhd_system/?s=Home/channel/channeladd_do
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `dhd_middle` [ RunTime:0.0120s ]
+SQL: INSERT INTO `dhd_middle` () VALUES () [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T14:42:14+08:00 ] 127.0.0.1 /dhd_system/index.php/home/channel/channel_index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `dhd_middle` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `dhd_middle`  [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T14:43:32+08:00 ] 127.0.0.1 /dhd_system/?s=Home/channel/channel_add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T14:43:36+08:00 ] 127.0.0.1 /dhd_system/?s=Home/channel/channeladd_do
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `dhd_middle` [ RunTime:0.0080s ]
+SQL: INSERT INTO `dhd_middle` () VALUES () [ RunTime:0.0010s ]
+
+[ 2018-04-20T14:45:05+08:00 ] 127.0.0.1 /dhd_system/?s=Home/channel/channeladd_do
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-04-20T14:46:43+08:00 ] 127.0.0.1 /dhd_system/?s=Home/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `dhd_node` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `dhd_node` WHERE `p_id` = 0  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `dhd_node` WHERE `p_id` = 1  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `dhd_node` WHERE `p_id` = 2  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `dhd_node` WHERE `p_id` = 3  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `dhd_node` WHERE `p_id` = 4  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `dhd_node` WHERE `p_id` = 5  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `dhd_node` WHERE `p_id` = 6  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T14:46:44+08:00 ] 127.0.0.1 /dhd_system/?s=Home/Index/content/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T14:46:51+08:00 ] 127.0.0.1 /dhd_system/?s=Home/Client/client_index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: volist D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\4cc3c36e5ee36767c4df7457a38d5216.php 第 68 行.
+NOTIC: [8] Undefined variable: page D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\4cc3c36e5ee36767c4df7457a38d5216.php 第 98 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-04-20T14:46:52+08:00 ] 127.0.0.1 /dhd_system/?s=Home/Channel/channel_index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `dhd_middle` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `dhd_middle`  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T14:46:54+08:00 ] 127.0.0.1 /dhd_system/?s=Home/channel/channel_add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T14:47:00+08:00 ] 127.0.0.1 /dhd_system/?s=Home/channel/channeladd_do
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `dhd_middle` [ RunTime:0.0110s ]
+SQL: INSERT INTO `dhd_middle` (`middle_state`,`middle_name`,`middle_man`,`middle_tel`,`middle_address`,`sales_id`) VALUES ('0','深圳腾讯科技有限公司','马化腾','2147483647','我能知道？','1') [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.004000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.004000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T14:47:01+08:00 ] 127.0.0.1 /dhd_system/index.php/home/channel/channel_index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `dhd_middle` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `dhd_middle`  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-04-20T14:51:18+08:00 ] 127.0.0.1 /dhd_system/?s=Home/Channel/channel_index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `dhd_middle` [ RunTime:0.0130s ]
+SQL: SELECT m.id,`middle_name`,`middle_man`,`middle_tel`,`middle_address`,`username` FROM dhd_middle as m INNER JOIN dhd_user as u on u.id = m.sales_id   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-04-20T14:51:41+08:00 ] 127.0.0.1 /dhd_system/?s=Home/Channel/channel_index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `dhd_middle` [ RunTime:0.0140s ]
+SQL: SELECT m.id,`middle_name`,`middle_man`,`middle_tel`,`middle_address`,`real_name` FROM dhd_middle as m INNER JOIN dhd_user as u on u.id = m.sales_id   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T14:57:30+08:00 ] 127.0.0.1 /dhd_system/?s=Home/Channel/channel_index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `dhd_middle` [ RunTime:0.0120s ]
+SQL: SELECT m.id,`middle_name`,`middle_man`,`middle_tel`,`middle_address`,`real_name` FROM dhd_middle as m INNER JOIN dhd_user as u on u.id = m.sales_id   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T14:57:31+08:00 ] 127.0.0.1 /dhd_system/?s=Home/Channel/channel_index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `dhd_middle` [ RunTime:0.0110s ]
+SQL: SELECT m.id,`middle_name`,`middle_man`,`middle_tel`,`middle_address`,`real_name` FROM dhd_middle as m INNER JOIN dhd_user as u on u.id = m.sales_id   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T14:58:36+08:00 ] 127.0.0.1 /dhd_system/?s=Home/Channel/channel_index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `dhd_middle` [ RunTime:0.0130s ]
+SQL: SELECT m.id,`middle_name`,`middle_man`,`middle_tel`,`middle_address`,`real_name` FROM dhd_middle as m INNER JOIN dhd_user as u on u.id = m.sales_id   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 54 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T15:00:46+08:00 ] 127.0.0.1 /dhd_system/?s=Home/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `dhd_node` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `dhd_node` WHERE `p_id` = 0  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `dhd_node` WHERE `p_id` = 1  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `dhd_node` WHERE `p_id` = 2  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `dhd_node` WHERE `p_id` = 3  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `dhd_node` WHERE `p_id` = 4  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `dhd_node` WHERE `p_id` = 5  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `dhd_node` WHERE `p_id` = 6  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T15:00:46+08:00 ] 127.0.0.1 /dhd_system/?s=Home/Index/content/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T15:00:50+08:00 ] 127.0.0.1 /dhd_system/?s=Home/Channel/channel_index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `dhd_middle` [ RunTime:0.0110s ]
+SQL: SELECT m.id,`middle_name`,`middle_man`,`middle_tel`,`middle_address`,`real_name` FROM dhd_middle as m INNER JOIN dhd_user as u on u.id = m.sales_id   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 47 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 47 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 47 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 47 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 47 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-04-20T15:01:39+08:00 ] 127.0.0.1 /dhd_system/?s=Home/Channel/channel_index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `dhd_middle` [ RunTime:0.0050s ]
+SQL: SELECT m.id,`middle_name`,`middle_man`,`middle_tel`,`middle_address`,`real_name` FROM dhd_middle as m INNER JOIN dhd_user as u on u.id = m.sales_id   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 46 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 46 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 46 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 46 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 46 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-04-20T15:02:00+08:00 ] 127.0.0.1 /dhd_system/?s=Home/Project/project_index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `dhd_class` [ RunTime:0.0150s ]
+SQL: SELECT * FROM `dhd_class` WHERE ( class_is=0 )  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: configcache D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\66db970d595b22d219fae5958e090129.php 第 5 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-04-20T15:02:27+08:00 ] 127.0.0.1 /dhd_system/?s=Home/Project/project_index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `dhd_class` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `dhd_class` WHERE ( class_is=0 )  [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: configcache D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\66db970d595b22d219fae5958e090129.php 第 5 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T15:02:33+08:00 ] 127.0.0.1 /dhd_system/?s=Home/User/user_index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `dhd_user` [ RunTime:0.0130s ]
+SQL: SELECT u.id,u.username,u.password,u.state,u.description,u.logincount,u.dtime,u.real_name,u.real_name,u.ztime,r.role_name,r.description FROM dhd_user as u INNER JOIN dhd_role as r on u.r_id = r.id  WHERE ( u.state=0 )  [ RunTime:0.0030s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: page D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\66652b7cb097b67afe6b27f0e5380af2.php 第 132 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T15:02:38+08:00 ] 127.0.0.1 /dhd_system/?s=Home/Audit/audit_index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: keyword D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\24a26a2c49a7d455a5aa6559daccc4d7.php 第 82 行.
+NOTIC: [8] Undefined variable: volist D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\24a26a2c49a7d455a5aa6559daccc4d7.php 第 96 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T15:02:39+08:00 ] 127.0.0.1 /dhd_system/?s=Home/Diction/diction_index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `dhd_node` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `dhd_node` WHERE ( state = 1 )  [ RunTime:0.0020s ]
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\dhd_system\Application\Home\Controller\CommonController.class.php 第 77 行.
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\dhd_system\Application\Home\Controller\CommonController.class.php 第 77 行.
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\dhd_system\Application\Home\Controller\CommonController.class.php 第 77 行.
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\dhd_system\Application\Home\Controller\CommonController.class.php 第 77 行.
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\dhd_system\Application\Home\Controller\CommonController.class.php 第 77 行.
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\dhd_system\Application\Home\Controller\CommonController.class.php 第 77 行.
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\dhd_system\Application\Home\Controller\CommonController.class.php 第 77 行.
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\dhd_system\Application\Home\Controller\CommonController.class.php 第 77 行.
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\dhd_system\Application\Home\Controller\CommonController.class.php 第 77 行.
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\dhd_system\Application\Home\Controller\CommonController.class.php 第 77 行.
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\dhd_system\Application\Home\Controller\CommonController.class.php 第 77 行.
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\dhd_system\Application\Home\Controller\CommonController.class.php 第 77 行.
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\dhd_system\Application\Home\Controller\CommonController.class.php 第 77 行.
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\dhd_system\Application\Home\Controller\CommonController.class.php 第 77 行.
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\dhd_system\Application\Home\Controller\CommonController.class.php 第 77 行.
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\dhd_system\Application\Home\Controller\CommonController.class.php 第 77 行.
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\dhd_system\Application\Home\Controller\CommonController.class.php 第 77 行.
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\dhd_system\Application\Home\Controller\CommonController.class.php 第 77 行.
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\dhd_system\Application\Home\Controller\CommonController.class.php 第 77 行.
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\dhd_system\Application\Home\Controller\CommonController.class.php 第 77 行.
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\dhd_system\Application\Home\Controller\CommonController.class.php 第 77 行.
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\dhd_system\Application\Home\Controller\CommonController.class.php 第 77 行.
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\dhd_system\Application\Home\Controller\CommonController.class.php 第 77 行.
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\dhd_system\Application\Home\Controller\CommonController.class.php 第 77 行.
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\dhd_system\Application\Home\Controller\CommonController.class.php 第 77 行.
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\dhd_system\Application\Home\Controller\CommonController.class.php 第 77 行.
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\dhd_system\Application\Home\Controller\CommonController.class.php 第 77 行.
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\dhd_system\Application\Home\Controller\CommonController.class.php 第 77 行.
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\dhd_system\Application\Home\Controller\CommonController.class.php 第 77 行.
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\dhd_system\Application\Home\Controller\CommonController.class.php 第 77 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: name D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 68 行.
+NOTIC: [8] Undefined index: Status D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 91 行.
+NOTIC: [8] Undefined variable: sidlist D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 101 行.
+NOTIC: [8] Undefined index: Status D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 91 行.
+NOTIC: [8] Undefined variable: sidlist D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 101 行.
+NOTIC: [8] Undefined index: Status D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 91 行.
+NOTIC: [8] Undefined variable: sidlist D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 101 行.
+NOTIC: [8] Undefined index: Status D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 91 行.
+NOTIC: [8] Undefined variable: sidlist D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 101 行.
+NOTIC: [8] Undefined index: Status D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 91 行.
+NOTIC: [8] Undefined variable: sidlist D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 101 行.
+NOTIC: [8] Undefined index: Status D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 91 行.
+NOTIC: [8] Undefined variable: sidlist D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 101 行.
+NOTIC: [8] Undefined index: Status D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 91 行.
+NOTIC: [8] Undefined variable: sidlist D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 101 行.
+NOTIC: [8] Undefined index: Status D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 91 行.
+NOTIC: [8] Undefined variable: sidlist D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 101 行.
+NOTIC: [8] Undefined index: Status D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 91 行.
+NOTIC: [8] Undefined variable: sidlist D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 101 行.
+NOTIC: [8] Undefined index: Status D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 91 行.
+NOTIC: [8] Undefined variable: sidlist D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 101 行.
+NOTIC: [8] Undefined index: Status D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 91 行.
+NOTIC: [8] Undefined variable: sidlist D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 101 行.
+NOTIC: [8] Undefined index: Status D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 91 行.
+NOTIC: [8] Undefined variable: sidlist D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 101 行.
+NOTIC: [8] Undefined index: Status D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 91 行.
+NOTIC: [8] Undefined variable: sidlist D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 101 行.
+NOTIC: [8] Undefined index: Status D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 91 行.
+NOTIC: [8] Undefined variable: sidlist D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 101 行.
+NOTIC: [8] Undefined index: Status D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 91 行.
+NOTIC: [8] Undefined variable: sidlist D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 101 行.
+NOTIC: [8] Undefined index: Status D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 91 行.
+NOTIC: [8] Undefined variable: sidlist D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 101 行.
+NOTIC: [8] Undefined index: Status D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 91 行.
+NOTIC: [8] Undefined variable: sidlist D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 101 行.
+NOTIC: [8] Undefined index: Status D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 91 行.
+NOTIC: [8] Undefined variable: sidlist D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 101 行.
+NOTIC: [8] Undefined index: Status D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 91 行.
+NOTIC: [8] Undefined variable: sidlist D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 101 行.
+NOTIC: [8] Undefined index: Status D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 91 行.
+NOTIC: [8] Undefined variable: sidlist D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 101 行.
+NOTIC: [8] Undefined index: Status D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 91 行.
+NOTIC: [8] Undefined variable: sidlist D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 101 行.
+NOTIC: [8] Undefined index: Status D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 91 行.
+NOTIC: [8] Undefined variable: sidlist D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 101 行.
+NOTIC: [8] Undefined index: Status D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 91 行.
+NOTIC: [8] Undefined variable: sidlist D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 101 行.
+NOTIC: [8] Undefined index: Status D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 91 行.
+NOTIC: [8] Undefined variable: sidlist D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 101 行.
+NOTIC: [8] Undefined index: Status D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 91 行.
+NOTIC: [8] Undefined variable: sidlist D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 101 行.
+NOTIC: [8] Undefined index: Status D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 91 行.
+NOTIC: [8] Undefined variable: sidlist D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 101 行.
+NOTIC: [8] Undefined index: Status D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 91 行.
+NOTIC: [8] Undefined variable: sidlist D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 101 行.
+NOTIC: [8] Undefined index: Status D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 91 行.
+NOTIC: [8] Undefined variable: sidlist D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 101 行.
+NOTIC: [8] Undefined index: Status D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 91 行.
+NOTIC: [8] Undefined variable: sidlist D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 101 行.
+NOTIC: [8] Undefined index: Status D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 91 行.
+NOTIC: [8] Undefined variable: sidlist D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 101 行.
+NOTIC: [8] Undefined variable: page D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\5278988d5f50efa3f11f301aab9495ab.php 第 119 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T15:02:40+08:00 ] 127.0.0.1 /dhd_system/?s=Home/Role/role_index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `dhd_role` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `dhd_role` WHERE `state` = 1  [ RunTime:0.0010s ]
+NOTIC: [8] Undefined index: name D:\phpStudy\WWW\dhd_system\Application\Home\Controller\CommonController.class.php 第 64 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T15:02:50+08:00 ] 127.0.0.1 /dhd_system/?s=Home/Client/client_index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: volist D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\4cc3c36e5ee36767c4df7457a38d5216.php 第 68 行.
+NOTIC: [8] Undefined variable: page D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\4cc3c36e5ee36767c4df7457a38d5216.php 第 98 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T15:03:06+08:00 ] 127.0.0.1 /dhd_system/?s=Home/Channel/channel_index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `dhd_middle` [ RunTime:0.0060s ]
+SQL: SELECT m.id,`middle_name`,`middle_man`,`middle_tel`,`middle_address`,`real_name` FROM dhd_middle as m INNER JOIN dhd_user as u on u.id = m.sales_id   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 46 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 46 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 46 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 46 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 46 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T15:04:11+08:00 ] 127.0.0.1 /dhd_system/?s=Home/Client/client_index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: volist D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\4cc3c36e5ee36767c4df7457a38d5216.php 第 68 行.
+NOTIC: [8] Undefined variable: page D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\4cc3c36e5ee36767c4df7457a38d5216.php 第 98 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-04-20T15:04:13+08:00 ] 127.0.0.1 /dhd_system/?s=Home/Client/client_add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-04-20T15:04:22+08:00 ] 127.0.0.1 /dhd_system/?s=Home/Channel/channel_index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `dhd_middle` [ RunTime:0.0110s ]
+SQL: SELECT m.id,`middle_name`,`middle_man`,`middle_tel`,`middle_address`,`real_name` FROM dhd_middle as m INNER JOIN dhd_user as u on u.id = m.sales_id   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 46 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 46 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 46 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 46 行.
+NOTIC: [8] Undefined index: middle_total D:\phpStudy\WWW\dhd_system\Application\Runtime\Cache\Home\12eb6ea4a90ee0dea3cf3ac073f3baeb.php 第 46 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+

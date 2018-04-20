@@ -1,17 +1,17 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>项目管理|<{$configcache['Title']}></title>
-    <link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
-    <link rel="csssheet" type="text/css" href="__CSS__/public.css"  />
-    <script type="text/javascript" src="__JS__/jquery.js"></script>
-    <script type="text/javascript" src="__JS__/Public.js"></script>
-    <script type="text/javascript" src="__JS__/winpop.js"></script>
+    <title>项目管理|<<?php echo ($configcache['Title']); ?>></title>
+    <link rel="stylesheet" type="text/css" href="/dhd_system/Public/home/css/content.css"  />
+    <link rel="csssheet" type="text/css" href="/dhd_system/Public/home/css/public.css"  />
+    <script type="text/javascript" src="/dhd_system/Public/home/js/jquery.js"></script>
+    <script type="text/javascript" src="/dhd_system/Public/home/js/Public.js"></script>
+    <script type="text/javascript" src="/dhd_system/Public/home/js/winpop.js"></script>
     <script>
         $(document).ready(function() {
             $('#content h2 .add').click(function() {
-                popload('添加分类',800,300,'__APP__/Classify/Cate_add/');
+                popload('添加分类',800,300,'/dhd_system/?s=Home/Classify/Cate_add/');
                 addDiv($('#iframe_pop'));
                 popclose();
             });
@@ -22,7 +22,7 @@
                     wintq('ID参数不正确',3,1000,1,'');
                     return false;
                 }else {
-                    popload('修改分类信息',800,300,'__APP__/Project/project_up/id/'+id);
+                    popload('修改分类信息',800,300,'/dhd_system/?s=Home/Project/project_up/id/'+id);
                     addDiv($('#iframe_pop'));
                     popclose();
                 }
@@ -39,7 +39,7 @@
                     return false;
                 }else {
                     wintq('正在删除，请稍后...',4,20000,0,'');
-                    window.location.href='__APP__/Project/project_del/id/'+id;
+                    window.location.href='/dhd_system/?s=Home/Project/project_del/id/'+id;
                 }
             });
         });
@@ -51,8 +51,8 @@
         <h1>首页 > 产品管理 > 项目管理</h1>
         <h2>
             <div class="h2_left">
-                <a href="__ACTION__" class="whole">全部</a>
-                <a href="__APP__/Project/project_add" class="add">添加</a>
+                <a href="/dhd_system/index.php/home/project/project_index" class="whole">全部</a>
+                <a href="/dhd_system/?s=Home/Project/project_add" class="add">添加</a>
                 <a href="javascript:history.back();" class="Retreat">后退</a>
                 <div class="clear"></div>
             </div>
@@ -69,24 +69,22 @@
                 <th>面积</th>
                 <th>操作</th>
             </tr>
-            <volist name="volist" id="vo">
-                <tr class="tr" value="1">
-                    <td class="tc">{$vo.id}</td>
-                    <td class="tc">{$vo.class_name}</td>
-                    <td class="tc ts">{$vo.class_address}</td>
-                    <td class="tc">{$vo.class_area}</td>
+            <?php if(is_array($volist)): $i = 0; $__LIST__ = $volist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr class="tr" value="1">
+                    <td class="tc"><?php echo ($vo["id"]); ?></td>
+                    <td class="tc"><?php echo ($vo["class_name"]); ?></td>
+                    <td class="tc ts"><?php echo ($vo["class_address"]); ?></td>
+                    <td class="tc"><?php echo ($vo["class_area"]); ?></td>
                     <td class="tc fixed_w">
                         <div class="operation">更多
                             <div class="operarea">
-                                <a href="{$vo.id}" class="edit oper2">修改</a>
-                                <a href="{$vo.id}" class="see oper2">详情</a>
-                                <a href="{$vo.id}" class="del2 oper2">删除</a>
+                                <a href="<?php echo ($vo["id"]); ?>" class="edit oper2">修改</a>
+                                <a href="<?php echo ($vo["id"]); ?>" class="see oper2">详情</a>
+                                <a href="<?php echo ($vo["id"]); ?>" class="del2 oper2">删除</a>
                             </div>
                         </div>
                         
                     </td>
-                </tr>
-            </volist>
+                </tr><?php endforeach; endif; else: echo "" ;endif; ?>
         </table>	
 	</div>	
     <div id="page">
