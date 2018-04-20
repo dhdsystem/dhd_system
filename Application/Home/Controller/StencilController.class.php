@@ -6,12 +6,13 @@ class StencilController extends Controller {
     public function stencil_index(){
        $this->display();
     }
-   	public function cstencil_add()
+   	public function stencil_add()
    	{
    		$this->display();
    	}
    	public function stenciladd_do()
    	{
-   		# code...
+   		print_r($_POST);
+      print_r($_FILES['file']);
    	}
 }

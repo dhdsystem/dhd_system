@@ -6,6 +6,9 @@ function get_user_id() { //获取当前登录用户的ID
 function get_role_id() { //获取当前登录用户的ID
     return intval(session('role_id'));
 }
+function get_user_name(){
+	return session('username');
+}
 /**
  * /操作成功ajax调用
  * @person 史炎
