@@ -92,6 +92,7 @@ class UserController extends CommonController {
     public function usersave_do(){
         $data = I('post.');
         // print_r( json_encode($data));
+        $data['password'] = md5(I('post.password'));
         $save = M('user')->where('id='.$data['id'])->save($data);
         if($save){
             $post['s'] = 'ok';
