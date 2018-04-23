@@ -1,0 +1,60 @@
+/*合同管理样式*/
+table{border:0;}
+table tr{border:0;}
+table tr td{border:0;text-align: center;}
+.contract_cont{background: #fff;}
+.jibinfo{border-bottom:1px solid #E0E0E0;height:40px;line-height:40px;padding-left: 10px;font-size: 16px;color: #525252;margin-top: 30px;}
+/*修改内容*/
+.contract_table1{width: 100%;height: auto;margin-top: 36px;overflow: hidden;margin-left: 40px;}
+.dd_left{display: block;width: 128px;line-height: 40px;float: left;text-align: right;color: #444;margin-right: 6px;
+ font-size: 14px;height: 40px;}
+.dd_left:before {content: '*';color: red;position: absolute;margin-left: -9px;font-weight: bold;line-height: 1.8em;
+margin-top: 8px;}
+/*.wanBox{position: relative;}
+.wan{position: absolute;right:50%;}*/
+
+/*修改内容*/
+.contract_table1 .Prompt{font-size: 16px !important;margin-top: 0 !important;}
+.contract_table1 .Prompt font{font-size: 24px; margin: 0 4px;}
+.contract_table1_none{margin: 0;margin-left: 20px;}
+.contract_table1 tr td{float: left;}
+.contract_table1 .text_box{    width: 732px;
+    border: 1px solid #e6e6e6;
+    border-radius: 2px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    padding: 10px;
+    font-size: 14px;
+    height: 120px;}
+
+.tab_left{display: block;width: 148px;line-height: 40px;float: left;text-align: right;color: #444;margin-right: 6px;
+font-size: 14px; height: 40px;}
+.tab_input{height: 38px;border: 1px solid #e6e6e6;background-color: #fff !important;border-radius: 2px;display: block;
+padding-left: 10px; width: 742px; font-size: 14px;margin-bottom: 12px;}
+.tab_input2{width: 300px;}
+.tab_input:focus {border: 1px solid #7ed321 !important;}
+.red{color:red;vertical-align: sub;width: 18px;font-size: 13px;display: inline-block;text-align: center;}
+.tab_select{margin-bottom: 12px;border: 1px solid #e6e6e6;border-radius: 2px;-webkit-appearance: none;-moz-appearance: none;outline: none;padding-left: 10px; width: 756px; height: 40px;font-size: 14px;}
+.tab_select2{width: 290px;}
+
+
+#zhuijia{}
+.prodetailtitle{height: 40px;line-height: 40px;padding-left: 10px;}
+.pro_detail{width: 100%;height:70px;margin-top: 20px;}
+.pro_detailbtn{background-color: #D7E5F6;text-align: right;padding-right: 53px;height: 30px;line-height: 30px;}
+.pro_detailbtn span{background-color: #1D2F67;padding: 3px 8px;color: white;font-size: 14px;}
+.pro_table{border: 1px solid #ccc;width: 100%;}
+.pro_table tr td{border:1px solid #ccc;}
+.pro_tabtr1{background-color: #386ca8;color: white;height: 30px;line-height: 30px;font-size: 14px;}
+.expcont{border:0;padding:4px 10px;background: #3380c3;color:white;cursor: pointer;}
+
+/*注册地址提示样式*/
+.contract_table1 td{}
+#va{background: #fff;position: absolute;left: 164px;box-shadow: 0 5px 8px 0 rgba(0,0,0,.2);width: 80%;z-index: 1;}
+#va p{height: 40px;line-height: 40px;cursor: pointer;padding-left: 10px;}
+#va p:hover{background: #f2f2f2;}
+/*客户公司提示样式*/
+#vas{background: #fff;position: absolute;left: 134px;box-shadow: 0 5px 8px 0 rgba(0,0,0,.2);width: 80%;z-index: 1;}
+#vas p{height: 40px;line-height: 40px;cursor: pointer;padding-left: 10px;}
+#vas p:hover{background: #f2f2f2;}
