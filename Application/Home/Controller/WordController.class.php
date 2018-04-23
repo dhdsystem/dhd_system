@@ -6,15 +6,13 @@ class WordController extends Controller {
     public function word_add($file,$stencil_name){
     	$str = file_get_contents($file['tmp_name']);
     	$data = $this->stencilarray();
-			// print_r($data);die;
 			foreach ($data as $k => $v) {
 
 				$str=str_replace($k,$v,$str);
 
 			}
-			// print_r($str);die;
-			$files=$stencil_name.'.xml';
-			$paths="Uploads/Contract/word/".$files;
+			$files=md5($stencil_name).'.xml';
+			$paths="./Uploads/Word/".$files;
 			$dir = dirname($paths);
 			if(!is_dir($dir)){
 				mkdir($dir,0777,true);
@@ -24,9 +22,7 @@ class WordController extends Controller {
 			$re=fwrite($fp, $str);
 			fclose($fp);
 			if($re){
-				
-					return $paths;
-				
+				return $paths;
 			}else{
 				return false;
 			}
