@@ -52,33 +52,24 @@
 		<table id="table" border="1" bordercolor="#CCCCCC" cellpadding="0" cellspacing="0" style="width:150%">
             <tr>
                 <th>公司名称</th>
-                <th>注册地址</th>
-                <th>租赁日期</th>
                 <th>法人姓名</th>
                 <th>法人电话</th>
                 <th>业务员</th>
-                <th>金额</th>
                 <th>纳税形式</th>
                 <th>信用代码</th>
                 <th>客户分组</th>
-                <th>中间商/中介</th>
-                <th>电话</th>
                 <th>操作</th>
             </tr>
             <volist name="volist" id="vo">
                 <tr class="tr" value="1">
-                    <td class="tc"></td>
-                    <td class="tc"></td>
-                    <td class="tc"></td>
-                    <td class="tc"></td>
-                    <td class="tc"></td>
-                    <td class="tc"></td>
-                    <td class="tc"></td>
-                    <td class="tc"></td>
-                    <td class="tc"></td>
-                    <td class="tc"></td>
-                    <td class="tc"></td>
-                    <td class="tc"></td>
+                    <td class="tc">{$vo.client_name}</td>
+                    <td class="tc">{$vo.client_address}</td>
+                    <td class="tc">{$vo.legalperson}</td>
+                    <td class="tc">{$vo.legaltel}</td>
+                    <td class="tc">{$vo.sales_id}</td>
+                    <td class="tc">{$vo.client_money}</td>
+                    <td class="tc">{$vo.taxstyle}</td>
+
                     <td class="tc fixed_w">
                         <div class="operation">更多
                             <div class="operarea">
@@ -188,9 +179,6 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function() {
-        $('.operation').hover(function(){
-            $(this).find('.operarea').toggle();
-        });
     });
     // 单选过滤
     $('.danyuan a').click(function(){

@@ -7,6 +7,7 @@ class ChannelController extends Controller {
       $data = M('middle as m')
       ->field('m.id,middle_name,middle_man,middle_tel,middle_address,real_name')
       ->join('dhd_user as u on u.id = m.sales_id')
+      ->where('middle_is=0')
       ->select();
       // print_r($data);die;
       $this->assign('volist',$data);
@@ -41,6 +42,17 @@ class ChannelController extends Controller {
       $this->display();
     }
 
+    // 删除
+    public function channel_del(){
+      $delid = I('get.id');
+      $data['middle_is'] = '1';
+      $del = M('middle')->where("id=$delid")->save($data);
+      if($del){
+        $this->success('删除成功', U('channel/channel_index'));
+      }else{
+        $this->error('删除失败',U('channel/channel_index'));
+      }
+    }
 
 
 
