@@ -39,7 +39,7 @@ class LoginController extends Controller {
 
 		$where['username']=$name;
 		$result = $user->where($where)->find();
-		
+		// print_r($result);die;
 		if($result) {
             if($result['password'] == md5($pass)) { //登入成功页面跳转
 				session('user_id', $result["id"]);
