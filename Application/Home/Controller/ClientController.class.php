@@ -11,11 +11,24 @@ class ClientController extends Controller {
 
     // 客户添加页面
     public function client_add(){
-    	$data['menuname'] = '客户分组';
-    	$data['submenu'] = '渠道客户';
-    	$this->assign('data',$data);
     	$this->display();
     }
+
+    // 客户添加ajax
+    public function clientadd_ajax(){
+        $middleman = I('post.middleman');
+        $data = M('middle')->where('middle_name='.$middleman)->select();
+        if($data){
+            print_r( json_encode($data));
+        }else{
+            print_r( json_encode(''));
+        }
+
+    }
+
+
+
+
 
     // 客户添加方法
     public function clientadd_do(){

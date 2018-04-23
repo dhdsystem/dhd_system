@@ -1,13 +1,13 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>客户管理</title>
-    <link rel="stylesheet" type="text/css" href="__CSS__/content.css" />
-    <link rel="stylesheet" type="text/css" href="__CSS__/public.css"  />
-    <link rel="stylesheet" type="text/css" href="__CSS__/popwin.css"  />
-    <script type="text/javascript" src="__JS__/jquery.js"></script>
-    <script type="text/javascript" src="__JS__/Public.js"></script>
+    <link rel="stylesheet" type="text/css" href="/dhd_system/Public/home/css/content.css" />
+    <link rel="stylesheet" type="text/css" href="/dhd_system/Public/home/css/public.css"  />
+    <link rel="stylesheet" type="text/css" href="/dhd_system/Public/home/css/popwin.css"  />
+    <script type="text/javascript" src="/dhd_system/Public/home/js/jquery.js"></script>
+    <script type="text/javascript" src="/dhd_system/Public/home/js/Public.js"></script>
 </head>
 <body>
 <div id="content">
@@ -15,8 +15,8 @@
         <h1>首页 > 客户管理 > 客户信息</h1>
         <h2>
             <div class="h2_left">
-                <a href="__ACTION__" class="whole">全部</a>
-                <a href="__APP__/Client/client_add" class="add">新增</a>
+                <a href="/dhd_system/index.php/home/client/client_index" class="whole">全部</a>
+                <a href="/dhd_system/?s=Home/Client/client_add" class="add">新增</a>
                 <a href="javascript:history.back();" class="Retreat">后退</a>
                 <div class="clear"></div>
             </div>
@@ -60,15 +60,14 @@
                 <th>客户分组</th>
                 <th>操作</th>
             </tr>
-            <volist name="volist" id="vo">
-                <tr class="tr" value="1">
-                    <td class="tc">{$vo.client_name}</td>
-                    <td class="tc">{$vo.client_address}</td>
-                    <td class="tc">{$vo.legalperson}</td>
-                    <td class="tc">{$vo.legaltel}</td>
-                    <td class="tc">{$vo.sales_id}</td>
-                    <td class="tc">{$vo.client_money}</td>
-                    <td class="tc">{$vo.taxstyle}</td>
+            <?php if(is_array($volist)): $i = 0; $__LIST__ = $volist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr class="tr" value="1">
+                    <td class="tc"><?php echo ($vo["client_name"]); ?></td>
+                    <td class="tc"><?php echo ($vo["client_address"]); ?></td>
+                    <td class="tc"><?php echo ($vo["legalperson"]); ?></td>
+                    <td class="tc"><?php echo ($vo["legaltel"]); ?></td>
+                    <td class="tc"><?php echo ($vo["sales_id"]); ?></td>
+                    <td class="tc"><?php echo ($vo["client_money"]); ?></td>
+                    <td class="tc"><?php echo ($vo["taxstyle"]); ?></td>
 
                     <td class="tc fixed_w">
                         <div class="operation">更多
@@ -83,12 +82,11 @@
                         </div>
                         
                     </td>
-                </tr>
-            </volist>
+                </tr><?php endforeach; endif; else: echo "" ;endif; ?>
         </table>	
 	</div>	
     <div id="page">
-    {$page}   
+    <?php echo ($page); ?>   
     </div>
     
 </div>
@@ -183,11 +181,11 @@
     	var ind = $('.checkBB input').index(this);
         if($(this).is(':checked') == true) {
             var text=$(this).attr('value');
-            $(this).parent().find('label').css('background','url(__IMAGE__/checkBut2.png) no-repeat');
+            $(this).parent().find('label').css('background','url(/dhd_system/Public/home/images/checkBut2.png) no-repeat');
             // alert(typeof text);
             $('.butBox').append('<div class="secDis ind'+ind+'" value='+text+'>'+text+'</div>')
         }else if($(this).is(':checked') == false){
-            $(this).parent().find('label').css('background','url(__IMAGE__/checkBut1.png) no-repeat');
+            $(this).parent().find('label').css('background','url(/dhd_system/Public/home/images/checkBut1.png) no-repeat');
         	$('.butBox div.ind'+ind).remove();
        
         }
@@ -195,7 +193,7 @@
     // 全部清除
     $('.alldel').click(function(){
         $('.butBox div').remove();
-        $('.checkBB label').css('background','url(__IMAGE__/checkBut1.png) no-repeat');
+        $('.checkBB label').css('background','url(/dhd_system/Public/home/images/checkBut1.png) no-repeat');
         $('.checkBB input').attr("checked",false);
     })
 
@@ -232,7 +230,7 @@
         var client_id =$(this).attr('client_id');
                 $.ajax({
            type: "POST",
-           url: "__APP__/Client/pre_prod",
+           url: "/dhd_system/?s=Home/Client/pre_prod",
            data: {'class_id':class_id},
            dataType:'json',
            success: function(msg){
@@ -253,7 +251,7 @@
         var prod_id = $(this).val();
         $.ajax({
            type: "POST",
-           url: "__APP__/Client/pre_regist",
+           url: "/dhd_system/?s=Home/Client/pre_regist",
            data: {'prod_id':prod_id},
            dataType:'json',
            success: function(msg){

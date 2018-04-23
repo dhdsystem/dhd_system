@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>出合同信息</title>
+    <link rel="stylesheet" type="text/css" href="__CSS__/content.css"/>
+    <link rel="stylesheet" type="text/css" href="__CSS__/public.css"/>
+    <link rel="stylesheet" type="text/css" href="__CSS__/contract.css"/>
+    <script type="text/javascript" src="__JS__/jquery.js"></script>
+    <script type="text/javascript" src="__JS__/Public.js"></script>
+    <script type="text/javascript" src="__JS__/winpop.js"></script>
+    <!-- 日期插件 -->
+    <link rel="stylesheet" type="text/css" href="../../css/calendar.css"/>
+    <script type="text/javascript" src="../../js/calendar.js"></script>
+</head>
+<body>
+<div class="contract_cont"  id="content">
+
+    <h1>首页 >  合同管理 > 完善合同信息</h1>
+    <h2>
+        <div class="h2_left">
+            <a href="javascript:history.back();" class="Retreat">后退</a>
+        </div>
+    </h2>
+    <form method="post" action="/index.php?m=home&c=contract&a=add_docontract" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="2954">
+        <div class="jibinfo">基础信息</div>
+        <table class="contract_table1">
+            <tr>
+                <td class="table1_left">
+                    <span class="tab_left"><em class="red">*</em>签订日期：</span>
+                    <input type="text" name="signdate" value="" class="tab_input contractnumber" id='signdate'/>
+                    <div id="sdd" style="left: 243px;top: 284px;"></div>
+                </td>
+            </tr>
+            <tr> 
+                <td class="table1_left">
+                    <span class="tab_left"><em class=" red">*</em>合同性质：</span>
+                        <select id="contracttype" name="contracttype" class="tab_select customtype" >
+                            <option value="">--请选择--</option>
+                            <option value="新注册">新注册</option>
+                            <option value="变更">变更</option>
+                            <option value="续签">续签</option>
+                        </select>
+                    </span>
+                </td>
+            </tr>
+
+        </table>
+        <div class="jibinfo">客户信息</div>
+        <table class="contract_table1">
+            <tr>
+                <td class="table1_left">
+                    <span class="tab_left"><em class="red">*</em>客户分组：</span>
+                    <input type="text" name="customtype" value="中间商" class="tab_input legalperson"/>
+                   
+                </td>
+            </tr>
+            <tr>
+                <td class="table1_left">
+                    <span class="tab_left">中间商/中介公司：</span><input type="text" name="middleman" id="cen_company" value="无" class="tab_input" zid=""/><div id="vas"></div>
+                </td>
+                
+            </tr>
+            <tr>
+                <td class="table1_right">
+                    <span class="tab_left">联系人：</span>
+                    <input type="text" name="middlename" value="王小红" class="tab_input" />
+                </td>
+            </tr>
+            <tr>
+                <td class="table1_left">
+                    <span class="tab_left">联系人电话：</span><input type="text" name="middletel" value="18511306755" class="tab_input" /></td>
+                </td>
+            </tr>
+            <tr>
+               <td class="table1_right"><span class="tab_left">注册地址：</span><input type="text" name="middleaddress" value="" class="tab_input" /> 
+            </tr>
+            <tr>
+                <td class="table1_left"><span class="tab_left">办公地址：</span><input type="text" name="middleenroll" value="" class="tab_input" /></td><td class="table1_right">
+                </td>
+            </tr>
+        </table>
+        <!-- 客户公司信息 -->
+        <table class="contract_table1">
+            <tr>
+                <td class="table1_left"><span class="tab_left"><em class="red">*</em>客户公司：</span><input type="text" value="北京方旭环境大数据科技研究院（有限合伙）" name="company" id="company" value="" class="tab_input company"/><div id="vas"></div></td>
+            </tr>
+            <tr>
+               <td class="table1_right"><span class="tab_left"><em class="red">*</em>注册资金：</span><input type="text"  name="regmoney" value="100" class="tab_input regmoney"/> 万</td> 
+            </tr>
+            <tr>
+                <td class="table1_left"><span class="tab_left"><em class="red">*</em>法人姓名 ：</span><input type="text" name="legalperson" value="徐国章" class="tab_input legalperson"/>
+                </td>
+                
+            </tr>
+            <tr>
+                <td class="table1_right">
+                <span class="tab_left"><em class="red">*</em>纳税形式：</span>
+                <input type="text" name="taxstyle" value="小规模" class="tab_input legalidnum"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="table1_left"><span class="tab_left"><em class="red">*</em>法人联系电话：</span><input type="text" name="legaltel" value="18132012380" class="tab_input legaltel"/>
+                </td>  
+            </tr>
+            <tr>
+              <td class="table1_right"><span class="tab_left">信用代码：</span><input type="text" name="busregnum" value="" class="tab_input"/>
+                </td>  
+            </tr>
+            <tr>
+                <td class="table1_left">
+                <span class="tab_left"><em class="red">*</em>法人身份证号：</span>
+                <input type="text" name="legalidnum" value="430104197005094353" class="tab_input legalidnum"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="table1_right">
+                <span class="tab_left">其他联系人：</span>
+                <input type="text" name="customcontacter" value="" class="tab_input" />
+                </td>
+            </tr>
+            <tr>
+                <td class="table1_left">
+
+                <td class="table1_right"><span class="tab_left">联系人电话：</span><input type="text" name="customtel" value="" class="tab_input" />
+                </td>
+            </tr>    
+        </table>
+        <div class="jibinfo">合同信息</div>
+        <table class="contract_table1">
+            <tr>
+                <td class="table1_left">
+                    <span class="tab_left"><em class=" red">*</em>合同类型：</span>
+                    <select id="ordercate" name="ordercate" class="tab_select ordercate">
+                        <option value="0">选择合同分类</option>
+                        <option value="大面积出租">大面积出租</option><option value="mini房间">mini房间</option><option value="工位注册办公">工位注册办公</option><option value="工位不注册办公">工位不注册办公</option><option value="会议室出租">会议室出租</option><option value="注册地址">注册地址</option><option value="代理记账">代理记账</option><option value="工商代理">工商代理</option>                    </select>
+                    
+                </td>    
+            </tr>
+        </table>
+        <div id="zhuijia"></div>
+        <!-- 收款账户 -->
+        <table  class="contract_table1">
+            <tr><td class="table1_left"><h5>账号信息</h5></td></tr>
+            <tr>
+                <td class="table1_left" colspan="2">
+                    <span class="tab_left"><em class="red">*</em>收款账户：</span>
+                    <select name="col_account" class="tab_select signcompany" id="signcompany">
+                        <option value="0">请选择收款账户</option>
+                        <option value="20">陈晓珍 工行</option><option value="21">陈晓珍 建行</option><option value="22">陈晓珍 支付宝</option><option value="23">北京东辉达科技孵化器有限公司 </option><option value="24">北京去创创科技有限公司 </option><option value="25">北京融兴通远财务咨询有限公司</option><option value="26">北京创也江湖科技有限公司</option><option value="27">北京税先知科技有限公司</option><option value="28">陈晓珍  微信</option><option value="29">现金账户</option>                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="table1_left">
+                    <span class="tab_left">实际金额：</span>
+                    <input type="text" name="real_amount" value="" class="tab_input yuan" />元（大写<span class="daxie" style="display: inline;"></span>） 
+                </td>
+            </tr>
+        </table>
+        <!-- 业务员 -->
+        <table  class="contract_table1">
+            <tr><td class="table1_left"><h5>业务员</h5></td></tr>
+            <tr>
+                <td class="table1_left" colspan="2">
+                    <span class="tab_left"><em class="red">*</em>业务员：</span>
+                    <select name="department" class="tab_select signcompany" id="department">
+                        <option value="0">请选择部门</option>
+                        <option value="渠道一部" deid="18">渠道一部</option><option value="渠道二部" deid="19">渠道二部</option><option value="直销部" deid="20">直销部</option>                    </select>
+                </td>
+            </tr>
+        </table>
+        <input type="submit" value="提交" class="submit">
+    </form>
+</div>
+<script type="text/javascript" >
+    $(document).ready(function() {
+        $('#sdd').calendar({
+            trigger: '#signdate',
+            zIndex: 999,
+            format: 'yyyy-mm-dd',
+            onSelected: function (view, date, data) {
+                console.log('event: onSelected')
+            },
+            onClose: function (view, date, data) {
+                console.log('event: onClose')
+                console.log('view:' + view)
+                console.log('date:' + date)
+                console.log('data:' + (data || 'None'));
+            }
+        });
+    });                   
+    // 合同类型
+    $(document).on('change','#ordercate',function(){
+
+        $('#zhuijia').empty()
+        var cu = "徐国章";
+        var cutel = "18132012380";
+        // $(".ready").attr("style",'display:none');
+        // $(".ready *").attr("disabled",true);
+        // $(".ready *").hide();
+        var ord=$(this).val();
+        var red = '';
+        if(ord=='大面积出租'){
+            red = 'damianji';
+        }
+        if(ord=='mini房间'){
+            red = 'minifangjian';
+        }
+        if(ord=='工位注册办公'){
+          red = 'gongweizhuce';
+        }
+        if(ord=='注册地址'){
+           red = 'zhucedizhi';
+        }
+        if(ord=='代理记账'){
+            red = 'dailijizhang';
+        }
+        if(ord=='工位不注册办公'){
+            red = 'gongweibuzhuce';
+        }
+        if(ord=='工商代理'){
+            red = 'gongshang';
+        }
+        if(ord == '0' || ord == '会议室出租'){
+            red = 'kong';
+        }
+        $.ajax({
+            url: './?s=Home/Contract/'+red,
+            // global: false,
+            type: "POST",
+            // dataType: "html",
+            // async: false,
+            success: function(msg) {
+                $('#zhuijia').append(msg);
+                $("#zhuijia :input").each(function () { 
+                    $(this).val(""); 
+                }); 
+                $("#paytype option:first").remove();
+                $('#cu').val(cu)
+                $('#cutel').val(cutel) 
+                $('.ylzcdz').empty();
+                var pre = ''
+                    // alert(pre)
+                    var str = '<tr><td class="table1_left">';
+                    str += pre;        
+                    str +='</tr>';
+                $('.ylzcdz').append(str);          
+            }
+        })
+        
+       
+    })
+
+    // 合同模板拉取
+    $(document).on('change','.signcom',function(){
+            var remarks = $(this).val() 
+            var ord = $('#ordercate').val();
+            var type = $('.legalperson').val();
+            $.ajax({
+                type: "post",
+                url: "/?s=Home/Contract/stencil",
+                data:{'ordercate':ord,'remarks':remarks},
+                dataType:"json",
+                success: function(msg){
+ 
+                var  html = '<td class="table1_right"><span class="tab_left"><em class=" red">*</em>合同模板：</span><select class="tab_select" name="pact" id="pact"><option value="0">请选择合同模板</option>';
+                $.each(msg,function(k,v)
+                {
+                	if(type=='中间商'||type=='中介'){
+                        
+                		if(v.tempname.indexOf("同行")!=-1){
+                			html += '<option value="'+v.tempname+'">'+v.tempname+'</option>';
+                		}else{
+                            html += '<option value="'+v.tempname+'">'+v.tempname+'</option>';
+                        }
+                	}else{
+                		if(v.tempname.indexOf("同行")==-1){
+                			html += '<option value="'+v.tempname+'">'+v.tempname+'</option>';
+                		}
+                	}
+                  
+                })
+                html += '<select></td>';
+                $('.moban').nextAll().remove();
+                $('.moban').after(html);   
+           }
+        })
+    });
+    // 项目名称
+    $(document).on('change','#pro_company',function(){
+        var class_id = $(this).find("option:selected").attr('cid');
+        $.ajax({
+           type: "post",
+           url: "/?s=Home/Contract/pro_company",
+           data:'class_id='+class_id,
+           dataType:"json",
+           success: function(msg){
+                var html = '<select style="width:60%" class="tab_select proname" name="address_info[]" id="proname"><option value="0">请选择地址</option>';
+                var zhuce = '';
+                $.each(msg,function(k,v)
+                {
+                  html += '<option value="'+v.proname+'" aid="'+v.id+'">'+v.proname+'</option>';
+                  zhuce += '<option value="'+v.proname+'" aid="'+v.id+'">'+v.proname+'</option>';
+                })
+                html += '</select>';
+                $('.p_compant').nextAll().remove();
+                $('.p_compant').after(html);  
+                $('.zhucedizhi').nextAll().remove();
+                $('.zhucedizhi').after(zhuce);
+           }
+       }) 
+    })
+    // 注册号
+    $(document).on('change','#pre',function(){
+        var ids = $(this).find("option:selected").attr('ids');
+        var idq = $(this).find("option:selected").attr('idq');
+       
+        if(idq!=''){
+           var data = {'class_id':ids,'client_id':idq}
+        }else{
+            var data = {'class_id':ids}
+        }
+        $.ajax({
+           type: "post",
+           url: "/?s=Home/Contract/zhucehao",
+           data: data,
+           dataType:"json",
+           success: function(msg){
+            $('.pre_id').remove();
+              $('#pre').parent().after(msg)
+           }
+        })
+    })
+    // 房间号
+    $(document).on('change','.proname',function(){
+		$('#tr').next().remove();
+        var id = $(this).find("option:selected").attr('aid');
+        var ordercate = $('#ordercate').val();					//合同类型 	 工位注册办公  工位不注册办公   注册地址
+        $.ajax({
+           type: "post",
+           url: "/?s=Home/Contract/room",
+           data:'id='+id,
+           dataType:"json",
+           success: function(msg){
+           		if(ordercate=="工位注册办公" || ordercate=="工位不注册办公")
+           		{
+           			var tr = '<tr><td class="table1_left"><span class="tab_left"><em class="red">*</em>注册号：</span><input type="text" name="address_info[]" value="" class="tab_input" id=""/></td></tr>';
+           			$('.tr').after(tr);
+           		}
+           		if(ordercate=="注册地址")
+           		{
+           			var tr = '<tr><td class="table1_left"><span class="tab_left"><em class="red">*</em>注册号：</span><input type="text" name="address_info[]" value="" class="tab_input" id="zhucenum"/></td></tr>';
+           			$('.tr').after(tr);
+           		}
+           		if(ordercate=="大面积出租" || ordercate=="mini房间")
+           		{
+	                var html = '<select class="tab_select" name="address_info[]" id="housenum"><option value="0">请选择房间号</option>';
+	                $.each(msg,function(k,v)
+	                {
+	                  html += '<option value="'+v.room_num+'" hid="'+v.id+'">'+v.room_num+'</option>';
+	                })
+	                html += '</select>';
+
+	                $('.housnum').nextAll().remove();
+	                $('.housnum').after(html);   
+           		}
+           }
+       }) 
+    })
+    // 房间面积
+    $(document).on('change','#housenum',function(){
+        var id = $(this).find("option:selected").attr('hid');
+        $.ajax({
+           type: "post",
+           url: "/?s=Home/Contract/room_area",
+           data:'id='+id,
+           dataType:"json",
+           success: function(msg){
+                $('.housearea').val(msg.room_area)
+           }
+       }) 
+    })
+    // 租赁日期
+    $(document).on('blur','#freetime',function(){
+        var time = $('#rentstarttime').val();
+        var day = $('#freetime').val();
+        $.ajax({
+            type: "post",   
+            url: "/oa/?s=home/Contract/freetime",
+            data:{'time':time,'day':day},
+            dataType:"json",
+            success: function(msg){
+                $('#freestarttime').val(msg.start);
+                $('#freeendtime').val(msg.end)
+            }
+        });
+    })
+        // 收款账户联动
+    $(document).on('change','#signcompany',function(){
+        var signcompany_id = $(this).val();
+        $.ajax({
+           type: "post",
+           url: "/?s=Home/Contract/collection",
+           data:'signcompany_id='+signcompany_id,
+           dataType:"json",
+           success: function(msg){
+                var html = '<select class="tab_select" name="banks" id="bank"><option value="0">请选择开户行</option>';
+                $.each(msg,function(k,v)
+                {
+                  html += '<option value="'+v.opacontbank+'" bid="'+v.id+'">'+v.opacontbank+'</option>';
+                })
+                html += '</select>';
+                $('#signcompany').nextAll().remove();
+                $('#signcompany').after(html);   
+           }
+       })    
+    })    
+    $(document).on('change','#bank',function(){
+        var opacontbank_id = $(this).find("option:selected").attr('bid');
+        $.ajax({
+           type: "post",
+           url: "/?s=Home/Contract/collection_bank",
+           data:'opacontbank_id='+opacontbank_id,
+           dataType:"json",
+           success: function(msg){
+            var s = '<select class="tab_select bank" name="bank_num"><option value="'+msg.opacontnum+'">'+msg.opacontnum+'</option></select>';
+            $('#bank').nextAll().remove();
+            $('#bank').after(s);   
+           }
+       })    
+    })
+    // 业务员联动
+    $(document).on('change','#department',function(){
+        var deid = $(this).find("option:selected").attr('deid');
+        $.ajax({
+           type: "post",
+           url: "/?s=Home/Contract/position",
+           data:'id='+deid,
+           dataType:"json",
+           success: function(msg){
+                var html = '<select class="tab_select" name="quarters" id="quarters"><option value="0">请选择岗位</option>';
+                $.each(msg,function(k,v)
+                {
+                  html += '<option value="'+v.role_name+'" quid="'+v.id+'">'+v.role_name+'</option>';
+                })
+                html += '</select>';
+                $('#department').nextAll().remove();
+                $('#department').after(html);   
+           }
+       })    
+    })    
+    $(document).on('change','#quarters',function(){
+        var quarters = $(this).find("option:selected").attr('quid');
+        $.ajax({
+           type: "post",
+           url: "/?s=Home/Contract/position",
+           data:'id='+quarters,
+           dataType:"json",
+           success: function(msg){
+                var html = '<select class="tab_select" name="salesman"><option value="0">请选择业务员</option>';
+                $.each(msg,function(k,v)
+                {
+                  html += '<option value="'+v.role_name+'">'+v.role_name+'</option>';
+                })
+                html += '</select>';
+            $('#quarters').nextAll().remove();
+            $('#quarters').after(html);   
+           }
+       })    
+    })
+
+    $(document).on('blur','#servemenyq',function(){
+        var ord = $('#ordercate').val();
+          if(ord=='工商代理'){
+            var signcompany = $('#servemenyq').val();
+            var dxmy=convertCurrency(signcompany);
+            // alert(dxmy)
+        }
+    })
+    $(document).on('blur','.yuan',function(){
+        var moeny = $(this).val();
+        $(this).next('.daxie').html(convertCurrency(moeny));
+    })
+    // 根据合同判断收款计算方式
+    function ht_sk(){
+        var ord = $('#ordercate').val();
+        if(ord=='大面积出租'){
+             var pact = $('#pact').val()
+             var housearea = $('#housearea').val();
+            var rent = $('#rent').val();
+            var arr = pact.split('—');
+            if(arr[0]==='孵化服务协议'){
+                 var year_rent = Math.ceil(rent * housearea * 365);             //年租金
+            }else{
+                 var year_rent = Math.ceil(rent * housearea * 365);             //年租金
+            }
+            
+           
+            var monthly_rent = Math.floor(year_rent / 12);                  //月租金
+        }
+        if(ord=='mini房间'){
+            var servemeny=$('#servemenyq').val();
+            // var energy_charge=$('#energy_charge').val();
+            var monthly_rent = servemeny;                  //月租金
+            var year_rent = monthly_rent * 12 ;             //年租金
+            // return false;
+        }
+        if(ord=='工位注册办公'){
+           // $(".zcdz *").attr("disabled",true);
+            var servemeny = $('#servemeny').val();
+            var station = $('#station').val();
+           
+            var monthly_rent =  parseInt(station);                  //月租金
+            var year_rent = monthly_rent * 12 + parseInt(servemeny)*12 ;             //年租金
+            // return false;
+        }
+        if(ord=='工位不注册办公'){
+           // $(".zcdz *").attr("disabled",true);
+            // var servemeny = $('#servemeny').val();
+            var station = $('#station').val();
+           
+            var monthly_rent = station;                  //月租金
+            var year_rent = monthly_rent * 12 ;             //年租金
+            // return false;
+        }
+        if(ord=='注册地址'){
+            var monthly_rent= $('#servemeny').val();            //月租金
+            var year_rent = monthly_rent * 12 ;             //年租金
+            // return false;
+        }
+        if(ord=='代理记账'){
+            var accountant = $('#accountant').val();
+            var cost = $('#cost').val();
+            var tax_printer = $('#tax_printer').val();
+            var monthly_rent = parseInt(accountant) + parseInt(cost);
+            if(tax_printer!=''){
+                var year_rent = parseInt(monthly_rent * 12) + parseInt(tax_printer);
+            }else{
+                var year_rent = monthly_rent * 12 ;             //年租金
+            }
+                           //月租金
+            
+
+        }
+
+        $('#monthly_rent').val(monthly_rent*100/100);
+        $('#year_rent').val(year_rent*100/100);
+        $('#monthly_rent').next('.daxie').html(convertCurrency(monthly_rent*100/100));
+        $('#year_rent').next('.daxie').html(convertCurrency(year_rent*100/100));
+    }
+    //获取下次付款时间
+    function moeny(){
+        var id = $('#paytype').val();                      //付款方式
+        var ord = $('#ordercate').val();
+        var appoint = $('#appoint').val()
+        if(ord=='代理记账'){
+            var rentendtime = $('#agencyendtime').val();      //租赁结束日期
+            var rentstarttime = $('#agencystarttime').val();  //租赁开始日期
+        }else{
+            var rentendtime = $('#rentendtime').val();      //租赁结束日期
+            var rentstarttime = $('#rentstarttime').val();  //租赁开始日期        
+        }
+        var monthly_rent = $('#monthly_rent').val();         //月租金   
+        if(ord=='工位注册办公'){
+            var servemeny = $('#servemeny').val(); 
+        }
+        
+
+        if(appoint!="")
+        {
+            if(servemeny!=''){
+                var data={'id':id,'monthly_rent':monthly_rent,'rentendtime':rentendtime,'rentstarttime':rentstarttime,'appoint':appoint,'servemeny':servemeny}
+            }else{
+                var data={'id':id,'monthly_rent':monthly_rent,'rentendtime':rentendtime,'rentstarttime':rentstarttime,'appoint':appoint}
+            }
+            
+        }
+        else
+        {
+             if(servemeny!=''){
+                var data={'id':id,'monthly_rent':monthly_rent,'rentendtime':rentendtime,'rentstarttime':rentstarttime,'appoint':appoint,'servemeny':servemeny}
+            }else{
+                var data={'id':id,'monthly_rent':monthly_rent,'rentendtime':rentendtime,'rentstarttime':rentstarttime,'appoint':appoint}
+            }
+        }
+        $.ajax({
+           type: "post",
+           url: "/?s=Home/Contract/paytype",
+           data:data,
+           dataType:"json",
+           success: function(msg){
+            // alert(msg)
+            $('#deposit').val(msg.deposit);
+            $('#fu').val(msg.fu);
+            $('#fu').next('.daxie').html(convertCurrency(msg.fu));
+            $('#deposit').next('.daxie').html(convertCurrency(msg.deposit));
+                
+                if(msg.nexttime==null){
+                    var nexttime ='<tr><td colspan="2"><center><h3>合同签订当日付清<font color="red">'+msg.total+'</font>元</h3></center></td></tr>'
+                }else{
+                    var nexttime = '<tr><td class="table1_left"><span class="tab_left">第一次付款日期：</span><input type="text" name="paynext1" value="" class="tab_input" id="paynext1"/></td></tr><tr>';
+
+                    $.each(msg.nexttime,function(k,v){
+                        var i = parseInt(k)+parseInt(1)
+                        if(k%2==0)
+                        {
+                            nexttime +='<td class="table1_right"><span class="tab_left">下次付款日期'+i+'：</span><input type="text" name="paynext'+i+'" value="'+v+'" class="tab_input" id="paynext1"/></td></tr><tr>';
+                        }else
+                        {
+                            nexttime +='<td class="table1_left"><span class="tab_left">下次付款日期'+i+'：</span><input type="text" name="paynext'+i+'" value="'+v+'" class="tab_input" id="paynext1"/></td>';
+                        }
+                    })
+                    nexttime +='</tr>';
+                }
+
+                $('#nexttime').empty().append(nexttime);
+           }
+       })    
+    }
+    $(document).on('change','#isfreecontrol',function(){
+        var shuikong = $(this).val();
+            $('.shuikong *').hide();
+            $('.shuikong').attr('style','display:none');
+            
+            $(".shuikong *").attr("disabled",true);
+        if(shuikong=='是'){
+            $('.shuikong *').show();
+            $('.shuikong').attr('style','display:""');
+            
+            $(".shuikong *").attr("disabled",false);
+        }
+    })
+    function convertCurrency(money) {
+	  //汉字的数字
+	  var cnNums = new Array('零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖');
+	  //基本单位
+	  var cnIntRadice = new Array('', '拾', '佰', '仟');
+	  //对应整数部分扩展单位
+	  var cnIntUnits = new Array('', '万', '亿', '兆');
+	  //对应小数部分单位
+	  var cnDecUnits = new Array('角', '分', '毫', '厘');
+	  //整数金额时后面跟的字符
+	  var cnInteger = '整';
+	  //整型完以后的单位
+	  var cnIntLast = '元';
+	  //最大处理的数字
+	  var maxNum = 999999999999999.9999;
+	  //金额整数部分
+	  var integerNum;
+	  //金额小数部分
+	  var decimalNum;
+	  //输出的中文金额字符串
+	  var chineseStr = '';
+	  //分离金额后用的数组，预定义
+	  var parts;
+	  if (money == '') { return ''; }
+	  money = parseFloat(money);
+	  if (money >= maxNum) {
+	    //超出最大处理数字
+	    return '';
+	  }
+	  if (money == 0) {
+	    chineseStr = cnNums[0] + cnIntLast + cnInteger;
+	    return chineseStr;
+	  }
+	  //转换为字符串
+	  money = money.toString();
+	  if (money.indexOf('.') == -1) {
+	    integerNum = money;
+	    decimalNum = '';
+	  } else {
+	    parts = money.split('.');
+	    integerNum = parts[0];
+	    decimalNum = parts[1].substr(0, 4);
+	  }
+	  //获取整型部分转换
+	  if (parseInt(integerNum, 10) > 0) {
+	    var zeroCount = 0;
+	    var IntLen = integerNum.length;
+	    for (var i = 0; i < IntLen; i++) {
+	      var n = integerNum.substr(i, 1);
+	      var p = IntLen - i - 1;
+	      var q = p / 4;
+	      var m = p % 4;
+	      if (n == '0') {
+	        zeroCount++;
+	      } else {
+	        if (zeroCount > 0) {
+	          chineseStr += cnNums[0];
+	        }
+	        //归零
+	        zeroCount = 0;
+	        chineseStr += cnNums[parseInt(n)] + cnIntRadice[m];
+	      }
+	      if (m == 0 && zeroCount < 4) {
+	        chineseStr += cnIntUnits[q];
+	      }
+	    }
+	    chineseStr += cnIntLast;
+	  }
+	  //小数部分
+	  if (decimalNum != '') {
+	    var decLen = decimalNum.length;
+	    for (var i = 0; i < decLen; i++) {
+	      var n = decimalNum.substr(i, 1);
+	      if (n != '0') {
+	        chineseStr += cnNums[Number(n)] + cnDecUnits[i];
+	      }
+	    }
+	  }
+	  if (chineseStr == '') {
+	    chineseStr += cnNums[0] + cnIntLast + cnInteger;
+	  } else if (decimalNum == '') {
+	    chineseStr += cnInteger;
+	  }
+	return chineseStr;
+}
+
+
+
+</script>
+</body>
+</html>
