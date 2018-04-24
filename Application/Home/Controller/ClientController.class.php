@@ -75,7 +75,7 @@ class ClientController extends Controller {
 
     // 客户修改方法
     public function clientsave_do(){
-        $data = I('post');
+        $data = I('post.');
         var_dump($data);die;
     }
 

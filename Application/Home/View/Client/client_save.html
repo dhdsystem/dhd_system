@@ -120,7 +120,7 @@
             <a href="javascript:history.back();" class="Retreat">后退</a>
         </div>
     </h2>
-    <form action="__APP__/Client/clientadd_do" method="post">
+    <form action="__APP__/Client/clientsave_do" method="post">
     <dl id="cdl" >
         <dd>
             <span class="dd_left">客户分组：</span>
@@ -204,10 +204,10 @@
                 <span class="dd_right">
                     <select name="taxstyle" id="taxstyle" class="select tab_select"  style="width: 752px;height: 40px;">
                         <if condition="$lsit.taxstyle eq 1 ">
-                            <option value="1" selected="selected"></option>
+                            <option value="1" selected="selected">一般人</option>
                             <option value="0">小规模</option>
                         <else />
-                            <option value="1"></option>
+                            <option value="1">一般人</option>
                             <option value="0" selected="selected">小规模</option>
                         </if>
 
