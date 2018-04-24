@@ -67,6 +67,7 @@ class ClientController extends Controller {
                 ->join('dhd_middle as m on c.nuddke_id = m.id')
                 ->where('c.id='.$id)
                 ->find();
+        $data['id'] = $id;
         // var_dump($data);die;
         // $data['middelid'] = 1; 
         $this->assign('list',$data);
@@ -76,7 +77,16 @@ class ClientController extends Controller {
     // 客户修改方法
     public function clientsave_do(){
         $data = I('post.');
-        var_dump($data);die;
+        $data['id'] = I('post.id');
+        // var_dump($data);die;
+        $save = M('client')->where('id='.$data['id'])->save($data);
+        if($save){
+            $this->success('修改成功', U('Client/client_index'));
+        }else{
+            $this->error('修改失败',U('Client/client_save?id='.$data['id']));
+        }
+
+        
     }
 
 
