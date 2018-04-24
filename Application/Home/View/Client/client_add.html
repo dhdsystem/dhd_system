@@ -29,6 +29,9 @@
     select{
         width: 108px;
     }
+    .unkwn{border:1px solid #ccc;background: #fff;position: absolute;top:30px;z-index: 22;width: 754px;}
+    .unkwn p{font-size: 14px;color:#000;height:35px;line-height: 35px;padding-left:15px;cursor: pointer;}
+    .unkwn p:hover{background: #eee;}
 
 </style>
 <script>
@@ -48,35 +51,30 @@
         if(customtype=="")
         {
             alert('请选择合同性质');
-            customtype = 1;
             return false;
         }    
         var middleman = $('input[name=middleman]').val();
         if(middleman=="")
         {
             alert('中间商/中介公司不为空');
-            middleman = 1;
             return false;
         }    
         var middlename = $('input[name=middlename]').val();
         if(middlename=="")
         {
             alert('中间商/中介公司联系人不为空');
-            middlename = 1;
             return false;
         }    
         var middletel = $('input[name=middletel]').val();
         if(middletel=="")
         {
             alert('中间商/中介公司联系人电话不为空');
-            middletel = 1;
             return false;
         }    
         var middleaddress = $('input[name=middleaddress]').val();
         if(middleaddress=="")
         {
             alert('中间商/中介公司办公地址不为空');
-            middleaddress = 1;
             return false;
         }    
         var contracttype = $('#customtype').val();
@@ -88,7 +86,6 @@
             if(customername=="")
             {
                 alert('客户/公司不为空');
-                customername = 1;
                 return false;
             }    
  
@@ -96,21 +93,19 @@
             if(legalperson=="")
             {
                 alert('法人姓名不为空');
-                legalperson = 1;
                 return false;
             }    
             var legaltel = $('input[name=legaltel]').val();
             if(legaltel=="")
             {
                 alert('法人电话不为空');
-                legaltel = 1;
+               
                 return false;
             }    
             var legalidnum = $('input[name=legalidnum]').val();
             if(legalidnum=="")
             {
                 alert('法人身份证号不为空');
-                legalidnum = 1;
                 return false;
             }    
         }
@@ -125,12 +120,12 @@
             <a href="javascript:history.back();" class="Retreat">后退</a>
         </div>
     </h2>
-    <form action="__APP__/Client/clientadd_do" method="post" onsubmit="return confirm()">
+    <form action="__APP__/Client/clientadd_do" method="post">
     <dl id="cdl" >
         <dd>
             <span class="dd_left">客户分组：</span>
             <span class="dd_right">
-                <select id="customtype" name="contracttype" class="select tab_select" style="width: 752px;height: 40px;">
+                <select id="customtype" class="select tab_select" style="width: 752px;height: 40px;">
                         <option value="">--请选择--</option>
                         <option value="直接客户">直接客户</option>
                         <option value="渠道客户">渠道客户</option>
@@ -140,12 +135,11 @@
         <div id="xu"></div>
         <div id="center"></div>
 
-        <div id="contra" style="display:none" >
+        <div id="contra">
             <dd>
                 <span class="dd_left">客户/公司：</span>
                 <span class="dd_right">
-                    <input type="hidden" name="clientid" id="clientid" />
-                    <input name="client_name" id="customername" placeholder="* 填写公司名称或客户名称" type="text" class="qtext" size="50" />
+                    <input name="client_name" id="customername" placeholder="* 填写公司名称或客户名称" type="text" class="qtext" size="50"/>
                 </span>
                 
             </dd>
@@ -239,54 +233,59 @@
         var contract=$(this).val();
         $('#xu').empty()
         $('.center').remove()
-        $('#contra').attr('style','display:none');
+       
         // 控制中间部分input标签的可用性
-        // $('#contra *').attr('disabled',true)
         if(contract=='渠道客户'){
             var state = 1;
-            var ht=$('#contra').html();
-            var str='<dd><span class="dd_left"><input type="hidden" id="middelid" name="middelid"/>渠道公司：</span><span class="dd_right"><input name="middleman" type="text" class="qtext" size="40" id="middleman"/><div id="quao"></div></span></dd><dd><span class="dd_left">联系人：</span><span class="dd_right"><input name="middlename" id="middlename" type="text" class="qtext" size="30" /></span></dd>'+ht;
+            var str='<dd><span class="dd_left"><input type="hidden" name="nuddke_id" id="middelid"/>渠道公司：</span><span class="dd_right"><input name="middleman" type="text" class="qtext" size="40" value="" id="middleman" autocomplete="off"/><div id="quao"></div></span></dd><dd><span class="dd_left">联系人：</span><span class="dd_right"><input name="middlename" id="middlename" type="text" class="qtext" size="30" /></span></dd>';
+                $('#center').empty().append(str);
         }
-        if(contract=='直接客户'){
-            $('#contra').attr('style','display:""')
-             $('#contra *').attr('disabled',false)
-        }
-      
-        $('#center').empty().append(str);
+        
+        
     })
     
 
     $(document).on('blur','#customername',function(){
+
         setTimeout("$('#mername').empty()",300);
     })
     // 渠道商select选择
-    $(document).on('blur','#middleman',function(){
-        setTimeout("$('#quao').empty()",300);
-    })
     $(document).on('keyup','#middleman',function(){
-        var contract=$('#customtype').val();
         var middleman = $(this).val();
-        // var data = {'middleman':middleman}
+        // alert(middleman);
+        var data = {'middleman':middleman}
         $.ajax({
            type: "POST",
            url: "__APP__/Client/clientadd_ajax",
-           data: 'middleman='+middleman,
+           data: data,
            dataType:'json',
            success: function(msg){
-            alert(msg);
-                // var html='';
+            // alert(msg);
+                var html='<div class="unkwn">';
+                // console.log(msg);
                 if(msg=="")
                 {
                     $('#quao').remove();
                 }else
                 {
                     $(msg).each(function(i){
-                        html+="<p class='midd' ids='"+msg[i]['id']+"'>"+msg[i]['middleman']+"</p>";
+                        html+="<p class='midd' idna='"+msg[i]['middle_man']+"' ids='"+msg[i]['id']+"'>"+msg[i]['middle_name']+"</p>";
                     });
                     $('#quao').empty().append(html);
                 }
+                html+='</div>'
             }
         });
+    })
+    $(document).on('click','.midd',function(){
+        var middleman = $(this).html();
+        var middleid = $(this).attr('ids');
+        var middlename = $(this).attr('idna');
+        $('#middleman').val(middleman);
+        $('#middelid').val(middleid);
+        $('#middlename').val(middlename);
+        $('#quao').empty();
+
     })
 
     
