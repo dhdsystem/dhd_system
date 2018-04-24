@@ -10,10 +10,9 @@ class MaterController extends Controller {
              ->join('dhd_class as c on c.id=m.class_id')
              ->field('m.id,m_address,c.class_name,m_time,m_number')
              ->limit($page['firstRow'],$page['listRows'])
-             ->order('m.id asc')
+             ->order('m.id desc')
+             ->where('m_type=0')
              ->select();
-      //print_r($page);
-      //  print_r($data);die;
        $this->assign('show',$page['show']);
        $this->assign('data',$data);
        $this->display();
@@ -52,6 +51,30 @@ class MaterController extends Controller {
 		}else{
 			echo 2;
 		}
+	}
+	/*修改*/
+	public function mater_save(){
+		if(IS_POST){
+			$id=I('post.id');
+			$res=M('material');
+			$num=$res->where("id = $id ")->field('m_number')->find();
+			$num=$num['m_number']+I('post.m_number');
+			$res->where(array('id'=>$id))->save(array('m_number'=>$num));
+			if($res){
+				$this->success('修改成功',U('mater/mater_index'));
+			}else{
+				$this->error('修改失败');
+			}
+		}else{
+			$id=I('get.id');
+			$data=M('material')->alias('m')->where("m.id=$id")
+			->join('dhd_class as c on c.id=m.class_id')
+            ->field('m.id as mid,m_address,c.id as cid,c.class_name,m_time,m_number')
+            ->find();  
+			$this->assign('data',$data);
+			$this->display();
+		}
+		
 	}
 
 }

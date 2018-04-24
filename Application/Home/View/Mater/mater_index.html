@@ -18,9 +18,7 @@
                     wintq('ID参数不正确',3,1000,1,'');
                     return false;
                 }else {
-                    popload('修改分类信息',800,300,'__APP__/Classify/Catesave/id/'+id);
-                    addDiv($('#iframe_pop'));
-                    popclose();
+                    window.location.href='__APP__/mater/mater_save/id/'+id;
                 }
             });
                         $('#content #table .tr .del').click(function(event) {
