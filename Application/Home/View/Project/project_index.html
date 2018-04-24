@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>项目管理|<{$configcache['Title']}></title>
+    <title>项目管理|</title>
     <link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
     <link rel="csssheet" type="text/css" href="__CSS__/public.css"  />
     <script type="text/javascript" src="__JS__/jquery.js"></script>
@@ -22,9 +22,8 @@
                     wintq('ID参数不正确',3,1000,1,'');
                     return false;
                 }else {
-                    popload('修改分类信息',800,300,'__APP__/Project/project_up/id/'+id);
-                    addDiv($('#iframe_pop'));
-                    popclose();
+                      window.location.href='__APP__/Project/project_save/class_id/'+id;
+               
                 }
             });
             $('#content #table .tr .del2').click(function(event) {
@@ -42,6 +41,7 @@
                     window.location.href='__APP__/Project/project_del/id/'+id;
                 }
             });
+            
         });
     </script>
 </head>
@@ -77,9 +77,9 @@
                     <td class="tc">{$vo.class_area}</td>
                     <td class="tc fixed_w">
                         <div class="operation">更多
-                            <div class="operarea">
+                            <div class="operarea" style="display:none;">
                                 <a href="{$vo.id}" class="edit oper2">修改</a>
-                                <a href="{$vo.id}" class="see oper2">详情</a>
+                                <a href="__APP__/project/project_detail/pro_id/{$vo.id}" class="see oper2">详情</a>
                                 <a href="{$vo.id}" class="del2 oper2">删除</a>
                             </div>
                         </div>
