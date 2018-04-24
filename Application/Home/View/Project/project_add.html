@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>产品添加</title>
+    <link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
+    <link rel="csssheet" type="text/css" href="__CSS__/public.css"  />
+    <script type="text/javascript" src="__JS__/jquery.js"></script>
+    <script type="text/javascript" src="__JS__/jquery.validate.js"></script>
+    <script type="text/javascript" src="__JS__/Public.js"></script>
+    <script type="text/javascript" src="__JS__/winpop.js"></script>
 </head>
-<link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
-<link rel="csssheet" type="text/css" href="__CSS__/public.css"  />
-<script type="text/javascript" src="__JS__/jquery.js"></script>
-<script type="text/javascript" src="__JS__/jquery.validate.js"></script>
-<script type="text/javascript" src="__JS__/Public.js"></script>
-<script type="text/javascript" src="__JS__/winpop.js"></script>
+
 <body>
 <div id="content">
     <h1>首页 &gt; 产品管理 &gt; 项目管理 &gt;产品添加</h1>
@@ -19,7 +20,7 @@
         </div>
     </h2>
     <dl id="dl">
-        <form method="post" action="__APP__/Project/project_add_do" id="add">
+        <form method="post" action="__APP__/Project/project_add_do" id="add" onsubmit="return check()">
             <dd>
                 <span class="dd_left">项目名称</span>
                 <span class="dd_right"><input type="text" placeholder="输入如：新材料创业大厦" name="class_name" class="qtext  qtext_width" value="" style="width:360px;"/></span>
@@ -42,14 +43,14 @@
     function validform(){
         return $("#add").validate({
             rules : {
-                classname : {required : true},
-                area : { required : true},
-                address: { required : true}
+                class_name : {required : true},
+                class_area : { required : true},
+                class_address: { required : true}
             },
             messages :{
-                classname : {required : '不能为空'},
-                area : { required : '不能为空'},
-                address: {required : '不能为空'}
+                class_name : {required : '不能为空'},
+                class_area : { required : '不能为空'},
+                class_address: {required : '不能为空'}
             }
         })
     }
@@ -57,27 +58,7 @@
         $(validform());
         $(".button").click(function(){
             if(validform().form()) {
-                $("#add").submit();
-                //通过表单验证，以下编写自己的代码
-                // var classname=$('#dl dd .qtext').eq(0).val();
-                // var area=$('#dl dd .qtext').eq(1).val();
-                // var address=$('#dl dd .textarea').val();
-
-                // wintq('正在添加，请稍后...',4,20000,0,'');
-                // $.ajax({
-                //     url:'__APP__/User/useradd_do/',
-                //     dataType:'json',
-                //     type:'POST',
-                //     data:'classname='+classname+'&area='+area+'&address='+address,
-                //     success: function(data) {
-                //         // alert(data)
-                //         if (data=='ok') {
-                //             wintq('添加成功',1,1500,0,'__APP__/project/add/');
-                //         }else {
-                //             wintq(data.s,3,1000,1,'');
-                //         }
-                //     }
-                // }); 
+                $("#add").submit(); 
             } else {
             //校验不通过，什么都不用做，校验信息已经正常显示在表单上
             }

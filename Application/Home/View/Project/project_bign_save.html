@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>房间修改</title>
+    <link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
+    <link rel="csssheet" type="text/css" href="__CSS__/public.css"  />
+    <script type="text/javascript" src="__JS__/jquery.js"></script>
+    <script type="text/javascript" src="__JS__/jquery.validate.js"></script>
+    <script type="text/javascript" src="__JS__/Public.js"></script>
+    <script type="text/javascript" src="__JS__/winpop.js"></script>
 </head>
-<link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
-<link rel="csssheet" type="text/css" href="__CSS__/public.css"  />
-<script type="text/javascript" src="__JS__/jquery.js"></script>
-<script type="text/javascript" src="__JS__/jquery.validate.js"></script>
-<script type="text/javascript" src="__JS__/Public.js"></script>
-<script type="text/javascript" src="__JS__/winpop.js"></script>
+
 <body>
 <div id="content">
     <h1>首页 &gt; 产品管理 &gt; 项目管理 &gt;房间修改</h1>
@@ -19,7 +20,7 @@
         </div>
     </h2>
     <dl id="dl">
-        <form method="post" action="__APP__/Project/project_bign_save" id="add">
+        <form method="post" action="__APP__/Project/project_bign_save" id="add" onsubmit="return check()">
 
             <dd>
                 <span class="dd_left">项目地址</span>
@@ -45,14 +46,14 @@
     function validform(){
         return $("#add").validate({
             rules : {
-                classname : {required : true},
-                area : { required : true},
-                address: { required : true}
+                pro_address : {required : true},
+                detailscoll : { required : true,number:true},
+                big_sum: { required : true,number:true}
             },
             messages :{
-                classname : {required : '不能为空'},
-                area : { required : '不能为空'},
-                address: {required : '不能为空'}
+                pro_address : {required : '不能为空'},
+                detailscoll : { required : '不能为空',number:"请输入有效的数字"},
+                big_sum: {required : '不能为空',number:"请输入有效的数字"}
             }
         })
     }
@@ -61,26 +62,6 @@
         $(".button").click(function(){
             if(validform().form()) {
                 $("#add").submit();
-                //通过表单验证，以下编写自己的代码
-                // var classname=$('#dl dd .qtext').eq(0).val();
-                // var area=$('#dl dd .qtext').eq(1).val();
-                // var address=$('#dl dd .textarea').val();
-
-                // wintq('正在添加，请稍后...',4,20000,0,'');
-                // $.ajax({
-                //     url:'__APP__/User/useradd_do/',
-                //     dataType:'json',
-                //     type:'POST',
-                //     data:'classname='+classname+'&area='+area+'&address='+address,
-                //     success: function(data) {
-                //         // alert(data)
-                //         if (data=='ok') {
-                //             wintq('添加成功',1,1500,0,'__APP__/project/add/');
-                //         }else {
-                //             wintq(data.s,3,1000,1,'');
-                //         }
-                //     }
-                // }); 
             } else {
             //校验不通过，什么都不用做，校验信息已经正常显示在表单上
             }
