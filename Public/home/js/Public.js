@@ -82,3 +82,29 @@ $(function() {
 	funbox();
 	lhide();
 });
+
+$().ready(function(){
+	// 更多操作
+	$('.operation').hover(function(){
+	    $(this).find('.operarea').toggle();
+	})
+
+	// 自定义处理
+    $('.diy').click(function(){
+        $('.popWinBox1').show();
+        $('body').click(function(e) {
+            var target = $(e.target);
+            if(!target.is('.diy') && !target.is('.popWin1 *')) {
+                if ( $('.popWinBox1').is(':visible') ) {
+                    $('.popWinBox1').hide();
+                }
+            }
+        })
+    })
+    // 单选过滤
+    $('.danyuan a').click(function(){
+        $(this).addClass('active').siblings().removeClass('active');
+        $(this).parent().siblings().find('a').removeClass('active');
+    })
+})
+

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>完善客户信息</title>
+    <link rel="stylesheet" type="text/css" href="__CSS__/content.css"/>
+    <script type="text/javascript" src="__JS__/jquery.js"></script>
+</head>
+<body>
+<div class="contract_cont"  id="content">
+    <h1>首页 > 客户管理 > 客户信息 > 完善客户信息 </h1>
+    <h2>
+        <div class="h2_left">
+            <a href="javascript:history.back();" class="Retreat">后退</a>
+        </div>
+    </h2>
+    <form action="/?s=Home/Client/perfectadd_do/" method="post" onsubmit="return confirm()">
+        <dl id="cdl">
+            <dd>
+                <span class="dd_left">公司名称：</span>
+                <span class="dd_right">
+                    <input type="text" class="qtext" name="company_name" value="华人智慧（北京）科技有限公司" />
+                    <input type="hidden" name="client_id" value="2888">
+                    <input type="hidden" name="c_type" value="">
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">产业门类：</span>
+                <span class="dd_right">
+                    <input type="text" class="qtext" name="industry" value=""/>                
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">公司主营业务：</span>
+                <span class="dd_right">
+                    <textarea name="business" rows="4" cols="37"></textarea>
+                </span>
+            </dd>
+            <dd><h5>核心成员</h5></dd>
+            <div>
+                <dd>
+                    <span class="dd_left">姓名：</span>
+                    <span class="dd_right">
+                        <input type="text" class="qtext info" name="member_name[]" value="" />
+                        <span><font color="#CCCCCC">* 若无核心成员等信息请添 "无"</font></span>
+                    </span>
+                </dd>
+                <dd>
+                    <span class="dd_left">职务：</span>
+                    <span class="dd_right">
+                        <input type="text" class="qtext" name="member_job[]" value="" />
+                    </span>
+                </dd>
+                <dd>
+                    <span class="dd_left">学历：</span>
+                    <span class="dd_right">
+                        <input type="text" class="qtext" name="education[]" value="" />
+                    </span>
+                </dd>
+                <dd>
+                    <span class="dd_left">工作经历：</span>
+                    <span class="dd_right">
+                        <textarea name="work_exp[]" rows="4" cols="37"></textarea>
+                    </span>
+                    <input type="button" value="+"  class="submit jia">&nbsp;&nbsp;<input type="button" value="-"  class="submit jian">            
+                </dd>
+            </div>
+            <dd><h5>知识产权</h5></dd>
+            <div>
+                <dd>
+                    <span class="dd_left">类别：</span>
+                    <span class="dd_right">
+                        <input type="text" class="qtext info" name="type[]" value="" />
+                        <span><font color="#CCCCCC">* 若无知识产权等信息请添 "无"</font></span>
+                    </span>
+                </dd>
+                <dd>
+                    <span class="dd_left">数量：</span>
+                    <span class="dd_right">
+                        <input type="text" class="qtext" name="num[]" value="" />                    
+                    </span>
+                </dd>
+                <dd>
+                    <span class="dd_left">内容：</span>
+                    <span class="dd_right">
+                        <textarea name="content[]" rows="4" cols="37"></textarea>
+                    </span>
+                    <input type="button" value="+"  class="submit jia">&nbsp;&nbsp;<input type="button" value="-"  class="submit jian">            
+                </dd>
+            </div>
+            <dd>
+                <span class="dd_left">公司成长阶段：</span>
+                <span class="dd_right">
+                    <input type="text" class="qtext" name="stage" value="" />
+                </span>
+            </dd>
+
+            <dd>
+                <h5>投融资情况</h5>
+                <span class="dd_left">融资情况：</span>
+                <span class="dd_right">
+                    <textarea name="financing" rows="4" cols="37"></textarea>
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">投资情况：</span>
+                <span class="dd_right">
+                    <textarea name="investment" rows="4" cols="37"></textarea>
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">备注：</span>
+                <span class="dd_right">
+                    <textarea name="remarks" rows="4" cols="37"></textarea>
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">新闻报道：</span>
+                <span class="dd_right">
+                    <textarea name="report" rows="4" cols="37"></textarea>
+                </span>
+            </dd>
+            <dd>
+                <input type="submit" value="提交" class="submit" />
+            </dd>
+
+        </dl>
+    </form>
+</div>
+
+</body>
+<script>
+    function confirm()
+    {
+        var sta;
+        $(".info").each(function(){
+            var value = $(this).val();
+            if(value=="")
+            {
+                sta=1;
+            }
+            if(value=="0")
+            {
+                sta=1;
+            }
+        });
+        if(sta==1)
+        {
+            alert("部分信息未填选，请完善信息！")
+            return false;
+        }
+        
+    }
+    // 点击实现加减
+    $(document).on('click','.jia',function(){
+        var html = $(this).parent().parent().clone();
+        $(this).parent().parent().after(html);
+    })
+    $(document).on('click','.jian',function(){
+        $(this).parent().parent().remove();
+    })
+</script>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>修改/查看客户></title>
+<link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
+<link rel="stylesheet" type="text/css" href="__CSS__/public.css"  />
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript" src="__JS__/Public.js"></script>
+<script type="text/javascript" src="__JS__/winpop.js"></script>
+<script type="text/javascript" src="__JS__/WdatePicker.js"></script>
+<style>
+    #vas{z-index: 100000000;background: #fff;position: absolute; width: 248px;left: 126px;box-shadow: 3px 7px 10px 2px #dadada;}
+    #vas p{cursor: pointer;}
+    #vas p:hover{background: #eee;}
+    select{width: 108px;}
+
+</style>
+</head>
+<body>
+<div id="content" style="padding-bottom:20px;">
+    <h1>首页 > 客户管理 > 客户信息 > 修改查看客户</h1>
+    <h2>
+        <div class="h2_left">
+            <a href="javascript:history.back();" class="Retreat">后退</a>
+        </div>
+    </h2>
+    <form action="__APP__/Client/clientsave_do" method="post">
+    <input type="hidden" name='id' value="<{$clientedit['id']}>" />
+    <dl id="cdl">
+        <dd>
+            <span class="dd_left">客户分组：</span>
+            <span class="dd_right">
+                <select disabled="disabled" id="contracttype" name="contracttype" class="select tab_select" style="width: 754px;height: 40px;">
+                    <option></option>
+                </select>
+            </span>
+        </dd>
+        <?php if($clientedit['middelid']!=''){?>
+            <if condition="$clientedit.state eq 1">
+            <dd>
+                <span class="dd_left">
+                    <input type="hidden" disabled="disabled" value="" name="middelid"/>中介公司：
+                </span>
+                <span class="dd_right">
+                    <input name="middleman" type="text" value="" disabled="disabled" class="qtext" size="40" /><div id="vas"></div>
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">联系人：</span>
+                    <span class="dd_right">
+                        <input name="middlename" disabled="disabled" value="" type="text" class="qtext" size="30" />
+                    </span>
+            </dd>
+            <dd>
+                <span class="dd_left">联系电话：</span>
+                    <span class="dd_right">
+                        <input name="middletel" disabled="disabled" value="" type="text" class="qtext" size="40" />
+                    </span>
+            </dd>
+            <dd>
+                <span class="dd_left">注册地址：</span>
+                    <span class="dd_right">
+                        <input name="middleenroll" disabled="disabled" value="" type="text" class="qtext" size="40" />
+                    </span>
+            </dd>
+            <dd>
+                <span class="dd_left">办公地址：</span>
+                    <span class="dd_right">
+                        <input name="middleaddress" disabled="disabled" value="" type="text" class="qtext" size="30" />
+                    </span>
+            </dd>
+            <else />
+            <dd>
+                <span class="dd_left">
+                    <input type="hidden" disabled="disabled" value="" name="middelid"/>中间商公司：</span><span class="dd_right"><input name="middleman" disabled="disabled" type="text" class="qtext" value="" size="40" />
+                    </span>
+            </dd>
+            <dd>
+                <span class="dd_left">联系人：</span>
+                    <span class="dd_right">
+                        <input name="middlename" disabled="disabled" value="" type="text" class="qtext" size="30" />
+                    </span>
+            </dd>
+            <dd>
+                <span class="dd_left">联系电话：</span>
+                    <span class="dd_right">
+                        <input name="middletel" disabled="disabled" value="" type="text" class="qtext" size="40" />
+                    </span>
+            </dd>
+            <dd>
+                <span class="dd_left">注册地址：</span>
+                    <span class="dd_right">
+                        <input name="middleenroll" disabled="disabled" value="" type="text" class="qtext" size="40" />
+                    </span>
+            </dd>
+            <dd>
+                <span class="dd_left">办公地址：</span>
+                    <span class="dd_right">
+                        <input name="middleaddress" disabled="disabled" value="" type="text" class="qtext" size="30" />
+                    </span>
+            </dd>
+            </if>
+            <?php } ?>
+    <dd>
+        <span class="dd_left">客户/公司：</span>
+        <span class="dd_right">
+            <input name="customername" type="text" placeholder="* 填写公司名称或客户名称" class="qtext" size="50" value=""/>
+        </span>
+    </dd>
+    <dd>
+        <span class="dd_left">注册资金：</span>
+        <span class="dd_right">
+            <input name="capital" type="text" class="qtext" size="40" value=""/>
+        </span>
+    </dd>
+    <dd>
+        <span class="dd_left">详细地址：</span>
+        <span class="dd_right">
+            <input name="address" type="text" class="qtext" size="40" value=""/>
+        </span>
+    </dd>
+    <dd>
+        <span class="dd_left">纳税形式：</span>
+        <span class="dd_right">
+            <select name="taxstyle" id="" class="select tab_select" style="width: 754px;height: 40px;">
+                <option value="一般人" <?php if($clientedit['taxstyle']=="一般人"){?>selected<?php }?>>一般人</option>
+                <option value="小规模" <?php if($clientedit['taxstyle']=="小规模"){?>selected<?php }?>>小规模</option>
+            </select>
+        </span>
+    </dd>
+    <dd>
+        <span class="dd_left">法人姓名：</span>
+        <span class="dd_right">
+            <input name="legalperson" type="text" class="qtext" size="40" value=""/>
+        </span>
+    </dd>
+    <dd>
+        <span class="dd_left">法人电话：</span>
+        <span class="dd_right">
+            <input name="legaltel" type="text" class="qtext" size="30" value=""/>
+        </span>
+    </dd>
+    <dd>
+        <span class="dd_left">法人身份证号：</span>
+        <span class="dd_right">
+            <input name="legalidnum" type="text" class="qtext" size="40" value=""/>
+        </span>
+    </dd>
+    <dd>
+        <span class="dd_left">其他联系人：</span>
+        <span class="dd_right">
+            <input name="customcontacter" type="text" class="qtext" size="40" value=""/>
+        </span>
+    </dd>
+    <dd>
+        <span class="dd_left">联系人电话：</span>
+        <span class="dd_right">
+            <input name="customtel" type="text" class="qtext" size="30" value=""/>
+        </span>
+    </dd>
+    <dd>
+        <span class="dd_left">备注信息：</span>
+        <span class="dd_right">
+            <textarea name="message" class="textarea text_box" style="width: 754px;" rows="4" cols="37">{$clientedit['message']}</textarea>
+        </span>
+    </dd>
+    </dl>
+    <input type="submit" class="submit" value="提交" style="margin-left: 174px;" />
+    </form>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    /**
+     * /选择客户分组判断是否为中间商客户
+     * 
+     */
+    $(document).on('change','#contracttype',function(){
+        var contract=$(this).val();
+
+        $('.aaa').remove()
+        $('#anniu').remove()
+        if(contract=='渠道客户'){
+            var str='<tr class="tr aaa"><dd><span class="dd_left"><input type="hidden" name="middelid"/>渠道公司</span><span class="dd_right"><input name="middleman" type="text" class="qtext" size="40" /><div id="vas"></div></span>            <dd><span class="dd_left">联系人：</span><span class="dd_right"><input name="middlename" type="text" class="qtext" size="30" /></span></tr><tr class="tr aaa">            <dd><span class="dd_left">联系电话</span><span class="dd_right"><input name="middletel" type="text" class="qtext" size="40" /></span></tr><tr class="tr aaa">            <dd><span class="dd_left">注册地址：</span><span class="dd_right"><input name="middleenroll" type="text" class="qtext" size="40" /></span>            <dd><span class="dd_left">办公地址：</span><span class="dd_right"><input name="middleaddress" type="text" class="qtext" size="30" /></span></tr>';
+            $('#contra').after(str);
+        }
+        $.ajax({
+           type: "POST",
+           url: "__APP__/Client/center_seach",
+           data: "state="+state,
+           dataType:'json',
+           success: function(msg){
+            var html='';
+                $(msg).each(function(i){
+                    html+="<p class='click' ids='"+msg[i]['id']+"'>"+msg[i]['middleman']+"</p>";
+                });
+                
+                $('#vas').append(html);
+
+           }
+        });
+    })
+    /**
+     * /不从已有中间商列表中选取
+     * 
+     * 
+     */
+    $(document).on('click','input[name="middleman"]',function(){
+        $('.click').remove();
+        var butt='<tr class="tr" id="anniu"><td colspan="4" height="45px"><center><input type="button"  class="submit" id="tijiao" value="新增中间商" /></center></span></tr>';
+        
+        if($(this).val()==''&&$('#anniu').length==0){
+            $('#qian').before(butt);
+        }
+        
+
+    })
+    /**
+     * /新增中间商信息
+     */
+    $(document).on('click','#tijiao',function(){
+        var man = $('input[name="middleman"]').val();
+        var name = $('input[name="middlename"]').val();
+        var tel = $('input[name="middletel"]').val();
+        var address = $('input[name="middleaddress"]').val();
+        var enroll = $('input[name="middleenroll"]').val();
+         if (!tcheck(man,'','请填写第三方公司名称')) { return false; }
+         if (!tcheck(name,'','请填写第三方公司联系人')) { return false; }
+         if (!tcheck(tel,'','留个第三方公司联系人电话呗')) { return false; }
+         if (!tcheck(address,'','这家第三方公司在哪办公呀？？')) { return false; }
+         if (!tcheck(enroll,'','这家第三方公司在哪注册的呀？？')) { return false; }
+         var contract=$('#contracttype').val();
+        if(contract=='中间商'){
+            var state = 1;
+        } 
+        if(contract=='中介'){
+            var state = 2;
+        };
+         var data={'middleman':man,'state':state,'middlename':name,'middletel':tel,'middleaddress':address,'middleenroll':enroll,}
+
+        $.ajax({
+           type: "POST",
+           url: "__APP__/Client/center_adddo",
+           data: data,
+           dataType:'json',
+           success: function(msg){
+            if(msg['id']!=''){
+                $('input[name="middelid"]').val(msg['id']);
+
+                alert('中间商信息已添加成功请继续操作');
+                $('#anniu').remove();
+            }
+
+           }
+        });
+    })
+    /**
+     * / 从已有中间商中选择中间商返回中间商信息
+     * @param  {[type]} ){                     var id [description]
+     * @return {[type]}     [description]
+     */
+    $(document).on('click','.click',function(){
+        var id = $(this).attr('ids');
+                $.ajax({
+           type: "POST",
+           url: "__APP__/Client/center_one",
+           data: "id="+id,
+           dataType:'json',
+           success: function(msg){
+            $('input[name="middleman"]').val(msg['middleman']);
+            $('input[name="middlename"]').val(msg['middlename']);
+            $('input[name="middletel"]').val(msg['middletel']);
+            $('input[name="middleaddress"]').val(msg['middleaddress']);
+            $('input[name="middleenroll"]').val(msg['middleenroll']);
+            $('input[name="middelid"]').val(msg['id']);
+           }
+        });
+        $('.click').remove();
+    })
+</script>

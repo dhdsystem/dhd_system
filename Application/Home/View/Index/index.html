@@ -14,6 +14,7 @@
 .dowebok li { overflow: hidden; zoom: 1;}
 .dowebok a { color: #333; text-decoration: none;}
 .dowebok a:hover { color: #000;}
+.subnav {display: none; overflow: hidden; height: 160px; padding-top: 8px; margin-top: 0px; padding-bottom: 8px; margin-bottom: 0px;}
 </style>
 <script type="text/javascript" src="__JS__/jquery.js"></script>
 <script type="text/javascript" src="__JS__/Public.js"></script>
@@ -110,31 +111,20 @@ $(function() {
     </div>
     <div id="left">
     	<ul id="ul">
-        	<volist name="list" id="li">
-	        	<li>
-	               	<a class="a" href="<if condition="$li.controller eq ''">javascript:;<else />__APP__/<{$li.controller}></if>" target="c"><{$li.opera_name}><?php if ($li['opera_name']=='财务管理'): ?>
-	                		<font color="#fff"><span class="flush"><{$count}></span></font>
-	                	<?php endif ?></a>
-	            	<dl>
-	            		<foreach name="volist" item="va">
-	            			<foreach name="va" item="vo">
-		            			<if condition="$li['id'] eq $vo['p_id']">
-			            		    <if condition="$vo['action'] eq ''">
-			            		    <?php $vo['action']='index'; ?>
-			            		    </if>
-
-			                		<dd>
-			                			<a href="<if condition="$vo.controller eq ''">javascript:;<else />__APP__/<{$vo.controller}>/<{$vo['action']}></if>" target="c"><{$vo.opera_name}> <?php if ($vo['opera_name']=='合同管理'): ?>
-			                		<font color="#fff"><span class="flush"><{$count}></span></font>
-			                	<?php endif ?></a>
-			                		</dd>
-
-		                    	</if>
-	                    	</foreach>
-	                	</foreach>
+    		<foreach name="list" item="vo" >
+	    		<li>
+	               	<a class="a lia" href="javascript:;" target="c">{$vo.opera_name}</a>
+	            	<dl class="subnav" >
+	            		<foreach name="vo.san" item="v" >
+						   <dd>
+						   <a target="c" href="__APP__/{$v.controller}/{$v.action}">{$v.opera_name}</a>
+						   </dd>
+						</foreach>
+	                	
+	         
 	                </dl>
 	            </li>
-            </volist>
+            </foreach>
         </ul>
     </div>
 	<div class="wrap">

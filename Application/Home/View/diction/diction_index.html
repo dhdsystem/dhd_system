@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>权限管理|<{$configcache['Title']}></title>
+<title>权限管理</title>
 <link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
 <link rel="stylesheet" type="text/css" href="__CSS__/public.css"  />
 <script type="text/javascript" src="__JS__/jquery.js"></script>
@@ -10,23 +10,18 @@
 <script type="text/javascript" src="__JS__/winpop.js"></script>
 <script>
 $(document).ready(function() {
-    $('#content h2 .add').click(function() {
-		popload('添加权限',800,300,'__APP__/Diction/add/');
-		addDiv($('#iframe_pop'));
-		popclose();
-	});
-	$('#content #table .tr .edit').click(function(event) {
+/*	$('#content #table .tr .edit').click(function(event) {
 		event.preventDefault();
 		var id=$(this).attr('href');		
 		if (id=='' || isNaN(id)) {
 			wintq('ID参数不正确',3,1000,1,'');
 			return false;
 		}else {
-			popload('修改权限信息',800,300,'__APP__/Diction/dicsave/id/'+id);
+			popload('修改权限信息',800,300,'__APP__/Diction/diction_save/id/'+id);
 			addDiv($('#iframe_pop'));
 			popclose();
 		}
-	});
+	});*/
 	$('#content #table .tr .del').click(function(event) {
 		event.preventDefault();
 		if (!confirm('确定要删除该数据吗？')) {
@@ -39,12 +34,16 @@ $(document).ready(function() {
 		}else {
 			wintq('正在删除，请稍后...',4,1000,0,'');
 			$.ajax({
-				url:'__APP__/Diction/cdel/',
+				url:'__APP__/Diction/cdel',
 				dataType:'json',
 				type:'POST',
 				data:'id='+id,
 				success: function(data) {
-					if (data.s=='ok') {
+                    if(data=='3'){
+                            wintq('子分类下有权限不能删除',3,1500,0,'');
+                    exit;
+                    }
+					if (data=='1') {
 						wintq('删除成功',1,1500,1,'?');
 					}else {
 						wintq('删除失败',1,1500,1,'?');
@@ -58,17 +57,15 @@ $(document).ready(function() {
 </head>
 <body>
 <div id="content">
-	<h1>首页 > 用户管理 > 权限管理</h1>
+	<h1>首页 > 权限管理 > 权限信息</h1>
     <h2>
     	<div class="h2_left">
-        	<a href="__ACTION__" class="whole">全部</a>
-            <a href="javascript:;" class="add">新增</a>
+            <a href="__APP__/diction/diction_add" class="add">新增</a>
             <a href="javascript:history.back();" class="Retreat">后退</a>
-            <a href="javascript:history.go(1);" class="Advance">前进</a>
         </div>
         <div class="search">
-        	<form action="__ACTION__" method="get">
-        	<input type="text" name="keyword" class="text" value="<{$keyword}>" />
+        	<form action="__ROOT__/home/diction/diction_search" method="get">
+        	<input type="text" name="name" class="text" placeholder="权限名称" value="{$name}" />
             <input type="submit" class="so" value="搜 索" />
             </form>
         </div>
@@ -83,24 +80,24 @@ $(document).ready(function() {
                 <th>状态</th>
                 <th>操作</th>
             </tr>
-            <if condition="$co eq 0"><tr class="tr"><td class="tc" colspan="7">暂无数据，等待添加～！</td></tr></if>
+            <if condition="$node eq 0"><tr class="tr"><td class="tc" colspan="7">暂无数据，等待添加～！</td></tr></if>
             <!--顶级数据-->
-            <volist name="volist" id="vo">
+            <volist name="node" id="vo">
             <tr class="tr tr2">
-                <td class="tc"><{$vo.id}></td>
+                <td class="tc">{$vo.id}</td>
                 <!-- <td class="tc"><{$vo.opera_name}></td> -->
-                <td class="tc"><{$vo.opera_name}></td>
-                <td class="tc"><{$vo.explain}></td>
+                <td class="tc">{$vo.name}{$vo.opera_name}</td>
+                <td class="tc">{$vo.explain}</td>
                 <td class="tc">
                 <if condition="$vo.Status eq 0">
-                <img src="__IMAGE__/yes.png" border="0" title="正常" />
+                <img src="__IMAGE__/home/yes.png" border="0" title="正常" />
                 <else />
-                <img src="__IMAGE__/no.png" border="0" title="锁定" />
+                <img src="__IMAGE__/home/no.png" border="0" title="锁定" />
                 </if>
                 </td>
                 <td class="tc fixed_w">
-    				<a href="<{$vo.id}>" class="edit oper">修改</a>
-    				<a href="<{$vo.id}>" class="del oper">删除</a>
+    				<a href="__ROOT__/home/diction/diction_save/id/{$vo.id}" class="edit oper">修改</a>
+    				<a href="{$vo.id}" class="del oper">删除</a>
                 </td>
             </tr>
             <!--二级数据-->
@@ -108,10 +105,10 @@ $(document).ready(function() {
             <volist name="a" id="s">
             <if condition="$s.p_id eq $vo['id']">
             <tr class="tr">
-                <td class="tc"><{$s.id}></td>
+                <td class="tc">{$s.id}</td>
                 <!-- <td></td> -->
-                <td class="tc">|————<{$s.opera_name}></td>
-                <td class="tc"><{$s.explain}></td>
+                <td class="tc">|————{$s.opera_name}</td>
+                <td class="tc">{$s.explain}</td>
                 <td class="tc">
                 <if condition="$s.Status eq 0">
                 <img src="__IMAGE__/home/yes.png" border="0" title="正常" />
@@ -120,8 +117,8 @@ $(document).ready(function() {
                 </if>
                 </td>
                 <td class="tc fixed_w">
-                <a href="<{$s.id}>" class="edit oper">修改</a>
-                <a href="<{$s.id}>" class="del oper">删除</a>
+                <a href="{$s.id}" class="edit oper">修改</a>
+                <a href="{$s.id}" class="del oper">删除</a>
                 </td>
             </tr>
             </if>
@@ -131,7 +128,7 @@ $(document).ready(function() {
         </table>
     </div>
     
-    <div id="page"><{$page}></div>
+    <div id="page">{$page}</div>
 </div>
 </body>
 </html>

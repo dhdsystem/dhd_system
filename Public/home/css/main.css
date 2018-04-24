@@ -20,15 +20,15 @@ body { margin:0; padding:0; overflow:hidden; background: #eff0f4;}
 #main #top .top_right span:hover{color: #fff;}
 #main #top .top_right span img{position: relative;top: 8px;margin-right: 6px; }
 #main #left { float:left; width:16% !important; height:100%;background: #262E41; border-right:1px solid #d5d5d5; font-family:"微软雅黑"; position:relative; overflow-x:hidden;  }
-.left { width:14px; height:34px; background:url(../../image/home/left.png) no-repeat -1px -4px; position:absolute; left:156px; top:44%; }
+.left { width:14px; height:34px; background:url(../images/home/left.png) no-repeat -1px -4px; position:absolute; left:156px; top:44%; }
 .left:hover { cursor:pointer; }
 #main #left #ul { width:100%; height:auto; font-size:14px; color:#333; list-style:none;margin: 20px 0; }
-#main #left #ul li { line-height:40px; position:relative; background: url(../../image/home/quanxian.png) no-repeat 32px 15px;}
-#main #left #ul li:nth-child(2){background:url(../../image/home/chanping.png) no-repeat 32px 15px;}
-#main #left #ul li:nth-child(3){background:url(../../image/home/caiwu.png) no-repeat 32px 15px;}
-#main #left #ul li:nth-child(4){background:url(../../image/home/kehu.png) no-repeat 32px 15px;}
-#main #left #ul li:nth-child(5){background:url(../../image/home/xiaoshao.png) no-repeat 32px 15px;}
-#main #left #ul li:nth-child(6){background:url(../../image/home/feiyong.png) no-repeat 32px 15px;}
+#main #left #ul li { line-height:40px; position:relative; background: url(../images/home/quanxian.png) no-repeat 32px 15px;}
+#main #left #ul li:nth-child(2){background:url(../images/home/chanping.png) no-repeat 32px 15px;}
+#main #left #ul li:nth-child(3){background:url(../images/home/caiwu.png) no-repeat 32px 15px;}
+#main #left #ul li:nth-child(4){background:url(../images/home/kehu.png) no-repeat 32px 15px;}
+#main #left #ul li:nth-child(5){background:url(../images/home/xiaoshao.png) no-repeat 32px 15px;}
+#main #left #ul li:nth-child(6){background:url(../images/home/feiyong.png) no-repeat 32px 15px;}
 #main #left #ul li:hover{background-color: #2b374e;}
 #main #left #ul li a { display:block; width:100%; height:50px; line-height:50px; text-indent:66px; text-decoration:none; color:#fff; font-size: 16px;}
 #left .flush{padding: 0px 8px; background: #7ed321; border-radius: 4px;font-weight: 600;}

@@ -1,4 +1,41 @@
 <?php
+
+function get_user_id() { //获取当前登录用户的ID
+    return intval(session('user_id'));
+}
+function get_role_id() { //获取当前登录用户的ID
+    return intval(session('role_id'));
+}
+function get_user_name(){
+	return session('username');
+}
+/**
+ * /操作成功ajax调用
+ * @person 史炎
+ * @param  [type] $info [返回值]
+ * @param  [type] $data [返回数据]
+ * @return [type]       [json字符串]
+ * @time 2018/4/18 11:09
+ */
+
+function success_ajax($info='', $data='') { //成功提示
+    exit(json_encode(array('info' => $info, 'data' => $data, 's' => 'ok')));
+}
+
+
+/**
+ * /操作失败ajax调用
+ * @person sy
+ * @param  [type] $info [返回值]
+ * @param  [type] $data [返回数据]
+ * @return [type]       [json字符串]
+ * @time 2018/4/18 11:11
+ */
+
+function error_ajax($info,  $data='') { //失败提示
+     exit(json_encode(array('info' => $info, 'data' => $data, 's' => 'no')));
+}
+
 //密钥生成，用于接口校验以及前台用户密码生成
 function token($data=array(), $state=false) { 
 	$token = '';
@@ -66,3 +103,31 @@ function curls($url, $ispg='get' ,$data, $type=false, $time=120) {
 	if(!$type) $data = json_encode($data);
 	return $data;
 }
+
+
+/**
+     * Action: 分页方法
+     * User: sy
+     * Date: 2017/12/7
+     * Time: 上午 9:34
+     */
+    function pagess($table,$where="1=1",$pattern,$size=15)
+    {
+        $User = M($table); // 实例化User对象
+        $count = $User->where($where)->count();// 查询满足要求的总记录数
+        $Page = new \Think\Page($count,$size,$pattern);// 实例化分页类 传入总记录数和每页显示的记录数(25)
+
+        // $Page->setConfig('header','<li class="disabled hwh-page-info"><a>共<em>%TOTAL_ROW%</em>条  <em>%NOW_PAGE%</em>/%TOTAL_PAGE%页</a><>');
+        $Page->setConfig('prev','上一页');
+        $Page->setConfig('next','下一页');
+        $Page->setConfig('last','末页');
+        $Page->setConfig('first','首页');
+       
+
+        // print_r($Page);die;
+        $show = $Page->show();// 分页显示输出
+        return array('show'=>$show,'firstRow'=>$Page->firstRow,'listRows'=>$Page->listRows);
+    }
+
+ 
+   

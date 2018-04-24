@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>模板管理</title>
+    <link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
+    <link rel="csssheet" type="text/css" href="__CSS__/public.css"  />
+    <script type="text/javascript" src="__JS__/jquery.js"></script>
+    <script type="text/javascript" src="__JS__/Public.js"></script>
+    <script type="text/javascript" src="__JS__/winpop.js"></script>
+
+</head>
+<body>
+<div id="content">
+    <div class="topFix">
+        <h1>首页 > 财务管理 > 模板管理</h1>
+        <h2>
+            <div class="h2_left">
+                <a href="__APP__/Stencil/stencil_add" class="add">添加</a>
+               
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </h2>
+
+    </div>
+    <div class="tableBox">
+		<table id="table" border="1" bordercolor="#CCCCCC" cellpadding="0" cellspacing="0" style="width:100%">
+            <tr>
+                <th>编号</th>
+                <th>模板名称</th>
+                <th>模板类型</th>
+                <th>添加时间</th>
+                <th>业务员</th>
+                <th>操作</th>
+            </tr>
+            <volist name="list" id="vo">
+                <tr class="tr" value="1">
+                    <td class="tc">{$vo.id}</td>
+                    <td class="tc">{$vo.stencil_name}</td>
+                    <td class="tc">
+                        <if condition="$vo.stencil_type eq 1 ">
+                            合同模板
+                        <else /> 
+                            表格模板
+                        </if>
+                    </td>
+                    <td class="tc">{$vo.stencil_addtime|date='Y-m-d',###}</td>
+                    <td class="tc">{$vo.username}</td>
+                    <td class="tc fixed_w">
+                        <a href="__APP__/Stencil/stencil_save/id/{$vo.id}" class="edit oper">修改</a>
+                        <a href="__APP__/Stencil/stencil_del/id/{$vo.id}" class="del oper">删除</a>
+                    </td>
+                </tr>
+            </volist>
+        </table>	
+	</div>	
+    <div id="page">
+        {$show}
+    </div>
+</div>
+</body>
+</html>
