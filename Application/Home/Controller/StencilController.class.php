@@ -4,7 +4,7 @@ use Think\Controller;
 class StencilController extends Controller {
    /*模板管理*/
     public function stencil_index(){
-      $list = M('stencil')->field('dhd_stencil.id,stencil_name,stencil_type,stencil_remark,stencil_addtime,username')->join('dhd_user on dhd_stencil.user_id=dhd_user.id')->select();
+      $list = M('stencil')->field('dhd_stencil.id,stencil_name,stencil_type,stencil_remark,stencil_addtime,username,real_name')->join('dhd_user on dhd_stencil.user_id=dhd_user.id')->select();
       $this->assign('list',$list);
       $this->display();
     }

@@ -10,10 +10,11 @@ class GatherController extends Controller {
     			->join('dhd_user as u on g.u_id = u.id')
     			->where('gather_state=0')
     			->select();
+        $list = M('account')->field('id,name')->select();
     			// var_dump($data);die;
-   		$this->assign('data',$data);
-
-       $this->display();
+        $this->assign('data',$data);
+   		$this->assign('list',$list);
+        $this->display();
     }
 
 
@@ -41,6 +42,51 @@ class GatherController extends Controller {
         }
 
     }
+
+
+    // 删除
+    public function gather_del(){
+    	$id = I('get.id');
+    	// var_dump($id);die;
+    	$data['gather_state'] = '1';
+        $del = M('gather')->where(array('id'=>$id))->save($data);
+        if($del){
+            $this->success('删除成功', U('Gather/gather_index'));
+        }else{
+            $this->error('删除失败',U('Gather/gather_index'));
+        }
+    }
+
+
+    // 修改页面
+    public function gather_save(){
+    	$id = I('get.id');
+    	$data = M('gather')->where(array('id'=>$id))->find();
+   		$bank = M('account')->select();
+   		$this->assign('bank',$bank);
+    	// var_dump($data);die;
+   		$this->assign('data',$data);
+    	$this->display();
+
+    }
+
+
+
+
+
+    // 修改方法
+    public function gathersave_do(){
+    	$data = I('post.');
+    	// var_dump($data);die;
+        $save = M('gather')->where(array('id'=>$data['id']))->save($data);
+        if($save){
+            $this->success('修改成功', U('Gather/gather_index'));
+        }else{
+            $this->error('修改失败',U('Gather/gather_save?id='.$data['id']));
+        }
+    	
+    }
+
 
 
 

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加收款记录</title>
+    <link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
+    <script type="text/javascript" src="__JS__/jquery.js"></script>
+    <script type="text/javascript" src="__JS__/jquery.validate.js"></script>
+    <script type="text/javascript" src="__JS__/winpop.js"></script>
+    <!-- 日期插件 -->
+    <link rel="stylesheet" type="text/css" href="__CSS__/calendar.css"/>
+    <script type="text/javascript" src="__JS__/calendar.js"></script>
+    <script type="text/javascript" src="__JS__/page.js"></script>
+</head>
+<body>
+<div class="contract_cont"  id="content">
+    <h1>首页 > 财务管理 > 收款记录 > 修改收款记录 </h1>
+    <h2>
+        <div class="h2_left">
+            <a href="javascript:history.back();" class="Retreat">后退</a>
+        </div>
+    </h2>
+            <form action="__APP__/Gather/gathersave_do" method="post">
+            <dl id="cdl">
+                <dd>
+                    <span class="dd_left">一级科目：</span>
+                        <select name="firststep" class="tab_select" style="width: 754px;height: 40px;">
+                            <if condition="$data.firststep eq 代收">
+                                <option value="代收" selected="selected">代收</option>
+                            <else />
+                                <option value="代收">代收</option>
+                            </if>
+                            <if condition="$data.firststep eq 销售收入">
+                                <option value="销售收入" selected="selected">销售收入</option>
+                            <else />
+                                <option value="销售收入">销售收入</option>
+                            </if>
+                            <if condition="$data.firststep eq 其他收入">
+                                <option value="其他收入" selected="selected">其他收入</option>
+                            <else />
+                                <option value="其他收入">其他收入</option>
+                            </if>
+                        </select>
+                </dd>
+                <dd>
+                    <span class="dd_left">收款明细：</span>
+                        <select name="company" class="tab_select" style="width: 754px;height: 40px;">
+                            <if condition="$data.company eq 电费">
+                                <option value="电费" selected="selected">电费</option>
+                            <else />
+                                <option value="电费">电费</option>
+                            </if>
+                            <if condition="$data.company eq 装修费">
+                                <option value="装修费" selected="selected">装修费</option>
+                            <else />
+                                <option value="装修费">装修费</option>
+                            </if>
+                            <if condition="$data.company eq 代收缴税金">
+                                <option value="代收缴税金" selected="selected">代收缴税金</option>
+                            <else />
+                                <option value="代收缴税金">代收缴税金</option>
+                            </if>
+                            <if condition="$data.company eq 工商代垫费">
+                                <option value="工商代垫费" selected="selected">工商代垫费</option>
+                            <else />
+                                <option value="工商代垫费">工商代垫费</option>
+                            </if>
+                            <if condition="$data.company eq 复印费">
+                                <option value="复印费" selected="selected">复印费</option>
+                            <else />
+                                <option value="复印费">复印费</option>
+                            </if>
+                            <if condition="$data.company eq 装修押金">
+                                <option value="装修押金" selected="selected">装修押金</option>
+                            <else />
+                                <option value="装修押金">装修押金</option>
+                            </if>
+                            <if condition="$data.company eq 桌椅押金">
+                                <option value="桌椅押金" selected="selected">桌椅押金</option>
+                            <else />
+                                <option value="桌椅押金">桌椅押金</option>
+                            </if>
+                            <if condition="$data.company eq 门禁钥匙押金">
+                                <option value="门禁钥匙押金" selected="selected">门禁钥匙押金</option>
+                            <else />
+                                <option value="门禁钥匙押金">门禁钥匙押金</option>
+                            </if>
+                            <if condition="$data.company eq 电话拉线押金">
+                                <option value="电话拉线押金" selected="selected">电话拉线押金</option>
+                            <else />
+                                <option value="电话拉线押金">电话拉线押金</option>
+                            </if>
+                            <if condition="$data.company eq 其他">
+                                <option value="其他" selected="selected">其他</option>
+                            <else />
+                                <option value="其他">其他</option>
+                            </if>
+                        </select>
+                </dd>            
+                <dd>
+                    <span class="dd_left">收款金额：</span>
+                    <span>
+                        <input type="text" name="money" value="{$data.money}" class="qtext" id="m" />
+                    </span>
+                </dd>
+                <dd>
+                    <span class="dd_left">收款日期：</span>
+                    <span>
+                        <input type="text" name="gathertiem" value="{$data.gathertiem}" class="qtext dateofcollect" id="dateofcollect" />
+                        <div id="gathDate" style="left: 134px;top: 40px;"></div>
+                    </span>
+                </dd>
+                <dd>
+                <span class="dd_left">客户公司：</span>
+                    <input type="text" name="invoice" value="{$data.company}" class="qtext">
+                </dd>
+
+                <dd>
+                    <span class="dd_left">备注：</span>
+                    <textarea cols="30" rows="3" class="text_box">无</textarea>
+                    <input type="hidden" name="id" class="hiddenid" value="{$data['id']}">
+                </dd>
+                <dd>
+                    <span class="dd_left">收款账户：</span>
+                    <span>
+                        <select name="gather" class="tab_select" id="signcompany" style="width: 225px;height: 40pxpx;line-height: 40px;">
+                            <option value="0">请选择收款账户</option>
+                            <foreach name="bank" item="vo">
+                                <if condition="$data.gather eq $vo['id']">
+                                    <option value="{$vo['id']}" aid="{$vo['id']}"  selected="selected">{$vo['name']}</option>
+                                <else />
+                                    <option value="{$vo['id']}" aid="{$vo['id']}">{$vo['name']}</option>
+                                </if>
+                            </foreach>
+                    </select>
+                    </span>
+                </dd>
+                <dd>
+                    <span><input type="submit" value="提交" class="submit"/></span>
+                </dd>
+            </dl>
+            </form>
+</div>
+
+<script type="text/javascript">
+    // 收款账户
+    $(document).on('change','#signcompany',function(){
+        var signcompany_id = $(this).find("option:selected").attr('aid');
+        // alert(signcompany_id);
+        $.ajax({
+           type: "post",
+           url: "__APP__/Contract/collection",
+           data:'signcompany_id='+signcompany_id,
+           dataType:"json",
+           success: function(msg){
+                var html = '<select class="tab_select" name="collectaccount[]" id="bank" style="width: 320px;height: 42px;margin-left:4px;"><option value="0">请选择开户行</option>';
+                $.each(msg,function(k,v)
+                {
+                  html += '<option value="'+v.opacontbank+'" bid="'+v.id+'">'+v.opacontbank+'</option>';
+                })
+                html += '</select>';
+                $('#signcompany').nextAll().remove();
+                $('#signcompany').after(html);   
+           }
+       })    
+    })    
+    $(document).on('change','#bank',function(){
+        var opacontbank_id = $(this).find("option:selected").attr('bid');
+        $.ajax({
+           type: "post",
+           url: "__APP__/Contract/collection_bank",
+           data:'opacontbank_id='+opacontbank_id,
+           dataType:"json",
+           success: function(msg){
+            var s = '<select class="tab_select" name="collectaccount[]" style="width: 201px;height: 42px;margin-left:4px;"><option value="'+msg.opacontnum+'">'+msg.opacontnum+'</option></select>';
+            $('#bank').nextAll().remove();
+            $('#bank').after(s);   
+           }
+       })    
+    })
+
+</script>
+</body>
+</html>

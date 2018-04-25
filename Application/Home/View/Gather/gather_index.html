@@ -32,7 +32,7 @@
     <div style="margin: 10px 0 10px 0;overflow: hidden;" class="input_box">
     	<div>
     		<!--每日业绩统计表-->
-	        <form action="/?s=Home/Finance/dayStatic" method="post" id="dayStatic">
+	        <form action="Gather/gather_" method="post" id="dayStatic">
 	            <input type="text" value="" class="qtext" name="starttime" id="starttime" style="width: 128px;" placeholder="开始时间"><div id="sdd" style="left: 46px;top: 186px;"></div>&nbsp;～
 	            <input type="text" value="" class="qtext" name="endtime" id="endtime" style="width: 128px;" placeholder="结束时间"><div id="edd" style="left: 205px;top: 186px;"></div>&nbsp;
 	            <input type="submit" value="每日业绩统计" class="button">
@@ -42,14 +42,16 @@
     	</div>
         <div>
         	<!--每银行日流水收入统计表-->
-	        <form action="/?s=Home/Finance/dayStatic" method="post" id="dayStatic">
-	            <input type="text" value="" class="qtext" name="starttime" id="starttime2" style="width: 128px;" placeholder="开始时间"><div id="sdd2" style="left: 46px;top: 228px;"></div>&nbsp;～
-	            <input type="text" value="" class="qtext" name="endtime" id="endtime2" style="width: 128px;" placeholder="结束时间"><div id="edd2" style="left: 205px;top: 228px;"></div>&nbsp;
-	            <select class=" tab_select" style="width: 352px;height: 40px;">
+	        <form action="Gather/gather_" method="post" id="dayStatic">
+	            <input type="text" value="" class="qtext" name="starttime" id="starttime2" style="width: 128px;" placeholder="开始时间">
+	            <div id="sdd2" style="left: 46px;top: 228px;"></div>&nbsp;～
+	            <input type="text" value="" class="qtext" name="endtime" id="endtime2" style="width: 128px;" placeholder="结束时间">
+	            <div id="edd2" style="left: 205px;top: 228px;"></div>&nbsp;
+	            <select name="list" class=" tab_select" style="width: 352px;height: 40px;">
 	            	<option>请选择银行账户</option>
-	            	<option>工行1</option>
-	            	<option>农业银行</option>
-	            	<option>支付宝</option>
+                    <volist name="list" id="li">
+                        <option value="{$li.id}">{$li.name}</option> 
+                    </volist>
 	            </select>
 	            <input type="submit" value="每银行日流水收入统计" class="button">
 	        </form>
@@ -57,14 +59,16 @@
         </div>
         <div>
         	<!--收入台账统计表-->
-	        <form action="/?s=Home/Finance/dayStatic" method="post" id="dayStatic">
-	            <input type="text" value="" class="qtext" name="starttime" id="starttime3" style="width: 128px;" placeholder="开始时间"><div id="sdd3" style="left: 46px;top: 270px;"></div>&nbsp;～
-	            <input type="text" value="" class="qtext" name="endtime" id="endtime3" style="width: 128px;" placeholder="结束时间"><div id="edd3" style="left: 205px;top: 270px;"></div>&nbsp;
-	            <select class="tab_select" style="width: 352px;height: 40px;">
+	        <form action="Gather/gather_" method="post" id="dayStatic">
+	            <input type="text" value="" class="qtext" name="starttime" id="starttime3" style="width: 128px;" placeholder="开始时间">
+	            <div id="sdd3" style="left: 46px;top: 270px;"></div>&nbsp;～
+	            <input type="text" value="" class="qtext" name="endtime" id="endtime3" style="width: 128px;" placeholder="结束时间">
+	            <div id="edd3" style="left: 205px;top: 270px;"></div>&nbsp;
+	            <select name="list" class="tab_select" style="width: 352px;height: 40px;">
 	            	<option>请选择银行账户</option>
-	            	<option>工行1</option>
-	            	<option>农业银行</option>
-	            	<option>支付宝</option>
+                    <volist name="list" id="li">
+                        <option value="{$li.id}">{$li.name}</option> 
+                    </volist>
 	            </select>
 	            <input type="submit" value="收入台账统计" class="button">
 	        </form>
@@ -94,8 +98,8 @@
 		            <td class="tc">{$data.gathertiem}</td>
 		            <td class="tc">{$data.real_name}</td>
 		            <td class="tc fixed_w">
-			            <a href="{$data.id}" class="edit oper">修改</a>
-			            <a href="{$data.id}" class="del oper">删除</a>
+			            <a href="__APP__/Gather/gather_save/id/{$data.id}" class="edit oper">修改</a>
+			            <a href="__APP__/Gather/gather_del/id/{$data.id}" class="del oper">删除</a>
 		            </td>
 		        </tr>
 	        </volist>
