@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>材料管理|{$configcache['Title']}</title>
+    <title>材料管理</title>
     <link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
     <link rel="csssheet" type="text/css" href="__CSS__/public.css"  />
     <script type="text/javascript" src="__JS__/jquery.js"></script>
@@ -87,9 +87,9 @@
                 <tr class="tr" value="1">
                     <td class="tc">{$vo.id}</td>
                     <td class="tc">{$vo.class_name}</td>
-                    <td class="tc">{$vo.m_address}</td>
+                    <td class="tc">{$vo.pro_address}</td>
                     <td class="tc">{$vo.m_number}</td>
-                    <td class="tc"><div class="operation"><a href="" class="chakan oper">查看</a></div></div></td>
+                    <td class="tc"><div class="operation"><a href="__APP__/mater/mater_clientInfor/id/{$vo.id}" class="chakan oper">查看</a></div></div></td>
                     <td class="tc">{$vo.m_time|date='Y-m-d',###}</td>
                     <td class="tc fixed_w">
                         <a href="{$vo.id}" class="edit oper">修改</a>

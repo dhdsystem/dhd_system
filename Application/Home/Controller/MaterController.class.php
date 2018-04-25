@@ -7,8 +7,9 @@ class MaterController extends Controller {
        $where=array('m_type'=>0);
        $page=pagess('material',$where,'',10);
        $data=M('material')->alias('m')
-             ->join('dhd_class as c on c.id=m.class_id')
-             ->field('m.id,m_address,c.class_name,m_time,m_number')
+             ->join('dhd_product as c on c.id=m.m_address')
+             ->join('dhd_class  on dhd_class.id=m.class_id')
+             ->field('m.id,pro_address,class_name,m_time,m_number')
              ->limit($page['firstRow'],$page['listRows'])
              ->order('m.id desc')
              ->where('m_type=0')
@@ -38,7 +39,8 @@ class MaterController extends Controller {
 	/*获取注册地址*/
 	public function mater_address(){
 		$id=I('post.class_id');
-		$data=M('details')->where(array('class_id'=>$id))->field('id,det_address')->select();
+		$data=M('product')->where(array('class_id'=>$id))->field('id,pro_address')->select();
+		// echo M('class')->getlastsql();
 		// print_r($data);die;
 		echo json_encode($data);
 	}
@@ -67,14 +69,33 @@ class MaterController extends Controller {
 			}
 		}else{
 			$id=I('get.id');
-			$data=M('material')->alias('m')->where("m.id=$id")
-			->join('dhd_class as c on c.id=m.class_id')
-            ->field('m.id as mid,m_address,c.id as cid,c.class_name,m_time,m_number')
-            ->find();  
+			 $data=M('material')->alias('m')
+			 ->where("m.id=$id")
+			 ->join('dhd_product as c on c.id=m.m_address')
+             ->join('dhd_class on dhd_class.id=m.class_id')
+             ->field('m.id as mid,pro_address,dhd_class.id as cid,dhd_class.class_name,m_time,m_number')
+             ->find();  
 			$this->assign('data',$data);
 			$this->display();
 		}
 		
+	}
+
+	/*材料客户信息*/
+	public function mater_clientInfor(){
+    	$id =I('get.id');
+    	$data=M('material_contract')
+    	->where(array('dhd_material_contract.m_id'=>$id))
+    	->join('dhd_contract on dhd_contract.id=dhd_material_contract.con_id')
+		->join('dhd_client on dhd_client.id=dhd_contract.client_id')
+		->join('dhd_details on dhd_details.id=dhd_material_contract.det_id')
+		->join('dhd_product on dhd_product.id=dhd_details.pro_id')
+		->join('dhd_class on dhd_class.id=dhd_product.class_id')
+		->field('dhd_material_contract.id,class_name,pro_address,detailscoll,client_name')
+		->select();
+		//print_r($data);die;
+		$this->assign('data',$data);
+		$this->display();
 	}
 
 }
