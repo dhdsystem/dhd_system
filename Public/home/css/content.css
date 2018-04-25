@@ -103,10 +103,13 @@ input,textarea,select { font-size:12px; text-indent:4px; color:#111; }
 /*操作更多按钮*/
 #content #table .tr .fixed_w .operation{width:46px;height:33px;color: #060;background: #56A74D;color: #fff;
 position: relative;text-align: center;line-height: 33px;margin:auto;cursor: pointer}
+
 #content #table .tr .fixed_w .operarea{width:100px;height:auto;position:absolute;top:0px;left:46px;background: #E6E4E4;
 border-radius: 8px;display: none;}
 
 #content #table .tr .fixed_w .oper {     padding: 6px 8px;color: #060;border-radius: 10%;background: #45aaff;color: #fff;
+ text-decoration: none;}
+ #content #table .tr .fixed_w .operr {     padding: 6px 8px;color: #060;border-radius: 10%;background: #838B8B;color: #fff;
  text-decoration: none;}
 #content #table .tr .fixed_w .oper:hover{background: #2c92e8;}
 #content #table .tr .fixed_w .oper2 {color: #060;background: #D8DFE4;color: #666;

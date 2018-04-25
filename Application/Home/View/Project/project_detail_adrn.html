@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+<style>
+
+    .unkwn{border:1px solid #ccc;background: #fff;position: absolute;top:70px;z-index: 22;width: 530px;}
+    .unkwn p{font-size: 14px;color:#000;height:35px;line-height: 35px;padding-left:15px;cursor: pointer;}
+    .unkwn p:hover{background: #eee;}
+
+</style>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>项目管理</title>
@@ -8,6 +15,7 @@
     <script type="text/javascript" src="__JS__/jquery.js"></script>
     <script type="text/javascript" src="__JS__/Public.js"></script>
     <script type="text/javascript" src="__JS__/winpop.js"></script>
+    <link rel="stylesheet" type="text/css" href="__CSS__/popwin.css"  />
     <script>
         $(document).ready(function() {
             $('#content #table .tr .edit').click(function(event) {
@@ -68,11 +76,12 @@
 <body>
 <div id="content">
     <div class="topFix">
-        <h1>首页 > 产品管理 > 项目管理 > 产品详情> 地址号(未使用)</h1>
+        <h1>首页 > 产品管理 > 项目管理 > 产品详情> {$name}</h1>
         <h2>
             <div class="h2_left">
                 <a href="__APP__/project/project_detail_adr" class="add" title="切换已使用">已使用</a>
                 <a href="javascript:history.back();" class="Retreat">后退</a>
+                <a href="#" id="name" class="Retreat">一键预留</a>
                 <div class="clear"></div>
             </div>
             <div class="clear"></div>
@@ -84,17 +93,16 @@
             <tr>
                 <th>地址号</th>
                 <th>项目地址</th>
-                <th>普通/销售</th>
+                <th>{$name}</th>
                 <th>预出情况</th>
                 <th>操作</th>
             </tr>
             <volist name="volist" id="vo">
                 <tr class="tr" value="1">
-                    <td class="tc">{$vo.detailscoll}</td>
+                    <td class="tc"><input type="checkbox" name="message" value="{$vo.id}"></td>
                     <td class="tc">{$vo.pro_address}</td>
                     <td class="tc">
-                     <if condition="$vo['det_type'] eq 2">普通</if>
-                     <if condition="$vo['det_type'] eq 5">销售</if>
+                        {$vo.detailscoll}
                     </td>
                     <td class="tc">
                      <if condition="$vo['det_advance'] eq 1">预出</if>
@@ -106,7 +114,9 @@
                     <td class="tc fixed_w">
                         <a href="{$vo.id}" class="edit oper">修改</a>
                         <a href="{$vo.id}" class="del oper">删除</a>
-                        <a href="{$vo.id}" class="dels oper">预出</a>
+                          <if condition="$vo['det_advance'] eq 1"> <a href="#"  class=" operr">预出</a></if>
+                          <if condition="$vo['det_advance'] neq 1"> <a href="{$vo.id}"  class="dels oper">预出</a></if>
+                       
                     </td>
                 </tr>
             </volist>
@@ -115,6 +125,95 @@
     <div id="page">
         
     </div>
+
+</div>
+<!-- 弹窗2-->
+<div class="popWinBox popWinBox1">
+    <div class="popWin popWin1">
+        <div class="padd">
+            <form action="__APP__/project/project_one" onsubmit="return check()" method="post">
+                <dl>
+                <dd>
+                    <span class="dd_left">预留地址</span>
+                    <span class="dd_right" id="dizhi">
+                        <input type="text" name="middleman" class="middleman" id="qtext" autocomplete="off">
+                        <div id="quao"></div>
+                        <input type="hidden" name="det_id" class="det_id">
+                        <input type="hidden" name="y_id" class="ids">
+                    </span>
+                </dd>
+                <input type="submit" class="button" value="提交">
+                </dl>
+            </form>
+        </div>
+    </div>
 </div>
 </body>
 </html>
+<script>
+    $(function(){ 
+    $("#name").click(function() {
+        text = $("input:checkbox[name='message']:checked").map(function(index,elem) {
+            return $(elem).val();
+        }).get().join(',');
+        if(text.length==0){
+            alert('请选择要预留的地址号');
+            return false;
+        }
+        $(".det_id").val(text);
+        $('.popWinBox1').show();
+        $('body').click(function(e) {
+            var target = $(e.target);
+            if(!target.is('#name') && !target.is('.popWin1 *')) {
+                if ( $('.popWinBox1').is(':visible') ) {
+                    $('.popWinBox1').hide();
+                }
+            }
+        })
+    });
+    $(document).on('click','.midd',function(){
+        var middleman = $(this).html();
+        var middleid = $(this).attr('ids');
+        var middlename = $(this).attr('idna');
+        $('.middleman').val(middleman);
+        $('.ids').val(middleid);
+        // $('.middlename').val(middlename);
+        $('#quao').empty();
+
+    }) 
+    // 渠道商select选择
+    $(document).on('keyup','.middleman',function(){
+        var middleman = $(this).val();
+         //alert(middleman);
+        var data = {'middleman':middleman}
+        $.ajax({
+           type: "POST",
+           url: "__APP__/Client/clientadd_ajax",
+           data: data,
+           dataType:'json',
+           success: function(msg){
+            // alert(msg);
+                var html='<div class="unkwn">';
+                // console.log(msg);
+                if(msg=="")
+                {
+                    $('#quao').remove();
+                }else
+                {
+                    $(msg).each(function(i){
+                        html+="<p class='midd' idna='"+msg[i]['middle_man']+"' ids='"+msg[i]['id']+"'>"+msg[i]['middle_name']+"</p>";
+                    });
+                    $('#quao').empty().append(html);
+                }
+                html+='</div>'
+            }
+        });
+    })
+       
+   });
+
+    
+    
+    
+    
+</script>

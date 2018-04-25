@@ -116,3 +116,29 @@ border:1px solid #7ed321;color: #fff;cursor: pointer;}
     margin-left: 133px !important;
     margin-top: 16px;
 }
+
+/*新增 2018.4.25*/
+/*新弹窗*/
+.dd_left{display: block;width:90px;float: left;line-height: 38px;}
+.dd_right{
+    display: block;
+    width: auto;
+    line-height: 24px;
+    float: left;
+    text-align: left;
+}
+
+#qtext{
+    height: 38px !important;
+    border: 1px solid #e6e6e6 !important;
+    background-color: #fff !important;
+    border-radius: 2px;
+    display: inline-block;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-left: 10px;
+    width: 520px;
+    font-size: 14px;
+    box-shadow: none !important;
+}
+/*.popWinBox .qtext.active{border: 1px solid rgb(204, 204, 204);box-shadow: none !important;}*/

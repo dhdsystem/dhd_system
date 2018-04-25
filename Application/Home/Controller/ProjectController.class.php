@@ -171,17 +171,34 @@ class ProjectController extends Controller {
         $this->assign('volist',$na);
         $this->display();
     }
-    /*商品详情注册号*/
+    /*商品详情普通注册号*/
      public function project_detail_adm(){
 
         $class_id=I('get.class_id');
         $data=M('details');
-        $na=$data->where("pro_id=$class_id and det_type in (2,5) and det_del=0")
+        $na=$data->where("pro_id=$class_id and det_type = 2 and det_del=0")
         ->join('dhd_product on dhd_product.id=dhd_details.pro_id')
         ->field('dhd_details.id,det_type,detailscoll,pro_address,class_id,det_advance')
         ->select();
         //echo $data->getLastSql();die;
+        $name='普通注册号';
+        $this->assign('name',$name);
         $this->assign('volist',$na);
+        $this->display('project_detail_adrn');
+    }
+
+    /*商品详情销售注册号*/
+    public function project_detail_xsz(){
+        $class_id=I('get.class_id');
+        $data=M('details');
+        $na=$data->where("pro_id = $class_id and det_type = 5 and det_del=0")
+        ->join('dhd_product on dhd_product.id=dhd_details.pro_id')
+        ->field('dhd_details.id,det_type,detailscoll,pro_address,class_id,det_advance')
+        ->select();
+        // echo $data->getLastSql();die;
+        $name='销售注册号';
+        $this->assign('volist',$na);
+        $this->assign('name',$name);
         $this->display('project_detail_adrn');
     }
 
@@ -386,5 +403,21 @@ class ProjectController extends Controller {
             $this->display();
         }
     }
-
+    /*一键预留*/
+    public function project_one(){
+        $data=I('post.det_id');
+        $data=explode(",",$data);
+        foreach ($data as $key => $value) {
+                $arr[$key]['det_id']=$value;
+                $arr[$key]['middle_id']=I('post.y_id');
+                $arr[$key]['res_state']=1;
+                $arr[$key]['add_time']=time();
+        }
+        $res=M('reserved')->addAll($arr);
+        if($res){
+          $this->success('添加成功');
+        }else{
+          $this->error('添加失败');
+        }
+      }
 }
