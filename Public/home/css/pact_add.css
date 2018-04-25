@@ -1,0 +1,35 @@
+select {
+  font-weight: normal;
+  outline-style: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  }
+ul li{list-style: none;}
+.xian{border-bottom: 1px solid #E0E0E0;height: 40px;line-height: 40px;padding-left: 10px;font-size: 16px;color: #525252;
+margin-top: 30px; }
+.iptBox{margin-top: 12px;}
+.ipt_left{display: block;width: 148px;line-height: 40px;float: left;
+text-align: right;color: #444;margin-right: 6px;font-size: 14px; height: 40px;}
+.red {color: red;vertical-align: sub;width: 18px;font-size: 13px;display: inline-block;text-align: center;}
+.pact_ipt{height: 38px;border: 1px solid #e6e6e6;background-color: #fff;border-radius: 2px;display: block;
+padding-left: 10px;width: 742px;font-size: 14px;}
+.pact_select{border: 1px solid #e6e6e6;border-radius: 2px;-webkit-appearance: none;
+-moz-appearance: none;outline: none;padding-left: 10px; width: 756px; height: 40px;font-size: 14px;}
+#vas {background: #fff;position: absolute;left: 134px;box-shadow: 0 5px 8px 0 rgba(0,0,0,.2); width: 80%;
+ z-index: 1;}
+.rightsp{line-height: 40px;position: absolute;left: 915px;top:0;}
+.zhushi{font-size: 14px;padding:50px 0 10px 30px;font-weight: bold;}
+
+.pact_ipt2{width: 359px;display: inline-block;}
+.iptBox .pact_text_box{width: 732px;
+    border: 1px solid #e6e6e6 !important;
+    border-radius: 2px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    padding: 10px;
+    font-size: 14px;
+    box-shadow: none !important;
+    height:120px;
+  }
+.timeBox{display: inline-block;width: auto;line-height: 24px;text-align: left;position: relative;}

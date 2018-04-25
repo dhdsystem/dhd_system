@@ -143,24 +143,7 @@
                 </span>
                 
             </dd>
-            <dd>
-                <span class="dd_left">公司办公地址：</span>
-                <span class="dd_right">
-                    <input name="client_address" id="customcontacter" type="text" class="qtext" size="40" />
-                </span>
-            </dd>
-            <dd>
-                <span class="dd_left">公司联系人：</span>
-                <span class="dd_right">
-                    <input name="client_man" id="customcontacter" type="text" class="qtext" size="40" />
-                </span>
-            </dd>
-            <dd>
-                <span class="dd_left">公司联系人电话：</span>
-                <span class="dd_right">
-                    <input name="client_tel" id="customcontacter" type="text" class="qtext" size="40" />
-                </span>
-            </dd>
+
             <dd>
                 <span class="dd_left">注册资金：</span>
                 <span class="dd_right">
@@ -232,13 +215,13 @@
     $(document).on('change','#customtype',function(){
         var contract=$(this).val();
         $('#xu').empty()
-        $('.center').remove()
+        $('#center').empty()
        
         // 控制中间部分input标签的可用性
         if(contract=='渠道客户'){
             var state = 1;
             var str='<dd><span class="dd_left"><input type="hidden" name="nuddke_id" id="middelid"/>渠道公司：</span><span class="dd_right"><input name="middleman" type="text" class="qtext" size="40" value="" id="middleman" autocomplete="off"/><div id="quao"></div></span></dd><dd><span class="dd_left">联系人：</span><span class="dd_right"><input name="middlename" id="middlename" type="text" class="qtext" size="30" /></span></dd>';
-                $('#center').empty().append(str);
+                $('#center').append(str);
         }
         
         

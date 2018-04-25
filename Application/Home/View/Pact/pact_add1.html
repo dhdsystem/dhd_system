@@ -5,7 +5,7 @@
     <title>出合同信息</title>
     <link rel="stylesheet" type="text/css" href="__CSS__/content.css"/>
     <link rel="stylesheet" type="text/css" href="__CSS__/public.css"/>
-    <link rel="stylesheet" type="text/css" href="__CSS__/pact_add.css"/>
+    <link rel="stylesheet" type="text/css" href="__CSS__/contract.css"/>
     <script type="text/javascript" src="__JS__/jquery.js"></script>
     <script type="text/javascript" src="__JS__/Public.js"></script>
     <script type="text/javascript" src="__JS__/winpop.js"></script>
@@ -24,145 +24,207 @@
     </h2>
     <form method="post" action="" enctype="multipart/form-data">
         <input type="hidden" name="" value="">
-        <ul>
-            <li class="xian">基础信息</li>
-            <li class="iptBox">
-                <span class="ipt_left"><em class="red">*</em>签订日期：</span>
-                <input type="text" name="ac_time" id="ac_time" class="pact_ipt"/>
-                <div id="sdd" style="left: 243px;top: 284px;"></div>
-            </li>
-            <li class="iptBox">
-                <span class="ipt_left"><em class="red">*</em>合同性质：</span>
-                <select  name="" class="pact_select" >
-                    <option value="">--请选择--</option>
-                    <option value="新注册">新注册</option>
-                    <option value="变更">变更</option>
-                    <option value="续签">续签</option>
-                </select>
-            </li>
-            <li class="xian">客户信息</li>
-            <li class="iptBox">
-                <span class="ipt_left"><em class="red">*</em>客户分组：</span>
-                <input type="text" name="middle_state" value="{$client.middle_state}" class="pact_ipt"/>
-            </li>
+        <div class="jibinfo">基础信息</div>
+        <table class="contract_table1">
+            <tr>
+                <td class="table1_left">
+                    <span class="tab_left"><em class="red">*</em>签订日期：</span>
+                    <input type="text" name="ac_time" id="ac_time" class="tab_input"/>
+                    <div id="sdd" style="left: 243px;top: 284px;"></div>
+                </td>
+            </tr>
+            <tr> 
+                <td class="table1_left">
+                    <span class="tab_left"><em class=" red">*</em>合同性质：</span>
+                        <select  name="" class="tab_select" >
+                            <option value="">--请选择--</option>
+                            <option value="新注册">新注册</option>
+                            <option value="变更">变更</option>
+                            <option value="续签">续签</option>
+                        </select>
+                    </span>
+                </td>
+            </tr>
+
+        </table>
+        <div class="jibinfo">客户信息</div>
+        <table class="contract_table1">
+            <tr>
+                <td class="table1_left">
+                    <span class="tab_left"><em class="red">*</em>客户分组：</span>
+                    <input type="text" name="middle_state" value="{$client.middle_state}" class="tab_input"/>
+                   
+                </td>
+            </tr>
             <if condition="$client.middle_state eq '直接客户' ">
                 
 
-            <else /> 
-                <li class="iptBox">
-                    <span class="ipt_left"><em class="red">*</em>{$client.middle_state}公司：</span>
-                    <input type="text" name="middle_name" value="{$client.middle_name}" class="pact_ipt"/>
-                    <div id="vas"></div>
-                </li>
-                <li class="iptBox">
-                    <span class="ipt_left"><em class="red">*</em>{$client.middle_state}联系人：</span>
-                    <input type="text" name="middle_man" value="{$client.middle_man}" class="pact_ipt"/>
-                </li>
-                <li class="iptBox">
-                    <span class="ipt_left"><em class="red">*</em>{$client.middle_state}联系人电话：</span>
-                    <input type="text" name="middle_tel" value="{$client.middle_tel}" class="pact_ipt"/>
-                </li>
-
-                <li class="iptBox">
-                    <span class="ipt_left"><em class="red">*</em>{$client.middle_state}办公地址：</span>
-                    <input type="text" name="middle_address" value="{$client.middle_address}" class="pact_ipt"/>
-                </li>
+            <else />             
+                <tr>
+                    <td class="table1_left">
+                        <span class="tab_left">{$client.middle_state}公司：</span><input type="text" name="middle_name" id="cen_company" value="{$client.middle_name}" class="tab_input" zid=""/><div id="vas"></div>
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td class="table1_left">
+                        <span class="tab_left">{$client.middle_state}联系人：</span>
+                        <input type="text" name="middle_man" value="{$client.middle_man}" class="tab_input" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="table1_left">
+                        <span class="tab_left">{$client.middle_state}联系人电话：</span>
+                        <input type="text" name="middle_tel" value="{$client.middle_tel}" class="tab_input" />
+                    </td>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="table1_left">
+                        <span class="tab_left">{$client.middle_state}办公地址：</span>
+                        <input type="text" name="middle_address" value="{$client.middle_address}" class="tab_input" />
+                    </td>
+                </tr>
             </if>
-            <br>
-            <!-- 客户公司信息 -->
-            <li class="iptBox">
-                <span class="ipt_left"><em class="red">*</em>客户公司：</span>
-                <input type="text" name="client_name" value="{$client.client_name}" class="pact_ipt"/>
-                <div id="vas"></div>
-            </li>
-            <li class="iptBox" style="position: relative;">
-                <span class="ipt_left"><em class="red">*</em>注册资金：</span>
-                <input type="text" name="client_money" value="{$client.client_money}" class="pact_ipt"/>
-                <span class="rightsp"> 万</span>
-            </li>
-            <li class="iptBox">
-                <span class="ipt_left"><em class="red">*</em>法人姓名：</span>
-                <input type="text" name="legalperson" value="{$client.legalperson}" class="pact_ipt"/>
-            </li>
-            <li class="iptBox">
-                <span class="ipt_left"><em class="red">*</em>法人联系电话：</span>
-                <input type="text" name="legaltel" value="{$client.legaltel}" class="pact_ipt"/>
-            </li>
-            <li class="iptBox">
-                <span class="ipt_left"><em class="red">*</em>法人身份证号：</span>
-                <input type="text" name="legalidnum" value="{$client.legalidnum}" class="pact_ipt"/>
-            </li>
-            <li class="iptBox">
-                <span class="ipt_left"><em class="red">*</em>纳税形式：</span>
-                <if condition="$client.taxstyle eq 0 ">
-                    <input type="text" name="taxstyle" value="小规模" class="pact_ipt"/>
-                <else />
-                    <input type="text" name="taxstyle" value="一般人" class="pact_ipt"/>
-                </if>
-            </li>
-            <li class="iptBox">
-                <span class="ipt_left"><em class="red">*</em>信用代码：</span>
-                <input type="text" name="credit_code" value="{$client.credit_code}" class="pact_ipt"/>
-            </li>            
-            <li class="iptBox">
-                <span class="ipt_left"><em class="red">*</em>办公地址：</span>
-                <input type="text" name="client_address" value="{$client.client_address}" class="pact_ipt"/>
-            </li>
-            <li class="iptBox">
-                <span class="ipt_left"><em class="red">*</em>其他联系人：</span>
-                <input type="text" name="client_man" value="{$client.client_man}" class="pact_ipt"/>
-            </li>
-            <li class="iptBox">
-                <span class="ipt_left"><em class="red">*</em>联系人电话：</span>
-                <input type="text" name="client_tel" value="{$client.client_tel}" class="pact_ipt"/>
-            </li>
-            <li class="xian">合同信息</li>
-            <li class="iptBox">
-                <span class="ipt_left"><em class="red">*</em>合同类型：</span>
-                <select name="contracttype" id="contracttype" class="pact_select">
-                    <option value="0">选择合同分类</option>
-                    <option value="大面积出租">大面积出租</option>
-                    <option value="mini房间">mini房间</option>
-                    <option value="工位注册办公">工位注册办公</option>
-                    <option value="工位不注册办公">工位不注册办公</option>
-                    <option value="会议室出租">会议室出租</option>
-                    <option value="注册地址">注册地址</option>
-                    <option value="代理记账">代理记账</option>
-                    <option value="工商代理">工商代理</option>                    
-                </select> 
-            </li>
-            <div id="zhuijia"></div>
-            <li class="zhushi">合同信息</li>
-            <li class="iptBox">
-            <input type="hidden" id="account_id" name="account_id">
-                <span class="ipt_left"><em class="red">*</em>收款账户：</span>
-                <select id="account"   class="pact_select" >
-                <option value="">请选择收款账户</option>
-                <foreach name="account" item="vo" >
-                    <option value="{$vo.id}">{$vo.acc_name}</option>
-                </foreach>
-                </select>
-            </li>
-            <div id="bank"></div>
-            <li class="iptBox" style="position: relative;">
-                <span class="ipt_left"><em class="red">*</em>实际金额：</span>
-                <input type="text" name="" value="" class="pact_ipt"/>
-                <span class="rightsp">元（大写）</span>
-            </li>
-            <li class="zhushi">部门</li>
-            <li class="iptBox" style="margin-bottom: 30px;">
-                <span class="ipt_left"><em class="red">*</em>业务员：</span>
-                <input type="hidden" name="account_id">
-                <select id="role_name"  class="pact_select" >
-                    <option value="0">请选择部门</option>
-                    <foreach name="role" item="vo" >
-                        <option value="{$vo.id}">{$vo.role_name}</option>
-                    </foreach>  
-                </select>
-            </li>
-            <div id="role"></div>
-            <div id="user"></div>
-        </ul>
+
+        </table>
+        <!-- 客户公司信息 -->
+        <table class="contract_table1">
+            <tr>
+                <td class="table1_left">
+                    <span class="tab_left"><em class="red">*</em>客户公司：</span>
+                    <input type="text" name=""  value="{$client.client_name}" class="tab_input"/>
+                    <div id="vas"></div>
+                </td>
+            </tr>
+            <tr>
+                <td class="table1_right" style="position: relative;">
+                    <span class="tab_left"><em class="red">*</em>注册资金：</span>
+                    <input type="text"  name="" value="{$client.client_money}" class="tab_input"/>
+                    <span class="rightsp"> 万</span>
+                </td> 
+            </tr>
+            <tr>
+                <td class="table1_left">
+                    <span class="tab_left"><em class="red">*</em>法人姓名 ：</span>
+                    <input type="text" name="" value="{$client.legalperson}" class="tab_input"/>
+                </td>
+                
+            </tr>
+            <tr>
+                <td class="table1_left">
+                    <span class="tab_left"><em class="red">*</em>法人身份证号：</span>
+                    <input type="text" name="" value="{$client.legalidnum}" class="tab_input"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="table1_left">
+                    <span class="tab_left"><em class="red">*</em>法人联系电话：</span>
+                    <input type="text" name="" value="{$client.legaltel}" class="tab_input"/>
+                </td>  
+            </tr>
+            <tr>
+                <td class="table1_right">
+                    <span class="tab_left"><em class="red">*</em>纳税形式：</span>
+                    <if condition="$client.taxstyle eq 0 ">
+                        <input type="text" name="taxstyle" value="小规模" class="tab_input"/>
+                    <else />
+                        <input type="text" name="taxstyle" value="一般人" class="tab_input"/>
+                    </if>
+                    
+                </td>
+            </tr>
+
+            <tr>
+                <td class="table1_right">
+                    <span class="tab_left">信用代码：</span>
+                    <input type="text" name="" value="{$client.credit_code}" class="tab_input"/>
+                </td>  
+            </tr>
+
+            <tr>
+                <td class="table1_left">
+                    <span class="tab_left"><em class="red">*</em>办公地址：</span>
+                    <input type="text" name="" value="{$client.client_address}" class="tab_input"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="table1_right">
+                    <span class="tab_left">其他联系人：</span>
+                    <input type="text" name="" value="{$client.client_man}" class="tab_input" />
+                </td>
+            </tr>
+            <tr>
+                <td class="table1_right">
+                    <span class="tab_left">联系人电话：</span>
+                    <input type="text" name="" value="{$client.client_tel}" class="tab_input" />
+                </td>
+            </tr>    
+        </table>
+        <div class="jibinfo">合同信息</div>
+        <table class="contract_table1">
+            <tr>
+                <td class="table1_left">
+                    <span class="tab_left"><em class=" red">*</em>合同类型：</span>
+                    <select name="contracttype" id="contracttype" class="tab_select">
+                        <option value="0">选择合同分类</option>
+                        <option value="大面积出租">大面积出租</option>
+                        <option value="mini房间">mini房间</option>
+                        <option value="工位注册办公">工位注册办公</option>
+                        <option value="工位不注册办公">工位不注册办公</option>
+                        <option value="会议室出租">会议室出租</option>
+                        <option value="注册地址">注册地址</option>
+                        <option value="代理记账">代理记账</option>
+                        <option value="工商代理">工商代理</option>                    
+                    </select>                   
+                </td>    
+            </tr>
+        </table>
+        <div id="zhuijia"></div>
+        <!-- 收款账户 -->
+        <table  class="contract_table1">
+            <tr><td class="table1_left"><h4>账号信息</h4></td></tr>
+            <tr>
+                <td class="table1_left" colspan="2" id="teshu">
+                    <span class="tab_left"><em class="red">*</em>收款账户：</span>
+                    <select name="" class="tab_select">
+                        <option value="0">请选择收款账户</option>
+                        <option value="20">陈晓珍 工行</option>
+                        <option value="21">陈晓珍 建行</option>
+                        <option value="22">陈晓珍 支付宝</option>
+                        <option value="23">北京东辉达科技孵化器有限公司 </option>
+                        <option value="24">北京去创创科技有限公司 </option>
+                        <option value="25">北京融兴通远财务咨询有限公司</option>
+                        <option value="26">北京创也江湖科技有限公司</option>
+                        <option value="27">北京税先知科技有限公司</option>
+                        <option value="28">陈晓珍  微信</option>
+                        <option value="29">现金账户</option>                    
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="table1_left" style="position: relative;">
+                    <span class="tab_left">实际金额：</span>
+                    <input type="text" name="" value="" class="tab_input yuan" />
+                    <span class="rightsp" style="right:-64px;">元（大写）</span> 
+                </td>
+            </tr>
+        </table>
+        <!-- 业务员 -->
+        <table  class="contract_table1">
+            <tr><td class="table1_left"><h4>业务员</h4></td></tr>
+            <tr>
+                <td class="table1_left" colspan="2">
+                    <span class="tab_left"><em class="red">*</em>业务员：</span>
+                    <select name="" class="tab_select">
+                        <option value="0">请选择部门</option>
+                        <option value="渠道一部" deid="18">渠道一部</option>
+                        <option value="渠道二部" deid="19">渠道二部</option>
+                        <option value="直销部" deid="20">直销部</option>                    
+                    </select>
+                </td>
+            </tr>
+        </table>
         <input type="submit" value="提交" class="submit">
     </form>
 </div>
@@ -173,7 +235,7 @@
             zIndex: 999,
             format: 'yyyy-mm-dd'
         });
-    });                  
+    });                   
     // 合同类型
     $(document).on('change','#contracttype',function(){
 
@@ -209,8 +271,9 @@
         if(ord == '0' || ord == '会议室出租'){
             red = 'kong';
         }
+        alert(red)
         $.ajax({
-            url: './?s=Home/Pacttype/'+red,
+            url: './?s=Home/Pact/'+red,
             global: false,
             type: "POST",
             dataType: "html",
@@ -380,62 +443,77 @@
             }
         });
     })
-    // 银行账户联动
-    $(document).on('change','#account',function() {
-        var id = $(this).val();
-        ;
+    // 收款账户联动
+    $(document).on('change','#signcompany',function(){
+        var signcompany_id = $(this).val();
+        $('#teshu select').css('width','475px');
         $.ajax({
-            type: "POST",
-            url: "__APP__/Pact/account",
-            data:{'id':id},
-            dataType:"json",
-            success: function(msg){
-                var html = '<li class="iptBox"><span class="ipt_left"><em class="red">*</em>开户行：</span><input type="text" name="client_tel" value="'+msg.opacontbank+'" class="pact_ipt"/></li><li class="iptBox"><span class="ipt_left"><em class="red">*</em>银行卡号：</span><input type="text" name="client_tel" value="'+msg.contnum+'" class="pact_ipt"/></li>'; 
-                    $('#bank').empty().append(html);
-                    $('account_id').val(msg.id)
-                
-            }
-        })    
-    })
-
-    // 业务员职位联动
-    $(document).on('change','#role_name',function(){
-        var id = $(this).val();
-      
-        $.ajax({
-            type: "POST",
-            url: "__APP__/Pact/role_sel",
-            data:{'id':id},
-            dataType:"json",
-            success: function(msg){
-
-                var html = '<li class="iptBox" style="margin-bottom: 30px;"><span class="ipt_left"><em class="red">*</em>职位：</span><select class="pact_select"  id="quarters"><option value="0">请选择职位</option>';
+           type: "post",
+           url: "/?s=Home/Contract/collection",
+           data:'signcompany_id='+signcompany_id,
+           dataType:"json",
+           success: function(msg){
+                var html = '<select class="tab_select" name="banks" id="bank"><option value="0">请选择开户行</option>';
                 $.each(msg,function(k,v)
                 {
-                  html += '<option value="'+v.id+'">'+v.role_name+'</option>';
+                  html += '<option value="'+v.opacontbank+'" bid="'+v.id+'">'+v.opacontbank+'</option>';
                 })
-                html += '</select></li>';
-                $('#role').empty().append(html);
-                 
+                html += '</select>';
+                $('#signcompany').nextAll().remove();
+                $('#signcompany').after(html);   
            }
        })    
     })    
-    // 业务员人员联动
-    $(document).on('change','#quarters',function(){
-        var id = $(this).val();
+    $(document).on('change','#bank',function(){
+        var opacontbank_id = $(this).find("option:selected").attr('bid');
         $.ajax({
-            type: "POST",
-            url: "__APP__/Pact/user_sel",
-            data:{'id':id},
-            dataType:"json",
-            success: function(msg){
-                var html = '<li class="iptBox" style="margin-bottom: 30px;"><span class="ipt_left"><em class="red">*</em>业务员：</span><select class="pact_select"  id="user_id"><option value="0">请选择业务员</option>';
+           type: "post",
+           url: "/?s=Home/Contract/collection_bank",
+           data:'opacontbank_id='+opacontbank_id,
+           dataType:"json",
+           success: function(msg){
+            var s = '<select class="tab_select bank" name="bank_num"><option value="'+msg.opacontnum+'">'+msg.opacontnum+'</option></select>';
+            $('#bank').nextAll().remove();
+            $('#bank').after(s);   
+           }
+       })    
+    })
+    // 业务员联动
+    $(document).on('change','#department',function(){
+        var deid = $(this).find("option:selected").attr('deid');
+        $.ajax({
+           type: "post",
+           url: "/?s=Home/Contract/position",
+           data:'id='+deid,
+           dataType:"json",
+           success: function(msg){
+                var html = '<select class="tab_select" name="quarters" id="quarters"><option value="0">请选择岗位</option>';
                 $.each(msg,function(k,v)
                 {
-                  html += '<option value="'+v.id+'">'+v.username+'</option>';
+                  html += '<option value="'+v.role_name+'" quid="'+v.id+'">'+v.role_name+'</option>';
                 })
-                html += '</select></li>';
-                $('#user').empty().append(html);
+                html += '</select>';
+                $('#department').nextAll().remove();
+                $('#department').after(html);   
+           }
+       })    
+    })    
+    $(document).on('change','#quarters',function(){
+        var quarters = $(this).find("option:selected").attr('quid');
+        $.ajax({
+           type: "post",
+           url: "/?s=Home/Contract/position",
+           data:'id='+quarters,
+           dataType:"json",
+           success: function(msg){
+                var html = '<select class="tab_select" name="salesman"><option value="0">请选择业务员</option>';
+                $.each(msg,function(k,v)
+                {
+                  html += '<option value="'+v.role_name+'">'+v.role_name+'</option>';
+                })
+                html += '</select>';
+            $('#quarters').nextAll().remove();
+            $('#quarters').after(html);   
            }
        })    
     })

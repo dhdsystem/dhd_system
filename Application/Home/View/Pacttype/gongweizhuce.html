@@ -1,0 +1,114 @@
+<li class="iptBox">
+    <span class="ipt_left"><em class="red">*</em>签订公司：</span>
+    <select  name="" class="pact_select" >
+        <option value="0">请选择签订公司</option>
+        <option value="北京东辉达科技有限公司">北京东辉达科技有限公司</option>
+        <option value="北京去创创科技有限公司">北京去创创科技有限公司</option>
+        <option value="北京融兴通远财务咨询有限公司">北京融兴通远财务咨询有限公司</option>
+        <option value="北京创也江湖科技有限公司">北京创也江湖科技有限公司</option>  
+    </select>
+</li>
+<li class="xian">租赁房间信息</li>
+<li class="iptBox">
+    <span class="ipt_left"><em class="red">*</em>项目：</span>
+    <select  name="" class="pact_select" >
+        <option value="0">请选择项目</option>
+        <option value="金隅嘉华大厦">金隅嘉华大厦</option>
+        <option value="财智国际大厦">财智国际大厦</option>
+    </select>
+</li>
+<li class="iptBox">
+    <span class="ipt_left"><em class="red">*</em>地址：</span>
+    <select  name="" class="pact_select" >
+        <option value="0">请选择地址</option>
+    </select>
+</li>
+
+<!-- 分割线 -->
+
+<li class="xian">工位办公注册</li>
+<li class="iptBox">
+    <span class="ipt_left"><em class="red">*</em>商务服务费用：</span>
+    <input type="text" name="" value="" class="pact_ipt" placeholder="元/月（大写）">
+</li>
+<li class="iptBox">
+    <span class="ipt_left"><em class="red">*</em>是否含税：</span>
+    <select  name="" class="pact_select" >
+        <option value="">是</option>
+        <option value="">否</option>
+    </select>
+</li>
+<li class="iptBox">
+    <span class="ipt_left"><em class="red">*</em>工位办公服务费用：</span>
+    <input type="text" name="" value="" class="pact_ipt" placeholder="元/月（大写）">
+</li>
+<li class="iptBox">
+    <span class="ipt_left"><em class="red">*</em>是否含税：</span>
+    <select  name="" class="pact_select" >
+        <option value="">是</option>
+        <option value="">否</option>
+    </select>
+</li>
+<li class="iptBox">
+    <span class="ipt_left"><em class="red">*</em>服务期限：</span>
+    <input type="text" name="" value="" class="pact_ipt" placeholder="年">
+</li>
+<li class="iptBox">
+    <span class="ipt_left"><em class="red">*</em>租赁日期：</span>
+    <span class="timeBox">
+        <input type="text" name="" value="" class="pact_ipt pact_ipt2" id="rentstarttime">
+        <div id="rentstar" style="left: 0px;top: 40px;"></div>
+    </span>
+    <span style="line-height: 40px;display: inline-block;">～</span>
+    <span class="timeBox">
+        <input type="text" name="" value="" class="pact_ipt pact_ipt2" id="rentendtime">
+        <div id="rentend" style="left: 0px;top: 40px;"></div>
+    </span>
+</li>
+
+<li class="xian">房屋及付款方式</li>
+<li class="iptBox">
+    <span class="ipt_left"><em class="red">*</em>每周期前：</span>
+    <input type="text" name="" value="" class="pact_ipt" placeholder="天">
+</li>
+<li class="iptBox">
+    <span class="ipt_left"><em class="red">*</em>付款方式：</span>
+    <select  name="" class="pact_select" >
+        <option value="">押一付六</option>
+        <option value="">押一付十二</option>
+        <option value="">押一付三</option>
+    </select>
+</li>
+<li class="iptBox">
+    <span class="ipt_left"><em class="red">*</em>月金额：</span>
+    <input type="text" name="" value="" class="pact_ipt" placeholder="元 （大写）">
+</li>
+<li class="iptBox">
+    <span class="ipt_left"><em class="red">*</em>押金：</span>
+    <input type="text" name="" value="" class="pact_ipt" placeholder="元 （大写）">
+</li>
+<li class="iptBox">
+    <span class="ipt_left"><em class="red">*</em>年金额：</span>
+    <input type="text" name="" value="" class="pact_ipt" placeholder="元 （大写）">
+</li>
+<li class="iptBox">
+    <span class="ipt_left"><em class="red">*</em>每期金额：</span>
+    <input type="text" name="" value="" class="pact_ipt" placeholder="元 （大写）">
+</li>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#rentstar').calendar({
+            trigger: '#rentstarttime',
+            zIndex: 999,
+            format: 'yyyy-mm-dd'
+        });
+        $('#rentend').calendar({
+            trigger: '#rentendtime',
+            zIndex: 999,
+            format: 'yyyy-mm-dd'
+        });
+    });
+</script>
