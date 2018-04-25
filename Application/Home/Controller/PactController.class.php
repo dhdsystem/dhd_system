@@ -8,6 +8,24 @@ class PactController extends Controller {
     }
     public function pact_add()
     {
+    	$id =I('get.id');
+
     	$this->display();
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

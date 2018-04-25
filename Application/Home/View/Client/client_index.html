@@ -52,12 +52,12 @@
 		<table id="table" border="1" bordercolor="#CCCCCC" cellpadding="0" cellspacing="0" style="width:150%">
             <tr>
                 <th>公司名称</th>
+                <th>公司地址</th>
                 <th>法人姓名</th>
                 <th>法人电话</th>
-                <th>业务员</th>
                 <th>纳税形式</th>
-                <th>信用代码</th>
-                <th>客户分组</th>
+                <th>注册金额</th>
+                <th>业务员</th>
                 <th>操作</th>
             </tr>
             <volist name="volist" id="vo">
@@ -66,14 +66,16 @@
                     <td class="tc">{$vo.client_address}</td>
                     <td class="tc">{$vo.legalperson}</td>
                     <td class="tc">{$vo.legaltel}</td>
-                    <td class="tc">{$vo.sales_id}</td>
+                    <td class="tc">
+                        <if condition="$lsit.taxstyle eq 1 ">一般人<else />小规模</if>
+                    </td>
                     <td class="tc">{$vo.client_money}</td>
-                    <td class="tc">{$vo.taxstyle}</td>
+                    <td class="tc">{$vo.username}</td>
                     
                     <td class="tc fixed_w">
                         <div class="operation">更多
                             <div class="operarea">
-                                <a href="javascript:;" class="yuliu oper2">预留地址号</a>
+                                <a href="javascript:;" clientid="{$vo.id}" class="yuliu oper2">预留地址号</a>
                                 <a href="__APP__/Client/client_save/id/{$vo.id}" class="edit oper2">修改/查看</a>
                                 <a href="__APP__/Pact/pact_add/id/{$vo.id}" class="edit oper2">出合同</a>
                                 <a href="__APP__/Client/client_del/id/{$vo.id}" class="del2 oper2">删除</a>
@@ -145,19 +147,20 @@
 <div class="popWinBox popWinBox2">
     <div id="zhuijia">
         <div class="padd">
-            <form action="/oa/?s=Home/Client/client_pre" onsubmit="return check()" method="post">
+            <form action="__APP__/Client/reserved_add" onsubmit="return check()" method="post">
                 <dl>
                 <dd>
                     <span class="dd_left">预留地址项目</span>
                     <span class="dd_right" id="xiangmu">
                         <select class="select" name="class_id" id="class_id">
                             <option value="">请选择</option>
-                            <option value="9">群英科技园</option>
-                            <option value="8">新材料创业大厦</option>
-                            <option value="7">财智国际大厦</option>
-                            <option value="2">北科产业园</option>
+                           <foreach name="list" item="vo" >
+                                 <option value="{$vo.id}">{$vo.class_name}</option>
+                            </foreach>
+                               
+                            </table>   
                         </select>
-                        <input type="hidden" value="1" name="client_id"></span>
+                        <input type="hidden" value="" class="client_id" name="client_id"></span>
                 </dd>
                 <dd>
                     <span class="dd_left">预留地址</span>
@@ -208,6 +211,9 @@
     // 预留地址号
     $('.yuliu').click(function(){
         $('.popWinBox2').show();
+        var client_id = $(this).attr('clientid');
+
+        $('.client_id').val(client_id)
         $('body').click(function(e) {
             var target = $(e.target);
             if(!target.is('.yuliu') && !target.is('#zhuijia *')) {
@@ -230,10 +236,9 @@
     }
     $(document).on('change','#class_id',function(){
         var class_id = $(this).val();
-        var client_id =$(this).attr('client_id');
-                $.ajax({
+        $.ajax({
            type: "POST",
-           url: "__APP__/Client/pre_prod",
+           url: "__APP__/Client/reserved_prod",
            data: {'class_id':class_id},
            dataType:'json',
            success: function(msg){
@@ -241,7 +246,7 @@
                 var html = '<select  class="select" name="prod_id"  id="prod_id">';
                 html += '<option value="">请选择</option>'
                 $.each(msg,function(k,v){
-                    html+='<option value="'+v.id+'">'+v.proname+'</option>'
+                    html+='<option value="'+v.id+'">'+v.pro_address+'</option>'
                 })
                 html+='</select>'
                 $('#dizhi').empty().append(html)
@@ -254,11 +259,11 @@
         var prod_id = $(this).val();
         $.ajax({
            type: "POST",
-           url: "__APP__/Client/pre_regist",
+           url: "__APP__/Client/reserved_det",
            data: {'prod_id':prod_id},
            dataType:'json',
            success: function(msg){
-                var html = '<p class="number-1">'+msg.regist+'</p><input type="hidden" name="pre_id" id="pre_id" value="'+msg.per_id+'" />';                
+                var html = '<p class="number-1">'+msg.detailscoll+'</p><input type="hidden" name="det_id" id="pre_id" value="'+msg.id+'" />';                
                 $('#hao').empty().append(html);
            }
        })
