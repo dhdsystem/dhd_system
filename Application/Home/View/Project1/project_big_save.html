@@ -3,24 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>产品修改</title>
-    <link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
-    <link rel="csssheet" type="text/css" href="__CSS__/public.css"  />
-    <script type="text/javascript" src="__JS__/jquery.js"></script>
-    <script type="text/javascript" src="__JS__/jquery.validate.js"></script>
-    <script type="text/javascript" src="__JS__/Public.js"></script>
-    <script type="text/javascript" src="__JS__/winpop.js"></script>
 </head>
-
+<link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
+<link rel="csssheet" type="text/css" href="__CSS__/public.css"  />
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript" src="__JS__/jquery.validate.js"></script>
+<script type="text/javascript" src="__JS__/Public.js"></script>
+<script type="text/javascript" src="__JS__/winpop.js"></script>
 <body>
 <div id="content">
-    <h1>首页 &gt; 产品管理 &gt; 项目管理 &gt;小房间修改</h1>
+    <h1>首页 &gt; 产品管理 &gt; 项目管理 &gt;大面积修改</h1>
     <h2>
         <div class="h2_left">
             <a href="javascript:history.back();" class="Retreat">后退</a>
         </div>
     </h2>
     <dl id="dl">
-        <form method="post" action="{:U('Classify/Cateadd_do')}" id="add" onsubmit="return check()">
+        <form method="post" action="<{:U('Classify/Cateadd_do')}>" id="add">
             <dd>
                 <span class="dd_left">房间号</span>
                 <span class="dd_right"><input type="text" placeholder="输入如：新材料创业大厦" name="classname" class="qtext  qtext_width" value="" style="width:360px;"/></span>
@@ -30,15 +29,15 @@
                 <span class="dd_right"><input type="text"  class="qtext" value="" style="width:360px;"/></span>
             </dd>
             <dd>
+                <span class="dd_left">面积</span>
+                <span class="dd_right"><input type="text"  class="qtext" value="" style="width:360px;"/></span>
+            </dd>
+            <dd>
                 <span class="dd_left">付款方式</span>
                 <span class="dd_right"><input type="text"  class="qtext" value="" style="width:360px;"/></span>
             </dd>
             <dd>
                 <span class="dd_left">租赁日期</span>
-                <span class="dd_right"><input type="text"  class="qtext" value="" style="width:360px;"/></span>
-            </dd>
-            <dd>
-                <span class="dd_left">单价</span>
                 <span class="dd_right"><input type="text"  class="qtext" value="" style="width:360px;"/></span>
             </dd>
             <dd>
@@ -68,30 +67,30 @@
 </div>
 </body>
 <script type="text/javascript">
-    function validform(){
-        return $("#add").validate({
-            rules : {
-                classname : {required : true},
-                area : { required : true},
-                address: { required : true}
-            },
-            messages :{
-                classname : {required : '不能为空'},
-                area : { required : '不能为空'},
-                address: {required : '不能为空'}
-            }
-        })
-    }
-    $(document).ready(function(){
-        $(validform());
-        $(".button").click(function(){
-            if(validform().form()) {
-                $("#add").submit();
-            } else {
-            //校验不通过，什么都不用做，校验信息已经正常显示在表单上
-            }
-        });
+    // function validform(){
+    //     return $("#add").validate({
+    //         rules : {
+    //             classname : {required : true},
+    //             area : { required : true},
+    //             address: { required : true}
+    //         },
+    //         messages :{
+    //             classname : {required : '不能为空'},
+    //             area : { required : '不能为空'},
+    //             address: {required : '不能为空'}
+    //         }
+    //     })
+    // }
+    // $(document).ready(function(){
+    //     $(validform());
+    //     $(".button").click(function(){
+    //         if(validform().form()) {
+    //             $("#add").submit();
+    //         } else {
+    //         //校验不通过，什么都不用做，校验信息已经正常显示在表单上
+    //         }
+    //     });
 
-    })
+    // })
 </script>
 </html>

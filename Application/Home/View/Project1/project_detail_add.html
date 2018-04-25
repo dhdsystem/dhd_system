@@ -6,7 +6,6 @@
     <link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
     <link rel="stylesheet" type="text/css" href="__CSS__/public.css"  />
     <script type="text/javascript" src="__JS__/jquery.js"></script>
-    <script type="text/javascript" src="__JS__/jquery.validate.js"></script>
     <script type="text/javascript" src="__JS__/Public.js"></script>
     <script type="text/javascript" src="__JS__/winpop.js"></script>
 </head>
@@ -19,7 +18,7 @@
             <a href="javascript:history.back();" class="Retreat">后退</a>
         </div>
     </h2>
-    <form action="__APP__/project/project_detail_add/" method="post" onsubmit="return check()" id="add">
+    <form action="__APP__/project/project_detail_add/" method="post">
 
         <dl id="cdl" style="display: none;">
             <!--产品分类-->
@@ -54,7 +53,6 @@
                     <input type="text" class="qtext num_start" name="det_start[]" style="width:359px;float: left;" value="" />
                     <span style="float: left;line-height: 40px;">～</span>
                     <input type="text" class="qtext num_end" name="det_end[]"  style="width:359px;float: left;" value="" />
-                    
                 </span>
             </dd>
             <!-- 销售注册号 -->
@@ -89,6 +87,7 @@
                 <input type="button" value="+"  class="submit submit2 jia">&nbsp;&nbsp;<input type="button" value="-"  class="submit jian submit2" style="margin-left: 2px;"></span>   
             </dd>
             <!-- 工位 -->
+               <!--大面积房间号-->
             <dd id="dhao" class="hao">
                 <span class="dd_left">
                     工位:  
@@ -97,8 +96,20 @@
                 <input type="text"  class="qtext room_num" name="det_station[0][]" value="" style="width:600px;" />&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;
                 <input type="button" value="+"  class="submit submit2 jia">&nbsp;&nbsp;<input type="button" value="-"  class="submit jian submit2" style="margin-left: 2px;">   
-            </dd>       
-            <!--备注-->
+            </dd>
+
+
+
+
+
+       <!--      <dd>
+           <span class="dd_left">工位</span>
+           <span class="dd_right"><input type="text" name="det_station[]" class="qtext" value="" style="width:742px;"/></span>
+       </dd> -->
+
+
+            
+    <!--备注-->
             <dd>
                 <span class="dd_left">备注：</span>
                 <span class="dd_right">
@@ -117,53 +128,9 @@
 </html>
 <script type="text/javascript">
  /*   $(document).on('click',":submit",function(){
+
         if($('.select').val()==0){ alert('请选择项目'); return false; }    
     })*/
-    // 验证
-    function validform(){
-        return $("#add").validate({
-            rules : {
-                'class_id[]' : {required : true},
-                'det_sum[]' : { required : true,number:true},
-                'det_start[]': { required : true,number:true},
-                'det_end[]': { required : true,number:true},
-                'num_start[]':{required : true,number:true},
-                'num_end[]':{required : true,number:true},
-                'big_num[0][]':{required : true,number:true},
-                'big_sum[0][]':{required : true,number:true},
-                'small_num[0][]':{required : true,number:true},
-                'small_sum[0][]':{required : true,number:true},
-                'det_station[0][]':{required : true,number:true}
-
-            },
-            messages :{
-                'class_id[]' : {required : '不能为空'},
-                'det_sum[]' : { required : '不能为空',number:"请输入有效的数字"},
-                'det_start[]': {required : '不能为空',number:"请输入有效的数字"},
-                'det_end[]': {required : '不能为空',number:"请输入有效的数字"},
-                'num_start[]':{required : '不能为空',number:"请输入有效的数字"},
-                'num_end[]':{required : '不能为空',number:"请输入有效的数字"},
-                'big_num[0][]':{required : '不能为空',number:"请输入有效的数字"},
-                'big_sum[0][]':{required : '不能为空',number:"请输入有效的数字"},
-                'small_num[0][]':{required : '不能为空',number:"请输入有效的数字"},
-                'small_sum[0][]':{required : '不能为空',number:"请输入有效的数字"},
-                'det_station[0][]':{required : '不能为空',number:"请输入有效的数字"}
-
-            }
-        });
-    }
-    $(document).ready(function(){
-        $(validform());
-        $(".button").click(function(){
-            if(validform().form()) {
-                $("#add").submit();
-            } else {
-            //校验不通过，什么都不用做，校验信息已经正常显示在表单上
-            }
-        });
-
-    })
-    // 按钮加减
 	$(document).on('click','.jia',function(){
 		var html = $(this).parent().parent().clone();
 		$(this).parent().parent().after(html);

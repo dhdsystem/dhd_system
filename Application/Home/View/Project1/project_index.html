@@ -10,7 +10,11 @@
     <script type="text/javascript" src="__JS__/winpop.js"></script>
     <script>
         $(document).ready(function() {
-
+            $('#content h2 .add').click(function() {
+                popload('添加分类',800,300,'__APP__/Classify/Cate_add/');
+                addDiv($('#iframe_pop'));
+                popclose();
+            });
             $('#content #table .tr .edit').click(function(event) {
                 event.preventDefault();
                 var id=$(this).attr('href');

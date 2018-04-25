@@ -2,36 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>产品修改</title>
-    <link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
-    <link rel="csssheet" type="text/css" href="__CSS__/public.css"  />
-    <script type="text/javascript" src="__JS__/jquery.js"></script>
-    <script type="text/javascript" src="__JS__/jquery.validate.js"></script>
-    <script type="text/javascript" src="__JS__/Public.js"></script>
-    <script type="text/javascript" src="__JS__/winpop.js"></script>
+    <title>房间修改</title>
 </head>
-
+<link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
+<link rel="csssheet" type="text/css" href="__CSS__/public.css"  />
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript" src="__JS__/jquery.validate.js"></script>
+<script type="text/javascript" src="__JS__/Public.js"></script>
+<script type="text/javascript" src="__JS__/winpop.js"></script>
 <body>
 <div id="content">
-    <h1>首页 &gt; 产品管理 &gt; 项目管理 &gt;产品修改</h1>
+    <h1>首页 &gt; 产品管理 &gt; 项目管理 &gt;房间修改</h1>
     <h2>
         <div class="h2_left">
             <a href="javascript:history.back();" class="Retreat">后退</a>
         </div>
     </h2>
     <dl id="dl">
-        <form method="post" action="__APP__/Project/product_detail_save" id="add" onsubmit="return check()">
+        <form method="post" action="__APP__/Project/project_bign_save" id="add">
+
             <dd>
-                <span class="dd_left">产品地址</span>
-                <span class="dd_right"><input type="text" placeholder="" name="pro_address" class="qtext  qtext_width" value="{$data.pro_address}" style="width:360px;"/></span>
+                <span class="dd_left">项目地址</span>
+                <span class="dd_right"><input type="text" disabled="disabled"  name="pro_address" class="qtext  qtext_width" value="{$data.pro_address}" style="width:360px;"/></span>
             </dd>
             <dd>
-                <span class="dd_left">产品面积</span>
-                <span class="dd_right"><input type="text" name="pro_sum" class="qtext" value="{$data.pro_sum}" style="width:360px;"/></span>
+                <span class="dd_left">房间号</span>
+                <span class="dd_right"><input type="text" name="detailscoll" class="qtext" value="{$data.detailscoll}" style="width:360px;"/></span>
             </dd>
             <dd>
-                <span class="dd_left">产品备注</span>
-                <span class="dd_right"><textarea name="pro_desc" class="textarea textarea2" style="width:372px;">{$data.pro_desc}</textarea></span>
+                <span class="dd_left">房间面积</span>
+                <span class="dd_right"><input type="text" name="big_sum" class="qtext" value="{$data.big_sum}" style="width:360px;"/></span>
             </dd>
             <dd>
             <input type="hidden" value="{$data.id}" name="id">
@@ -45,12 +45,14 @@
     function validform(){
         return $("#add").validate({
             rules : {
-                pro_address : {required : true},
-                pro_sum : { required : true,number:true}
+                classname : {required : true},
+                area : { required : true},
+                address: { required : true}
             },
             messages :{
-                pro_address : {required : '不能为空'},
-                pro_sum : { required : '不能为空',number:"请输入有效的数字"}
+                classname : {required : '不能为空'},
+                area : { required : '不能为空'},
+                address: {required : '不能为空'}
             }
         })
     }
