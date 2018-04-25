@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加支出记录</title>
+    <link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
+    <script type="text/javascript" src="__JS__/jquery.js"></script>
+    <script type="text/javascript" src="__JS__/jquery.validate.js"></script>
+    <script type="text/javascript" src="__JS__/winpop.js"></script>
+</head>
+<body>
+<div class="contract_cont"  id="content">
+    <h1>首页 > 财务管理 > 支出管理 > 修改支出记录 </h1>
+    <h2>
+        <div class="h2_left">
+            <a href="javascript:history.back();" class="Retreat">后退</a>
+        </div>
+    </h2>
+
+        <form action="__APP__/Expend/expendsave_do" method="post" id="addInfo">
+        <dl id="cdl">
+            <dd>
+                <span class="dd_left">一级科目：</span>
+                <span class="dd_right">
+                    <select name="firststep" class="tab_select" style="width: 320px;height: 42px;margin-left:4px;">
+                        <option value="管理费用">管理费用</option>
+                        <option value="主营业务成本">主营业务成本</option>
+                        <option value="财务费用">财务费用</option>
+                        <option value="代付">代付</option>
+                        <option value="其他">其他</option>
+                    </select>
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">支出明细：</span>
+                <span class="dd_right">
+                    <select name="detail" class="tab_select" style="width: 320px;height: 42px;margin-left:4px;">
+                        <option value="房租">房租</option>
+                        <option value="物业管理费">物业管理费</option>
+                        <option value="电费">电费</option>
+                        <option value="工资">工资</option>
+                        <option value="社保">社保</option>
+                        <option value="办公费用">办公费用</option>
+                        <option value="通讯费">通讯费</option>
+                        <option value="福利费">福利费</option>
+                        <option value="差旅费">差旅费</option>
+                        <option value="招待费">招待费</option>
+                        <option value="培训费">培训费</option>
+                        <option value="手续费">手续费</option>
+                        <option value="增值税">增值税</option>
+                        <option value="附加税">附加税</option>
+                        <option value="企业所得税">企业所得税</option>
+                        <option value="个税">个税</option>
+                        <option value="印花税">印花税</option>
+                        <option value="加油费">加油费</option>
+                        <option value="车辆费">车辆费</option>
+                        <option value="过路费">过路费</option>
+                        <option value="服务费">服务费</option>
+                        <option value="外援费">外援费</option>
+                        <option value="代付税金">代付税金</option>
+                        <option value="代付工商">代付工商</option>
+                        <option value="代付快递">代付快递</option>
+                        <option value="装修款">装修款</option>
+                        <option value="快递费">快递费</option>
+                        <option value="开票税金">开票税金</option>
+                        <option value="冲销借款">冲销借款</option>
+                        <option value="其他">其他</option>
+                    </select>
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">公司名称：</span>
+                <span class="dd_right">
+                    <input type="hidden" name="id" class="hiddenid" value="{$data.id}">
+                    <input type="text" class="qtext" name="company" value="{$data.company}" />
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">支出金额：</span>
+                <span class="dd_right">
+                    <input type="text" class="qtext money" name="money" value="{$data.money}" />
+                </span>
+            </dd>
+            <!--支出账户-->
+            <dd>
+                <span class="dd_left">支出账户：</span>
+                <span class="dd_right">
+                    <select name="account" class="tab_select collectaccount" id="signcompany" style="width: 320px;height: 42px;margin-left:4px;">
+                            <option value="0">请选择支出账户</option> 
+                        <volist name="list" id="li">
+                            <option value="{$li.id}">{$li.name}</option> 
+                        </volist>                   
+                    </select>
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">是否有发票：</span>
+                <span class="dd_right">
+                    <select name="invoice" class="tab_select" style="width: 320px;height: 42px;margin-left:4px;">
+                    	<option value="0">有</option>
+                    	<option value="1">无</option>
+                    </select>
+                </span>
+            </dd>
+            <!--备注-->
+            <dd>
+                <span class="dd_left">备注：</span>
+                <span class="dd_right">
+                    <textarea cols="30" rows="3" class="text_box"></textarea>
+                </span>
+            </dd>
+            <!--提交-->
+            <dd>
+                <input type="submit" value="提交" class="submit" />
+            </dd>
+
+        </dl>
+    </form>
+</div>
+<script type="text/javascript">
+    // 收款账户
+    $(document).on('change','#signcompany',function(){
+        var signcompany_id = $(this).find("option:selected").attr('aid');
+        // alert(signcompany_id);
+        $.ajax({
+           type: "post",
+           url: "/?s=Home/Contract/collection",
+           data:'signcompany_id='+signcompany_id,
+           dataType:"json",
+           success: function(msg){
+                var html = '<select class="tab_select" name="collectaccount[]" id="bank" style="width: 320px;height: 42px;margin-left:4px;"><option value="0">请选择开户行</option>';
+                $.each(msg,function(k,v)
+                {
+                  html += '<option value="'+v.opacontbank+'" bid="'+v.id+'">'+v.opacontbank+'</option>';
+                })
+                html += '</select>';
+                $('#signcompany').nextAll().remove();
+                $('#signcompany').after(html);   
+           }
+       })    
+    })    
+    $(document).on('change','#bank',function(){
+        var opacontbank_id = $(this).find("option:selected").attr('bid');
+        $.ajax({
+           type: "post",
+           url: "/?s=Home/Contract/collection_bank",
+           data:'opacontbank_id='+opacontbank_id,
+           dataType:"json",
+           success: function(msg){
+            var s = '<select class="tab_select" name="collectaccount[]" style="width: 201px;height: 42px;margin-left:4px;"><option value="'+msg.opacontnum+'">'+msg.opacontnum+'</option></select>';
+            $('#bank').nextAll().remove();
+            $('#bank').after(s);   
+           }
+       })    
+    })
+
+</script>
+
+</body>
+</html>

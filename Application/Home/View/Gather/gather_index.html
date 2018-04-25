@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>账户管理</title>
+<link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
+<link rel="csssheet" type="text/css" href="__CSS__/public.css"  />
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript" src="__JS__/Public.js"></script>
+<script type="text/javascript" src="__JS__/winpop.js"></script>
+<!-- 日期插件 -->
+<link rel="stylesheet" type="text/css" href="__CSS__/calendar.css"/>
+<script type="text/javascript" src="__JS__/calendar.js"></script>
+<script type="text/javascript" src="__JS__/page.js"></script>
+<style type="text/css">
+	#dayStatic{float: left;margin-right: 10px;}
+	#dayStatic .button{border: 0;padding: 10px 10px;background-color: #7ed321;color: white;font-size: 14px;cursor:pointer;margin-left: 0px;}
+	#dayStatic .button:hover{background:#66ad1a;}
+	.tab_select {border: 1px solid #e6e6e6;border-radius: 2px;-webkit-appearance: none;-moz-appearance: none;
+    padding-left: 10px;font-size: 14px;}
+</style>
+</head>
+<body>
+<div id="content">
+	<h1>首页 > 财务管理 > 收款记录</h1>
+    <h2>
+    	<div class="h2_left">
+            <a href="__APP__/Gather/gather_add" class="add">新增</a>
+            <a href="javascript:history.back();" class="Retreat">后退</a>
+        </div>
+    </h2>
+    <div style="margin: 10px 0 10px 0;overflow: hidden;" class="input_box">
+    	<div>
+    		<!--每日业绩统计表-->
+	        <form action="/?s=Home/Finance/dayStatic" method="post" id="dayStatic">
+	            <input type="text" value="" class="qtext" name="starttime" id="starttime" style="width: 128px;" placeholder="开始时间"><div id="sdd" style="left: 46px;top: 186px;"></div>&nbsp;～
+	            <input type="text" value="" class="qtext" name="endtime" id="endtime" style="width: 128px;" placeholder="结束时间"><div id="edd" style="left: 205px;top: 186px;"></div>&nbsp;
+	            <input type="submit" value="每日业绩统计" class="button">
+	            
+	        </form>
+	        <div style="clear:both"></div>
+    	</div>
+        <div>
+        	<!--每银行日流水收入统计表-->
+	        <form action="/?s=Home/Finance/dayStatic" method="post" id="dayStatic">
+	            <input type="text" value="" class="qtext" name="starttime" id="starttime2" style="width: 128px;" placeholder="开始时间"><div id="sdd2" style="left: 46px;top: 228px;"></div>&nbsp;～
+	            <input type="text" value="" class="qtext" name="endtime" id="endtime2" style="width: 128px;" placeholder="结束时间"><div id="edd2" style="left: 205px;top: 228px;"></div>&nbsp;
+	            <select class=" tab_select" style="width: 352px;height: 40px;">
+	            	<option>请选择银行账户</option>
+	            	<option>工行1</option>
+	            	<option>农业银行</option>
+	            	<option>支付宝</option>
+	            </select>
+	            <input type="submit" value="每银行日流水收入统计" class="button">
+	        </form>
+	        <div style="clear:both"></div>
+        </div>
+        <div>
+        	<!--收入台账统计表-->
+	        <form action="/?s=Home/Finance/dayStatic" method="post" id="dayStatic">
+	            <input type="text" value="" class="qtext" name="starttime" id="starttime3" style="width: 128px;" placeholder="开始时间"><div id="sdd3" style="left: 46px;top: 270px;"></div>&nbsp;～
+	            <input type="text" value="" class="qtext" name="endtime" id="endtime3" style="width: 128px;" placeholder="结束时间"><div id="edd3" style="left: 205px;top: 270px;"></div>&nbsp;
+	            <select class="tab_select" style="width: 352px;height: 40px;">
+	            	<option>请选择银行账户</option>
+	            	<option>工行1</option>
+	            	<option>农业银行</option>
+	            	<option>支付宝</option>
+	            </select>
+	            <input type="submit" value="收入台账统计" class="button">
+	        </form>
+	        <div style="clear:both"></div>
+        </div>
+        
+
+    </div>
+
+    <div class="tableBox tableBox2">
+	   	<table id="table" border="1" bordercolor="#CCCCCC" cellpadding="0" cellspacing="0" style="width:120%;">
+	    	<tr>
+	        	<th>收入类型</th>
+	            <th>公司名称</th>
+	            <th>收款金额</th>
+	            <th>账户名称</th>
+	            <th>收款日期</th>
+	            <th>业务员</th>
+	            <th>操作</th>
+	        </tr>
+	        <volist name="data" id="data">
+		        <tr class="tr" value="1">
+		            <td class="tc">{$data.firststep}</td>
+		            <td class="tc">{$data.company}</td>
+		            <td class="tc">{$data.money}</td>
+		            <td class="tc">{$data.name}</td>
+		            <td class="tc">{$data.gathertiem}</td>
+		            <td class="tc">{$data.real_name}</td>
+		            <td class="tc fixed_w">
+			            <a href="{$data.id}" class="edit oper">修改</a>
+			            <a href="{$data.id}" class="del oper">删除</a>
+		            </td>
+		        </tr>
+	        </volist>
+	    </table>
+    </div>
+</div>
+</body>
+</html>

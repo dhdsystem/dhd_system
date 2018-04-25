@@ -74,7 +74,7 @@
             <dd>
                 <span class="dd_left">用户角色：</span>
                 <span class="dd_right">
-                    <select name="roleid" class="qtext" style="height: 40px; width: 605px;"">
+                    <select name="roleid" class="qtext" style="height: 40px; width: 605px;">
                         <volist name='volist' id='vo'>
                         <if condition="$vo.id eq $result['r_id']">
                         <option selected value="{$vo.id}" selected>{$vo.role_name}</option>
@@ -103,7 +103,7 @@
                 <span class="dd_left">用户说明：</span>
                 <span class="dd_right">
                 <textarea name="description" class="textarea" style=" width: 605px;" >{$result['description']}</textarea>
-                <input type="hidden" name="field＿name" class="hiddenid" value="{$result['id']}">
+                <input type="hidden" name="field_name" class="hiddenid" value="{$result['id']}">
                 </span>
                
             </dd>

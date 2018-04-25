@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加财务账户</title>
+    <link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
+    <link rel="stylesheet" type="text/css" href="__CSS__/calendar.css"  />
+    <script type="text/javascript" src="__JS__/jquery.js"></script>
+    <script type="text/javascript" src="__JS__/jquery.validate.js"></script>
+    <script type="text/javascript" src="__JS__/winpop.js"></script>
+	<script type="text/javascript" src="__JS__/calendar.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('#sdd').calendar({
+				trigger: '#starttime',
+				zIndex: 999,
+				format: 'yyyy-mm-dd'
+			});
+		});
+	</script>
+</head>
+<body>
+<div class="contract_cont"  id="content">
+    <h1>首页 > 财务管理 > 财务账户 </h1>
+    <h2>
+        <div class="h2_left">
+            <a href="javascript:history.back();" class="Retreat">后退</a>
+        </div>
+    </h2>
+    <form action="__APP__/Account/accountadd_do/" method="post">
+        <dl id="cdl">
+            <!--账户名称-->
+            <dd>
+                <span class="dd_left">账户名称：</span>
+                    <span class="dd_right">
+                        <input type="text" class="qtext" name="name" value="" />
+                    </span>
+            </dd>
+            <!--开户账号-->
+            <dd>
+                <span class="dd_left">开户账号：</span>
+                    <span class="dd_right">
+                        <input type="text" class="qtext" name="contnum" value="" />
+                    </span>
+            </dd>
+            <!--开户银行-->
+            <dd>
+                <span class="dd_left">开户银行：</span>
+                    <span class="dd_right">
+                        <input type="text" class="qtext" name="opacontbank" value="" />
+                    </span>
+            </dd>
+            <!--开户日期-->
+            <dd>
+                <span class="dd_left">开户日期：</span>
+                    <span class="dd_right">
+                       	<input type="text" value="" name="addtime" id="starttime"  class="qtext" placeholder="">
+  						<div id="sdd" style="left: 134px;top: 39px;"></div>
+                    </span>
+            </dd>
+            <!--期初金额-->
+            <dd>
+                <span class="dd_left">期初金额：</span>
+                    <span class="dd_right">
+                        <input type="text" class="qtext" name="balance" placeholder="元" style="width: 744px;"/> 
+                    </span>
+            </dd>
+            <!--余额-->
+            <dd>
+                <span class="dd_left">余额：</span>
+                    <span class="dd_right">
+                        <input type="text" class="qtext" name="remainmoney" placeholder="元" style="width: 744px;"/> 
+                    </span>
+            </dd>
+            <!--所有者-->
+            <dd>
+                <span class="dd_left">所有者：</span>
+                    <span class="dd_right">
+                        <input type="text" class="qtext" name="owner" value="" />
+                    </span>
+            </dd>
+            <!--备注-->
+            <dd>
+                <span class="dd_left">备注：</span>
+                    <span class="dd_right">
+                        <textarea cols="30" rows="3" class="text_box"></textarea>
+                    </span>
+            </dd>
+            <!--提交-->
+            <dd>
+                <input type="submit" name="submit" value="提交" class="submit" />
+            </dd>
+        </dl>
+    </form>
+</div>
+</body>
+</html>
