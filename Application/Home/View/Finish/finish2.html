@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>支出完成</title>
+    <link rel="stylesheet" type="text/css" href="../../css/content.css"  />
+    <script type="text/javascript" src="../../js/jquery.js"></script>
+    <script type="text/javascript" src="../../js/Public.js"></script>
+</head>
+<body>
+<div class="contract_cont"  id="content">
+    <h1>首页 > 费用管理  > 支出完成 </h1>
+    <h2>
+        <div class="h2_left">
+            <a href="javascript:history.back();" class="Retreat">后退</a>
+        </div>
+    </h2>
+    <form action="/?s=Home/Cost/commission_do/" method="post" id="addInfo">
+        <dl id="cdl">
+            <dd>
+                <span class="dd_left">一级科目：</span>
+                <span class="dd_right">
+                <input type="hidden" name="action_id" value="35">
+                    <select name="iyjikemu" class="tab_select">
+                        <option value="0">请选择</option>
+                        <option value="销售费用——返佣">xxxx</option>
+                    </select>
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">二级科目：</span>
+                <span class="dd_right">
+                    <select name="erjikemu" class="tab_select">
+                        <option value="0">请选择</option>
+                        <option value="房间">1</option>
+                        <option value="房间">2</option>
+                    </select>
+                </span>
+            </dd> 
+            <dd>
+                <span class="dd_left">姓名：</span>
+                <span class="dd_right">
+                    <input type="text" class="qtext" name="back_money" value="">
+                </span>
+            </dd>
+             <dd>
+                <span class="dd_left">支出金额：</span>
+                <span class="dd_right">
+                    <input type="text" class="qtext" name="back_money" value="">
+                </span>
+            </dd>
+             <dd>
+                <span class="dd_left">支出账户：</span>
+                <span class="dd_right">
+                    <input type="text" class="qtext" name="back_money" value="">
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">发票：</span>
+                <span class="dd_right">
+                    <select name="erjikemu" class="tab_select bill">
+                        <option value="0">请选择</option>
+                        <option value="有">有</option>
+                        <option value="无">无</option>
+                    </select>
+                </span>
+            </dd>
+            <dd class="billBox">
+                <span class="dd_left">无票原因：</span>
+                <span class="dd_right">
+                    <textarea name="reason" cols="30" rows="3" class="text_box"></textarea>
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">备注：</span>
+                <span class="dd_right">
+                    <textarea name="reason" cols="30" rows="3" class="text_box"></textarea>
+                </span>
+            </dd>
+            <dd>
+                <input type="submit" value="提交" class="submit">
+            </dd>
+
+        </dl>
+    </form>
+</div>
+</body>
+</html>
