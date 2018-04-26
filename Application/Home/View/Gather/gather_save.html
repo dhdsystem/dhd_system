@@ -21,7 +21,7 @@
         </div>
     </h2>
             <form action="__APP__/Gather/gathersave_do" method="post">
-            <dl id="cdl">
+            <dl id="cdl" style="padding-bottom: 100px;">
                 <dd>
                     <span class="dd_left">一级科目：</span>
                         <select name="firststep" class="tab_select" style="width: 754px;height: 40px;">
@@ -43,7 +43,7 @@
                         </select>
                 </dd>
                 <dd>
-                    <span class="dd_left">收款明细：</span>
+                    <span class="dd_left">二级科目：</span>
                         <select name="company" class="tab_select" style="width: 754px;height: 40px;">
                             <if condition="$data.company eq 电费">
                                 <option value="电费" selected="selected">电费</option>
@@ -120,7 +120,7 @@
                     <textarea cols="30" rows="3" class="text_box">无</textarea>
                     <input type="hidden" name="id" class="hiddenid" value="{$data['id']}">
                 </dd>
-                <dd>
+                <!-- <dd>
                     <span class="dd_left">收款账户：</span>
                     <span>
                         <select name="gather" class="tab_select" id="signcompany" style="width: 225px;height: 40pxpx;line-height: 40px;">
@@ -134,7 +134,7 @@
                             </foreach>
                     </select>
                     </span>
-                </dd>
+                </dd> -->
                 <dd>
                     <span><input type="submit" value="提交" class="submit"/></span>
                 </dd>

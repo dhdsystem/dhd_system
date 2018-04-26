@@ -82,24 +82,35 @@
 	   	<table id="table" border="1" bordercolor="#CCCCCC" cellpadding="0" cellspacing="0" style="width:120%;">
 	    	<tr>
 	        	<th>收入类型</th>
+	        	<th>二级科目</th>
 	            <th>公司名称</th>
 	            <th>收款金额</th>
 	            <th>账户名称</th>
 	            <th>收款日期</th>
+	            <th>客户分组</th>
+	            <th>合同性质</th>
 	            <th>业务员</th>
 	            <th>操作</th>
 	        </tr>
 	        <volist name="data" id="data">
 		        <tr class="tr" value="1">
 		            <td class="tc">{$data.firststep}</td>
+		            <td class="tc"></td>
 		            <td class="tc">{$data.company}</td>
 		            <td class="tc">{$data.money}</td>
 		            <td class="tc">{$data.name}</td>
 		            <td class="tc">{$data.gathertiem}</td>
+		            <td class="tc"></td>
+		            <td class="tc"></td>
 		            <td class="tc">{$data.real_name}</td>
 		            <td class="tc fixed_w">
-			            <a href="__APP__/Gather/gather_save/id/{$data.id}" class="edit oper">修改</a>
-			            <a href="__APP__/Gather/gather_del/id/{$data.id}" class="del oper">删除</a>
+		            	<div class="operation">更多
+		            		<div class="operarea">
+					            <a href="__APP__/Gather/gather_save/id/{$data.id" class="see oper2">查看</a>
+					            <a href="__APP__/Gather/gather_save/id/{$data.id}" class="edit oper2">修改</a>
+					            <a href="__APP__/Gather/gather_del/id/{$data.id}" class="del2 oper2">删除</a>
+				            </div>
+				        </div>
 		            </td>
 		        </tr>
 	        </volist>

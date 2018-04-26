@@ -5,8 +5,12 @@
     <title>添加支出记录</title>
     <link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
     <script type="text/javascript" src="__JS__/jquery.js"></script>
+    <script type="text/javascript" src="__JS__/page.js"></script>
     <script type="text/javascript" src="__JS__/jquery.validate.js"></script>
     <script type="text/javascript" src="__JS__/winpop.js"></script>
+    <!-- 日期插件 -->
+    <link rel="stylesheet" type="text/css" href="__CSS__/calendar.css"/>
+    <script type="text/javascript" src="__JS__/calendar.js"></script>
 </head>
 <body>
 <div class="contract_cont"  id="content">
@@ -18,7 +22,7 @@
     </h2>
 
         <form action="__APP__/Expend/expendsave_do" method="post" id="addInfo">
-        <dl id="cdl">
+        <dl id="cdl" style="padding-bottom: 100px;">
             <dd>
                 <span class="dd_left">一级科目：</span>
                 <span class="dd_right">
@@ -32,7 +36,7 @@
                 </span>
             </dd>
             <dd>
-                <span class="dd_left">支出明细：</span>
+                <span class="dd_left">二级科目：</span>
                 <span class="dd_right">
                     <select name="detail" class="tab_select" style="width: 320px;height: 42px;margin-left:4px;">
                         <option value="房租">房租</option>
@@ -68,6 +72,20 @@
                     </select>
                 </span>
             </dd>
+            
+            <dd>
+                <span class="dd_left">支出金额：</span>
+                <span class="dd_right">
+                    <input type="text" class="qtext money" name="money" value="{$data.money}" />
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">支出日期：</span>
+                <span class="dd_right">
+                    <input type="text" class="qtext money" name="money" value="" id="expendipt"/>
+                    <div id="expendDate"></div>
+                </span>
+            </dd>
             <dd>
                 <span class="dd_left">公司名称：</span>
                 <span class="dd_right">
@@ -75,14 +93,8 @@
                     <input type="text" class="qtext" name="company" value="{$data.company}" />
                 </span>
             </dd>
-            <dd>
-                <span class="dd_left">支出金额：</span>
-                <span class="dd_right">
-                    <input type="text" class="qtext money" name="money" value="{$data.money}" />
-                </span>
-            </dd>
             <!--支出账户-->
-            <dd>
+            <!-- <dd>
                 <span class="dd_left">支出账户：</span>
                 <span class="dd_right">
                     <select name="account" class="tab_select collectaccount" id="signcompany" style="width: 320px;height: 42px;margin-left:4px;">
@@ -101,7 +113,7 @@
                     	<option value="1">无</option>
                     </select>
                 </span>
-            </dd>
+            </dd> -->
             <!--备注-->
             <dd>
                 <span class="dd_left">备注：</span>

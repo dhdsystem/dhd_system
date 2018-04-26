@@ -99,7 +99,7 @@ input,textarea,select { font-size:12px; text-indent:4px; color:#111; }
 #content #table .tr .tc img { padding:0px 6px; }
 #content #table .tr .tl { text-align:left; text-indent:8px; }
 #content #table .tr .tl img { padding:0px 6px; position:relative; top:4px; }
-#content #table .tr .fixed_w { width:270px; }
+#content #table .tr .fixed_w { width:227px; }
 /*操作更多按钮*/
 #content #table .tr .fixed_w .operation{width:46px;height:33px;color: #060;background: #56A74D;color: #fff;
 position: relative;text-align: center;line-height: 33px;margin:auto;cursor: pointer}

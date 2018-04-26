@@ -36,4 +36,9 @@ $(document).ready(function() {
         zIndex: 999,
         format: 'yyyy-mm-dd',
     });
+    $('#expendDate').calendar({
+        trigger: '#expendipt',
+        zIndex: 999,
+        format: 'yyyy-mm-dd',
+    });
 });

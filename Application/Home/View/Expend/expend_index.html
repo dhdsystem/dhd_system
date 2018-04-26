@@ -68,28 +68,33 @@
 	   	<table id="table" border="1" bordercolor="#CCCCCC" cellpadding="0" cellspacing="0" style="width:100%;">
 	    	<tr>
 	        	<th>公司</th>
-	        	<th>账户公司</th>
 	            <th>一级科目</th>
-	            <th>明细</th>
+	            <th>二级科目</th>
 	            <th>金额</th>
+	            <th>支出账户</th>
+	            <th>支出日期</th>
 	            <th>申请人</th>
-	            <th>日期</th>
 	            <th>审核进度</th>
 	            <th>操作</th>
 	        </tr>
 	        <volist name="data" id="li">
 		        <tr class="tr" value="1">
 		            <td class="tc">{$li.company}</td>
-		            <td class="tc">{$li.acc_name}</td>
 		            <td class="tc">{$li.firststep}</td>
-		            <td class="tc">{$li.detail}</td>
+		            <td class="tc">{$li.acc_name}</td>
 		            <td class="tc">{$li.money}</td>
-		            <td class="tc">{$li.real_name}</td>
+		            <td class="tc">{$li.detail}</td>
 		            <td class="tc">{$li.deteofcollect}</td>
+		            <td class="tc">{$li.real_name}</td>
 		            <td class="tc">无</td>
 		            <td class="tc fixed_w">
-		            <a href="__APP__/Expend/expend_save/id/{$li.id}" class="edit oper">修改</a>
-		            <a href="__APP__/Expend/expend_del/id/{$li.id}" class="del oper">删除</a>
+		            	<div class="operation">更多
+		            		<div class="operarea">
+					            <a href="__APP__/Expend/expend_save/id/{$li.id}" class="see oper2">查看</a>
+					            <a href="__APP__/Expend/expend_save/id/{$li.id}" class="edit oper2">修改</a>
+					            <a href="__APP__/Expend/expend_del/id/{$li.id}" class="del2 oper2">删除</a>
+				            </div>
+				        </div>
 		            </td>
 		        </tr>
 	        </volist>
