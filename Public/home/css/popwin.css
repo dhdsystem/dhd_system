@@ -141,4 +141,8 @@ border:1px solid #7ed321;color: #fff;cursor: pointer;}
     font-size: 14px;
     box-shadow: none !important;
 }
-/*.popWinBox .qtext.active{border: 1px solid rgb(204, 204, 204);box-shadow: none !important;}*/
+/*新增 2018.4.26*/
+.popTable{width:100%;height: auto;margin-top: 15px;border-collapse: collapse;border: none;margin-bottom: 40px;}
+.popTable tr{height: 46px;line-height: 46px;}
+.popTable th{text-align: center;background: #7ed321;border: solid 1px #7ed321;color: #fff;font-size: 14px;}
+.popTable .tc{text-align: center;text-indent: 0;padding: 10px;border: 1px solid #e2e2e2;}

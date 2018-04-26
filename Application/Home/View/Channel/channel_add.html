@@ -27,36 +27,93 @@
                 <span class="dd_left">渠道商</span>
                 <!-- 下拉菜单 -->
                 <span class="dd_right">
-                    <select  name="middle_state" class="select tab_select" style="width: 372px;height: 40px;border: 1px solid #e6e6e6;">
+                    <select  name="middle_state" class="select tab_select" style="width: 372px;height: 40px;border: 1px solid #e6e6e6;" id="schoice">
                         <option value='1'>中间商</option>
                         <option value='2'>中介</option>
                         <option value='3'>平台</option>
                     </select>
                 </span>
             </dd>
-            <dd>
-                <span class="dd_left">公司名称</span>
-                <span class="dd_right"><input type="text" name="middle_name" class="qtext" value="" style="width:360px;"/></span>
-            </dd>
-            <dd>
-                <span class="dd_left">联系人</span>
-                <span class="dd_right"><input type="text" name="middle_man" class="qtext" value="" style="width:360px;"/></span>
-            </dd>
-            <dd>
-                <span class="dd_left">联系方式</span>
-                <span class="dd_right"><input type="text" name="middle_tel" class="qtext" value="" style="width:360px;"/></span>
-            </dd>
-            <dd>
-                <span class="dd_left">办公地址</span>
-                <span class="dd_right"><input type="text" name="middle_address" class="qtext" value="" style="width:360px;"/></span>
-            </dd>
+            <div class="orige">
+                <dd>
+                    <span class="dd_left">公司名称</span>
+                    <span class="dd_right"><input type="text" name="middle_name" class="qtext" value="" style="width:360px;"/></span>
+                </dd>
+                <dd>
+                    <span class="dd_left">联系人</span>
+                    <span class="dd_right"><input type="text" name="middle_man" class="qtext" value="" style="width:360px;"/></span>
+                </dd>
+                <dd>
+                    <span class="dd_left">联系方式</span>
+                    <span class="dd_right"><input type="text" name="middle_tel" class="qtext" value="" style="width:360px;"/></span>
+                </dd>
+                <dd>
+                    <span class="dd_left">办公地址</span>
+                    <span class="dd_right"><input type="text" name="middle_address" class="qtext" value="" style="width:360px;"/></span>
+                </dd>
+                <div class="clear"></div>
+            </div>
+            
+            <!-- 分割线 -->
+            <div class="replace" style="display: none;">
+                <dd>
+                    <span class="dd_left">平台信息</span>
+                    <span class="dd_right"><input type="text" name="middle_address" class="qtext" value="" style="width:360px;"/></span>
+                </dd>
+                <dd>
+                    <span class="dd_left">公司名称</span>
+                    <span class="dd_right"><input type="text" name="middle_address" class="qtext" value="" style="width:360px;"/></span>
+                </dd>
+                <dd>
+                    <span class="dd_left">联系人姓名</span>
+                    <span class="dd_right"><input type="text" name="middle_address" class="qtext" value="" style="width:360px;"/></span>
+                </dd>
+                <dd>
+                    <span class="dd_left">联系人电话</span>
+                    <span class="dd_right"><input type="text" name="middle_address" class="qtext" value="" style="width:360px;"/></span>
+                </dd>
+                <dd>
+                    <span class="dd_left">办公地址</span>
+                    <span class="dd_right"><input type="text" name="middle_address" class="qtext" value="" style="width:360px;"/></span>
+                </dd>
+                <dd>
+                    <span class="dd_left">合作金额</span>
+                    <span class="dd_right"><input type="text" name="middle_address" class="qtext" value="" style="width:360px;"/></span>
+                </dd>
+                <dd>
+                    <span class="dd_left">合作地址形式</span>
+                    <span class="dd_right">
+                        <select  name="" class="select tab_select" style="width: 372px;height: 40px;border: 1px solid #e6e6e6;">
+                            <option value=''>小规模</option>
+                            <option value=''>一般人</option>
+                        </select>
+                    </span>
+                </dd>
+                <dd>
+                    <span class="dd_left">公司规模情况</span>
+                    <span class="dd_right"><input type="text" name="middle_address" class="qtext" value="" style="width:360px;"/></span>
+                </dd>
+                <div class="clear"></div>
+            </div>
             <dd><input type="submit" class="button" value="提 交" /></dd>
-            <div style="clear:both;"></div>
+            <div class="clear"></div>
         </form>
     </dl>
 </div>
 </body>
 <script type="text/javascript">
+    $(document).ready(function(){
+        $(document).on('change','#schoice',function(){
+          if ($(this).val() == 3) {
+                $(".orige").hide();
+                $('.replace').show();
+                
+            }else{
+               $(".orige").show();
+                $('.replace').hide(); 
+            }  
+        });
+    })
     // function validform(){
     //     return $("#add").validate({
     //         rules : {
