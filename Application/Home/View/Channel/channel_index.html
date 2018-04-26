@@ -4,29 +4,30 @@
     <meta charset="utf-8" />
     <title>渠道商管理</title>
     <link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
-    <link rel="csssheet" type="text/css" href="__CSS__/public.css"  />
+    <link rel="stylesheet" type="text/css" href="__CSS__/public.css"  />
+    <link rel="stylesheet" type="text/css" href="__CSS__/popwin.css"  />
     <script type="text/javascript" src="__JS__/jquery.js"></script>
     <script type="text/javascript" src="__JS__/Public.js"></script>
     <script type="text/javascript" src="__JS__/winpop.js"></script>
-    // <script>
-    //     $(document).ready(function() {
-    //         $('#content #table .tr .del2').click(function(event) {
-    //             event.preventDefault();
-    //             if (!confirm('确定要删除该数据吗？')) {
-    //                 return false;
-    //             }
-    //              var id=$(this).attr('href');
-    //             // console.log(id);
-    //             if (id=='' || isNaN(id)) {
-    //                 wintq('ID参数不正确',3,1000,1,'');
-    //                 return false;
-    //             }else {
-    //                 wintq('正在删除，请稍后...',4,20000,0,'');
-    //                 window.location.href='__APP__/Channel/channel_del/id/'+id;
-    //             }
-    //         });
-    //     }
-    // </script>
+    <script>
+        // $(document).ready(function() {
+        //     $('#content #table .tr .del2').click(function(event) {
+        //         event.preventDefault();
+        //         if (!confirm('确定要删除该数据吗？')) {
+        //             return false;
+        //         }
+        //         var id=$(this).attr('href');
+        //         console.log(id);
+        //         if (id=='' || isNaN(id)) {
+        //             wintq('ID参数不正确',3,1000,1,'');
+        //             return false;
+        //         }else {
+        //             wintq('正在删除，请稍后...',4,20000,0,'');
+        //             window.location.href='__APP__/Channel/channel_del/id/'+id;
+        //         }
+        //     });
+        // }
+    </script>
 </head>
 <body>
 <div id="content">
@@ -40,6 +41,13 @@
             </div>
             <div class="clear"></div>
         </h2>
+        <div class="dgv">
+            <div class="danyuan">
+                <a href="javascript:;">中介</a>
+                <a href="javascript:;">中间商</a>
+                <a href="javascript:;">平台</a>
+            </div>        
+        </div>
 
     </div>
     <div class="tableBox">
@@ -52,7 +60,8 @@
                 <th>办公地址</th>
                 <th>成单总量</th>
                 <th>新签量</th>
-                <th>续签量</th>
+                <th>再租户数</th>
+                <th>停租户数</th>
                 <th>业务员</th>
                 <th>操作</th>
             </tr>
@@ -66,12 +75,15 @@
                     <td class="tc">{$vo.middle_total}</td>
                     <td class="tc"></td>
                     <td class="tc"></td>
+                    <td class="tc"></td>
                     <td class="tc">{$vo.real_name}</td>
                     <td class="tc fixed_w">
                         <div class="operation">更多
                             <div class="operarea">
                                 <a href="__APP__/channel/channel_save/id/{$vo.id}" class="edit oper2">修改</a>
                                 <a href="__APP__/channel/channel_del/id/{$vo.id}" class="del2 oper2">删除</a>
+                                <a href="" class="yladdr oper2">预留地址号</a>
+                                <a href="" class="seaddr oper2">查看预留</a>
                             </div>
                         </div>
                     </td>
