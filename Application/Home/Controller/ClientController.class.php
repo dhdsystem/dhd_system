@@ -4,7 +4,7 @@ use Think\Controller;
 class ClientController extends Controller {
    /*客户*/
     public function client_index(){
-    	$data = M('client as client')->field('client.id,client_name,client_address,legalperson,legaltel,taxstyle,client_money,username')->where('client_state=0')->join('dhd_user as user on client.sales_id = user.id')->select();
+    	$data = M('client as client')->field('client.id,client_name,client_address,legalperson,legaltel,taxstyle,client_money,real_name,username')->where('client_state=0')->join('dhd_user as user on client.sales_id = user.id')->select();
         $list = M('class')->field('id,class_name')->where(array('class_is'=>0))->select();
         $this->assign('list',$list);
     	$this->assign('volist',$data);
@@ -63,7 +63,11 @@ class ClientController extends Controller {
                 ->join('dhd_middle as m on c.nuddke_id = m.id')
                 ->where('c.id='.$id)
                 ->find();
-
+        if(empty($data['nuddke_id'])){
+            $data = M('client')->where("id=$id")->find();
+            $data['customtype'] = '直接客户';
+        }
+        // print_r($data);die;
         $this->assign('list',$data);
         $this->display();
     }
@@ -71,9 +75,8 @@ class ClientController extends Controller {
     // 客户修改方法
     public function clientsave_do(){
         $data = I('post.');
-        $id = I('post.id');
-        // var_dump($data);die;
-        $save = M('client')->where(array('id'=>$id))->save($data);
+        print_r($data);die;
+        $save = M('client')->where(array('id'=>$data['id']))->save($data);
         if($save){
             $this->success('修改成功', U('Client/client_index'));
         }else{

@@ -26,7 +26,7 @@ class ExpendController extends Controller {
    	public function expendadd_do(){
    		$data =I('post.');
    		$data['u_id'] = get_user_id();
-   		$data['deteofcollect'] = date("Y-m-d");
+   		$data['deteofcollect'] = time();
    		// var_dump($data);die;
    		$add = M('expenditure')->data($data)->add();
         if($add){
@@ -52,7 +52,7 @@ class ExpendController extends Controller {
    	// 支出修改方法
    	public function expendsave_do(){
    		$data = I('post.');
-   		$data['deteofcollect'] = date("Y-m-d");
+   		$data['deteofcollect'] = time();
         // var_dump($data);die;
         $save = M('expenditure')->where(array('id'=>$data['id']))->save($data);
         if($save){

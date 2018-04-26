@@ -18,8 +18,10 @@ class AccountController extends Controller {
 
     // 账户新增方法
     public function accountadd_do(){
-    	$data = I('post.');
-    	// var_dump($data);die;
+        $data = I('post.');
+    	$addtime = I('post.addtime');
+        $data['addtime'] =  strtotime("$addtime");
+        // var_dump($data);die;
         $add = M('account')->data($data)->add();
         if($add){
             $this->success('新增成功', U('Account/account_index'));
@@ -41,6 +43,8 @@ class AccountController extends Controller {
     // 修改方法
     public function accountsave_do(){
     	$data = I('post.');
+        $addtime = I('post.addtime');
+        $data['addtime'] =  strtotime("$addtime");
         $where = array('id'=>$data['id']);
         // var_dump($data);die;
         $save = M('account')->where($where)->save($data);

@@ -32,7 +32,7 @@ class GatherController extends Controller {
 
     	$data = I('post.');
    		$data['u_id'] = get_user_id();
-   		$data['deteofcollect'] = date("Y-m-d");
+   		$data['deteofcollect'] = time();
     	// var_dump($data);die;
     	$add = M('gather')->data($data)->add();
         if($add){
@@ -87,8 +87,14 @@ class GatherController extends Controller {
     	
     }
 
-
-
+    // 业绩查询
+    public function gather_outstanding(){
+        $starttime = I('post.starttime');
+        $endtime = I('post.endtime');
+        $data['starttime'] = strtotime("$starttime");
+        $data['endtime'] = strtotime("$endtime");
+        print_r($data);
+    }
 
 
 
