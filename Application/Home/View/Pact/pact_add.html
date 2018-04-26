@@ -10,8 +10,7 @@
     <script type="text/javascript" src="__JS__/Public.js"></script>
     <script type="text/javascript" src="__JS__/winpop.js"></script>
     <!-- 日期插件 -->
-    <link rel="stylesheet" type="text/css" href="__CSS__/calendar.css"/>
-    <script type="text/javascript" src="__JS__/calendar.js"></script>
+    <script type="text/javascript" src="__JS__/laydate/laydate.js"></script>
 </head>
 <body>
 <div class="contract_cont"  id="content">
@@ -146,7 +145,7 @@
             <div id="bank"></div>
             <li class="iptBox" style="position: relative;">
                 <span class="ipt_left"><em class="red">*</em>实际金额：</span>
-                <input type="text" name="" value="" class="pact_ipt"/>
+                <input type="text" name="actual_amount" value="" class="pact_ipt"/>
                 <span class="rightsp">元（大写）</span>
             </li>
             <li class="zhushi">部门</li>
@@ -166,23 +165,27 @@
         <input type="submit" value="提交" class="submit">
     </form>
 </div>
+
 <script type="text/javascript" >
-    $(document).ready(function() {
-        $('#sdd').calendar({
-            trigger: '#ac_time',
-            zIndex: 999,
-            format: 'yyyy-mm-dd'
+
+        laydate.render({
+            elem: '#ac_time',  
+            format: 'yyyy年MM月dd日', 
+            
         });
-    });                  
+               
     // 合同类型
     $(document).on('change','#contracttype',function(){
 
         $('#zhuijia').empty()
-        var cu = "徐国章";
-        var cutel = "18132012380";
-        // $(".ready").attr("style",'display:none');
-        // $(".ready *").attr("disabled",true);
-        // $(".ready *").hide();
+        var project = <?php echo  $project; ?>;
+        var html = '';
+        $.each(project,function(k,v)
+                {
+                  html += '<option value="'+v.id+'">'+v.class_name+'</option>';
+                  
+                })
+        
         var ord=$(this).val();
         var red = '';
         if(ord=='大面积出租'){
@@ -214,158 +217,99 @@
             global: false,
             type: "POST",
             dataType: "html",
-            async: false,
+            async: true,
             success: function(msg) {
                 $('#zhuijia').append(msg);
                 $("#zhuijia :input").each(function () { 
                     $(this).val(""); 
                 }); 
-                $("#paytype option:first").remove();
-                $('#cu').val(cu)
-                $('#cutel').val(cutel) 
-                $('.ylzcdz').empty();
-                var pre = ''
-                    // alert(pre)
-                    var str = '<tr><td class="table1_left">';
-                    str += pre;        
-                    str +='</tr>';
-                $('.ylzcdz').append(str);          
+               
+                $('#project').append(html);
             }
         })
-        
-       
+
     })
 
     // 合同模板拉取
-    $(document).on('change','.signcom',function(){
+    $(document).on('change','#signcompany',function(){
             var remarks = $(this).val() 
-            var ord = $('#ordercate').val();
-            var type = $('.legalperson').val();
+            var ord = $('#contracttype').val();
             $.ajax({
                 type: "post",
-                url: "/?s=Home/Contract/stencil",
+                url: "__APP__/Pact/stencil",
                 data:{'ordercate':ord,'remarks':remarks},
                 dataType:"json",
                 success: function(msg){
  
-                var  html = '<td class="table1_right"><span class="tab_left"><em class=" red">*</em>合同模板：</span><select class="tab_select" name="pact" id="pact"><option value="0">请选择合同模板</option>';
-                $.each(msg,function(k,v)
-                {
-                	if(type=='中间商'||type=='中介'){
-                        
-                		if(v.tempname.indexOf("同行")!=-1){
-                			html += '<option value="'+v.tempname+'">'+v.tempname+'</option>';
-                		}else{
-                            html += '<option value="'+v.tempname+'">'+v.tempname+'</option>';
-                        }
-                	}else{
-                		if(v.tempname.indexOf("同行")==-1){
-                			html += '<option value="'+v.tempname+'">'+v.tempname+'</option>';
-                		}
-                	}
-                  
-                })
-                html += '<select></td>';
-                $('.moban').nextAll().remove();
-                $('.moban').after(html);   
-           }
-        })
+                    var  html = '<li class="iptBox"><span class="ipt_left"><em class="red">*</em>合同模板：</span><select name="pact" id="pact" class="pact_select"><option value="0">请选择合同模板</option>';
+                    $.each(msg,function(k,v)
+                    {
+            			html += '<option value="'+v.id+'">'+v.stencil_name+'</option>';
+                    })
+                    html += '<select></li>';
+                    $('.moban').empty().append(html);
+                    
+               }
+            })
     });
-    // 项目名称
-    $(document).on('change','#pro_company',function(){
-        var class_id = $(this).find("option:selected").attr('cid');
+    // 产品拉取
+    $(document).on('change','#project',function(){
+        var class_id = $(this).val();
+
         $.ajax({
-           type: "post",
-           url: "/?s=Home/Contract/pro_company",
+           type: "POST",
+           url: "__APP__/Pact/product",
            data:'class_id='+class_id,
            dataType:"json",
            success: function(msg){
-                var html = '<select style="width:60%" class="tab_select proname" name="address_info[]" id="proname"><option value="0">请选择地址</option>';
-                var zhuce = '';
+                html ='<option value="0">请选择地址</option>';
                 $.each(msg,function(k,v)
                 {
-                  html += '<option value="'+v.proname+'" aid="'+v.id+'">'+v.proname+'</option>';
-                  zhuce += '<option value="'+v.proname+'" aid="'+v.id+'">'+v.proname+'</option>';
+                  html += '<option value="'+v.id+'">'+v.pro_address+'</option>';
                 })
-                html += '</select>';
-                $('.p_compant').nextAll().remove();
-                $('.p_compant').after(html);  
-                $('.zhucedizhi').nextAll().remove();
-                $('.zhucedizhi').after(zhuce);
+                $('#product').empty().append(html);
+                
+
            }
        }) 
     })
-    // 注册号
-    $(document).on('change','#pre',function(){
-        var ids = $(this).find("option:selected").attr('ids');
-        var idq = $(this).find("option:selected").attr('idq');
-       
-        if(idq!=''){
-           var data = {'class_id':ids,'client_id':idq}
-        }else{
-            var data = {'class_id':ids}
-        }
-        $.ajax({
-           type: "post",
-           url: "/?s=Home/Contract/zhucehao",
-           data: data,
-           dataType:"json",
-           success: function(msg){
-            $('.pre_id').remove();
-              $('#pre').parent().after(msg)
-           }
-        })
-    })
-    // 房间号
-    $(document).on('change','.proname',function(){
-		$('#tr').next().remove();
-        var id = $(this).find("option:selected").attr('aid');
-        var ordercate = $('#ordercate').val();					//合同类型 	 工位注册办公  工位不注册办公   注册地址
-        $.ajax({
-           type: "post",
-           url: "/?s=Home/Contract/room",
-           data:'id='+id,
-           dataType:"json",
-           success: function(msg){
-           		if(ordercate=="工位注册办公" || ordercate=="工位不注册办公")
-           		{
-           			var tr = '<tr><td class="table1_left"><span class="tab_left"><em class="red">*</em>注册号：</span><input type="text" name="address_info[]" value="" class="tab_input" id=""/></td></tr>';
-           			$('.tr').after(tr);
-           		}
-           		if(ordercate=="注册地址")
-           		{
-           			var tr = '<tr><td class="table1_left"><span class="tab_left"><em class="red">*</em>注册号：</span><input type="text" name="address_info[]" value="" class="tab_input" id="zhucenum"/></td></tr>';
-           			$('.tr').after(tr);
-           		}
-           		if(ordercate=="大面积出租" || ordercate=="mini房间")
-           		{
-	                var html = '<select class="tab_select" name="address_info[]" id="housenum"><option value="0">请选择房间号</option>';
-	                $.each(msg,function(k,v)
-	                {
-	                  html += '<option value="'+v.room_num+'" hid="'+v.id+'">'+v.room_num+'</option>';
-	                })
-	                html += '</select>';
 
-	                $('.housnum').nextAll().remove();
-	                $('.housnum').after(html);   
-           		}
+    // 房间号
+    $(document).on('change','#product',function(){
+		
+        var id = $(this).val();
+        var contracttype = $('#contracttype').val();					
+        $.ajax({
+           type: "POST",
+           url: "__APP__/Pact/details",
+           data:{'id':id,'contracttype':contracttype},
+           dataType:"json",
+           success: function(msg){
+           		
+       		   var html = '<option value="">请选择房间号</option>';
+                $.each(msg,function(k,v)
+                {
+                    html += '<option value="'+v.id+'">'+v.detailscoll+'</option>';
+                })
+	                $('#home').empty().append(html);   
+           		
            }
        }) 
     })
     // 房间面积
-    $(document).on('change','#housenum',function(){
-        var id = $(this).find("option:selected").attr('hid');
+    $(document).on('change','#home',function(){
+        var id = $(this).val();
         $.ajax({
-           type: "post",
-           url: "/?s=Home/Contract/room_area",
-           data:'id='+id,
+           type: "POST",
+           url: "__APP__/Pact/room_area",
+           data:{'id':id},
            dataType:"json",
            success: function(msg){
-                $('.housearea').val(msg.room_area)
+                $('#room_area').val(msg.big_sum)
            }
        }) 
     })
-    // 租赁日期
+    // 免租期
     $(document).on('blur','#freetime',function(){
         var time = $('#rentstarttime').val();
         var day = $('#freetime').val();
@@ -441,7 +385,7 @@
     })
 
     $(document).on('blur','#servemenyq',function(){
-        var ord = $('#ordercate').val();
+        var ord = $('#contracttype').val();
           if(ord=='工商代理'){
             var signcompany = $('#servemenyq').val();
             var dxmy=convertCurrency(signcompany);
@@ -454,23 +398,23 @@
     })
     // 根据合同判断收款计算方式
     function ht_sk(){
-        var ord = $('#ordercate').val();
+        var ord = $('#contracttype').val();
         if(ord=='大面积出租'){
              var pact = $('#pact').val()
-             var housearea = $('#housearea').val();
-            var rent = $('#rent').val();
-            var arr = pact.split('—');
-            if(arr[0]==='孵化服务协议'){
+             var housearea = $('#room_area').val();
+            var rent = $('#rentdatetime').val();
+            // var arr = pact.split('—');
+            // if(arr[0]==='孵化服务协议'){
                  var year_rent = Math.ceil(rent * housearea * 365);             //年租金
-            }else{
-                 var year_rent = Math.ceil(rent * housearea * 365);             //年租金
-            }
+            // }else{
+                 // var year_rent = Math.ceil(rent * housearea * 365);             //年租金
+            // }
             
            
             var monthly_rent = Math.floor(year_rent / 12);                  //月租金
         }
         if(ord=='mini房间'){
-            var servemeny=$('#servemenyq').val();
+            var servemeny=$('#servemeny').val();
             // var energy_charge=$('#energy_charge').val();
             var monthly_rent = servemeny;                  //月租金
             var year_rent = monthly_rent * 12 ;             //年租金
@@ -522,7 +466,7 @@
     //获取下次付款时间
     function moeny(){
         var id = $('#paytype').val();                      //付款方式
-        var ord = $('#ordercate').val();
+        var ord = $('#contracttype').val();
         var appoint = $('#appoint').val()
         if(ord=='代理记账'){
             var rentendtime = $('#agencyendtime').val();      //租赁结束日期
@@ -555,36 +499,16 @@
             }
         }
         $.ajax({
-           type: "post",
-           url: "/?s=Home/Contract/paytype",
+           type: "POST",
+           url: "__APP__/Pact/paytype",
            data:data,
            dataType:"json",
            success: function(msg){
             // alert(msg)
             $('#deposit').val(msg.deposit);
-            $('#fu').val(msg.fu);
-            $('#fu').next('.daxie').html(convertCurrency(msg.fu));
+            $('#each').val(msg.fu);
+            $('#each').next('.daxie').html(convertCurrency(msg.fu));
             $('#deposit').next('.daxie').html(convertCurrency(msg.deposit));
-                
-                if(msg.nexttime==null){
-                    var nexttime ='<tr><td colspan="2"><center><h3>合同签订当日付清<font color="red">'+msg.total+'</font>元</h3></center></td></tr>'
-                }else{
-                    var nexttime = '<tr><td class="table1_left"><span class="tab_left">第一次付款日期：</span><input type="text" name="paynext1" value="" class="tab_input" id="paynext1"/></td></tr><tr>';
-
-                    $.each(msg.nexttime,function(k,v){
-                        var i = parseInt(k)+parseInt(1)
-                        if(k%2==0)
-                        {
-                            nexttime +='<td class="table1_right"><span class="tab_left">下次付款日期'+i+'：</span><input type="text" name="paynext'+i+'" value="'+v+'" class="tab_input" id="paynext1"/></td></tr><tr>';
-                        }else
-                        {
-                            nexttime +='<td class="table1_left"><span class="tab_left">下次付款日期'+i+'：</span><input type="text" name="paynext'+i+'" value="'+v+'" class="tab_input" id="paynext1"/></td>';
-                        }
-                    })
-                    nexttime +='</tr>';
-                }
-
-                $('#nexttime').empty().append(nexttime);
            }
        })    
     }

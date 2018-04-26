@@ -1,7 +1,7 @@
 
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>签订公司：</span>
-    <select  name="" class="pact_select" >
+    <select  name="signcompany" id="signcompany" class="pact_select" >
         <option value="0">请选择签订公司</option>
         <option value="北京东辉达科技有限公司">北京东辉达科技有限公司</option>
         <option value="北京去创创科技有限公司">北京去创创科技有限公司</option>
@@ -9,13 +9,13 @@
         <option value="北京创也江湖科技有限公司">北京创也江湖科技有限公司</option>  
     </select>
 </li>
+<div class="moban"></div>
 <li class="xian">租赁房间信息</li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>项目：</span>
-    <select  name="" class="pact_select" >
+    <select  name="" id="project" class="pact_select">
         <option value="0">请选择项目</option>
-        <option value="金隅嘉华大厦">金隅嘉华大厦</option>
-        <option value="财智国际大厦">财智国际大厦</option>
+        
     </select>
 </li>
 <li class="iptBox">
@@ -80,16 +80,11 @@
 </li>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('#rentstar').calendar({
-            trigger: '#rentstarttime',
-            zIndex: 999,
-            format: 'yyyy-mm-dd'
+        laydate.render({  
+            elem: '#rentstarttime',  
+            format: 'yyyy年MM月dd日', 
+            done: function(value, date, endDate){
+                endDateCallBack(value)
+            }
         });
-        $('#rentend').calendar({
-            trigger: '#rentendtime',
-            zIndex: 999,
-            format: 'yyyy-mm-dd'
-        });
-    });
 </script>

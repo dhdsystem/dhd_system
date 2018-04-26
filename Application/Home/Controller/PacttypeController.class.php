@@ -4,6 +4,7 @@ use Think\Controller;
 class PacttypeController extends Controller {
    /*合同*/
     public function damianji(){
-       $this->display();
+
+       	$this->display();
     }
 }

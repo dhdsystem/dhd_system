@@ -4,21 +4,23 @@ use Think\Controller;
 class StencilController extends Controller {
    /*模板管理*/
     public function stencil_index(){
-      $list = M('stencil')->field('dhd_stencil.id,stencil_name,stencil_type,stencil_remark,stencil_addtime,username,real_name')->join('dhd_user on dhd_stencil.user_id=dhd_user.id')->select();
+      $list = M('stencil')->field('dhd_stencil.id,stencil_name,stencil_type,stencil_remark,stencil_addtime,username')->join('dhd_user on dhd_stencil.user_id=dhd_user.id')->select();
       $this->assign('list',$list);
       $this->display();
     }
     /*模板添加*/
-   	public function stencil_add()
-   	{
-   		$this->display();
-   	}
+    public function stencil_add()
+    {
+      $this->display();
+    }
     /*执行模板添加*/
-   	public function stenciladd_do()
-   	{
+    public function stenciladd_do()
+    {
       $stencil_name = I('post.stencil_name');
       $stencil_type = I('post.stencil_type');
-   		$stencil_remark = I('post.stencil_remark');
+      $stencil_remark = I('post.stencil_remark');
+      $signcompany = I('post.signcompany');
+      $contracttype = I('post.contracttype');
       $file = $_FILES['file'];
       if($stencil_type==1){
         $uplode = A('Word');
@@ -29,9 +31,10 @@ class StencilController extends Controller {
         $uplode = A('Excel');
         $stencil_url = $uplode->stencil_up($file,$stencil_name);
       }
+
       if(!empty($stencil_url)){
         $user_id = get_user_id();
-        $arr = array('stencil_url'=>$stencil_url,'stencil_type'=>$stencil_type,'stencil_remark'=>$stencil_remark,'stencil_name'=>$stencil_name,'user_id'=>$user_id,'stencil_addtime'=>time());
+        $arr = array('stencil_url'=>$stencil_url,'signcompany'=>$signcompany,'contracttype'=>$contracttype,'stencil_type'=>$stencil_type,'stencil_remark'=>$stencil_remark,'stencil_name'=>$stencil_name,'user_id'=>$user_id,'stencil_addtime'=>time());
         $re = M('stencil')->add($arr);
         if($re){
           $this->success('模板文件添加成功',U('Stencil/stencil_index'));
@@ -41,7 +44,7 @@ class StencilController extends Controller {
       }else{
         $this->error('模板文件新增失败',U('Stencil/stencil_index'));
       }
-   	}
+    }
     /*模板修改*/
     public function stencil_save()
     {
