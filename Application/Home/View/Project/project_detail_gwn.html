@@ -41,10 +41,10 @@
 <body>
 <div id="content">
     <div class="topFix">
-        <h1>首页 > 产品管理 > 项目管理 > 产品详情> 工位(已使用)</h1>
+        <h1>首页 > 产品管理 > 项目管理 > 产品详情> 工位(未使用)</h1>
         <h2>
             <div class="h2_left">
-                <a href="javascript:;" class="add" title="切换未使用">未使用</a>
+                <a href="__APP__/project/project_detail_gw" class="add" title="切换已使用">已使用</a>
                 <a href="javascript:history.back();" class="Retreat">后退</a>
                 <div class="clear"></div>
             </div>
@@ -55,30 +55,14 @@
     <div class="tableBox">
 		<table id="table" border="1" bordercolor="#CCCCCC" cellpadding="0" cellspacing="0" style="width:100%">
             <tr>
-                <th>公司名称</th>
-                <th>工位号</th>
-                <th>注册号</th>
-                <th>法人姓名</th>
-                <th>电话</th>
-                <th>租赁日期</th>
-                <th>金额</th>
-                <th>付款方式</th>
-                <th>纳税形式</th>
-                <th>信用代码</th>
+                <th>项目地址</th>
+                <th>房间号</th>
                 <th>操作</th>
             </tr>
             <volist name="volist" id="vo">
                 <tr class="tr" value="1">
-                    <td class="tc"></td>
-                    <td class="tc"></td>
-                    <td class="tc"></td>
-                    <td class="tc"></td>
-                    <td class="tc"></td>
-                    <td class="tc"></td>
-                    <td class="tc"></td>
-                    <td class="tc"></td>
-                    <td class="tc"></td>
-                    <td class="tc"></td>
+                    <td class="tc">{$vo.pro_address}</td>
+                    <td class="tc">{$vo.detailscoll}</td>
                     <td class="tc fixed_w">
                         <a href="{$vo.id}" class="edit oper">修改</a>
                         <a href="{$vo.id}" class="del oper">删除</a>
