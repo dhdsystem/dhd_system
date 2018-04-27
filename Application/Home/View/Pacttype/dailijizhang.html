@@ -14,12 +14,12 @@
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>代理期限：</span>
     <span class="timeBox">
-        <input type="text" name="" value="" class="pact_ipt pact_ipt2" id="rentstarttime">
+        <input type="text" name="rentstarttime" value="" class="pact_ipt pact_ipt2" id="rentstarttime">
         <div id="rentstar" style="left: 0px;top: 40px;"></div>
     </span>
     <span style="line-height: 40px;display: inline-block;">～</span>
     <span class="timeBox">
-        <input type="text" name="" value="" class="pact_ipt pact_ipt2" id="rentendtime">
+        <input type="text" name="rentendtime" value="" class="pact_ipt pact_ipt2" id="rentendtime">
         <div id="rentend" style="left: 0px;top: 40px;"></div>
     </span>
 </li>
@@ -83,27 +83,28 @@
 <li class="xian">甲方联系人</li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>第一联系人：</span>
-    <input type="text" name="" value="" class="pact_ipt" placeholder="元 （大写）">
+    <input type="text" name="legalperson" value="" class="pact_ipt" placeholder="元 （大写）">
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>联系人电话：</span>
-    <input type="text" name="" value="" class="pact_ipt" placeholder="元 （大写）">
+    <input type="text" name="legaltel" value="" class="pact_ipt" placeholder="元 （大写）">
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>其他联系人：</span>
-    <input type="text" name="" value="" class="pact_ipt" placeholder="元 （大写）">
+    <input type="text" name="client_man" value="" class="pact_ipt" placeholder="元 （大写）">
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>联系人电话：</span>
-    <input type="text" name="" value="" class="pact_ipt" placeholder="元 （大写）">
+    <input type="text" name="client_tel" value="" class="pact_ipt" placeholder="元 （大写）">
 </li>
 <script type="text/javascript">
         laydate.render({  
             elem: '#rentstarttime',  
             format: 'yyyy年MM月dd日', 
-            done: function(value, date, endDate){
-                endDateCallBack(value)
-            }
+        });
+        laydate.render({  
+            elem: '#rentendtime',  
+            format: 'yyyy年MM月dd日', 
         });
     $(document).on('change','#paytype',function(){
         ht_sk();

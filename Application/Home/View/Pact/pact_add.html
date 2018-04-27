@@ -35,9 +35,9 @@
                 <span class="ipt_left"><em class="red">*</em>合同性质：</span>
                 <select  name="contractnature" class="pact_select" >
                     <option value="">--请选择--</option>
-                    <option value="新注册">新注册</option>
-                    <option value="变更">变更</option>
-                    <option value="续签">续签</option>
+                    <option value="1">新注册</option>
+                    <option value="2">变更</option>
+                    <option value="3">续签</option>
                 </select>
             </li>
             <li class="xian">客户信息</li>
@@ -157,7 +157,6 @@
             <li class="zhushi">部门</li>
             <li class="iptBox" style="margin-bottom: 30px;">
                 <span class="ipt_left"><em class="red">*</em>业务员：</span>
-                <input type="hidden" name="user_id">
                 <select id="role_name"  class="pact_select" >
                     <option value="0">请选择部门</option>
                     <foreach name="role" item="vo" >
@@ -254,7 +253,7 @@
                 dataType:"json",
                 success: function(msg){
  
-                    var  html = '<li class="iptBox"><span class="ipt_left"><em class="red">*</em>合同模板：</span><select name="pact" id="pact" class="pact_select"><option value="0">请选择合同模板</option>';
+                    var  html = '<li class="iptBox"><span class="ipt_left"><em class="red">*</em>合同模板：</span><select name="stencil_id" id="pact" class="pact_select"><option value="0">请选择合同模板</option>';
                     $.each(msg,function(k,v)
                     {
             			html += '<option value="'+v.id+'">'+v.stencil_name+'</option>';
@@ -327,8 +326,8 @@
         var time = $('#rentstarttime').val();
         var day = $('#freetime').val();
         $.ajax({
-            type: "post",   
-            url: "/oa/?s=home/Contract/freetime",
+            type: "POST",   
+            url: "__APP__/Pact/freetime",
             data:{'time':time,'day':day},
             dataType:"json",
             success: function(msg){
@@ -386,7 +385,7 @@
             data:{'id':id},
             dataType:"json",
             success: function(msg){
-                var html = '<li class="iptBox" style="margin-bottom: 30px;"><span class="ipt_left"><em class="red">*</em>业务员：</span><select class="pact_select"  id="user_id"><option value="0">请选择业务员</option>';
+                var html = '<li class="iptBox" style="margin-bottom: 30px;"><span class="ipt_left"><em class="red">*</em>业务员：</span><select class="pact_select" name="user_id"  id="user_id"><option value="0">请选择业务员</option>';
                 $.each(msg,function(k,v)
                 {
                   html += '<option value="'+v.id+'">'+v.username+'</option>';

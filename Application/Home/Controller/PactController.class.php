@@ -55,44 +55,130 @@ class PactController extends Controller {
     	$contracttype = ('post.contracttype');
     	$data = I('post.');
 
+
+
+    		// 合同表信息添加数据
+		    
+		    
+			
     	if($contracttype != '0' || $contracttype != '会议室出租'){
-	    	$res = M('contract')->add($data);
-	    	foreach ($data as $k => $v) {
-	    		if(preg_match('/^d{4}年d{2}月d{2}日$/s',$dateTime))
-				{
-					
-				}
-	    	}
+    		$contract['client_id'] = I('post.client_id');
+		    $contract['ac_time'] = I('post.ac_time');
+		    $contract['contractnature'] = I('post.contractnature');
+		    $contract['contracttype'] = I('post.contracttype');
+		    $contract['account_id'] = I('post.account_id');
+		    $contract['stencil_id'] = I('post.stencil');
+		    $contract['actual_amount'] = I('post.actual_amount');
+		    $contract['user_id'] = I('post.user_id');
+	    		$res = M('contract')->add($contract);	
+	    	
 	    	if($res){
-		    	$data['contract'] = $res;
 		    	if($contracttype=='大面积出租'){
-		            $re = M('largearea')->add($data);
+		    		// 大面积合同信息添加内容
+		    		$largearea['details_id'] = I('post.details_id');
+		    		$largearea['contract'] = $res;
+		    		$largearea['rentdatetime'] = I('post.rentdatetime');
+		    		$largearea['rentstarttime'] = I('post.rentstarttime');
+		    		$largearea['rentendtime'] = I('post.rentendtime');
+		    		$largearea['freetime'] = I('post.freetime');
+		    		$largearea['freestarttime'] = I('post.freestarttime');
+		    		$largearea['freeendtime'] = I('post.freeendtime');
+		    		$largearea['increasing'] = I('post.increasing');
+		    		$largearea['increayear'] = I('post.increayear');
+		    		$largearea['rates'] = I('post.rates');
+		    		$largearea['zjistax'] = I('post.zjistax');
+		            $re = M('largearea')->add($largearea);
 		        }
 		        if($contracttype=='mini房间'){
-		            $re = M('houselet')->add($data);
+		        	// 小房间合同信息添加内容
+		        	$houselet['details_id'] = I('post.details_id');
+		        	$houselet['contract'] = $res;
+		        	$houselet['rentdatetime'] = I('post.rentdatetime');
+		        	$houselet['rentstarttime'] = I('post.rentstarttime');
+		        	$houselet['rentendtime'] = I('post.rentendtime');
+		        	$houselet['business'] = I('post.business');
+		        	$houselet['swistax'] = I('post.swistax');
+		        	$houselet['rates'] = I('post.rates');
+		        	$houselet['zjistax'] = I('post.zjistax');
+
+		            $re = M('houselet')->add($houselet);
 		        }
 		        if($contracttype=='工位注册办公'){
-		            $re = M('registration')->add($data);
+		        	// 工位注册办公合同信息内容
+		        	$registration['contract'] = $res;
+		        	$registration['business'] = I('post.business');
+		        	$registration['station'] = I('post.station');
+		        	$registration['rentdatetime'] = I('post.rentdatetime');
+		        	$registration['rentstarttime'] = I('post.rentstarttime');
+		        	$registration['rentendtime'] = I('post.rentendtime');
+		        	$registration['details_id'] = I('post.details_id');
+		        	$registration['ggistax'] = I('post.ggistax');
+
+		            $re = M('registration')->add($registration);
 		        }
 		        if($contracttype=='注册地址'){
-		            $re = M('register')->add($data);
+		        	// 工位注册合同信息内容
+		        	$register['contract'] = $res;
+		        	$register['station'] = I('post.station');
+		        	$register['ggistax'] = I('post.ggistax');
+		        	$register['rentdatetime'] = I('post.rentdatetime');
+		        	$register['rentstarttime'] = I('post.rentstarttime');
+		        	$register['rentendtime'] = I('post.rentendtime');
+		  
+		            $re = M('register')->add($register);
 		        }
 		        if($contracttype=='代理记账'){
-		            $re = M('houselet')->add($data);
+
+		        	// 代理记账合同信息内容
+		        	$tally['contract']= $res;
+		        	$tally['rentstarttime']= I('post.rentstarttime');
+		        	$tally['rentstarttime']= I('post.rentstarttime');
+		        	$tally['ta_kmoney']= I('post.ta_kmoney');
+		        	$tally['ta_kis']= I('post.ta_kis');
+		        	$tally['ta_gmoney']= I('post.ta_gmoney');
+		        	$tally['ta_gis']= I('post.ta_gis');
+		        	$tally['ta_istaxcontrol']= I('post.ta_istaxcontrol');
+		        	$tally['ta_skistax']= I('post.ta_skistax');
+		        	$tally['ta_skmoney']= I('post.ta_skmoney');
+		        	$tally['skstarttime']= I('post.skstarttime');
+		        	$tally['skendtime']= I('post.skendtime');
+
+		            $re = M('tally')->add($tally);
 		        }
 		        if($contracttype=='工位不注册办公'){
-		            $re = M('tally')->add($data);
+		        	// 工位不注册办公合同信息内容
+		        	$regclosed['contract']= $res;
+		        	$regclosed['station']= I('post.station');
+		        	$regclosed['ggistax']= I('post.ggistax');
+		        	$regclosed['rentdatetime']= I('post.rentdatetime');
+		        	$regclosed['rentstarttime']= I('post.rentstarttime');
+		        	$regclosed['rentendtime']= I('post.rentendtime');
+		        	$regclosed['details_id']= I('post.details_id');
+		            $re = M('regclosed')->add($regclosed);
 		        }
 		        if($contracttype=='工商代理'){
-		            $re = M('industrial')->add($data);
-		        }
-		        $re = M('largearea')->add($data);
-		        
-		        // echo $r;
-		        // echo M('largearea')->GetLastSql();
-		        // print_r($data);
-		        // echo $re;die;
+
+		        	$industrial['contract'] = $res;
+		        	$industrial['entrust'] = I('post.entrust');
+		        	$industrial['business'] = I('post.business');
+		        	$industrial['swistax'] = I('post.swistax');
+		            $re = M('industrial')->add($industrial);
+		        }		        
+		       
+		        print_r($data);die;
+		       
 	       		if($re){
+
+	       			$collection['contract'] = $res;
+	       			$collection['appoint'] = I('post.appoint');
+	       			$collection['overdue'] = I('post.overdue');
+	       			$collection['paytype'] = I('post.paytype');
+	       			$collection['monthly_rent'] = I('post.monthly_rent');
+	       			$collection['year_rent'] = I('post.year_rent');
+	       			$collection['deposit'] = I('post.deposit');
+	       			$collection['each'] = I('post.each');
+	       			$collection['paynext1'] = I('post.paynext1');
+	       			$collection['paynext2'] = I('post.paynext2');
 	       			$r = M('collection')->add($data);
 	       			if($r){
 	       				$this->success('合同新增成功', U('Pact/pact_index'));
@@ -204,6 +290,20 @@ class PactController extends Controller {
         $strtime=strtotime("+$long month",$timestamp)-3600*24;
         $endtime = date("Y年m月d日",$strtime);
         returnajax($endtime);
+    }
+        /**
+     * 免租期
+     */
+    public function freetime()
+    {
+        $time=I('post.time');
+        $day=I('post.day');
+        $arr = date_parse_from_format ( "Y年m月d日" , $time );
+        $strtime = mktime(0,0,0,$arr['month'],$arr['day'],$arr['year']);
+        $day=3600*24*($day+1);
+        $data['end']=date('Y年m月d日',$strtime-3600*24);
+        $data['start']=date('Y年m月d日',$strtime-$day);
+        echo json_encode($data);
     }
     public function paytype()
     {
