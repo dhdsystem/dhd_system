@@ -9,7 +9,13 @@
 <script type="text/javascript" src="__JS__/Public.js"></script>
 <script type="text/javascript" src="__JS__/winpop.js"></script>
 <script type="text/javascript" src="__JS__/WdatePicker.js"></script>
-
+<style type="text/css">
+    .file {position: relative;display: inline-block;background: #D0EEFF;border: 1px solid #99D3F5;
+        border-radius: 4px;padding: 4px 12px;overflow: hidden;color: #1E88C7;text-decoration: none;
+        text-indent: 0;line-height: 20px;}
+    .file input {position: absolute;font-size: 15px;right: 0;top: 0;opacity: 0;}
+    .file:hover {background: #AADFFD;border-color: #78C3F3;color: #004974;text-decoration: none;}
+</style>
 
 </head>
 <body>
@@ -45,7 +51,11 @@
         <dd>
             <span class="dd_left">模板文件：</span>
             <span class="dd_right">
-                <input name="file"  type="file" />
+                <a class="file" href="javascript:;">
+                    <input name="file"  type="file" />
+                    <span class="fileerrorTip">请选择文件</span>
+                    <span class="showFileName"></span>
+                </a>
             </span>
         </dd>
         
@@ -68,6 +78,19 @@
         if(type == 1){
            html = '<dd><span class="dd_left">所属公司：</span><span class="dd_right"><input name="signcompany" id="signcompany" placeholder="* 填写模板名称" type="text" class="qtext" size="50" /></span></dd><dd><span class="dd_left">合同类型：</span><span class="dd_right"><input name="contracttype" id="contracttype" placeholder="* 填写模板名称" type="text" class="qtext" size="50" /></span></dd>';
            $('#zhuijia').append(html)
+        }
+    })
+    $(".file").on("change","input[type='file']",function(){
+        var filePath=$(this).val();
+        if(filePath.match(/.xls|.doc|.xlsx|.docx/i)){
+            $(".fileerrorTip").html("").hide();
+            var arr=filePath.split('\\');
+            var fileName=arr[arr.length-1];
+            $(".showFileName").html(fileName);
+        }else{
+            $(".showFileName").html("");
+            $(".fileerrorTip").html("您未上传文件，或者您上传文件类型有误！").show();
+            return false 
         }
     })
 </script>
