@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8" />
 <title>添加新客户</title>
-<link rel="stylesheet" type="text/css" href="__CSS__/content.css"/>
-<link rel="stylesheet" type="text/css" href="__CSS__/public.css"/>
-<script type="text/javascript" src="__JS__/jquery.js"></script>
-<script type="text/javascript" src="__JS__/Public.js"></script>
-<script type="text/javascript" src="__JS__/winpop.js"></script>
-<script type="text/javascript" src="__JS__/WdatePicker.js"></script>
+<link rel="stylesheet" type="text/css" href="/dhd_system/dhd_system/Public/home/css/content.css"/>
+<link rel="stylesheet" type="text/css" href="/dhd_system/dhd_system/Public/home/css/public.css"/>
+<script type="text/javascript" src="/dhd_system/dhd_system/Public/home/js/jquery.js"></script>
+<script type="text/javascript" src="/dhd_system/dhd_system/Public/home/js/Public.js"></script>
+<script type="text/javascript" src="/dhd_system/dhd_system/Public/home/js/winpop.js"></script>
+<script type="text/javascript" src="/dhd_system/dhd_system/Public/home/js/WdatePicker.js"></script>
 <style type="text/css">
     .file {position: relative;display: inline-block;background: #D0EEFF;border: 1px solid #99D3F5;
         border-radius: 4px;padding: 4px 12px;overflow: hidden;color: #1E88C7;text-decoration: none;
@@ -25,22 +25,20 @@
             <a href="javascript:history.back();" class="Retreat">后退</a>
         </div>
     </h2>
-    <form action="__APP__/Stencil/stencilsave_do" method="post" enctype="multipart/form-data">
+    <form action="/dhd_system/dhd_system/?s=Home/Stencil/stencilsave_do" method="post" enctype="multipart/form-data">
     <dl id="cdl" >
         <dd>
             <span class="dd_left">客户分组：</span>
             <span class="dd_right">
-            <input type="hidden" value="{$data.id}" name="id">
+            <input type="hidden" value="<?php echo ($data["id"]); ?>" name="id">
                 <select  name="stencil_type" class="select tab_select" style="width: 752px;height: 40px;">
                         
 
-                        <if condition="$data.stencil_type eq 1 ">
-                            <option value="1" selected>合同模板</option>
+                        <?php if($data["stencil_type"] == 1 ): ?><option value="1" selected>合同模板</option>
                             <option value="2">表格模板</option>
-                        <else /> 
+                        <?php else: ?> 
                             <option value="1">合同模板</option>
-                            <option value="2" selected>表格模板</option>
-                        </if>
+                            <option value="2" selected>表格模板</option><?php endif; ?>
                    
                         
                 </select>
@@ -49,7 +47,7 @@
         <dd>
             <span class="dd_left">模板名称：</span>
             <span class="dd_right">
-                <input name="stencil_name" value="{$data.stencil_name}" type="text" class="qtext" size="50" />
+                <input name="stencil_name" value="<?php echo ($data["stencil_name"]); ?>" type="text" class="qtext" size="50" />
             </span>
             
         </dd>
@@ -59,7 +57,7 @@
                 <a class="file" href="javascript:;">
                     <input name="file"  type="file"/>
                     <span class="fileerrorTip">请选择文件</span>
-                    <span class="showFileName">{$data.stencil_name}</span>
+                    <span class="showFileName"><?php echo ($data["stencil_name"]); ?></span>
                 </a>
             </span>
         </dd>
@@ -67,7 +65,7 @@
         <dd>
             <span class="dd_left">备注：</span>
             <span class="dd_right">
-                <textarea name="stencil_remark">{$data.stencil_remark}</textarea>
+                <textarea name="stencil_remark"><?php echo ($data["stencil_remark"]); ?></textarea>
             </span>
         </dd>
         
@@ -81,7 +79,7 @@
     $(".fileerrorTip").html("").hide();
     $(".file").on("change","input[type='file']",function(){
         var filePath=$(this).val();
-        if(filePath.match(/.xls|.xlsx|.xml/i)){
+        if(filePath.match(/.xls|.doc|.xlsx|.docx|.xml/i)){
             $(".fileerrorTip").html("").hide();
             var arr=filePath.split('\\');
             var fileName=arr[arr.length-1];
@@ -94,4 +92,3 @@
     })
 </script>
 </html>
-
