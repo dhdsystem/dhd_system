@@ -34,6 +34,8 @@ class ClientController extends Controller {
         $data = I('post.');
     	// var_dump($data);die;
         $data['sales_id'] = get_user_id();
+        // echo get_user_id();die;
+        print_r($data);die;
         $add = M('client')->data($data)->add();
         if($add){
             $this->success('新增成功', U('client/client_index'));

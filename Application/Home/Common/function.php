@@ -13,6 +13,11 @@ function returnajax($data)
 {
 	exit(json_encode($data));
 }
+function inttime($time){
+	$arr1 = date_parse_from_format ( "Y年m月d日" , $time );
+    $inttime = mktime(0,0,0,$arr1['month'],$arr1['day'],$arr1['year']);//租赁结束日期
+    return $inttime;
+}
 /**
  * /操作成功ajax调用
  * @person 史炎

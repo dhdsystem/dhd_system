@@ -21,18 +21,19 @@
             <a href="javascript:history.back();" class="Retreat">后退</a>
         </div>
     </h2>
-    <form method="post" action="" enctype="multipart/form-data">
-        <input type="hidden" name="" value="">
+    <form method="post" action="__APP__/Pact/pactadd_do" enctype="multipart/form-data">
+        <input type="hidden" name="client_id"  value="{$client.id}">
         <ul>
             <li class="xian">基础信息</li>
             <li class="iptBox">
                 <span class="ipt_left"><em class="red">*</em>签订日期：</span>
                 <input type="text" name="ac_time" id="ac_time" class="pact_ipt"/>
                 <div id="sdd" style="left: 243px;top: 284px;"></div>
+                    
             </li>
             <li class="iptBox">
                 <span class="ipt_left"><em class="red">*</em>合同性质：</span>
-                <select  name="" class="pact_select" >
+                <select  name="contractnature" class="pact_select" >
                     <option value="">--请选择--</option>
                     <option value="新注册">新注册</option>
                     <option value="变更">变更</option>
@@ -122,10 +123,15 @@
                     <option value="0">选择合同分类</option>
                     <option value="大面积出租">大面积出租</option>
                     <option value="mini房间">mini房间</option>
-                    <option value="工位注册办公">工位注册办公</option>
+                    <if condition="$reserved neq 'null' ">
+                        <option value="工位注册办公">工位注册办公</option>
+                        <option value="注册地址">注册地址</option>
+                    <else />
+                    </if>
+                    
                     <option value="工位不注册办公">工位不注册办公</option>
                     <option value="会议室出租">会议室出租</option>
-                    <option value="注册地址">注册地址</option>
+                   
                     <option value="代理记账">代理记账</option>
                     <option value="工商代理">工商代理</option>                    
                 </select> 
@@ -151,7 +157,7 @@
             <li class="zhushi">部门</li>
             <li class="iptBox" style="margin-bottom: 30px;">
                 <span class="ipt_left"><em class="red">*</em>业务员：</span>
-                <input type="hidden" name="account_id">
+                <input type="hidden" name="user_id">
                 <select id="role_name"  class="pact_select" >
                     <option value="0">请选择部门</option>
                     <foreach name="role" item="vo" >
@@ -185,7 +191,11 @@
                   html += '<option value="'+v.id+'">'+v.class_name+'</option>';
                   
                 })
-        
+        var reserved = <?php echo $reserved; ?>;
+        if(reserved != 'null'){
+            var reser = '<li class="iptBox"><span class="ipt_left"><em class="red">*</em>注册地址：</span><input type="text" class="pact_select" value="'+reserved.class_name+reserved.pro_address+reserved.detailscoll+'" /><input type="hidden" name="det_id" value="'+reserved.id+'" /></li>';
+        }
+        // alert(reserved.pro_address);
         var ord=$(this).val();
         var red = '';
         if(ord=='大面积出租'){
@@ -225,6 +235,9 @@
                 }); 
                
                 $('#project').append(html);
+                if(reserved != 'null'){
+                    $('#zhucedizhi').empty().append(reser);
+                }
             }
         })
 
@@ -336,7 +349,7 @@
             success: function(msg){
                 var html = '<li class="iptBox"><span class="ipt_left"><em class="red">*</em>开户行：</span><input type="text" name="client_tel" value="'+msg.opacontbank+'" class="pact_ipt"/></li><li class="iptBox"><span class="ipt_left"><em class="red">*</em>银行卡号：</span><input type="text" name="client_tel" value="'+msg.contnum+'" class="pact_ipt"/></li>'; 
                     $('#bank').empty().append(html);
-                    $('account_id').val(msg.id)
+                    $('#account_id').val(msg.id)
                 
             }
         })    
@@ -414,7 +427,7 @@
             var monthly_rent = Math.floor(year_rent / 12);                  //月租金
         }
         if(ord=='mini房间'){
-            var servemeny=$('#servemeny').val();
+            var servemeny=$('#business').val();
             // var energy_charge=$('#energy_charge').val();
             var monthly_rent = servemeny;                  //月租金
             var year_rent = monthly_rent * 12 ;             //年租金
@@ -422,11 +435,11 @@
         }
         if(ord=='工位注册办公'){
            // $(".zcdz *").attr("disabled",true);
-            var servemeny = $('#servemeny').val();
+            var business = $('#business').val();
             var station = $('#station').val();
            
             var monthly_rent =  parseInt(station);                  //月租金
-            var year_rent = monthly_rent * 12 + parseInt(servemeny)*12 ;             //年租金
+            var year_rent = monthly_rent * 12 + parseInt(business)*12 ;             //年租金
             // return false;
         }
         if(ord=='工位不注册办公'){
@@ -453,7 +466,7 @@
             }else{
                 var year_rent = monthly_rent * 12 ;             //年租金
             }
-                           //月租金
+                           
             
 
         }
@@ -509,6 +522,22 @@
             $('#each').val(msg.fu);
             $('#each').next('.daxie').html(convertCurrency(msg.fu));
             $('#deposit').next('.daxie').html(convertCurrency(msg.deposit));
+            if(msg.nexttime==null){
+                    var nexttime ='<li class="iptBox"><center><h3>合同签订当日付清<font color="red">'+msg.total+'</font>元</h3></center></li>'
+                }else{
+                   
+                    $.each(msg.nexttime,function(k,v){
+                        var i = parseInt(k)+parseInt(1)
+
+                            nexttime +='<li class="iptBox"><span class="ipt_left">第'+i+'次付款日期：</span><input type="text" name="paynext2" value="'+v+'" class="pact_ipt" /></li>';
+                            
+                        
+                    })
+                    
+                }
+
+                $('#payment').empty().append(nexttime);
+            
            }
        })    
     }

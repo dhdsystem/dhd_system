@@ -11,6 +11,8 @@
 </li>
 <div class="moban"></div>
 <li class="xian">租赁房间信息</li>
+<div id="zhucedizhi"></div>
+
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>项目：</span>
     <select  name="" id="project" class="pact_select" >
@@ -18,6 +20,7 @@
         
     </select>
 </li>
+
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>地址：</span>
     <select  name="" id="product" class="pact_select" >
@@ -30,18 +33,19 @@
         <option value="">请选择房间号</option>
     </select>
 </li>
+
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>建筑面积：</span>
     <input type="text"  value="" id="room_area" class="pact_ipt" placeholder="平米">
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>服务期限：</span>
-    <input type="text" name="" value="rentdatetime" id="rentdatetime" class="pact_ipt" placeholder="年">
+    <input type="text" name="rentdatetime" value="" id="rentdatetime" class="pact_ipt" placeholder="年">
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>租赁日期：</span>
     <span class="timeBox">
-        <input type="text" name="" value="rentstarttime" class="pact_ipt pact_ipt2" id="rentstarttime">
+        <input type="text" name="rentstarttime" value="" class="pact_ipt pact_ipt2" id="rentstarttime">
         <div id="rentstar" style="left: 0px;top: 40px;"></div>
     </span>
     <span style="line-height: 40px;display: inline-block;">～</span>
@@ -52,13 +56,13 @@
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>免租期限：</span>
-    <input type="text" name="" id="freetime" value="" class="pact_ipt" placeholder="天">
+    <input type="text" name="freetime" id="freetime" value="" class="pact_ipt" placeholder="天">
 </li>
 <li class="iptBox">
-    <span class="ipt_left"><em class="red">*</em>租赁日期：</span>
-    <input type="text" name="" value="" class="pact_ipt pact_ipt2" id="freestarttime">
+    <span class="ipt_left"><em class="red">*</em>免租日期：</span>
+    <input type="text" name="freestarttime" value="" class="pact_ipt pact_ipt2" id="freestarttime">
     <span style="line-height: 40px;display: inline-block;">～</span>
-    <input type="text" name="" value="" class="pact_ipt pact_ipt2" id="freeendtime">
+    <input type="text" name="freeendtime" value="" class="pact_ipt pact_ipt2" id="freeendtime">
 </li>
 
 <li class="xian">房屋及付款方式</li>
@@ -73,19 +77,19 @@
 
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>管理费标准：</span>
-    <input type="text" name="" value="" class="pact_ipt yuan" placeholder="元/平米/天">
+    <input type="text" name="rates" value="" class="pact_ipt yuan" placeholder="元/平米/天">
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>管理费是否含税：</span>
-    <select  name="" class="pact_select" >
+    <select  name="zjistax" class="pact_select" >
         <option value="">是</option>
         <option value="">否</option>
     </select>
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>管理费递增：</span>
-    <input type="text" name="" value="" class="pact_ipt" style="width: 632px;display: inline-block;margin-right: 10px;">
-    <select name="zeng" class="pact_select" style="width:100px;display: inline-block;">
+    <input type="text" name="increasing" value="" class="pact_ipt" style="width: 632px;display: inline-block;margin-right: 10px;">
+    <select name="increayear" class="pact_select" style="width:100px;display: inline-block;">
         <option value="1">1年</option>
         <option value="2">2年</option>
     </select>
@@ -121,6 +125,7 @@
     <span class="ipt_left"><em class="red">*</em>第一次付款时间：</span>
     <input type="text" name="paynext1" id="paynext1" value="" class="pact_ipt" placeholder="第一次付款时间">
 </li>
+<div id="payment"></div>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>备注：</span>
     <textarea name="" class="pact_text_box" id="" cols="60" rows="5" style="display: inline; height: 49px;"></textarea>

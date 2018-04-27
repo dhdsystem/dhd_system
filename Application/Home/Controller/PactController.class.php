@@ -19,8 +19,14 @@ class PactController extends Controller {
     			unset($client[$k]);
     		}
     	}
+    	// 预留地址信息
+    	$reserved = M('reserved as r')->field('d.id,d.detailscoll,p.pro_address,c.class_name')->join('dhd_details as d on d.id = r.det_id')->join('dhd_product as p on p.id = d.pro_id')->join('dhd_class as c on c.id = p.class_id')->where(array('client_id'=>$client['id']))->find();
+    	// var_dump($reserved);die;
+    	// 财务账户
     	$account = M('account')->field('id,acc_name')->select();
+    	// 业务员信息
     	$role = M('role')->field('id,role_name')->where(array('pid'=>0,'state'=>0))->select();
+    	// 产品项目信息
     	$project = M('class')->field('id,class_name')->where(array('class_is'=>0))->select();
     	// print_r($project);
     	if(!empty($client['middle_state'])){
@@ -37,11 +43,71 @@ class PactController extends Controller {
     			$client['middle_state'] = '直接客户';
     	}
 
+    	$this->assign('reserved',json_encode($reserved));
     	$this->assign('project',json_encode($project));
     	$this->assign('client',$client);
     	$this->assign('account',$account);
     	$this->assign('role',$role);
     	$this->display();
+    }
+    public function pactadd_do()
+    {
+    	$contracttype = ('post.contracttype');
+    	$data = I('post.');
+
+    	if($contracttype != '0' || $contracttype != '会议室出租'){
+	    	$res = M('contract')->add($data);
+	    	foreach ($data as $k => $v) {
+	    		if(preg_match('/^d{4}年d{2}月d{2}日$/s',$dateTime))
+				{
+					
+				}
+	    	}
+	    	if($res){
+		    	$data['contract'] = $res;
+		    	if($contracttype=='大面积出租'){
+		            $re = M('largearea')->add($data);
+		        }
+		        if($contracttype=='mini房间'){
+		            $re = M('houselet')->add($data);
+		        }
+		        if($contracttype=='工位注册办公'){
+		            $re = M('registration')->add($data);
+		        }
+		        if($contracttype=='注册地址'){
+		            $re = M('register')->add($data);
+		        }
+		        if($contracttype=='代理记账'){
+		            $re = M('houselet')->add($data);
+		        }
+		        if($contracttype=='工位不注册办公'){
+		            $re = M('tally')->add($data);
+		        }
+		        if($contracttype=='工商代理'){
+		            $re = M('industrial')->add($data);
+		        }
+		        $re = M('largearea')->add($data);
+		        
+		        // echo $r;
+		        // echo M('largearea')->GetLastSql();
+		        // print_r($data);
+		        // echo $re;die;
+	       		if($re){
+	       			$r = M('collection')->add($data);
+	       			if($r){
+	       				$this->success('合同新增成功', U('Pact/pact_index'));
+			        }else{
+			            $this->error('合同新增失败',U('Pact/pact_index'));
+			        }
+	       		}else{
+	       			$this->error('合同添加失败',U('Pact/pact_index'));
+	       		}
+       		}else{
+       			$this->error('合同信息录入失败',U('Pact/pact_index'));
+       		}
+            
+        }
+
     }
     /**
      * /
@@ -127,6 +193,7 @@ class PactController extends Controller {
     	$list = M('details')->field('big_sum')->where(array('id'=>$id))->find();
     	returnajax($list);
     }
+
     public function terminus()
     {
         $long=ceil(I('post.year')*12);
@@ -176,6 +243,17 @@ class PactController extends Controller {
            
             $info['fu'] = $monthly_rent * $res[1];          // 每期租金
             $info['total'] = $monthly_rent * $res[1]+$monthly_rent * $res[0]+$tax_printer;       // 总金额
+            $num = $rentdatetime * 12 / $res[1];            // 付款期数
+            $num=round($num);
+
+            for($i=1;$i<$num;$i++)
+            {
+                $r = $res[1]*$i;
+                $arr[$i] = date('Y年m月d日',strtotime("+$r month",$rentstarttime));
+            }  
+            $info['nexttime'] = $arr;
+            $info['trs'] = ceil($num/2);
+        
         }
 
         returnajax($info);

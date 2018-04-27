@@ -11,13 +11,16 @@
 </li>
 <div class="moban"></div>
 <li class="xian">租赁房间信息</li>
+<div id="zhucedizhi"></div>
+
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>项目：</span>
-    <select  name="" id="project" class="pact_select"  >
+    <select  name="" id="project" class="pact_select" >
         <option value="0">请选择项目</option>
         
     </select>
 </li>
+
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>地址：</span>
     <select  name="" id="product" class="pact_select" >
@@ -30,6 +33,7 @@
         <option value="">请选择房间号</option>
     </select>
 </li>
+
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>建筑面积：</span>
     <input type="text" id="room_area" name="" value="" class="pact_ipt" placeholder="平米">
@@ -53,7 +57,7 @@
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>商务服务费：</span>
-    <input type="text" name="business" id="servemeny" value="" class="pact_ipt" placeholder="元（大写）">
+    <input type="text" name="business" id="business" value="" class="pact_ipt" placeholder="元（大写）">
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>是否含税：</span>
@@ -94,6 +98,7 @@
     <span class="ipt_left"><em class="red">*</em>每期金额：</span>
     <input type="text" name="each" id="each" value="" class="pact_ipt" placeholder="元 （大写）">
 </li>
+<div id="payment"></div>
 <script type="text/javascript">
     laydate.render({  
         elem: '#rentstarttime',  

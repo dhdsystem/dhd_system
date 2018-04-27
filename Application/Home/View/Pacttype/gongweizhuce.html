@@ -10,18 +10,25 @@
 </li>
 <div class="moban"></div>
 <li class="xian">租赁房间信息</li>
+<div id="zhucedizhi"></div>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>项目：</span>
     <select  name="" id="project" class="pact_select" >
         <option value="0">请选择项目</option>
-        <option value="金隅嘉华大厦">金隅嘉华大厦</option>
-        <option value="财智国际大厦">财智国际大厦</option>
+        
+    </select>
+</li>
+
+<li class="iptBox">
+    <span class="ipt_left"><em class="red">*</em>地址：</span>
+    <select  name="" id="product" class="pact_select" >
+        <option value="0">请选择地址</option>
     </select>
 </li>
 <li class="iptBox">
-    <span class="ipt_left"><em class="red">*</em>地址：</span>
-    <select  name="" class="pact_select" >
-        <option value="0">请选择地址</option>
+    <span class="ipt_left"><em class="red">*</em>工位号：</span>
+    <select name="details_id" class="pact_select" id="home">
+        <option value="">请选择房间号</option>
     </select>
 </li>
 
@@ -30,29 +37,29 @@
 <li class="xian">工位办公注册</li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>商务服务费用：</span>
-    <input type="text" name="" value="" class="pact_ipt" placeholder="元/月（大写）">
+    <input type="text" name="business" id="business" value="" class="pact_ipt" placeholder="元/月（大写）">
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>是否含税：</span>
-    <select  name="" class="pact_select" >
+    <select  name="swistax" class="pact_select" >
         <option value="">是</option>
         <option value="">否</option>
     </select>
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>工位办公服务费用：</span>
-    <input type="text" name="" value="" class="pact_ipt" placeholder="元/月（大写）">
+    <input type="text" name="station" id="station" value="" class="pact_ipt" placeholder="元/月（大写）">
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>是否含税：</span>
-    <select  name="" class="pact_select" >
+    <select  name="ggistax" class="pact_select" >
         <option value="">是</option>
         <option value="">否</option>
     </select>
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>服务期限：</span>
-    <input type="text" name="" value="" class="pact_ipt" placeholder="年">
+    <input type="text" name="rentdatetime" id="rentdatetime" value="" class="pact_ipt" placeholder="年">
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>租赁日期：</span>
@@ -70,31 +77,40 @@
 <li class="xian">房屋及付款方式</li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>每周期前：</span>
-    <input type="text" name="" value="" class="pact_ipt" placeholder="天">
+    <input type="text" name="appoint" id="appoint" value="" class="pact_ipt" placeholder="天">
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>付款方式：</span>
-    <select  name="" class="pact_select" >
-        <option value="">押一付六</option>
-        <option value="">押一付十二</option>
-        <option value="">押一付三</option>
+    <select name="paytype" id="paytype" class="pact_select" >
+        <option value="1,6">押一付六</option>
+        <option value="1,12">押一付十二</option>
+        <option value="1,3">押一付三</option>
     </select>
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>月金额：</span>
-    <input type="text" name="" value="" class="pact_ipt" placeholder="元 （大写）">
+    <input type="text" name="monthly_rent" id="monthly_rent" value="" class="pact_ipt" placeholder="元 （大写）">
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>押金：</span>
-    <input type="text" name="" value="" class="pact_ipt" placeholder="元 （大写）">
+    <input type="text" name="deposit" id="deposit" value="" class="pact_ipt" placeholder="元 （大写）">
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>年金额：</span>
-    <input type="text" name="" value="" class="pact_ipt" placeholder="元 （大写）">
+    <input type="text" name="year_rent" id="year_rent" value="" class="pact_ipt" placeholder="元 （大写）">
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>每期金额：</span>
-    <input type="text" name="" value="" class="pact_ipt" placeholder="元 （大写）">
+    <input type="text" name="each" id="each" value="" class="pact_ipt" placeholder="元 （大写）">
+</li>
+<li class="iptBox">
+    <span class="ipt_left"><em class="red">*</em>第一次付款时间：</span>
+    <input type="text" name="paynext1" id="paynext1" value="" class="pact_ipt" placeholder="第一次付款时间">
+</li>
+<div id="payment"></div>
+<li class="iptBox">
+    <span class="ipt_left"><em class="red">*</em>备注：</span>
+    <textarea name="" class="pact_text_box" id="" cols="60" rows="5" style="display: inline; height: 49px;"></textarea>
 </li>
 
 
@@ -107,4 +123,9 @@
                 endDateCallBack(value)
             }
         });
+    $(document).on('change','#paytype',function(){
+        ht_sk();
+        
+        moeny();
+    })
 </script>
