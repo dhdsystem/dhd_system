@@ -82,7 +82,7 @@
     })
     $(".file").on("change","input[type='file']",function(){
         var filePath=$(this).val();
-        if(filePath.match(/.xls|.doc|.xlsx|.docx/i)){
+        if(filePath.match(/.xls|.doc|.xlsx|.docx|.xml/i)){
             $(".fileerrorTip").html("").hide();
             var arr=filePath.split('\\');
             var fileName=arr[arr.length-1];
