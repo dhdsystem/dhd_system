@@ -109,6 +109,8 @@ class ProjectController extends Controller {
           $this->display('project_detail_save');
         }
      }
+    
+
     //产品详情类型、1：大面积；2：普通注册号；3：工位；4：小房间；5销售注册号'
     
     /*商品详情大面积*/
@@ -116,13 +118,65 @@ class ProjectController extends Controller {
         $class_id=I('get.class_id');
         $data=M('details');
         $na=$data->where(array('pro_id'=>$class_id,'det_type'=>1,'pro_del'=>1,'det_del'=>0))
+        ->where("det_advance !=3")
         ->join('dhd_product on dhd_product.id=dhd_details.pro_id')
         ->field('dhd_details.id,big_sum,det_type,detailscoll,pro_address,class_id')
-        ->select();     
+        ->select();    
+        $this->assign('class_id',$class_id); 
         $this->assign('volist',$na);
         $this->display();
     }
+    
+
+    /*商品详情大面积已使用*/
+    public function project_detail_big(){
+        $class_id=I('get.class_id');
+        $p=!empty($_GET['page'])?$_GET['page']:0;
+        $num="2";
+        $list=M('largearea')
+        ->join('dhd_details on dhd_details.id=dhd_largearea.details_id')
+        ->join('dhd_product on dhd_product.id=dhd_details.pro_id') 
+        ->join('dhd_class on dhd_class.id=dhd_product.id') 
+        ->join('dhd_contract on dhd_contract.id=dhd_largearea.contract')
+        ->join('dhd_client on dhd_client.id=dhd_contract.client_id')
+        ->join('dhd_collection on dhd_collection.contract=dhd_contract.id')
+        ->where(" dhd_class.id=$class_id and det_del=0 and det_type=1 and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 and is_del=0")
+        ->field("dhd_largearea.id,rates,detailscoll,big_sum,client_name,rentstarttime,rentendtime,legalperson,legaltel,taxstyle,credit_code,paytype")
+        ->page($p,$num)//($Page->firstRow,$Page->listRows)
+        ->select();   
+        // echo M('largearea')->getLastSql();die;
+        $count=M('largearea')
+        ->join('dhd_details on dhd_details.id=dhd_largearea.details_id')
+        ->join('dhd_product on dhd_product.id=dhd_details.pro_id') 
+        ->join('dhd_class on dhd_class.id=dhd_product.id') 
+        ->join('dhd_contract on dhd_contract.id=dhd_largearea.contract')
+        ->join('dhd_client on dhd_client.id=dhd_contract.client_id')
+        ->join('dhd_collection on dhd_collection.contract=dhd_contract.id')
+        ->where(" dhd_class.id=$class_id and det_del=0 and det_type=1 and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 and is_del=0")
+        ->field("dhd_largearea.id,rates,detailscoll,big_sum,client_name,rentstarttime,rentendtime,legalperson,legaltel,taxstyle,credit_code,paytype")
+        ->count();
+        //echo M('largearea')->getLastSql();die;
+        // $count=count($list);
+        
+        $Page=new \Think\Page($count,$num);
+        $show       = $Page->show();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                $Page->setConfig('prev','上一页');
+        $this->assign('list',$list);// 赋值数据集
+        $this->assign('page',$show);// 赋值分页输出
+        $this->assign('class_id',$class_id);// 赋值分页输出
+        $this->display();
+   }
    
+    /*商品详情大面积已使用--删除*/
+    public function project_big_del(){
+      $id=I('get.id');
+      $class_id=I('get.class_id');
+      $res=M('largearea')->where(array('id'=>$id))->save(array('is_del'=>1));
+      if($res){
+        $this->success('删除成功',U('project/project_detail_big',array('class_id'=>$class_id)));
+      }else{
+        $this->error('删除失败',array('class_id'=>$class_id));
+      }
+    }
     /*商品详情大面积删除*/
     public function project_bign_del(){
         $id = I('get.did');
@@ -135,6 +189,8 @@ class ProjectController extends Controller {
             $this->success('删除失败', U('Project/project_detail',array('pro_id'=>$data['class_id'])));
         }
     }
+    
+
     /*商品详情大面积修改*/
     public function project_bign_save(){
         if(IS_POST){
@@ -160,48 +216,161 @@ class ProjectController extends Controller {
         }
     }
 
+
     /*商品详情小房间*/
      public function project_detail_smln(){
         $class_id=I('get.class_id');
         $data=M('details');
-        $na=$data->where(array('pro_id'=>$class_id,'det_type'=>4,'det_del'=>0))
+        $na=$data->where(array('pro_id'=>$class_id,'det_type'=>4,'det_del'=>0))->where('det_advance !=3')
         ->join('dhd_product on dhd_product.id=dhd_details.pro_id')
         ->field('dhd_details.id,big_sum,det_type,detailscoll,pro_address,class_id')
         ->select();
         $this->assign('volist',$na);
+        $this->assign('class_id',$class_id);
         $this->display();
     }
+     /*商品详情小面积已使用*/
+    public function project_detail_sml(){
+        $class_id=I('get.class_id');
+        $p=!empty($_GET['page'])?$_GET['page']:0;
+        $num="2";
+        $list=M('houselet')
+        ->join('dhd_details on dhd_details.id=dhd_houselet.details_id')
+        ->join('dhd_product on dhd_product.id=dhd_details.pro_id') 
+        ->join('dhd_class on dhd_class.id=dhd_product.id') 
+        ->join('dhd_contract on dhd_contract.id=dhd_houselet.contract')
+        ->join('dhd_client on dhd_client.id=dhd_contract.client_id')
+        ->join('dhd_collection on dhd_collection.contract=dhd_contract.id')
+        ->where(" dhd_class.id=$class_id and det_del=0 and det_type=4 and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 and is_del=0")
+        ->field("dhd_houselet.id,rates,detailscoll,big_sum,client_name,rentstarttime,rentendtime,legalperson,legaltel,taxstyle,credit_code,paytype")
+        ->page($p,$num)
+        ->select();   
+        //echo M('houselet')->getLastSql();die;
+        $count=M('houselet')
+        ->join('dhd_details on dhd_details.id=dhd_houselet.details_id')
+        ->join('dhd_product on dhd_product.id=dhd_details.pro_id') 
+        ->join('dhd_class on dhd_class.id=dhd_product.id') 
+        ->join('dhd_contract on dhd_contract.id=dhd_houselet.contract')
+        ->join('dhd_client on dhd_client.id=dhd_contract.client_id')
+        ->join('dhd_collection on dhd_collection.contract=dhd_contract.id')
+        ->where(" dhd_class.id=$class_id and det_del=0 and det_type=4 and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 and is_del=0")
+        ->field("dhd_houselet.id,rates,detailscoll,big_sum,client_name,rentstarttime,rentendtime,legalperson,legaltel,taxstyle,credit_code,paytype")
+        ->count();
+  
+        $Page=new \Think\Page($count,$num);
+        $show       = $Page->show();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                $Page->setConfig('prev','上一页');
+        $this->assign('list',$list);// 赋值数据集
+        $this->assign('page',$show);// 赋值分页输出
+        $this->assign('class_id',$class_id);// 赋值分页输出
+        $this->display();
+   }
+   
+    /*商品详情小面积已使用--删除*/
+    public function project_sml_del(){
+      $id=I('get.id');
+      $class_id=I('get.class_id');
+      // print_r($id);die;
+      $res=M('houselet')->where(array('id'=>$id))->save(array('is_del'=>1));
+      if($res){
+        $this->success('删除成功',U('project/project_detail_sml',array('class_id'=>$class_id)));
+      }else{
+        $this->error('删除失败',U('project/project_detail_sml',array('class_id'=>$class_id)));
+      }
+    }
+   
+   
+
     /*商品详情普通注册号*/
      public function project_detail_adm(){
 
         $class_id=I('get.class_id');
         $data=M('details');
-        $na=$data->where("pro_id=$class_id and det_type = 2 and det_del=0")
+        $na=$data->where("pro_id=$class_id and det_type = 2 and det_del=0 and det_advance !=3")
         ->join('dhd_product on dhd_product.id=dhd_details.pro_id')
         ->field('dhd_details.id,det_type,detailscoll,pro_address,class_id,det_advance')
         ->select();
         //echo $data->getLastSql();die;
         $name='普通注册号';
+        $state='2';
         $this->assign('name',$name);
+        $this->assign('state',$state);
         $this->assign('volist',$na);
+        $this->assign('class_id',$class_id);
         $this->display('project_detail_adrn');
     }
 
-    /*商品详情销售注册号*/
+     /*商品详情普通号已使用*/
+    public function project_detail_adr(){
+        $class_id=I('get.class_id');
+        $state=I('get.state');
+        $p=!empty($_GET['page'])?$_GET['page']:0;
+        $num="2";
+        $list=M('register')
+        ->join('dhd_details on dhd_details.id=dhd_register.details_id')
+        ->join('dhd_product on dhd_product.id=dhd_details.pro_id') 
+        ->join('dhd_class on dhd_class.id=dhd_product.id') 
+        ->join('dhd_contract on dhd_contract.id=dhd_register.contract')
+        ->join('dhd_client on dhd_client.id=dhd_contract.client_id')
+        ->join('dhd_collection on dhd_collection.contract=dhd_contract.id')
+        ->where(" dhd_class.id=$class_id and det_del=0 and det_type=$state and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 and is_del=0")
+        ->field("dhd_register.id,pro_address,detailscoll,client_name,rentstarttime,rentendtime,business,legalperson,legaltel,taxstyle,credit_code,paytype")
+        ->page($p,$num)
+        ->select();   
+        //echo M('register')->getLastSql();die;
+        $count=M('register')
+        ->join('dhd_details on dhd_details.id=dhd_register.details_id')
+        ->join('dhd_product on dhd_product.id=dhd_details.pro_id') 
+        ->join('dhd_class on dhd_class.id=dhd_product.id') 
+        ->join('dhd_contract on dhd_contract.id=dhd_register.contract')
+        ->join('dhd_client on dhd_client.id=dhd_contract.client_id')
+        ->join('dhd_collection on dhd_collection.contract=dhd_contract.id')
+        ->where(" dhd_class.id=$class_id and det_del=0 and det_type=$state and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 and is_del=0")
+        ->field("dhd_register.id,pro_address,detailscoll,client_name,rentstarttime,rentendtime,business,legalperson,legaltel,taxstyle,credit_code,paytype")
+        ->count();
+  
+        $Page=new \Think\Page($count,$num);
+        $show       = $Page->show();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                $Page->setConfig('prev','上一页');
+        $this->assign('list',$list);// 赋值数据集
+        $this->assign('page',$show);// 赋值分页输出
+        $this->assign('class_id',$class_id);// 赋值分页输出
+        $this->assign('state',$state);// 赋值分页输出
+        $this->display();
+   }
+   
+    /*商品详情普通号已使用--删除*/
+    public function project_adr_del(){
+      $id=I('get.id');
+      $state=I('get.state');
+      $class_id=I('get.class_id');
+      // print_r($id);die;
+      $res=M('register')->where(array('id'=>$id))->save(array('is_del'=>1));
+      if($res){
+        $this->success('删除成功',U('project/project_detail_adr',array('class_id'=>$class_id,'state'=>$state)));
+      }else{
+        $this->error('删除失败',U('project/project_detail_adr',array('class_id'=>$class_id,'state'=>$state)));
+      }
+    }
+
+   
+   /*商品详情销售注册号*/
     public function project_detail_xsz(){
         $class_id=I('get.class_id');
         $data=M('details');
-        $na=$data->where("pro_id = $class_id and det_type = 5 and det_del=0")
+        $na=$data->where("pro_id = $class_id and det_type = 5 and det_del=0 and det_advance !=3")
         ->join('dhd_product on dhd_product.id=dhd_details.pro_id')
         ->field('dhd_details.id,det_type,detailscoll,pro_address,class_id,det_advance')
         ->select();
         // echo $data->getLastSql();die;
         $name='销售注册号';
+        $state='5';
+        $this->assign('state',$state);
         $this->assign('volist',$na);
         $this->assign('name',$name);
+        $this->assign('class_id',$class_id);
         $this->display('project_detail_adrn');
     }
 
+   
     /*商品详情注册号修改*/
         public function project_adrn_save(){
             if(IS_POST){
@@ -226,6 +395,8 @@ class ProjectController extends Controller {
               $this->display();
             }
         }
+    
+   
     /*商品详情注册号预出*/
         public function project_adrn_type(){
             $det_id=I('post.det_id');
@@ -239,7 +410,6 @@ class ProjectController extends Controller {
 
 
     /*商品详情工位*/
-
      public function project_detail_gw(){
         $class_id=I('get.class_id');
         $data=M('details');
@@ -248,8 +418,81 @@ class ProjectController extends Controller {
         ->field('dhd_details.id,big_sum,det_type,detailscoll,pro_address,class_id')
         ->select();     
         $this->assign('volist',$na);
-        $this->display();
+        $this->assign('class_id',$class_id);
+        $this->display('project_detail_gwn');
     }
+     /*商品详情工位已使用--工位办公*/
+    public function project_detail_sta(){
+        $class_id=I('get.class_id');
+        $p=!empty($_GET['page'])?$_GET['page']:0;
+        $num="2";
+        $list=M('registration')
+        ->join('dhd_details on dhd_details.id=dhd_registration.details_id')
+        ->join('dhd_product on dhd_product.id=dhd_details.pro_id') 
+        ->join('dhd_class on dhd_class.id=dhd_product.id') 
+        ->join('dhd_contract on dhd_contract.id=dhd_registration.contract')
+        ->join('dhd_client on dhd_client.id=dhd_contract.client_id')
+        ->join('dhd_collection on dhd_collection.contract=dhd_contract.id')
+        ->where(" dhd_class.id=$class_id and det_del=0 and det_type=3 and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 and is_del=0")
+        ->field("station,pro_address,detailscoll,client_name,rentstarttime,rentendtime,legalperson,legaltel,taxstyle,credit_code,paytype")
+        ->page($p,$num)
+        ->select();   
+         //echo M('registration')->getLastSql();die;
+        $count=M('registration')
+        ->join('dhd_details on dhd_details.id=dhd_registration.details_id')
+        ->join('dhd_product on dhd_product.id=dhd_details.pro_id') 
+        ->join('dhd_class on dhd_class.id=dhd_product.id') 
+        ->join('dhd_contract on dhd_contract.id=dhd_registration.contract')
+        ->join('dhd_client on dhd_client.id=dhd_contract.client_id')
+        ->join('dhd_collection on dhd_collection.contract=dhd_contract.id')
+        ->where(" dhd_class.id=$class_id and det_del=0 and det_type=3 and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 and is_del=0")
+        ->field("station,pro_address,detailscoll,client_name,rentstarttime,rentendtime,legalperson,legaltel,taxstyle,credit_code,paytype")
+        ->count();
+        $Page=new \Think\Page($count,$num);
+        $show       = $Page->show();
+        $state="1";                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                $Page->setConfig('prev','上一页');
+        $this->assign('list',$list);// 赋值数据集
+        $this->assign('page',$show);// 赋值分页输出
+        $this->assign('class_id',$class_id);// 赋值分页输出*/
+        $this->assign('state',$state);// 赋值分页输出*/
+        $this->display();
+   }
+   public function project_detail_stn(){
+        $class_id=I('get.class_id');
+        $p=!empty($_GET['page'])?$_GET['page']:0;
+        $num="2";
+        $list=M('regclosed')
+        ->join('dhd_details on dhd_details.id=dhd_regclosed.details_id')
+        ->join('dhd_product on dhd_product.id=dhd_details.pro_id') 
+        ->join('dhd_class on dhd_class.id=dhd_product.id') 
+        ->join('dhd_contract on dhd_contract.id=dhd_regclosed.contract')
+        ->join('dhd_client on dhd_client.id=dhd_contract.client_id')
+        ->join('dhd_collection on dhd_collection.contract=dhd_contract.id')
+        ->where(" dhd_class.id=$class_id and det_del=0 and det_type=3 and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 ")
+        ->field("station,pro_address,detailscoll,client_name,rentstarttime,rentendtime,legalperson,legaltel,taxstyle,credit_code,paytype")
+        ->page($p,$num)
+        ->select();   
+        //echo M('registration')->getLastSql();die;
+        $count=M('regclosed')
+        ->join('dhd_details on dhd_details.id=dhd_regclosed.details_id')
+        ->join('dhd_product on dhd_product.id=dhd_details.pro_id') 
+        ->join('dhd_class on dhd_class.id=dhd_product.id') 
+        ->join('dhd_contract on dhd_contract.id=dhd_regclosed.contract')
+        ->join('dhd_client on dhd_client.id=dhd_contract.client_id')
+        ->join('dhd_collection on dhd_collection.contract=dhd_contract.id')
+        ->where(" dhd_class.id=$class_id and det_del=0 and det_type=3 and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 ")
+        ->field("station,pro_address,detailscoll,client_name,rentstarttime,rentendtime,legalperson,legaltel,taxstyle,credit_code,paytype")
+        ->count();
+        $Page=new \Think\Page($count,$num);
+        $show       = $Page->show();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                $Page->setConfig('prev','上一页');
+        $state='2';
+        $this->assign('list',$list);// 赋值数据集
+        $this->assign('page',$show);// 赋值分页输出
+        $this->assign('class_id',$class_id);// 赋值分页输出*/
+        $this->assign('state',$state);// 赋值分页输出*/
+        $this->display('project_detail_sta');
+   }
+
     /*商品详情工位修改*/
     public function project_gw_save(){
 
@@ -276,8 +519,9 @@ class ProjectController extends Controller {
 
 
        }
-     // 产品详情删除
-   
+     
+
+     // 产品详情删除   
     public function product_del(){
         $id = I('get.pid');
         $class_id = I('get.class_id');
@@ -403,6 +647,8 @@ class ProjectController extends Controller {
             $this->display();
         }
     }
+    
+
     /*一键预留*/
     public function project_one(){
         $data=I('post.det_id');
@@ -420,4 +666,6 @@ class ProjectController extends Controller {
           $this->error('添加失败');
         }
       }
+
+      
 }
