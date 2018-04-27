@@ -11,6 +11,30 @@
     <link rel="stylesheet" type="text/css" href="__CSS__/calendar.css"/>
     <script type="text/javascript" src="__JS__/calendar.js"></script>
     <script type="text/javascript" src="__JS__/page.js"></script>
+    <style>
+        #mername{
+             z-index: 100000000;
+            background: #fff;
+            position: absolute;
+            top:30px;
+            width: 248px;
+            left: 126px;
+            box-shadow: 3px 7px 10px 2px #dadada;
+        }
+        #mername p{
+            cursor: pointer;
+        }
+        #mername p:hover{
+            background: #eee;
+        }
+        select{
+            width: 108px;
+        }
+        .unkwn{border:1px margin-left: 137px solid #ccc;background: #fff;position: absolute;top:40px;z-index: 22;width: 754px;}
+        .unkwn p{font-size: 14px;color:#000; margin-left: 137px;height:35px;line-height: 35px;padding-left:15px;cursor: pointer;}
+        .unkwn p:hover{background: #eee;}
+
+    </style>
 </head>
 <body>
 <div class="contract_cont"  id="content">
@@ -44,53 +68,53 @@
                 </dd>
                 <dd>
                     <span class="dd_left">二级科目：</span>
-                        <select name="company" class="tab_select" style="width: 754px;height: 40px;">
-                            <if condition="$data.company eq 电费">
+                        <select name="detail" class="tab_select" style="width: 754px;height: 40px;">
+                            <if condition="$data.detail eq 电费">
                                 <option value="电费" selected="selected">电费</option>
                             <else />
                                 <option value="电费">电费</option>
                             </if>
-                            <if condition="$data.company eq 装修费">
+                            <if condition="$data.detail eq 装修费">
                                 <option value="装修费" selected="selected">装修费</option>
                             <else />
                                 <option value="装修费">装修费</option>
                             </if>
-                            <if condition="$data.company eq 代收缴税金">
+                            <if condition="$data.detail eq 代收缴税金">
                                 <option value="代收缴税金" selected="selected">代收缴税金</option>
                             <else />
                                 <option value="代收缴税金">代收缴税金</option>
                             </if>
-                            <if condition="$data.company eq 工商代垫费">
+                            <if condition="$data.detail eq 工商代垫费">
                                 <option value="工商代垫费" selected="selected">工商代垫费</option>
                             <else />
                                 <option value="工商代垫费">工商代垫费</option>
                             </if>
-                            <if condition="$data.company eq 复印费">
+                            <if condition="$data.detail eq 复印费">
                                 <option value="复印费" selected="selected">复印费</option>
                             <else />
                                 <option value="复印费">复印费</option>
                             </if>
-                            <if condition="$data.company eq 装修押金">
+                            <if condition="$data.detail eq 装修押金">
                                 <option value="装修押金" selected="selected">装修押金</option>
                             <else />
                                 <option value="装修押金">装修押金</option>
                             </if>
-                            <if condition="$data.company eq 桌椅押金">
+                            <if condition="$data.detail eq 桌椅押金">
                                 <option value="桌椅押金" selected="selected">桌椅押金</option>
                             <else />
                                 <option value="桌椅押金">桌椅押金</option>
                             </if>
-                            <if condition="$data.company eq 门禁钥匙押金">
+                            <if condition="$data.detail eq 门禁钥匙押金">
                                 <option value="门禁钥匙押金" selected="selected">门禁钥匙押金</option>
                             <else />
                                 <option value="门禁钥匙押金">门禁钥匙押金</option>
                             </if>
-                            <if condition="$data.company eq 电话拉线押金">
+                            <if condition="$data.detail eq 电话拉线押金">
                                 <option value="电话拉线押金" selected="selected">电话拉线押金</option>
                             <else />
                                 <option value="电话拉线押金">电话拉线押金</option>
                             </if>
-                            <if condition="$data.company eq 其他">
+                            <if condition="$data.detail eq 其他">
                                 <option value="其他" selected="selected">其他</option>
                             <else />
                                 <option value="其他">其他</option>
@@ -104,23 +128,6 @@
                     </span>
                 </dd>
                 <dd>
-                    <span class="dd_left">收款日期：</span>
-                    <span>
-                        <input type="text" name="gathertiem" value="{$data.gathertiem}" class="qtext dateofcollect" id="dateofcollect" />
-                        <div id="gathDate" style="left: 134px;top: 40px;"></div>
-                    </span>
-                </dd>
-                <dd>
-                <span class="dd_left">客户公司：</span>
-                    <input type="text" name="invoice" value="{$data.company}" class="qtext">
-                </dd>
-
-                <dd>
-                    <span class="dd_left">备注：</span>
-                    <textarea cols="30" rows="3" class="text_box">无</textarea>
-                    <input type="hidden" name="id" class="hiddenid" value="{$data['id']}">
-                </dd>
-                <!-- <dd>
                     <span class="dd_left">收款账户：</span>
                     <span>
                         <select name="gather" class="tab_select" id="signcompany" style="width: 225px;height: 40pxpx;line-height: 40px;">
@@ -132,9 +139,28 @@
                                     <option value="{$vo['id']}" aid="{$vo['id']}">{$vo['name']}</option>
                                 </if>
                             </foreach>
-                    </select>
+                        </select>
                     </span>
-                </dd> -->
+                </dd>
+                <dd>
+                    <span class="dd_left">收款日期：</span>
+                    <span>
+                        <input type="text" name="gathertiem" value="{$data.gathertiem|date='Y-m-d',###}" class="qtext dateofcollect" id="dateofcollect" />
+                        <div id="gathDate" style="left: 134px;top: 40px;"></div>
+                    </span>
+                </dd>
+                <dd>
+                <span class="dd_left">客户公司：</span>
+                    <input type="hidden" name="company" value="{$data.company}" id="middelid"/>
+                    <input type="text" value="{$data.client_name}" id="company" class="qtext">
+                    <div id='quao'></div>
+                </dd>
+
+                <dd>
+                    <span class="dd_left">备注：</span>
+                    <textarea cols="30" rows="3" class="text_box">无</textarea>
+                    <input type="hidden" name="id" class="hiddenid" value="{$data.id}">
+                </dd>
                 <dd>
                     <span><input type="submit" value="提交" class="submit"/></span>
                 </dd>
@@ -144,26 +170,26 @@
 
 <script type="text/javascript">
     // 收款账户
-    $(document).on('change','#signcompany',function(){
-        var signcompany_id = $(this).find("option:selected").attr('aid');
-        // alert(signcompany_id);
-        $.ajax({
-           type: "post",
-           url: "__APP__/Contract/collection",
-           data:'signcompany_id='+signcompany_id,
-           dataType:"json",
-           success: function(msg){
-                var html = '<select class="tab_select" name="collectaccount[]" id="bank" style="width: 320px;height: 42px;margin-left:4px;"><option value="0">请选择开户行</option>';
-                $.each(msg,function(k,v)
-                {
-                  html += '<option value="'+v.opacontbank+'" bid="'+v.id+'">'+v.opacontbank+'</option>';
-                })
-                html += '</select>';
-                $('#signcompany').nextAll().remove();
-                $('#signcompany').after(html);   
-           }
-       })    
-    })    
+    // $(document).on('change','#signcompany',function(){
+    //     var signcompany_id = $(this).find("option:selected").attr('aid');
+    //     // alert(signcompany_id);
+    //     $.ajax({
+    //        type: "post",
+    //        url: "__APP__/Contract/collection",
+    //        data:'signcompany_id='+signcompany_id,
+    //        dataType:"json",
+    //        success: function(msg){
+    //             var html = '<select class="tab_select" name="collectaccount[]" id="bank" style="width: 320px;height: 42px;margin-left:4px;"><option value="0">请选择开户行</option>';
+    //             $.each(msg,function(k,v)
+    //             {
+    //               html += '<option value="'+v.opacontbank+'" bid="'+v.id+'">'+v.opacontbank+'</option>';
+    //             })
+    //             html += '</select>';
+    //             $('#signcompany').nextAll().remove();
+    //             $('#signcompany').after(html);   
+    //        }
+    //    })    
+    // })    
     $(document).on('change','#bank',function(){
         var opacontbank_id = $(this).find("option:selected").attr('bid');
         $.ajax({
@@ -177,6 +203,51 @@
             $('#bank').after(s);   
            }
        })    
+    })
+
+
+
+     $(document).on('blur','#customername',function(){
+
+        setTimeout("$('#mername').empty()",300);
+    })
+    // 键盘抬起事件
+    $(document).on('keyup','#company',function(){
+        var company = $(this).val();
+        // alert(company);
+        var data = {'company':company}
+        $.ajax({
+           type: "POST",
+           url: "__APP__/Gather/gather_ajax",
+           data: data,
+           dataType:'json',
+           success: function(msg){
+            // alert(msg);
+                var html='<div class="unkwn">';
+                // console.log(msg);
+                if(msg=="")
+                {
+                    $('#quao').remove();
+                }else
+                {
+                    $(msg).each(function(i){
+                        html+="<p class='midd' idna='"+msg[i]['client_name']+"' ids='"+msg[i]['id']+"'>"+msg[i]['client_name']+"</p>";
+                    });
+                    $('#quao').empty().append(html);
+                }
+                html+='</div>'
+            }
+        });
+    })
+    $(document).on('click','.midd',function(){
+        var company = $(this).html();
+        var middleid = $(this).attr('ids');
+        var middlename = $(this).attr('idna');
+        $('#company').val(company);
+        $('#middelid').val(middleid);
+        $('#middlename').val(middlename);
+        $('#quao').empty();
+
     })
 
 </script>

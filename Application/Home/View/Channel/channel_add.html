@@ -101,16 +101,23 @@
     </dl>
 </div>
 </body>
+<style type="text/css">
+    .dis{disabled:disabled;}
+</style>
 <script type="text/javascript">
     $(document).ready(function(){
         $(document).on('change','#schoice',function(){
-          if ($(this).val() == 3) {
+            if ($(this).val() == 3) {
                 $(".orige").hide();
+                $(".orige").find('input').addClass('dis');
                 $('.replace').show();
+                $(".replace").find('input').removeClass('dis');
                 
             }else{
                $(".orige").show();
-                $('.replace').hide(); 
+               $(".orige").find('input').removeClass('dis');
+                $('.replace').hide();
+                $(".replace").find('input').addClass('dis'); 
             }  
         });
     })

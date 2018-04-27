@@ -27,11 +27,31 @@
                 <span class="dd_left">一级科目：</span>
                 <span class="dd_right">
                     <select name="firststep" class="tab_select" style="width: 320px;height: 42px;margin-left:4px;">
-                        <option value="管理费用">管理费用</option>
-                        <option value="主营业务成本">主营业务成本</option>
-                        <option value="财务费用">财务费用</option>
-                        <option value="代付">代付</option>
-                        <option value="其他">其他</option>
+                        <if condition="$data.firststep eq 管理费用">
+                            <option value="管理费用" selected="selected">管理费用</option>
+                        <else />
+                            <option value="管理费用">管理费用</option>
+                        </if>
+                        <if condition="$data.firststep eq 主营业务成本">
+                            <option value="主营业务成本" selected="selected">主营业务成本</option>
+                        <else />
+                            <option value="主营业务成本">主营业务成本</option>
+                        </if>
+                        <if condition="$data.firststep eq 财务费用">
+                            <option value="财务费用" selected="selected">财务费用</option>
+                        <else />
+                            <option value="财务费用">财务费用</option>
+                        </if>
+                        <if condition="$data.firststep eq 代付">
+                            <option value="代付" selected="selected">代付</option>
+                        <else />
+                            <option value="代付">代付</option>
+                        </if>
+                        <if condition="$data.firststep eq 其他">
+                            <option value="其他" selected="selected">其他</option>
+                        <else />
+                            <option value="其他">其他</option>
+                        </if>
                     </select>
                 </span>
             </dd>
@@ -80,9 +100,24 @@
                 </span>
             </dd>
             <dd>
+                <span class="dd_left">收款账户：</span>
+                <span>
+                    <select name="account" class="tab_select" id="signcompany" style="width: 225px;height: 40pxpx;line-height: 40px;">
+                        <option value="0">请选择收款账户</option>
+                        <foreach name="list" item="vo">
+                            <if condition="$data.account eq $vo['id']">
+                                <option value="{$vo['id']}" aid="{$vo['id']}"  selected="selected">{$vo['name']}</option>
+                            <else />
+                                <option value="{$vo['id']}" aid="{$vo['id']}">{$vo['name']}</option>
+                            </if>
+                        </foreach>
+                    </select>
+                </span>
+            </dd>
+            <dd>
                 <span class="dd_left">支出日期：</span>
                 <span class="dd_right">
-                    <input type="text" class="qtext money" name="money" value="" id="expendipt"/>
+                    <input type="text" class="qtext money" name="deteofcollect" value="{$data.deteofcollect|date='Y-m-d',###}" id="expendipt"/>
                     <div id="expendDate"></div>
                 </span>
             </dd>
@@ -95,17 +130,6 @@
             </dd>
             <!--支出账户-->
             <!-- <dd>
-                <span class="dd_left">支出账户：</span>
-                <span class="dd_right">
-                    <select name="account" class="tab_select collectaccount" id="signcompany" style="width: 320px;height: 42px;margin-left:4px;">
-                            <option value="0">请选择支出账户</option> 
-                        <volist name="list" id="li">
-                            <option value="{$li.id}">{$li.name}</option> 
-                        </volist>                   
-                    </select>
-                </span>
-            </dd>
-            <dd>
                 <span class="dd_left">是否有发票：</span>
                 <span class="dd_right">
                     <select name="invoice" class="tab_select" style="width: 320px;height: 42px;margin-left:4px;">

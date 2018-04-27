@@ -11,6 +11,30 @@
     <link rel="stylesheet" type="text/css" href="__CSS__/calendar.css"/>
     <script type="text/javascript" src="__JS__/calendar.js"></script>
     <script type="text/javascript" src="__JS__/page.js"></script>
+    <style>
+        #mername{
+             z-index: 100000000;
+            background: #fff;
+            position: absolute;
+            top:30px;
+            width: 248px;
+            left: 126px;
+            box-shadow: 3px 7px 10px 2px #dadada;
+        }
+        #mername p{
+            cursor: pointer;
+        }
+        #mername p:hover{
+            background: #eee;
+        }
+        select{
+            width: 108px;
+        }
+        .unkwn{border:1px margin-left: 137px solid #ccc;background: #fff;position: absolute;top:40px;z-index: 22;width: 754px;}
+        .unkwn p{font-size: 14px;color:#000; margin-left: 137px;height:35px;line-height: 35px;padding-left:15px;cursor: pointer;}
+        .unkwn p:hover{background: #eee;}
+
+    </style>
 </head>
 <body>
 <div class="contract_cont"  id="content">
@@ -32,7 +56,7 @@
                 </dd>
                 <dd>
                     <span class="dd_left">二级科目：</span>
-                        <select name="company" class="tab_select" style="width: 754px;height: 40px;">
+                        <select name="detail" class="tab_select" style="width: 754px;height: 40px;">
                             <option value="电费">电费</option>
                             <option value="装修费">装修费</option>
                             <option value="代收缴税金">代收缴税金</option>
@@ -52,6 +76,17 @@
                     </span>
                 </dd>
                 <dd>
+                    <span class="dd_left">收款账户：</span>
+                    <span>
+                        <select name="gather" class="tab_select" id="signcompany" class="qtext">
+                            <option value="0">请选择收款账户</option>
+                            <foreach name="bank" item="vo">
+                                <option value="{$vo['id']}" aid="{$vo['id']}">{$vo['name']}</option>
+                            </foreach>
+                        </select>
+                    </span>
+                </dd>
+                <dd>
                     <span class="dd_left">收款日期：</span>
                     <span>
                         <input type="text" name="gathertiem" class="qtext dateofcollect" id="dateofcollect" />
@@ -59,25 +94,16 @@
                     </span>
                 </dd>
                 <dd>
-                <span class="dd_left">客户公司：</span>
-                    <input type="text" name="invoice" class="qtext">
+                    <span class="dd_left">客户公司：</span>
+                    <input type="hidden" name="company" id="middelid"/>
+                    <div id='quao'></div>
+                    <input type="text" id="company" class="qtext">
                 </dd>
 
                 <dd>
                     <span class="dd_left">备注：</span>
                     <textarea cols="30" rows="3" class="text_box"></textarea>
                 </dd>
-                <!-- <dd>
-                    <span class="dd_left">收款账户：</span>
-                    <span>
-                    <select name="gather" class="tab_select" id="signcompany" style="width: 225px;height: 40pxpx;line-height: 40px;">
-                        <option value="0">请选择收款账户</option>
-                        <foreach name="bank" item="vo">
-                            <option value="{$vo['id']}" aid="{$vo['id']}">{$vo['name']}</option>
-                        </foreach>
-                    </select>
-                    </span>
-                </dd> -->
                 <dd>
                     <span><input type="submit" value="提交" class="submit"/></span>
                 </dd>
@@ -86,27 +112,74 @@
 </div>
 
 <script type="text/javascript">
-    // 收款账户
-    $(document).on('change','#signcompany',function(){
-        var signcompany_id = $(this).find("option:selected").attr('aid');
-        // alert(signcompany_id);
+
+    $(document).on('blur','#customername',function(){
+
+        setTimeout("$('#mername').empty()",300);
+    })
+    // 键盘抬起事件
+    $(document).on('keyup','#company',function(){
+        var company = $(this).val();
+        // alert(company);
+        var data = {'company':company}
         $.ajax({
-           type: "post",
-           url: "__APP__/Contract/collection",
-           data:'signcompany_id='+signcompany_id,
-           dataType:"json",
+           type: "POST",
+           url: "__APP__/Gather/gather_ajax",
+           data: data,
+           dataType:'json',
            success: function(msg){
-                var html = '<select class="tab_select" name="collectaccount[]" id="bank" style="width: 320px;height: 42px;margin-left:4px;"><option value="0">请选择开户行</option>';
-                $.each(msg,function(k,v)
+            // alert(msg);
+                var html='<div class="unkwn">';
+                // console.log(msg);
+                if(msg=="")
                 {
-                  html += '<option value="'+v.opacontbank+'" bid="'+v.id+'">'+v.opacontbank+'</option>';
-                })
-                html += '</select>';
-                $('#signcompany').nextAll().remove();
-                $('#signcompany').after(html);   
-           }
-       })    
-    })    
+                    $('#quao').remove();
+                }else
+                {
+                    $(msg).each(function(i){
+                        html+="<p class='midd' idna='"+msg[i]['client_name']+"' ids='"+msg[i]['id']+"'>"+msg[i]['client_name']+"</p>";
+                    });
+                    $('#quao').empty().append(html);
+                }
+                html+='</div>'
+            }
+        });
+    })
+    $(document).on('click','.midd',function(){
+        var company = $(this).html();
+        var middleid = $(this).attr('ids');
+        var middlename = $(this).attr('idna');
+        $('#company').val(company);
+        $('#middelid').val(middleid);
+        $('#middlename').val(middlename);
+        $('#quao').empty();
+
+    })
+
+
+    // // 收款账户
+    // $(document).on('change','#signcompany',function(){
+    //     var signcompany_id = $(this).find("option:selected").attr('aid');
+    //     // alert(signcompany_id);
+    //     $.ajax({
+    //        type: "post",
+    //        url: "__APP__/Contract/collection",
+    //        data:'signcompany_id='+signcompany_id,
+    //        dataType:"json",
+    //        success: function(msg){
+    //             var html = '<select class="tab_select" name="collectaccount[]" id="bank" style="width: 320px;height: 42px;margin-left:4px;"><option value="0">请选择开户行</option>';
+    //             $.each(msg,function(k,v)
+    //             {
+    //               html += '<option value="'+v.opacontbank+'" bid="'+v.id+'">'+v.opacontbank+'</option>';
+    //             })
+    //             html += '</select>';
+    //             $('#signcompany').nextAll().remove();
+    //             $('#signcompany').after(html);   
+    //        }
+    //    })    
+    // })    
+
+
     $(document).on('change','#bank',function(){
         var opacontbank_id = $(this).find("option:selected").attr('bid');
         $.ajax({

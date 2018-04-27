@@ -95,12 +95,12 @@
 	        <volist name="data" id="data">
 		        <tr class="tr" value="1">
 		            <td class="tc">{$data.firststep}</td>
-		            <td class="tc"></td>
-		            <td class="tc">{$data.company}</td>
+		            <td class="tc">{$data.detail}</td>
+		            <td class="tc">{$data.client_name}</td>
 		            <td class="tc">{$data.money}</td>
 		            <td class="tc">{$data.name}</td>
-		            <td class="tc">{$data.gathertiem}</td>
-		            <td class="tc"></td>
+		            <td class="tc">{$data.gathertiem|date="Y-m-d",###}</td>
+		            <td class="tc">{$data.nuddke_id}</td>
 		            <td class="tc"></td>
 		            <td class="tc">{$data.real_name}</td>
 		            <td class="tc fixed_w">

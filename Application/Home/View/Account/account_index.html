@@ -22,7 +22,7 @@ $(document).ready(function() {
 		}else {
 			wintq('正在删除，请稍后...',4,20000,0,'');
 			$.ajax({
-				url:'__APP__/Role/roledel/',
+				url:'__APP__/Account/account_del/',
 				dataType:'json',
 				type:'POST',
 				data:'id='+id,
@@ -70,7 +70,7 @@ $(document).ready(function() {
 		            <td class="tc">{$li.remainmoney}</td>
 		            <td class="tc fixed_w">
 		            <a href="__APP__/Account/account_save/id/{$li.id}" class="edit oper">修改</a>
-		            <a href="{$li.id}" class="see oper">查看</a>
+		            <a href="{$li.id}" class="del oper">删除</a>
 		            </td>
 		        </tr>
 	        </volist>

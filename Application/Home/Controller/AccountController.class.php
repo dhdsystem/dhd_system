@@ -4,7 +4,7 @@ use Think\Controller;
 class AccountController extends Controller {
    /*财务账户*/
     public function account_index(){
-    	$data = M('account')->select();
+    	$data = M('account')->where("state=0")->select();
     	$this->assign('data',$data);
        	$this->display();
     }
@@ -29,6 +29,26 @@ class AccountController extends Controller {
             $this->error('新增失败',U('Account/account_add'));
         }
     }
+
+
+    // 删除
+    public function account_del(){
+        $delid = I('post.id');
+        $data['state'] = '1';
+        $del = M('account')->where("id=$delid")->save($data);
+        if($del){
+            $post['s'] = 'ok';
+            print_r( json_encode($post));
+        }else{
+            $post['s'] = '删除失败';
+            print_r( json_encode($post));
+        }
+    }
+
+
+
+
+
 
 
     // 修改账户页面
