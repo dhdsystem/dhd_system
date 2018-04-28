@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查看报销记录</title>
+    <link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
+    <!--日期样式-->
+    <link rel="stylesheet" type="text/css" href="__CSS__/laydate.css"  />
+</head>
+<body>
+<div class="contract_cont"  id="content">
+    <h1>首页 > 费用管理 > 报销记录 > 查看报销记录 </h1>
+    <h2>
+        <div class="h2_left">
+            <!-- <a href="javascript:;" class="f5" onclick="f5();">刷新</a>                             -->
+            <a href="javascript:;" onclick="location.href='__APP__/repay/repay_index/id/{$data.id}'" class="uclass">列表</a>
+            <a href="javascript:history.back();" class="Retreat">后退</a>
+            <!-- <a href="javascript:history.go(1);" class="Advance">前进</a> -->
+        </div>
+    </h2>
+
+        <dl id="cdl">
+        <input type="hidden" name="id" value="{$data.id}">
+            <dd>
+                <span class="dd_left">一级科目：</span>
+                <span class="dd_right">
+                {$data.yijikemu}
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">二级科目：</span>
+                <span class="dd_right">
+                {$data.erjikemu}
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">报销金额：</span>
+                <span class="dd_right">
+                ￥{$data.money}
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">申请事由说明：</span>
+                <span class="dd_right">
+                    {$data.reason}
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">发票情况：</span>
+                <span class="dd_right">
+                {$data.invoice}
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">原因：</span>
+                <span class="dd_right">
+                {$data.i_reason}
+                </span>
+            </dd>
+            <?php foreach ($data['opinion'] as $k => $v): ?>
+                 <dd>
+                    <span class="dd_left">{$k}审核意见：</span>
+                    <span class="dd_right">
+                        <textarea name="opinion" rows="4" cols="37" class="text_box">{$v}</textarea>
+                    </span>
+                </dd>
+            <?php endforeach ?>
+        </dl>
+    </form>
+</div>
+</body>
+</html>
