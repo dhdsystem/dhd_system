@@ -67,7 +67,7 @@
                     <td class="tc">{$vo.legalperson}</td>
                     <td class="tc">{$vo.legaltel}</td>
                     <td class="tc">
-                        <if condition="$lsit.taxstyle eq 1 ">一般人<else />小规模</if>
+                        <if condition="$vo.taxstyle eq 1 ">一般人<else />小规模</if>
                     </td>
                     <td class="tc">{$vo.client_money}</td>
                     <td class="tc">{$vo.real_name}</td>

@@ -3,6 +3,7 @@ namespace Home\Controller;
 use Think\Controller;
 class ExpendController extends Controller {
    /*支出*/
+   // 支出展示页面
     public function expend_index(){
     	$data = M('expenditure as e')
     			->field('a.name,e.company,e.firststep,e.detail,e.money,e.deteofcollect,u.real_name,e.id')
@@ -10,6 +11,7 @@ class ExpendController extends Controller {
     			->join('dhd_user as u on e.u_id = u.id')
     			->where('expend_state=0')
     			->select();
+      // print_r($data);die;
     	$this->assign('data',$data);
        	$this->display();
     }
