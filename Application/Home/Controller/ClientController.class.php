@@ -106,6 +106,7 @@ class ClientController extends Controller {
     {
         $prod_id = I('post.prod_id');
         $list = M('details')->field('id,detailscoll')->where(array('det_advance'=>1,'pro_id'=>$prod_id,'det_del'=>0))->order('id')->find();
+        // echo M('details')->GetLastSql();
         returnajax($list);
     }
     /**

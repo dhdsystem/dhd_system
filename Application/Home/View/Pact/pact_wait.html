@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>待审合同</title>
+    <link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
+    <link rel="stylesheet" type="text/css" href="__CSS__/public.css"  />
+    <script type="text/javascript" src="__JS__/jquery.js"></script>
+    <script type="text/javascript" src="__JS__/Public.js"></script>
+    <script type="text/javascript" src="__JS__/winpop.js"></script>
+</head>
+<body>
+<div id="content">
+    <h1>首页 > 合同管理 > 待审合同</h1>
+    <h2>
+        <div class="h2_left">
+            <a href="javascript:history.back();" class="Retreat">后退</a>
+            <a href="javascript:;">待审合同<span class="pactnum">11</span></a>
+            <a href="javascript:;">未通过<span class="pactnum">12</span></a>
+        </div>
+        <div class="search">
+            <form action="__ACTION__" method="post" id="dayStatic">
+                <input type="text" name="company" class="text"/>
+                <input type="submit" value="搜索" class="so" />
+            </form>
+        </div>
+    </h2>
+ 	<div class="tableBox">
+		<table id="table" border="1" bordercolor="#CCCCCC" cellpadding="0" cellspacing="0" style="width:120%">
+            <tr>
+                <th>编号</th>
+                <th>公司名称</th>
+                <th>合同类型</th>
+                <th>注册号/房间号</th>
+                <th>收款金额</th>
+                <th>租赁日期</th>
+                <th>业务员</th>
+                <th>操作</th>
+            </tr>
+            <foreach name="list" item="vo" >
+                <tr class="tr">
+                    <td class="tc">{$vo.id}</td>
+                    <td class="tc">{$vo.client_name}</td>
+                    <td class="tc">{$vo.contracttype}</td>
+                    <td class="tc">{$vo.pro_address}-{$vo.detailscoll}</td>
+                    <td class="tc">{$vo.actual_amount}</td>
+                    <td class="tc">{$vo.ac_time|date="Y-m-d",###}</td>
+                    <td class="tc">{$vo.username}</td>
+                    <td class="tc fixed_w"> 
+                        <div class="operation">更多
+                            <div class="operarea">
+                                <a href="__APP__/Pact/pact_audit/id/{$vo.id}" class="check oper2">审核</a>
+                                <a href="javascript:;" class="download oper2">下载</a>
+                                <a href="javascript:;" class="payee oper2">收款</a>
+                                <a href="javascript:;" class="del2 oper2">删除</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </foreach>
+            
+            
+        </table>
+	</div>	
+    <div id="page"><{$page}></div>
+</div>
+</body>
+</html>

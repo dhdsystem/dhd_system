@@ -98,6 +98,10 @@
     <span class="ipt_left"><em class="red">*</em>每期金额：</span>
     <input type="text" name="each" id="each" value="" class="pact_ipt" placeholder="元 （大写）">
 </li>
+<li class="iptBox">
+    <span class="ipt_left"><em class="red">*</em>第一次付款时间：</span>
+    <input type="text" name="paynext1" id="paynext1" value="" class="pact_ipt" placeholder="第一次付款时间">
+</li>
 <div id="payment"></div>
 <script type="text/javascript">
     laydate.render({  
@@ -107,6 +111,11 @@
             endDateCallBack(value)
         }
     });
+    laydate.render({  
+            elem: '#paynext1',  
+            format: 'yyyy年MM月dd日', 
+            
+        });
     $(document).on('change','#paytype',function(){
         ht_sk();
         

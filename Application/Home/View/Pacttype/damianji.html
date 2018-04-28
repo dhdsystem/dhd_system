@@ -138,6 +138,11 @@
                 endDateCallBack(value)
             }
         });
+        laydate.render({  
+            elem: '#paynext1',  
+            format: 'yyyy年MM月dd日', 
+            
+        });
     $(document).on('change','#paytype',function(){
         ht_sk();
         

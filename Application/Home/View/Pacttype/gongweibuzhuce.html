@@ -38,12 +38,12 @@
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>租赁日期：</span>
     <span class="timeBox">
-        <input type="text" name="" value="" class="pact_ipt pact_ipt2" id="rentstarttime">
+        <input type="text" name="rentstarttime" value="" class="pact_ipt pact_ipt2" id="rentstarttime">
         <div id="rentstar" style="left: 0px;top: 40px;"></div>
     </span>
     <span style="line-height: 40px;display: inline-block;">～</span>
     <span class="timeBox">
-        <input type="text" name="" value="" class="pact_ipt pact_ipt2" id="rentendtime">
+        <input type="text" name="rentendtime" value="" class="pact_ipt pact_ipt2" id="rentendtime">
         <div id="rentend" style="left: 0px;top: 40px;"></div>
     </span>
 </li>
@@ -100,6 +100,11 @@
             done: function(value, date, endDate){
                 endDateCallBack(value)
             }
+        });
+        laydate.render({  
+            elem: '#paynext1',  
+            format: 'yyyy年MM月dd日', 
+            
         });
     $(document).on('change','#paytype',function(){
         ht_sk();
