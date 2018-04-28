@@ -10,6 +10,16 @@
     <script type="text/javascript" src="__JS__/Public.js"></script>
     <script type="text/javascript" src="__JS__/winpop.js"></script>
 </head>
+<script type="text/javascript">
+    // $(document).on('blur','.spp input',function(){
+    //     // if (!$(this).val()) {
+    //         var txt=$(this).parent().find('label').text();
+    //         console.log(txt);
+    //         $(this).attr('placeholder',txt);
+    //         $(this).parent().find('label').hide();
+    //     // }
+    // })
+</script>
 <body>
 <div id="content">
     <h1>首页 &gt; 产品管理 &gt; 项目管理 &gt;产品详情添加</h1>
@@ -68,28 +78,44 @@
             </dd>
             
             <!--大面积房间号-->
-            <dd id="dhao" class="hao">
-                <span class="dd_left">
-                    大面积房间号:  
-                </span>
-                <span class="dd_right">
-                <input type="text"  class="qtext room_num" name="big_num[0][]" value="" style="width: 265px;" />&nbsp;&nbsp;&nbsp;&nbsp;
-                <span class="dd_span">面积：</span><input type="text"  class="qtext room_area" name="big_sum[0][]" value="" placeholder="平方米" style="width: 265px;"/>  &nbsp;&nbsp;&nbsp;&nbsp; 
-                <input type="button" value="+"  class="submit submit2 jia">&nbsp;&nbsp;<input type="button" value="-"  class="submit jian submit2" style="margin-left: 2px;"></span>   
+            <dd  class="hao">
+                <div>
+                    <span class="dd_left">
+                        大面积房间号:  
+                    </span>
+                    <span class="dd_right spp">
+                    <input type="text"  class="qtext room_num" name="big_num[0][]" value="" style="width: 265px;" />&nbsp;&nbsp;&nbsp;&nbsp;
+                    </span>
+                </div>
+                <div>
+                    <span class="dd_span">面积：</span>
+                    <span class="dd_right spp">
+                        <input type="text"  class="qtext room_area" name="big_sum[0][]" value="" placeholder="平方米" style="width: 265px;"/>  &nbsp;&nbsp;&nbsp;&nbsp; 
+                    </span>
+                </div>
+                <input type="button" value="+"  class="submit submit2 jia">&nbsp;&nbsp;<input type="button" value="-"  class="submit jian submit2" style="margin-left: 2px;">   
             </dd>
 
             <!--小面积房间号-->
-            <dd id="xhao" class="hao">
-                <span class="dd_left">
-                    小面积房间号:  
-                </span>
-                <span class="dd_right">
-                <input type="text"  class="qtext room_num" name="small_num[0][]" value="" style="width: 265px;" />&nbsp;&nbsp;&nbsp;&nbsp;
-                <span class="dd_span">面积：</span><input type="text"  class="qtext room_area" name="small_sum[0][]" value="" placeholder="平方米" style="width: 265px;"/>  &nbsp;&nbsp;&nbsp;&nbsp; 
+            <dd class="hao">
+                <div>
+                    <span class="dd_left">
+                        小面积房间号:  
+                    </span>
+                    <span class="dd_right spp">
+                    <input type="text"  class="qtext room_num" name="small_num[0][]" value="" style="width: 265px;" />&nbsp;&nbsp;&nbsp;&nbsp;
+                    </span>
+                </div>
+                <div>
+                    <span class="dd_span">面积：</span>
+                    <span class="dd_right spp">
+                        <input type="text"  class="qtext room_area" name="small_sum[0][]" value="" placeholder="平方米" style="width: 265px;"/>  &nbsp;&nbsp;&nbsp;&nbsp; 
+                    </span>
+                </div>
                 <input type="button" value="+"  class="submit submit2 jia">&nbsp;&nbsp;<input type="button" value="-"  class="submit jian submit2" style="margin-left: 2px;"></span>   
             </dd>
             <!-- 工位 -->
-            <dd id="dhao" class="hao">
+            <dd  class="hao">
                 <span class="dd_left">
                     工位:  
                 </span>

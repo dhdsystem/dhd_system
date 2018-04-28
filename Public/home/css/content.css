@@ -164,8 +164,9 @@ border-radius: 8px;display: none;}
 #content #cdl dd .text_box:focus{border: 1px solid #7ed321 !important;box-shadow: none !important;}
 #content #cdl dd .tab_select{border: 1px solid #e6e6e6;border-radius: 2px;-webkit-appearance: none;-moz-appearance: none;
 outline: none;padding-left: 10px;font-size: 14px;}
-.dd_span{font-size: 14px;display: inline-block;}
-.dd_span:before{content: '*';color: red;position: absolute;margin-left: -9px;font-weight: bold;line-height: 1.8em;margin-top: -1px;}
+.dd_span{font-size: 14px;display: block;float: left;line-height: 40px;width:49px;}
+.dd_span:before{content: '*';color: red;position: absolute;margin-left: -9px;font-weight: bold;line-height: 1.8em;
+margin-top: -1px;}
 
 
 #content #cdl dd .dd_right { display:block; width:auto; line-height:24px; float:left; text-align:left;}
