@@ -77,7 +77,7 @@ class ClientController extends Controller {
     // 客户修改方法
     public function clientsave_do(){
         $data = I('post.');
-        print_r($data);die;
+        // print_r($data);die;
         $save = M('client')->where(array('id'=>$data['id']))->save($data);
         if($save){
             $this->success('修改成功', U('Client/client_index'));
