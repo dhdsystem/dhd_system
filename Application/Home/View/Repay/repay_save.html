@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>报销新增</title>
+    <link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
+    <script type="text/javascript" src="__JS__/jquery.js"></script>
+    <script type="text/javascript" src="__JS__/Public.js"></script>
+</head>
+<body>
+<div class="contract_cont"  id="content">
+    <h1>首页 > 费用管理  > 报销修改 </h1>
+    <h2>
+        <div class="h2_left">
+            <a href="javascript:history.back();" class="Retreat">后退</a>
+        </div>
+    </h2>
+    <form action="__APP__/repay/repay_save" method="post" id="addInfo">
+        <dl id="cdl">
+            <dd>
+                <span class="dd_left">一级科目：</span>
+                <span class="dd_right">
+                <input type="hidden" name="action_id" value="35">
+                    <select name="yijikemu" class="tab_select" style="width: 745px;height: 42px;margin-left:4px;">
+                        <option value="0">请选择</option>
+                         <if condition="$data.yijikemu eq '销售费用——报销'">
+                            <option value="销售费用——报销" selected="selected">销售费用——报销</option>
+                        </if>
+                        
+                    </select>
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">二级科目：</span>
+                <span class="dd_right">
+                    <select name="erjikemu" class="tab_select" style="width: 745px;height: 42px;margin-left:4px;">   
+                        <if condition="$data.erjikemu eq '办公'">
+                            <option value="办公" selected="selected">办公</option>
+                            <option value="0">请选择</option>
+                            <option value="保险">保险</option>
+                            <option value="装修">装修</option>
+                            <option value="停车">停车</option>
+                            <option value="打印">打印</option>
+                            <option value="汽油">汽油</option>
+                            <option value="招待">招待</option>
+                            <option value="交通">交通</option>
+                        </if>
+                        <if condition="$data.erjikemu eq '保险'">
+                            <option value="保险" selected="selected">保险</option>
+                            <option value="0">请选择</option>
+                            <option value="办公">办公</option>
+                            <option value="装修">装修</option>
+                            <option value="停车">停车</option>
+                            <option value="打印">打印</option>
+                            <option value="汽油">汽油</option>
+                            <option value="招待">招待</option>
+                            <option value="交通">交通</option>
+                        </if>
+                        <if condition="$data.erjikemu eq '装修'">
+                            <option value="装修" selected="selected">装修</option>
+                             <option value="0">请选择</option>
+                            <option value="办公">办公</option>
+                            <option value="保险">保险</option>
+                            <option value="停车">停车</option>
+                            <option value="打印">打印</option>
+                            <option value="汽油">汽油</option>
+                            <option value="招待">招待</option>
+                            <option value="交通">交通</option>
+
+                        </if>
+                        <if condition="$data.erjikemu eq '停车'">
+                            <option value="停车" selected="selected">停车</option>
+                             <option value="0">请选择</option>
+                            <option value="办公">办公</option>
+                            <option value="保险">保险</option>
+                            <option value="装修">装修</option>
+                            <option value="打印">打印</option>
+                            <option value="汽油">汽油</option>
+                            <option value="招待">招待</option>
+                            <option value="交通">交通</option>
+                        </if>
+                        <if condition="$data.erjikemu eq '打印'">
+                            <option value="打印" selected="selected">打印</option>
+                             <option value="0">请选择</option>
+                            <option value="办公">办公</option>
+                            <option value="保险">保险</option>
+                            <option value="装修">装修</option>
+                            <option value="停车">停车</option>
+                            <option value="汽油">汽油</option>
+                            <option value="招待">招待</option>
+                            <option value="交通">交通</option>
+                        </if>
+                        <if condition="$data.erjikemu eq '汽油'">
+                            <option value="汽油" selected="selected">汽油</option>
+                             <option value="0">请选择</option>
+                            <option value="办公">办公</option>
+                            <option value="保险">保险</option>
+                            <option value="装修">装修</option>
+                            <option value="停车">停车</option>
+                            <option value="打印">打印</option>
+                            <option value="招待">招待</option>
+                            <option value="交通">交通</option>
+                        </if>
+                        <if condition="$data.erjikemu eq '招待'">
+                            <option value="招待" selected="selected">招待</option>
+                             <option value="0">请选择</option>
+                            <option value="办公">办公</option>
+                            <option value="保险">保险</option>
+                            <option value="装修">装修</option>
+                            <option value="停车">停车</option>
+                            <option value="打印">打印</option>
+                            <option value="汽油">汽油</option>
+                            <option value="交通">交通</option>
+                        </if>
+                        <if condition="$data.erjikemu eq '交通'">
+                            <option value="交通" selected="selected">交通</option>
+                             <option value="0">请选择</option>
+                            <option value="办公">办公</option>
+                            <option value="保险">保险</option>
+                            <option value="装修">装修</option>
+                            <option value="停车">停车</option>
+                            <option value="打印">打印</option>
+                            <option value="汽油">汽油</option>
+                            <option value="招待">招待</option>
+                        </if>
+
+                        
+                    </select>
+                </span>
+            </dd> 
+            <dd>
+                <span class="dd_left">报销金额：</span>
+                <span class="dd_right">
+                    <input type="text" class="qtext" name="money" value="{$data.money}">
+                    <input type="hidden" class="qtext" name="id" value="{$data.id}">
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">发票：</span>
+                <span class="dd_right">
+                    <select name="invoice" class="tab_select bill" style="width: 320px;height: 42px;margin-left:4px;">
+                        <option value="0">请选择</option>
+                        <if condition="$data.invoice eq '有'">
+                            <option value="有" selected="selected">有</option>
+                             <option value="无">无</option>
+                        </if>
+                           <if condition="$data.invoice eq '无'">
+                            <option value="无" selected="selected">无</option>
+                            <option value="有">有</option>
+                        </if>
+                       
+                    </select>
+                </span>
+            </dd>
+            <dd class="billBox">
+                <span class="dd_left">无票原因：</span>
+                <span class="dd_right">
+                    <textarea name="i_reason" cols="30" rows="3" class="text_box">{$data.i_reason}</textarea>
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">申请说明：</span>
+                <span class="dd_right">
+                    <textarea name="reason" cols="30" rows="3" class="text_box">{$data.reason}</textarea>
+                </span>
+            </dd>
+            <dd>
+                <input type="submit" value="提交" class="submit">
+            </dd>
+
+        </dl>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>退费管理</title>
+<link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
+<link rel="csssheet" type="text/css" href="__CSS__/public.css"  />
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript" src="__JS__/Public.js"></script>
+<script type="text/javascript" src="__JS__/js/winpop.js"></script>
+<script>
+$(document).ready(function() {
+	
+	$('#content #table .tr .del').click(function(event) {
+		event.preventDefault();
+		if (!confirm('确定要删除该数据吗？')) {
+			return false;
+		}
+		var id=$(this).attr('href');
+		if (id=='' || isNaN(id)) {
+			wintq('ID参数不正确',3,1000,1,'');
+			return false;
+		}else {
+			wintq('正在删除，请稍后...',4,20000,0,'');
+			$.ajax({
+				url:'__APP__/Role/roledel/',
+				dataType:'json',
+				type:'POST',
+				data:'id='+id,
+				success: function(data) {
+					// alert(data);
+					if (data.s=='ok') {
+						wintq(data['info'],1,1500,1,'?');
+					}else {
+						wintq(data['info'],3,1500,1,'');
+					}
+				}
+			});
+		}
+	});
+});
+</script>
+</head>
+<body>
+<div id="content">
+	<h1>首页 > 费用管理 > 退费管理</h1>
+    <h2>
+    	<div class="h2_left">
+            <a href="__APP__/refund/refund_add" class="add">新增</a>
+        </div>
+        <div class="search">
+        <form action="" method="post">
+            
+                <input type="text" name="keyword" class="text" value="">
+                <input type="submit" class="so" value="搜 索">
+            </form>
+        </div>
+    </h2>
+    <div class="tableBox">
+	   	<table id="table" border="1" bordercolor="#CCCCCC" cellpadding="0" cellspacing="0" style="width:100%;">
+	    	<tr>
+	        	<th>公司名称</th>
+	            <th>产品类型</th>
+	            <th>退款金额</th>
+	            <th>申请人员</th>
+	            <th>申请时间</th>
+	            <th>审核进度</th>            
+	            <th>操作</th>
+	        </tr>
+	        <volist name="volist" id="vo">
+	        <tr class="tr" value="1">
+	            <td class="tc">{$vo.company}</td>
+	            <td class="tc">{$vo.yijikemu}</td>
+	            <td class="tc">{$vo.charge_money}</td>
+	            <td class="tc">{$vo.applicant}</td>
+	            <td class="tc">{$vo.trial_time}</td>
+	            <td class="tc">{$vo.is_adopt}</td>
+	            <td class="tc fixed_w">
+	            <a href="__APP__/refund/refund_save/id/{$vo.id}" class="edit oper">修改</a>
+	            <a href="__APP__/refund/refund_list/id/{$vo.id}" class="see oper">查看</a>
+	            <!-- <a href="../finish/finish2.html" class="finish oper">完成</a> -->
+	            </td>
+	        </tr>
+	        </volist>
+	    </table>
+    </div>
+</div>
+</body>
+</html>

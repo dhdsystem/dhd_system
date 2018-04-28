@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>退款新增</title>
+    <link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
+    <link rel="stylesheet" type="text/css" href="__CSS__/calendar.css"  />
+    <script type="text/javascript" src="__JS__/jquery.js"></script>
+	<script type="text/javascript" src="__JS__/calendar.js"></script>
+    <!-- 时间插件 -->
+</head>
+<body>
+<div class="contract_cont"  id="content">
+    <h1>首页 > 费用管理  > 退款新增 </h1>
+    <h2>
+        <div class="h2_left">
+            <a href="javascript:history.back();" class="Retreat">后退</a>
+        </div>
+    </h2>
+    <form action="__APP__/refund/refund_add" method="post" id="addInfo">
+        <dl id="cdl">
+            <dd>
+                <span class="dd_left">一级科目：</span>
+                <span class="dd_right">
+                    <select name="yijikemu" class="tab_select" style="width: 745px;height: 42px;margin-left:4px;">
+                        <option value="0">请选择</option>
+                        <option value="销售费用——返佣">销售费用--退款</option>
+                    </select>
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">二级科目：</span>
+                <span class="dd_right">
+                    <select name="erjikemu" class="tab_select" style="width: 745px;height: 42px;margin-left:4px;">
+                        <option value="0">请选择</option>
+                        <option value="地址">地址</option>
+                        <option value="房间">房间</option>
+                        <option value="代理">代理</option>
+                        <option value="记账">记账</option>
+                        <option value="工位">工位</option>
+                        <option value="税金">税金</option>
+                        <option value="预存">预存</option>
+                        <option value="大多款">大多款</option>
+                    </select>
+                </span>
+            </dd> 
+            <dd>
+                <span class="dd_left">公司名称：</span>
+                <span class="dd_right">
+                    <input type="text" class="qtext" name="company" value="">
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">到账银行：</span>
+                <span class="dd_right">
+                    <select name="charge_bank" class="tab_select" id="signcompany" style="width: 320px;height: 42px;margin-left:4px;">
+                        <option value="0">请选择收款账户</option>
+                        <foreach name="acontname" item="vo">
+                            <option value="{$vo['id']}">{$vo['name']}</option>
+                        </foreach>
+                    </select>
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">到账日期：</span>
+                <span class="dd_right">
+                    <input type="text" class="qtext" name="charge_time" value="" id="dzdate">
+                    <div id="daoz"></div>
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">到账金额：</span>
+                <span class="dd_right">
+                    <input type="text" class="qtext" name="charge_money" value="">
+                </span>
+            </dd>
+           <!--  <dd>
+               <span class="dd_left">退费金额：</span>
+               <span class="dd_right">
+                   <input type="text" class="qtext" name="" value="">
+               </span>
+           </dd> -->
+            <dd>
+                <span class="dd_left">退费信息：</span>
+                <span class="dd_right">
+                    <textarea name="back_reason" cols="30" rows="3" class="text_box"></textarea>
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">退款说明：</span>
+                <span class="dd_right">
+                    <textarea name="reason_details" cols="30" rows="3" class="text_box"></textarea>
+                </span>
+            </dd>
+            <dd>
+                <input type="submit" value="提交" class="submit">
+            </dd>
+
+        </dl>
+    </form>
+</div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#daoz').calendar({
+            trigger: '#dzdate',
+            zIndex: 999,
+            format: 'yyyy-mm-dd',
+        });
+    });   
+</script>
+</body>
+</html>
