@@ -9,6 +9,7 @@ class ChannelController extends Controller {
             ->join('dhd_user as u on u.id = m.sales_id')
             ->where('middle_is=0')
             ->select();
+            // print_r($data);die;
       foreach ($data as $k => $v) {
         $sql = M('middle as m')
             ->join('dhd_client as c on m.id = c.nuddke_id')
@@ -31,30 +32,36 @@ class ChannelController extends Controller {
               ->join('dhd_contract as co on c.id = co.client_id')
               ->where('m.id='.$v['id'])
               ->select();
-            //print_r($tsql);die;
-          $a = 0; $b = 0; $c = 0; $d = 0;
+            // print_r($tsql);die;
+          $a = 0; $b = '1'; $c = 0; $d = 0;
           foreach($tsql as $kk => $vv){
               
-            if($tsql[$kk]['account_audit']=='4'){
+            if($vv['account_audit']=='4'){
               // 成单总量
               $data[$k]['cd']= $a++;
-            }elseif($tsql[$kk]['account_audit']=='6'){
+              $data[$k]['tz']= $d;
+            }elseif($vv['account_audit']=='6'){
               //停租
               $data[$k]['tz'] = $d++;
+              $data[$k]['cd']= $a;
             }else{
               $data[$k]['cd']= $a;
               $data[$k]['tz']= $d;
             }
 
-            if($tsql[$kk]['contractnature']=='1') {
+            if($vv['contractnature']=='1') {
               //新签量
-              $data[$k]['xq'] = $b++;
-            }elseif($tsql[$kk]['contractnature']=='3'){
+              $data[$k]['xq'] =$b++;
+              $data[$k]['zz'] = $c;
+              // echo $data[$k]['xq'];die;
+              // print_r($data);die;
+            }elseif($vv['contractnature']=='3'){
               //再租
               $data[$k]['zz'] = $c++;
+              $data[$k]['xq'] = $b;
             }else{
               $data[$k]['xq'] = $b;
-              $data[$k]['xq'] = $c;
+              $data[$k]['zz'] = $c;
             }
           }
         }
