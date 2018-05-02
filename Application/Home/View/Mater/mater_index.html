@@ -50,9 +50,6 @@
                                 });
                             }
                         });
-            $('.operation').hover(function(){
-                $(this).find('.operarea').toggle();
-            })
         });
 
         
@@ -92,8 +89,13 @@
                     <td class="tc"><div class="operation"><a href="__APP__/mater/mater_clientInfor/id/{$vo.id}" class="chakan oper">查看</a></div></div></td>
                     <td class="tc">{$vo.m_time|date='Y-m-d',###}</td>
                     <td class="tc fixed_w">
-                        <a href="{$vo.id}" class="edit oper">修改</a>
-                        <a href="{$vo.id}" class="del oper">删除</a>
+                        <div class="operation">更多
+                            <div class="operarea" style="display:none;">
+                                <a href="{$vo.id}" class="edit oper2">修改</a>
+                                <a href="{$vo.id}" class="del2 oper2">删除</a>
+                                <a href="{$vo.id}" class="regain oper2">收回</a>
+                            </div>
+                        </div>
                     </td>
                 </tr>
             </volist>
