@@ -33,15 +33,26 @@
     	<div>
     		<!--每日业绩统计表-->
 	        <form action="__APP__/Gather/gather_outstanding" method="post" id="dayStatic">
-	            <input type="text" value="" class="qtext" name="starttime" id="starttime" style="width: 128px;" placeholder="开始时间"><div id="sdd" style="left: 46px;top: 186px;"></div>&nbsp;～
+	            <input type="text" value="" class="qtext" name="starttime" id="starttime" style="width: 128px;" placeholder="开始时间">
+	            <div id="sdd" style="left: 46px;top: 186px;"></div>&nbsp;～
 	            <input type="text" value="" class="qtext" name="endtime" id="endtime" style="width: 128px;" placeholder="结束时间"><div id="edd" style="left: 205px;top: 186px;"></div>&nbsp;
 	            <input type="submit" value="每日业绩统计" class="button">
-	            
+	            <!-- <select name="list" class=" tab_select" style="width: 352px;height: 40px;">
+	            	<option>请选择银行账户</option>
+                    <volist name="list" id="li">
+                        <option value="{$li.id}">{$li.name}</option> 
+                    </volist>
+	            </select>
+	            <select name="" class=" tab_select" style="width: 352px;height: 40px;">
+	            	<option>每日业绩统计</option>
+	            	<option>每银行日流水收入统计</option>
+	            	<option>收入台账统计</option>
+	            </select>
+	            <input type="submit" value="提交" class="button"> -->
 	        </form>
 	        <div style="clear:both"></div>
     	</div>
         <div>
-        	<!--每银行日流水收入统计表-->
 	        <form action="Gather/gather_" method="post" id="dayStatic">
 	            <input type="text" value="" class="qtext" name="starttime" id="starttime2" style="width: 128px;" placeholder="开始时间">
 	            <div id="sdd2" style="left: 46px;top: 228px;"></div>&nbsp;～
@@ -54,22 +65,6 @@
                     </volist>
 	            </select>
 	            <input type="submit" value="每银行日流水收入统计" class="button">
-	        </form>
-	        <div style="clear:both"></div>
-        </div>
-        <div>
-        	<!--收入台账统计表-->
-	        <form action="Gather/gather_" method="post" id="dayStatic">
-	            <input type="text" value="" class="qtext" name="starttime" id="starttime3" style="width: 128px;" placeholder="开始时间">
-	            <div id="sdd3" style="left: 46px;top: 270px;"></div>&nbsp;～
-	            <input type="text" value="" class="qtext" name="endtime" id="endtime3" style="width: 128px;" placeholder="结束时间">
-	            <div id="edd3" style="left: 205px;top: 270px;"></div>&nbsp;
-	            <select name="list" class="tab_select" style="width: 352px;height: 40px;">
-	            	<option>请选择银行账户</option>
-                    <volist name="list" id="li">
-                        <option value="{$li.id}">{$li.name}</option> 
-                    </volist>
-	            </select>
 	            <input type="submit" value="收入台账统计" class="button">
 	        </form>
 	        <div style="clear:both"></div>
@@ -117,5 +112,13 @@
 	    </table>
     </div>
 </div>
+<script type="text/javascript">
+	$().ready(function(){
+		var wheight=document.documentElement.clientHeight;
+		var sheight=$('.tableBox').offset().top;
+		console.log(sheight)
+		$('.tableBox').css('height',wheight-sheight-50);
+	})
+</script>
 </body>
 </html>

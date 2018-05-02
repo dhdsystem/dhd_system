@@ -3,7 +3,8 @@
 * { margin:0; padding:0;}
 input,button{outline:none;} 
 body { margin:0; padding:0; background:#eff0f4; }
-#content { height:100%; font-size:12px; color:#333; font-family:"微软雅黑";;background: #fff;padding: 26px;margin-top: 20px;margin-left: 20px;} 
+#content { height:92%; font-size:12px; color:#333; font-family:"微软雅黑";;background: #fff;
+padding: 26px;margin-top: 20px;margin-left: 20px;padding-bottom: 0} 
 #content h1 { width:100%; height:30px; line-height:30px; font-size:16px; color:#666; font-weight:400; text-align:left;}
 .content_box {
     margin: 0 !important;
@@ -77,7 +78,7 @@ input,textarea,select { font-size:12px; text-indent:4px; color:#111; }
 /*新增样式*/
 #content .tableBox{width:100%;overflow-x: scroll;height:700px;overflow-y: scroll;}
 #content .tableBox2{width:100%;overflow-x: scroll;height:635px;overflow-y: scroll;}
-#content #table { width: 2000px;height:auto;margin-top:15px; border-collapse:collapse; border:none;margin-bottom: 40px;}
+#content #table { width: 100%;height:auto;margin-top:15px; border-collapse:collapse; border:none;margin-bottom: 40px;}
 #content #table tr { height:46px; line-height:46px; }
 #content #table tr th { text-align:center; background:#7ed321; border:solid 1px #7ed321; color:#fff;font-size: 14px; }
 #content #table .tr { height:30px; line-height:50px; background:#fff; font-size: 15px; }
@@ -203,7 +204,7 @@ margin-top: -1px;}
 #content .cerr { width:100%; height:50px; line-height:50px; margin-top:30px; text-align:center; color:#f00 }
 
 
-#page { width:99%; height:40px; line-height:40px; position:fixed; left:0; bottom:0; text-indent:26px;background: #fff;    z-index: 100;padding-left: 20px;}
+#page { width:99%; height:40px; line-height:40px; position:fixed; left:20px; bottom:0; text-indent:26px;background: #fff;    z-index: 100;padding-left: 20px;}
 #page a { text-decoration:none; color:#fff; margin-right:6px; font-size: 16px; background: #7ed321;padding: 6px 14px; }
 #page a:hover { color:#fff; background:#66ad1a }
 #page .current { color:#fff; background:#66ad1a; font-size: 16px;font-weight:900; margin-right: 6px;padding: 6px 14px; }
