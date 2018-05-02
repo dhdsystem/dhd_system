@@ -60,5 +60,12 @@ class RefundController extends Controller {
 	    		$this->display();
     			}
     	}
+      /*搜索*/
+      public function refund_search(){
+        $data=I('post.keyword');
+        $data=M('cashier')->where("state=2 and company like '%$data%'")->select();
+        $this->assign('data',$data);
+        $this->display('refee_index');
+      }
 
 }

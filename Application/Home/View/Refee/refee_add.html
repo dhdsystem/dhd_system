@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>返费修改</title>
+    <link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
+    <link rel="stylesheet" type="text/css" href="__CSS__/calendar.css"  />
+    <script type="text/javascript" src="__JS__/jquery.js"></script>
+    <script type="text/javascript" src="__JS__/Public.js"></script>
+	<script type="text/javascript" src="__JS__/calendar.js"></script>
+    <script type="text/javascript" src="__JS__/winpop.js"></script>
+    <link rel="stylesheet" type="text/css" href="__CSS__/popwin.css"  />
+</head>
+<style>
+
+    .unkwn{border:1px solid #ccc;background: #fff;position: absolute;top:70px;z-index: 22;width: 530px;}
+    .unkwn p{font-size: 14px;color:#000;height:35px;line-height: 35px;padding-left:15px;cursor: pointer;}
+    .unkwn p:hover{background: #eee;}
+
+</style>
+<body>
+<div class="contract_cont"  id="content">
+    <h1>首页 > 费用管理  > 返费修改</h1>
+    <h2>
+        <div class="h2_left">
+            <a href="javascript:history.back();" class="Retreat">后退</a>
+        </div>
+    </h2>
+    <form action="__APP__/refee/refee_add" method="post" id="addInfo">
+        <dl id="cdl">
+            <dd>
+                <span class="dd_left">一级科目：</span>
+                <span class="dd_right">
+                <input type="hidden" name="action_id" value="35">
+                    <select name="yijikemu" class="tab_select" style="width: 745px;height: 42px;margin-left:4px;">
+                        <option value="0">请选择</option>
+                        <option value="销售费用——返费">销售费用——返费</option>
+                    </select>
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">二级科目：</span>
+                <span class="dd_right">
+                    <select name="erjikemu" class="tab_select" style="width: 745px;height: 42px;margin-left:4px;">
+                        <option value="0">请选择</option>
+                        <option value="地址">地址</option>
+                        <option value="代理">代理</option>
+                        <option value="税金">税金</option>
+                    </select>
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">公司名称：</span>
+                <span class="dd_right">
+                    <input type="text" class="qtext" name="company"  id="qtext" >
+                </span>
+            </dd>
+             <dd>
+                <span class="dd_left">项目：</span>
+                <span class="dd_right">
+                    <input type="text" class="middleman qtext" name="class_name"   autocomplete="off" >
+                   <div id="quao"></div>
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">地址号：</span>
+                <span class="dd_right">
+                    <input type="text" class="qtext" name="room_num" value="">
+                </span>
+            </dd>
+           
+            <dd>
+                <span class="dd_left">中间商公司：</span>
+                <span class="dd_right">
+                    <input type="text" class="qtext" name="" id="middle" value="">
+                    <input type="hidden" class="ids" name="middleman"  value="">
+                   <div id="zhong"></div>
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">到账银行：</span>
+               <span class="dd_right">
+                    <select name="charge_bank" class="charge_bank" id="signcompany" style="width: 320px;height: 42px;margin-left:4px;">
+                        <option value="0">请选择收款账户</option>
+                        <foreach name="acontname" item="vo">
+                            <option value="{$vo.owner}-{$vo['name']}-{$vo['contnum']}">{$vo.owner}-{$vo['name']}-{$vo['contnum']}</option>
+                        </foreach>
+                    </select>
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">到账日期：</span>
+                <span class="dd_right">
+                    <input type="text" class="qtext" name="charge_time" value="" id="dzdate">
+                    <div id="daoz"></div>
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">到账金额：</span>
+                <span class="dd_right">
+                    <input type="text" class="qtext" name="charge_money" value="">
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">返佣信息：</span>
+                <span class="dd_right">
+                    <textarea name="reason" cols="30" rows="3" class="text_box"></textarea>
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">返费金额：</span>
+                <span class="dd_right">
+                    <input type="text" class="qtext" name="back_money" value="">
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">发票：</span>
+                <span class="dd_right">
+                    <select name="invoice" class="tab_select bill" style="width: 320px;height: 42px;margin-left:4px;">
+                        <option value="0">请选择</option>
+                        <option value="有">有</option>
+                        <option value="无">无</option>
+                    </select>
+                </span>
+            </dd>
+            <dd class="billBox">
+                <span class="dd_left">无票原因：</span>
+                <span class="dd_right">
+                    <textarea name="i_reason" cols="30" rows="3" class="text_box"></textarea>
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">返佣说明：</span>
+                <span class="dd_right">
+                    <textarea name="remarks" cols="30" rows="3" class="text_box"></textarea>
+                </span>
+            </dd>
+            <dd>
+                <input type="submit" value="提交" class="submit">
+            </dd>
+
+        </dl>
+    </form>
+</div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#daoz').calendar({
+            trigger: '#dzdate',
+            zIndex: 999,
+            format: 'yyyy-mm-dd',
+        });
+
+    });
+    
+
+    
+</script>
+<script>
+ $(function(){ 
+     $(document).on('keyup','.middleman',function(){
+        var middleman = $(this).val();
+         //alert(middleman);
+        var data = {'middleman':middleman}
+        $.ajax({
+           type: "POST",
+           url: "__APP__/broker/broker_ajax",
+           data: data,
+           dataType:'json',
+           success: function(msg){
+            // alert(msg);
+                var html='<div class="unkwn">';
+                // console.log(msg);
+                if(msg=="") 
+                {
+                    $('#quao').remove();
+                }else
+                {
+                    $(msg).each(function(i){
+                        html+="<p class='midd' idna='"+msg[i]['class_name']+"' ids='"+msg[i]['id']+"'>"+msg[i]['class_name']+"</p>";
+                    });
+                    $('#quao').empty().append(html);
+                }
+                html+='</div>'
+            }
+        });
+    }) 
+
+     $(document).on('click','.midd',function(){
+        var middleman = $(this).html();
+        var middleid = $(this).attr('ids');
+        // var middlename = $(this).attr('idna');
+        $('.middleman').val(middleman);
+        $('.ids').val(middleid);
+        // $('.middlename').val(middlename);
+        $('#quao').empty();
+
+    })
+
+          $(document).on('keyup','#middle',function(){
+        var middleman = $(this).val();
+       // alert(middleman);
+        var data = {'middleman':middleman}
+        $.ajax({
+           type: "POST",
+           url: "__APP__/broker/broker_zajax",
+           data: data,
+           dataType:'json',
+           success: function(msg){
+            // alert(msg);
+                var html='<div class="unkwn">';
+                // console.log(msg);
+                if(msg=="")
+                {
+                    $('#zhong').remove();
+                }else
+                {
+                    $(msg).each(function(i){
+                        html+="<p class='middl' idna='"+msg[i]['middle_name']+"' ids='"+msg[i]['id']+"'>"+msg[i]['middle_name']+"</p>";
+                    });
+                    $('#zhong').empty().append(html);
+                }
+                html+='</div>'
+            }
+        });
+    }) 
+})
+
+     $(document).on('click','.middl',function(){
+        var man = $(this).html();
+        var mid = $(this).attr('ids');
+        // var middlename = $(this).attr('idna');
+        $('#middle').val(man);
+        $('.ids').val(mid);
+        // $('.middlename').val(middlename);
+        $('#zhong').empty();
+
+    })
+</script>
+</body>
+</html>
