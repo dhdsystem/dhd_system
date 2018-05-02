@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>到期合同</title>
+    <link rel="stylesheet" type="text/css" href="__CSS__/content.css"/>
+    <link rel="stylesheet" type="text/css" href="__CSS__/public.css"/>
+    <link rel="stylesheet" type="text/css" href="__CSS__/popwin.css"/>
+    <script type="text/javascript" src="__JS__/jquery.js"></script>
+    <script type="text/javascript" src="__JS__/Public.js"></script>
+    <script type="text/javascript" src="__JS__/winpop.js"></script>
+</head>
+<body>
+<div id="content">
+    <h1>首页 > 合同管理 > 到期合同</h1>
+    <h2>
+        <div class="search">
+            <form action="__ACTION__" method="post" id="dayStatic">
+                <input type="text" name="company" class="text"/>
+                <input type="submit" value="搜索" class="so" />
+            </form>
+        </div>
+        <a href="javascript:;" class="diy">自定义导出</a>
+    </h2>
+    <div class="dgv">
+        <div class="danyuan">
+            <span class="leiMing">分类：</span>
+            <a href="javascript:;">大面积</a>
+            <a href="javascript:;">地址（同行）</a>
+            <a href="javascript:;">地址（直接客户）</a>
+            <a href="javascript:;">工位</a>
+            <a href="javascript:;">记账</a>
+            <a href="javascript:;">小房间</a>
+        </div>   
+    </div>
+ 	<div class="tableBox tableBox2">
+		<table id="table" border="1" bordercolor="#CCCCCC" cellpadding="0" cellspacing="0" style="width:150%">
+            <tr>
+                <th>编号</th>
+                <th>合同编号</th>
+                <th>公司名称</th>
+                <th>注册地址号</th>
+                <th>房间号</th>
+                <th>租赁期限</th>
+                <th>到期日期</th>
+                <th>法人姓名</th>
+                <th>法人电话</th>
+                <th>支付方式</th>
+                <th>金额</th>
+                <th>业务员</th>
+                <th>签约公司</th>
+                <th>业务员</th>
+                <th>操作</th>
+            </tr>
+            <!--顶级数据-->
+            <volist name="list" id="vo">
+            <tr class="tr <eq name="mod" value="1">tr2</eq>">
+                <td class="tc"><input type="checkbox" class="delid" value="{$vo.id}" /></td>
+                <td class="tc">{$vo.contractnumber}</td>
+                <td class="tc">{$vo.client_name}</td>
+                <td class="tc">{$vo.contracttype}</td>
+                <td class="tc">{$vo.pro_address}-{$vo.detailscoll}</td>
+                <td class="tc">{$vo.actual_amount}</td>
+                <td class="tc">{$vo.legalperson}</td>
+                <td class="tc">{$vo.legaltel}</td>
+                <td class="tc">{$vo.ac_time|date="Y-m-d",###}</td>
+                <td class="tc">{$vo.credit_code}</td>
+                <td class="tc">{$vo.middle_name}</td>
+                <td class="tc">{$vo.middle_tel}</td>
+                <td class="tc">{$vo.username}</td>
+                <td class="tc">{$vo.signcompany}</td>
+                <td class="tc fixed_w"> 
+                    <div class="operation">更多
+                        <div class="operarea">
+                            <a href="javascript:;" class="see oper2">查看</a>
+                            <a href="javascript:;" class="relet oper2">续签</a>
+                            <a href="pact_print_recei.html" class="recei oper2">收款</a>
+                            <a href="javascript:;" class="download oper2">下载</a>
+                            <a href="javascript:;" class="kaipiao oper2">开票</a>
+                            <a href="javascript:;" class="offhire oper2">停租</a>
+                            <a href="javascript:;" class="refund oper2">退款</a>
+                            
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            </volist>
+
+        </table>
+	</div>	
+    <div id="page"><{$page}></div>
+</div>
+<!-- 自定义导出 -->
+<div class="popWinBox popWinBox1">
+    <div class="popWin popWin1">
+        <div class="popWinTitle">自定义导出</div>
+        <div style="width:640px;margin:0 auto">
+            <div class="popWinTop">
+                <div class="checkBB">
+                    <input type="checkBox" name="guolv" value="财智国际大厦"><label for="check"></label><span>财智国际大厦</span>
+                </div>
+                <div class="checkBB">
+                    <input type="checkBox" name="guolv" value="金隅嘉华大厦" ><label for="check"></label><span>金隅嘉华大厦</span>
+                </div>
+                <div class="checkBB">
+                    <input type="checkBox" name="guolv" value="世纪科贸大厦"><label for="check"></label><span>世纪科贸大厦</span>
+                </div>
+                <div class="checkBB"><input type="checkBox" name="guolv" value="大面积"><label for="check"></label><span>大面积</span></div>
+                <div class="checkBB"><input type="checkBox" name="guolv" value="小面积"><label for="check"></label><span>小面积</span></div>
+                <div class="checkBB"><input type="checkBox" name="guolv" value="地址"><label for="check"></label><span>地址</span></div>
+                <div class="checkBB"><input type="checkBox" name="guolv" value="记账"><label for="check"></label><span>记账</span></div>
+                <div class="checkBB"><input type="checkBox" name="guolv" value="代理"><label for="check"></label><span>代理</span></div>
+
+                <div class="checkBB"><input type="checkBox" name="guolv" value="记账直接客户"><label for="check"></label><span>记账直接客户</span></div>
+                <div class="checkBB"><input type="checkBox" name="guolv" value="非记账直接客户"><label for="check"></label><span>非记账直接客户</span></div>
+                <div class="checkBB"><input type="checkBox" name="guolv" value=""><label for="check"></label><span>中间商</span></div>
+                <div class="checkBB"><input type="checkBox" name="guolv" value=""><label for="check"></label><span>中介</span></div>
+
+                <div class="checkBB"><input type="checkBox" name="guolv" value=""><label for="check"></label><span>应收款客户</span></div>
+                <div class="checkBB"><input type="checkBox" name="guolv" value=""><label for="check"></label><span>合同到期客户</span></div>
+                <div class="checkBB"><input type="checkBox" name="guolv" value=""><label for="check"></label><span>停租客户</span></div>
+                <div class="checkBB"><input type="checkBox" name="guolv" value=""><label for="check"></label><span>拜访时间</span></div>
+
+                <div class="checkBB"><input type="checkBox" name="guolv" value=""><label for="check"></label><span>渠道一（人员）</span></div>
+                <div class="checkBB"><input type="checkBox" name="guolv" value=""><label for="check"></label><span>渠道二（人员）</span></div>
+                <div class="checkBB"><input type="checkBox" name="guolv" value=""><label for="check"></label><span>直销（人员）</span></div>
+                  
+            </div>
+            <div class="popWinBot">
+                <form action="" method="post" id="popForm">
+                    <div class="popWinTopL">
+                        <div class="alldel">全部清除</div>
+                        <div class="butBox"></div>
+                    </div>
+                    <div class="popWinTopr"><input type="submit" name="提交" id="popSub"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $().ready(function(){
+        $('.checkBB input').click(function(){
+            var ind = $('.checkBB input').index(this);
+            if($(this).is(':checked') == true) {
+                var text=$(this).attr('value');
+                $(this).parent().find('label').css('background','url(../../images/checkBut2.png) no-repeat');
+                // alert(typeof text);
+                $('.butBox').append('<div class="secDis ind'+ind+'" value='+text+'>'+text+'</div>')
+            }else if($(this).is(':checked') == false){
+                $(this).parent().find('label').css('background','url(../../images/checkBut1.png) no-repeat');
+                $('.butBox div.ind'+ind).remove();
+           
+            }
+        })
+        // 全部清除
+        $('.alldel').click(function(){
+            $('.butBox div').remove();
+            $('.checkBB label').css('background','url(../../images/checkBut1.png) no-repeat');
+            $('.checkBB input').attr("checked",false);
+        })  
+    })  
+</script>
+</body>
+</html>

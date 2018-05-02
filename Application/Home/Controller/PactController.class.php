@@ -5,13 +5,7 @@ class PactController extends Controller {
    /*合同*/
     public function pact_wait(){
 
-        $list = M('contract as c')->field('c.id,contractnumber,contracttype,ac_time,pro_address,detailscoll,client_name,actual_amount,username')->where(array('account_audit'=>1))
-        ->join('dhd_details as d on c.det_id = d.id')
-        ->join('dhd_client as k on c.client_id = k.id')
-        ->join('dhd_product as p on d.pro_id = p.id')
-        ->join('dhd_user as u on u.id = c.user_id')->select();
-        $this->assign('list',$list);
-       	$this->display();
+
     }
     /**
      * 
@@ -189,15 +183,15 @@ class PactController extends Controller {
 	       			$collection['paynext2'] = I('post.paynext2');
 	       			$r = M('collection')->add($collection);
 	       			if($r){
-	       				$this->success('合同新增成功', U('Pact/pact_wait'));
+	       				$this->success('合同新增成功', U('Pend/pend_index'));
 			        }else{
-			            $this->error('合同新增失败',U('Pact/pact_wait'));
+			            $this->error('合同新增失败',U('Pend/pend_index'));
 			        }
 	       		}else{
-	       			$this->error('合同添加失败',U('Pact/pact_wait'));
+	       			$this->error('合同添加失败',U('Pend/pend_index'));
 	       		}
        		}else{
-       			$this->error('合同信息录入失败',U('Pact/pact_wait'));
+       			$this->error('合同信息录入失败',U('Pend/pend_index'));
        		}
             
         }
