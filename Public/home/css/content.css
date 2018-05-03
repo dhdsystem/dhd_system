@@ -4,7 +4,7 @@
 input,button{outline:none;} 
 body { margin:0; padding:0; background:#eff0f4; }
 #content { height:92%; font-size:12px; color:#333; font-family:"微软雅黑";;background: #fff;
-padding: 26px;margin-top: 20px;margin-left: 20px;padding-bottom: 0} 
+padding: 26px;margin-top: 20px;margin-left: 20px;padding-bottom: 10px} 
 #content h1 { width:100%; height:30px; line-height:30px; font-size:16px; color:#666; font-weight:400; text-align:left;}
 .content_box {
     margin: 0 !important;
@@ -78,7 +78,7 @@ input,textarea,select { font-size:12px; text-indent:4px; color:#111; }
 /*新增样式*/
 #content .tableBox{width:100%;overflow-x: scroll;height:700px;overflow-y: scroll;}
 #content .tableBox2{width:100%;overflow-x: scroll;height:635px;overflow-y: scroll;}
-#content #table { width: 100%;height:auto;margin-top:15px; border-collapse:collapse; border:none;margin-bottom: 40px;}
+#content #table { width: 100%;height:auto; border-collapse:collapse; border:none;margin-bottom: 40px;}
 #content #table tr { height:46px; line-height:46px; }
 #content #table tr th { text-align:center; background:#7ed321; border:solid 1px #7ed321; color:#fff;font-size: 14px; }
 #content #table .tr { height:30px; /*line-height:50px;*/ background:#fff; font-size: 15px; }

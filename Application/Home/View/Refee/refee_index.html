@@ -38,6 +38,10 @@ $(document).ready(function() {
 			});
 		}
 	});
+	var wheight=document.documentElement.clientHeight;
+	var sheight=$('.tableBox').offset().top;
+	console.log(sheight)
+	$('.tableBox').css('height',wheight-sheight-20);
 });
 </script>
 </head>
@@ -47,6 +51,7 @@ $(document).ready(function() {
     <h2>
     	<div class="h2_left">
             <a href="__APP__/refee/refee_add" class="add">新增</a>
+            
         </div>
         <div class="search">
         <form action="__APP__/refee/refee_search" method="post">
