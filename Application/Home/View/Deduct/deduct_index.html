@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>财务管理</title>
+<link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
+<link rel="stylesheet" type="text/css" href="__CSS__/public.css"  />
+<script type="text/javascript" src="__JS__/jquery.js"></script>
+<script type="text/javascript" src="__JS__/Public.js"></script>
+<script type="text/javascript" src="__JS__/winpop.js"></script>
+</head>
+<body>
+<div id="content">
+	<h1>首页 > 财务管理 > 提成管理</h1>
+    <h2>
+    	<div class="h2_left">
+            <a href="__APP__/Deduct/deduct_add" class="add">新增</a>
+            <a href="javascript:history.back();" class="Retreat">后退</a>
+
+        </div>
+
+        
+		<div class="h2_left">
+			<form action="">
+			<select name="" id="" style="width: 90px;height: 40px;" class="tab_select">
+				<option value="">直销部</option>
+				<option value="">渠道一</option>
+			</select>
+				<input type="text" class="text" name="" placeholder="新签提成比例">
+				<input type="text" class="text" name="" placeholder="到期提成比例">
+				<input type="text" class="text" name="" placeholder="应收提成比例">
+				<input type="submit" class="button" value="提交">
+			</form>
+		</div>
+    </h2>
+	
+    <div class="tableBox">
+	   	<table id="table" border="1" bordercolor="#CCCCCC" cellpadding="0" cellspacing="0" style="width:100%;">
+	    	<tr>
+	        	<th>月份</th>
+	            <th>部门</th>
+	            <th>新签目标业绩金额</th>
+	            <th>到期合同金额</th>
+	            <th>应收款金额</th>
+	            <th>人员匹配</th>
+	            <th>提成总额</th>
+	            <th>底薪</th>
+	            <th>工资总额</th>
+	            <th>人均工资</th>
+	        </tr>
+	        <foreach name="list" item="vo" >
+		        <tr class="tr" value="1">
+		            <td class="">{$vo.month}</td>
+		            <td class="">{$vo.section}</td>
+		            <td class="">{$vo.target}</td>
+		            <td class="">{$vo.expire}</td>
+		            <td class="">{$vo.receivable}</td>
+		            <td class="">{$vo.person_num}</td>
+		            <td class="">{$vo.royalty}</td>
+		            <td class="">{$vo.base_pay}</td>
+		            <td class="">{$vo.total_money}</td>
+		            <td class="">{$vo.average}</td>
+		        </tr>
+	        </foreach>
+	    </table>
+    </div>
+</div>
+<script type="text/javascript">
+	$().ready(function(){
+		var wheight=document.documentElement.clientHeight;
+		var sheight=$('.tableBox').offset().top;
+		console.log(sheight)
+		$('.tableBox').css('height',wheight-sheight-50);
+	})
+</script>
+</body>
+</html>

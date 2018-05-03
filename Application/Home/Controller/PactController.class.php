@@ -21,7 +21,7 @@ class PactController extends Controller {
     		}
     	}
     	// 预留地址信息
-    	$reserved = M('reserved as r')->field('d.id,d.detailscoll,p.pro_address,c.class_name')->join('dhd_details as d on d.id = r.det_id')->join('dhd_product as p on p.id = d.pro_id')->join('dhd_class as c on c.id = p.class_id')->where(array('client_id'=>$client['id']))->find();
+    	$reserved = M('reserved as r')->field('d.id,d.detailscoll,p.pro_address,c.class_name')->join('dhd_details as d on d.id = r.details_id')->join('dhd_product as p on p.id = d.pro_id')->join('dhd_class as c on c.id = p.class_id')->where(array('client_id'=>$client['id']))->find();
     	
     	// 财务账户
     	$account = M('account')->field('id,acc_name')->select();
@@ -206,7 +206,7 @@ class PactController extends Controller {
     	$contractid['contract'] = $contract['id']; 
     	if($contracttype=='大面积出租'){
     		// 大面积合同信息添加内容
-            $re = M('largearea')->where($contractid)->find();
+            $matter = M('largearea')->where($contractid)->find();
         }
         if($contracttype=='mini房间'){
         	// 小房间合同信息添加内容
@@ -233,8 +233,9 @@ class PactController extends Controller {
 			// 工商代理合同信息内容
             $matter = M('industrial')->where($contractid)->find();
         }
-        $collection = M('dhd_collection')->where($contractid)->find();
-        
+        $collection = M('collection')->where($contractid)->find();
+        $prod = M('details as d ')->join('dhd_product as p on d.pro_id = p.id')->join('left join dhd_class as c on p.class_id = c.id')->where(array('d.id'=>$matter['details_id']))->find();
+        print_r($prod);die;
     	
     	// 财务账户
     	$account = M('account')->field('id,acc_name')->select();
@@ -259,6 +260,7 @@ class PactController extends Controller {
     	if(empty($reserved)){
     		$reserved = 1;
     	}
+    	print_r($matter);die;
     	$this->assign('reserved',json_encode($reserved));
     	$this->assign('project',json_encode($project));
     	$this->assign('client',$client);

@@ -121,6 +121,7 @@
                 <span class="ipt_left"><em class="red">*</em>合同类型：</span>
                 <select name="contracttype" id="contracttype" class="pact_select">
                     <option value="0">选择合同分类</option>
+                    <option value="{$contract.contracttype}" selected="selected">{$contract.contracttype}</option>
                     <option value="大面积出租">大面积出租</option>
                     <option value="mini房间">mini房间</option>
                     <if condition="$reserved neq 1 ">
@@ -136,7 +137,28 @@
                     <option value="工商代理">工商代理</option>                    
                 </select> 
             </li>
-            <div id="zhuijia"></div>
+            <div id="zhuijia">
+                        
+                <if condition="($contract.contracttype eq '大面积出租') "> 
+                <include file="./Application/Home/View/Pacttype/damianji.html" />
+                <elseif condition="$contract.contracttype eq 'mini房间'"/>
+                <include file="./Application/Home/View/Pacttype/minifangjian.html" />
+                 <elseif condition="$contract.contracttype eq '工位注册办公'"/>
+                <include file="./Application/Home/View/Pacttype/gongweizhuce.html" />
+                 <elseif condition="$contract.contracttype eq '注册地址'"/>
+                <include file="./Application/Home/View/Pacttype/zhucedizhi.html" />
+                 <elseif condition="$contract.contracttype eq '代理记账'"/>
+                <include file="./Application/Home/View/Pacttype/dailijizhang.html" />
+                 <elseif condition="$contract.contracttype eq '工位不注册办公'"/>
+                <include file="./Application/Home/View/Pacttype/gongweibuzhuce.html" />
+                 <elseif condition="$contract.contracttype eq '工商代理'"/>
+                <include file="./Application/Home/View/Pacttype/gongshang.html" />
+                 
+                <else /> 
+
+                </if>
+
+            </div>
             <li class="zhushi">合同信息</li>
             <li class="iptBox">
             <input type="hidden" id="account_id" name="account_id">

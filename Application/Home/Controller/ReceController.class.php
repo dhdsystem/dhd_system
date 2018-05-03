@@ -12,7 +12,7 @@ class ReceController extends CommonController {
         ->join('dhd_details as d on c.det_id = d.id')
         ->join('dhd_client as k on c.client_id = k.id')
         ->join('dhd_product as p on d.pro_id = p.id')
-        ->join('dhd_middle as m on k.nuddke_id = m.id')
+        ->join('left join  dhd_middle as m on k.nuddke_id = m.id')
         ->join('dhd_stencil as s on c.stencil_id = s.id')
         ->join('dhd_user as u on u.id = c.user_id')->select();
         // print_r($list);die;
