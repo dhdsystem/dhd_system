@@ -182,12 +182,13 @@
                 // console.log(msg);
                 if(msg=="") 
                 {
-                    $('#quao').remove();
+                    $('#quao').hide();
                 }else
                 {
                     $(msg).each(function(i){
                         html+="<p class='midd' idna='"+msg[i]['class_name']+"' ids='"+msg[i]['id']+"'>"+msg[i]['class_name']+"</p>";
                     });
+                    $("#quao").show();
                     $('#quao').empty().append(html);
                 }
                 html+='</div>'
@@ -221,12 +222,14 @@
                 // console.log(msg);
                 if(msg=="")
                 {
-                    $('#zhong').remove();
+                     $('#zhong').hide();
+                    //alert(11);
                 }else
                 {
                     $(msg).each(function(i){
                         html+="<p class='middl' idna='"+msg[i]['middle_name']+"' ids='"+msg[i]['id']+"'>"+msg[i]['middle_name']+"</p>";
                     });
+                    $('#zhong').show();
                     $('#zhong').empty().append(html);
                 }
                 html+='</div>'

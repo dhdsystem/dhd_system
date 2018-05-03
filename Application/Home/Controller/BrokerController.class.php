@@ -65,27 +65,32 @@ class BrokerController extends Controller {
     // 佣金添加ajax
     public function broker_ajax(){
         $middleman = I('post.middleman');
-        $where['class_name']=array('like',"%$middleman%");
-        $data = M('class')->where($where)->select();
-        if($data){
-            print_r( json_encode($data));
+        if(empty($middleman)){
+          print_r(json_encode(''));
         }else{
+          $where['class_name']=array('like',"%$middleman%");
+          $data = M('class')->where($where)->select();
+          if($data){
+            print_r( json_encode($data));
+          }else{
             print_r( json_encode(''));
+         }
         }
-
     }
     //获取中介
     public function broker_zajax(){
         $middleman = I('post.middleman');
-        // $where['middle_state']='2';
-        $where['class_name']=array('like',"%$middleman%");
-        $data = M('middle')->where($where)->select();
-       // echo M('middle')->getlastsql();die;
-        if($data){
-            print_r( json_encode($data));
+        if(empty($middleman)){
+          print_r( json_encode(''));
         }else{
-            print_r( json_encode(''));
+          $data = M('middle')->where("middle_name like '%$middleman%'")->select(); 
+          if($data){
+              print_r( json_encode($data));
+          }else{
+              print_r( json_encode(''));
+          }
         }
+        //echo M('middle')->getlastsql();die;
 
     }
     /*搜索*/
