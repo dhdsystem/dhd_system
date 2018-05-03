@@ -8,7 +8,6 @@
     <script type="text/javascript" src="__JS__/jquery.js"></script>
     <script type="text/javascript" src="__JS__/Public.js"></script>
     <script type="text/javascript" src="__JS__/winpop.js"></script>
-
 </head>
 <body>
 <div id="content">
@@ -59,5 +58,13 @@
         {$show}
     </div>
 </div>
+<script type="text/javascript">
+    $().ready(function(){
+        var wheight=document.documentElement.clientHeight;
+        var sheight=$('.tableBox').offset().top;
+        console.log(sheight)
+        $('.tableBox').css('height',wheight-sheight-20);
+    })
+</script>
 </body>
 </html>
