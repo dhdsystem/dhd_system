@@ -44,9 +44,11 @@
                     window.location.href='__APP__/project/product_del/pid/'+id+'&class_id='+class_id;
                 }
             });
-            $('.operation').hover(function(){
-                $(this).find('.operarea').toggle();
-            })
+            
+            var wheight=document.documentElement.clientHeight;
+            var sheight=$('.tableBox').offset().top;
+            console.log(sheight)
+            $('.tableBox').css('height',wheight-sheight-20);
         });
     </script>
 </head>

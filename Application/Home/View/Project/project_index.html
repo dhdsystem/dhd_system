@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>项目管理|</title>
+    <title>项目管理</title>
     <link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
     <link rel="csssheet" type="text/css" href="__CSS__/public.css"  />
     <script type="text/javascript" src="__JS__/jquery.js"></script>
@@ -37,7 +37,11 @@
                     window.location.href='__APP__/Project/project_del/id/'+id;
                 }
             });
-            
+            var wheight=document.documentElement.clientHeight;
+            var sheight=$('.tableBox').offset().top;
+            console.log(sheight)
+            $('.tableBox').css('height',wheight-sheight-20);
+                
         });
     </script>
 </head>
@@ -47,7 +51,7 @@
         <h1>首页 > 产品管理 > 项目管理</h1>
         <h2>
             <div class="h2_left">
-                <a href="__ACTION__" class="whole">全部</a>
+                <!-- <a href="__ACTION__" class="whole">全部</a> -->
                 <a href="__APP__/Project/project_add" class="add">添加</a>
                 <a href="javascript:history.back();" class="Retreat">后退</a>
                 <div class="clear"></div>

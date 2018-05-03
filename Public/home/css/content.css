@@ -81,7 +81,7 @@ input,textarea,select { font-size:12px; text-indent:4px; color:#111; }
 #content #table { width: 100%;height:auto;margin-top:15px; border-collapse:collapse; border:none;margin-bottom: 40px;}
 #content #table tr { height:46px; line-height:46px; }
 #content #table tr th { text-align:center; background:#7ed321; border:solid 1px #7ed321; color:#fff;font-size: 14px; }
-#content #table .tr { height:30px; line-height:50px; background:#fff; font-size: 15px; }
+#content #table .tr { height:30px; /*line-height:50px;*/ background:#fff; font-size: 15px; }
 #content #table .tr td a { text-decoration:none; color:#333; }
 /*#content #table .tr2 { background:#f1f1f1 }*/
 #content #table .tr:hover { background: #fbfff5;}
@@ -92,7 +92,7 @@ input,textarea,select { font-size:12px; text-indent:4px; color:#111; }
 #content #table .tr td .de1 { color:#390}
 #content #table .tr td .de2 { color:#c30000}
 
-#content #table .tr .tc { text-align:center; text-indent:0; padding: 10px; border:1px solid #e2e2e2; }
+#content #table .tr .tc { text-align:center; text-indent:0; padding: 2px 5px; border:1px solid #e2e2e2; }
 #content #table .tr .tc .tab_input{border-radius: 10%; font-size: 14px; height: 32px;border: none; width: 52px;color: #fff;background: #7ed321;}
 #content #table .tr .tc .tab_input:hover{background: #66ad1a;cursor: pointer;}
 #content #table .tr .tc a { text-decoration:none; color:#333; }

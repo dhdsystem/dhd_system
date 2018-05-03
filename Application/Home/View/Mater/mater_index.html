@@ -21,35 +21,39 @@
                     window.location.href='__APP__/mater/mater_save/id/'+id;
                 }
             });
-                        $('#content #table .tr .del').click(function(event) {
-                            event.preventDefault();
-                            if (!confirm('确定要删除该数据吗？')) {
-                                return false;
-                            }
-                            var id=$(this).attr('href');
-                            if (id=='' || isNaN(id)) {
-                                wintq('ID参数不正确',3,1000,1,'');
-                                return false;
-                            }else {
-                                 wintq('正在删除，请稍后...',3,20000,0,'');
-                                $.ajax({
-                                    url:'__APP__/mater/mater_del',
-                                    dataType:'json',
-                                    type:'POST',
-                                    data:'id='+id,
-                                    success: function(data) {
-                                        if (data=='1') {
-                                            wintq('删除成功',1,1500,1,'');
-                                            window.location.href='__APP__/mater/mater_index';
+            $('#content #table .tr .del').click(function(event) {
+                event.preventDefault();
+                if (!confirm('确定要删除该数据吗？')) {
+                    return false;
+                }
+                var id=$(this).attr('href');
+                if (id=='' || isNaN(id)) {
+                    wintq('ID参数不正确',3,1000,1,'');
+                    return false;
+                }else {
+                     wintq('正在删除，请稍后...',3,20000,0,'');
+                    $.ajax({
+                        url:'__APP__/mater/mater_del',
+                        dataType:'json',
+                        type:'POST',
+                        data:'id='+id,
+                        success: function(data) {
+                            if (data=='1') {
+                                wintq('删除成功',1,1500,1,'');
+                                window.location.href='__APP__/mater/mater_index';
 
-                                        }else {
-                                            wintq('删除失败',3,1500,1,'');
-                                            window.location.href='__APP__//mater/mater_index';
-                                        }
-                                    }
-                                });
+                            }else {
+                                wintq('删除失败',3,1500,1,'');
+                                window.location.href='__APP__//mater/mater_index';
                             }
-                        });
+                        }
+                    });
+                }
+            });
+            var wheight=document.documentElement.clientHeight;
+            var sheight=$('.tableBox').offset().top;
+            console.log(sheight)
+            $('.tableBox').css('height',wheight-sheight-20);
         });
 
         
