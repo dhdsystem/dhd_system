@@ -77,7 +77,7 @@ class BrokerController extends Controller {
     //获取中介
     public function broker_zajax(){
         $middleman = I('post.middleman');
-        $where['middle_state']='2';
+        // $where['middle_state']='2';
         $where['class_name']=array('like',"%$middleman%");
         $data = M('middle')->where($where)->select();
        // echo M('middle')->getlastsql();die;
