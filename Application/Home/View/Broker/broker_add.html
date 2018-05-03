@@ -126,14 +126,14 @@
             <dd>
                 <span class="dd_left">发票：</span>
                 <span class="dd_right">
-                    <select name="invoice" class="tab_select bill" style="width: 320px;height: 42px;margin-left:4px;">
+                    <select name="invoice" class="tab_select bill selected" style="width: 320px;height: 42px;margin-left:4px;">
                         <option value="0">请选择</option>
                         <option value="有">有</option>
                         <option value="无">无</option>
                     </select>
                 </span>
             </dd>
-            <dd class="billBox">
+            <dd class="billBox ie">
                 <span class="dd_left">无票原因：</span>
                 <span class="dd_right">
                     <textarea name="i_reason" cols="30" rows="3" class="text_box"></textarea>
@@ -159,6 +159,16 @@
             zIndex: 999,
             format: 'yyyy-mm-dd',
         });
+
+         $(".selected").change(function(){
+            var sel=$(this).val();
+            if(sel=='有'){
+                $(".ie").hide();
+            }else{
+                $(".ie").show();
+            }
+
+        })
     });
     
 </script>

@@ -4,7 +4,7 @@ use Think\Controller;
 class RefundController extends Controller {
    /*退款*/
     public function refund_index(){
-    	$res=M('cashier')->where('state=2')->select();
+    	$res=M('cashier')->where('state=2')->order('id desc')->select();
        	$this->assign('volist',$res);
        	$this->display();
     }
@@ -26,7 +26,7 @@ class RefundController extends Controller {
  					$this->error('添加失败');
  				}
        	}else{
-		       $acontname = M('account')->field('id,name')->select();        //银行收款账户
+		       $acontname = M('account')->field('id,name,owner,contnum')->select();        //银行收款账户
 		       $this->assign('acontname',$acontname);
 		       $this->display();
        	}
@@ -53,7 +53,7 @@ class RefundController extends Controller {
 	    			}
     		}else{
 	    		$id = I('get.id');
-	    		$acontname = M('account')->field('id,name')->select();        //银行收款账户
+	    		$acontname = M('account')->field('id,name,owner,contnum')->select();        //银行收款账户
 		      $this->assign('acontname',$acontname);
 				  $data = M('cashier')->where(array('id'=>$id))->find();
 	    		$this->assign('data',$data);
@@ -63,9 +63,9 @@ class RefundController extends Controller {
       /*搜索*/
       public function refund_search(){
         $data=I('post.keyword');
-        $data=M('cashier')->where("state=2 and company like '%$data%'")->select();
-        $this->assign('data',$data);
-        $this->display('refee_index');
+        $data=M('cashier')->where("state=2 and company like '%$data%'")->order('id desc')->select();
+        $this->assign('volist',$data);
+        $this->display('refund_index');
       }
 
 }

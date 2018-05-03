@@ -27,6 +27,8 @@
                         <if condition="$data.yijikemu eq '销售费用——返佣'">
                             <option  value="销售费用——返佣" selected="selected">销售费用--退款</option>
                         </if>
+                         <!--<option  value="销售费用——返佣" >销售费用&#45;&#45;退款</option>-->
+
                     </select>
                 </span>
             </dd>
@@ -76,7 +78,7 @@
                     <select name="charge_bank" class="tab_select" id="signcompany" style="width: 320px;height: 42px;margin-left:4px;">
                         <option value="0">请选择收款账户</option>
                         <foreach name="acontname" item="vo">
-                            <option value="{$vo['id']}">{$vo['name']}</option>
+                            <option value="{$vo.owner}-{$vo['name']}-{$vo['contnum']}">{$vo.owner}-{$vo['name']}-{$vo['contnum']}</option>
                         </foreach>
                     </select>
                 </span>

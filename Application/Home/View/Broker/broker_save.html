@@ -2,40 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>返费修改</title>
+    <title>返佣新增</title>
     <link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
     <link rel="stylesheet" type="text/css" href="__CSS__/calendar.css"  />
     <script type="text/javascript" src="__JS__/jquery.js"></script>
-    <script type="text/javascript" src="__JS__/Public.js"></script>
-	<script type="text/javascript" src="__JS__/calendar.js"></script>
+    <script type="text/javascript" src="__JS__/calendar.js"></script>
+    <script type="text/javascript" src="__JS__/calendar.js"></script>
+    <link rel="stylesheet" type="text/css" href="__CSS__/popwin.css"/>
     <script type="text/javascript" src="__JS__/winpop.js"></script>
-    <link rel="stylesheet" type="text/css" href="__CSS__/popwin.css"  />
+    <script type="text/javascript" src="__JS__/Public.js"></script>
 </head>
-<style>
-
-    .unkwn{border:1px solid #ccc;background: #fff;position: absolute;top:70px;z-index: 22;width: 530px;}
-    .unkwn p{font-size: 14px;color:#000;height:35px;line-height: 35px;padding-left:15px;cursor: pointer;}
-    .unkwn p:hover{background: #eee;}
-
-</style>
 <body>
 <div class="contract_cont"  id="content">
-    <h1>首页 > 费用管理  > 返费修改</h1>
+    <h1>首页 > 费用管理  > 返佣新增 </h1>
     <h2>
         <div class="h2_left">
             <a href="javascript:history.back();" class="Retreat">后退</a>
         </div>
     </h2>
-    <form action="__APP__/refee/refee_save" method="post" id="addInfo">
+    <form action="__APP__/broker/broker_save" method="post" id="addInfo">
         <dl id="cdl">
             <dd>
                 <span class="dd_left">一级科目：</span>
                 <span class="dd_right">
-                <input type="hidden" name="id" value="{$data.id}">
+                <!--<input type="hidden" name="action_id" value="35">-->
                     <select name="yijikemu" class="tab_select" style="width: 745px;height: 42px;margin-left:4px;">
                         <option value="0">请选择</option>
-                         <if condition="$data.yijikemu eq '销售费用——返费'">
-                            <option value="销售费用——返费" selected="selected">销售费用——返费</option>
+                         <if condition="$data.yijikemu eq '销售费用——返佣'">
+                        <option value="销售费用——返佣" selected="selected">销售费用——返佣</option>
                         </if>
                     </select>
                 </span>
@@ -45,57 +39,62 @@
                 <span class="dd_right">
                     <select name="erjikemu" class="tab_select" style="width: 745px;height: 42px;margin-left:4px;">
                         <option value="0">请选择</option>
-                           <if condition="$data.erjikemu eq '地址'">
-                            <option value="地址" selected="selected">地址</option>
-                               <option value="代理">代理</option>
-                                <option value="税金">税金</option>
-                            </if>
-                            <if condition="$data.erjikemu eq '税金'">
-                                <option value="税金" selected="selected">税金</option>
-                                <option value="代理">代理</option>
-                                <option value="地址">地址</option>
-                            </if>
-                            <if condition="$data.erjikemu eq '代理'">
-                                <option value="代理" selected="selected">代理</option>
-                                <option value="税金">税金</option>
-                                <option value="地址">地址</option>
-
-                            </if>
-                     
+                        <if condition="$data.erjikemu eq '房间'">
+                        <option value="房间" selected="selected">房间</option>
+                        </if>
                     </select>
                 </span>
             </dd>
             <dd>
                 <span class="dd_left">公司名称：</span>
                 <span class="dd_right">
-                    <input type="text" class="qtext" name="company"  value="{$data.company}" id="qtext" >
+                    <input type="text" class="qtext" name="company" value="{$data.company}">
+                    <input type="hidden" class="qtext" name="id" value="{$data.id}">
                 </span>
             </dd>
              <dd>
                 <span class="dd_left">项目：</span>
                 <span class="dd_right">
-                    <input type="text" class="middleman qtext" name="class_name"  value="{$data.class_name}"  autocomplete="off" >
+                    <!--<input type="text" class="qtext" name="" value="">-->
+                     <input type="text" class="middleman qtext" value="{$data.class_name}" name="class_name"   autocomplete="off" >
                    <div id="quao"></div>
                 </span>
             </dd>
             <dd>
-                <span class="dd_left">地址号：</span>
+                <span class="dd_left">房间号：</span>
                 <span class="dd_right">
                     <input type="text" class="qtext" name="room_num" value="{$data.room_num}">
                 </span>
             </dd>
-           
             <dd>
-                <span class="dd_left">中间商公司：</span>
+                <span class="dd_left">签约年限：</span>
                 <span class="dd_right">
-                    <input type="text" class="qtext" name="" id="middle" value="{$data.middleman}">
+                    <input type="text" class="qtext" name="age" value="{$data.age}">
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">付款方式：</span>
+                <span class="dd_right">
+                    <input type="text" class="qtext" name="paytype" value="{$data.paytype}">
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">单价：</span>
+                <span class="dd_right">
+                    <input type="text" class="qtext" name="dmoney" value="{$data.dmoney}">
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">中介公司：</span>
+                <span class="dd_right">
+                    <input type="text" class="qtext" name="" id="middle" value="{$data.middleman}" autocomplete="off">
                     <input type="hidden" class="ids" name="middleman"  value="">
                    <div id="zhong"></div>
                 </span>
             </dd>
             <dd>
                 <span class="dd_left">到账银行：</span>
-               <span class="dd_right">
+                <span class="dd_right">
                     <select name="charge_bank" class="charge_bank" id="signcompany" style="width: 320px;height: 42px;margin-left:4px;">
                         <option value="0">请选择收款账户</option>
                         <foreach name="acontname" item="vo">
@@ -145,14 +144,12 @@
                     </select>
                 </span>
             </dd>
-            
             <dd class="billBox ie">
                 <span class="dd_left">无票原因：</span>
                 <span class="dd_right">
                     <textarea name="i_reason" cols="30" rows="3" class="text_box">{$data.i_reason}</textarea>
                 </span>
             </dd>
-           
             <dd>
                 <span class="dd_left">返佣说明：</span>
                 <span class="dd_right">
@@ -173,7 +170,7 @@
             zIndex: 999,
             format: 'yyyy-mm-dd',
         });
-        var selected=$(".selected").val();
+         var selected=$(".selected").val();
         if(selected=='有'){
                 $(".ie").hide();
             }else{
@@ -191,80 +188,78 @@
         })
     });
     
-
-    
 </script>
 <script>
- $(function(){ 
-     $(document).on('keyup','.middleman',function(){
-        var middleman = $(this).val();
-         //alert(middleman);
-        var data = {'middleman':middleman}
-        $.ajax({
-           type: "POST",
-           url: "__APP__/broker/broker_ajax",
-           data: data,
-           dataType:'json',
-           success: function(msg){
-            // alert(msg);
-                var html='<div class="unkwn">';
-                // console.log(msg);
-                if(msg=="") 
-                {
-                    $('#quao').remove();
-                }else
-                {
-                    $(msg).each(function(i){
-                        html+="<p class='midd' idna='"+msg[i]['class_name']+"' ids='"+msg[i]['id']+"'>"+msg[i]['class_name']+"</p>";
-                    });
-                    $('#quao').empty().append(html);
+    $(function(){
+        $(document).on('keyup','.middleman',function(){
+            var middleman = $(this).val();
+            //alert(middleman);
+            var data = {'middleman':middleman}
+            $.ajax({
+                type: "POST",
+                url: "__APP__/broker/broker_ajax",
+                data: data,
+                dataType:'json',
+                success: function(msg){
+                    // alert(msg);
+                    var html='<div class="unkwn">';
+                    // console.log(msg);
+                    if(msg=="")
+                    {
+                        $('#quao').remove();
+                    }else
+                    {
+                        $(msg).each(function(i){
+                            html+="<p class='midd' idna='"+msg[i]['class_name']+"' ids='"+msg[i]['id']+"'>"+msg[i]['class_name']+"</p>";
+                        });
+                        $('#quao').empty().append(html);
+                    }
+                    html+='</div>'
                 }
-                html+='</div>'
-            }
-        });
-    }) 
+            });
+        })
 
-     $(document).on('click','.midd',function(){
-        var middleman = $(this).html();
-        var middleid = $(this).attr('ids');
-        // var middlename = $(this).attr('idna');
-        $('.middleman').val(middleman);
-        $('.ids').val(middleid);
-        // $('.middlename').val(middlename);
-        $('#quao').empty();
+        $(document).on('click','.midd',function(){
+            var middleman = $(this).html();
+            var middleid = $(this).attr('ids');
+            // var middlename = $(this).attr('idna');
+            $('.middleman').val(middleman);
+            $('.ids').val(middleid);
+            // $('.middlename').val(middlename);
+            $('#quao').empty();
 
+        })
+
+        $(document).on('keyup','#middle',function(){
+            var middleman = $(this).val();
+            // alert(middleman);
+            var data = {'middleman':middleman}
+            $.ajax({
+                type: "POST",
+                url: "__APP__/broker/broker_zajax",
+                data: data,
+                dataType:'json',
+                success: function(msg){
+                    // alert(msg);
+                    var html='<div class="unkwn">';
+                    // console.log(msg);
+                    if(msg=="")
+                    {
+                        $('#zhong').remove();
+                    }else
+                    {
+                        $(msg).each(function(i){
+                            html+="<p class='middl' idna='"+msg[i]['middle_name']+"' ids='"+msg[i]['id']+"'>"+msg[i]['middle_name']+"</p>";
+                        });
+                        $('#zhong').empty().append(html);
+                    }
+                    html+='</div>'
+                }
+            });
+        })
     })
 
-          $(document).on('keyup','#middle',function(){
-        var middleman = $(this).val();
-       // alert(middleman);
-        var data = {'middleman':middleman}
-        $.ajax({
-           type: "POST",
-           url: "__APP__/broker/broker_zajax",
-           data: data,
-           dataType:'json',
-           success: function(msg){
-            // alert(msg);
-                var html='<div class="unkwn">';
-                // console.log(msg);
-                if(msg=="")
-                {
-                    $('#zhong').remove();
-                }else
-                {
-                    $(msg).each(function(i){
-                        html+="<p class='middl' idna='"+msg[i]['middle_name']+"' ids='"+msg[i]['id']+"'>"+msg[i]['middle_name']+"</p>";
-                    });
-                    $('#zhong').empty().append(html);
-                }
-                html+='</div>'
-            }
-        });
-    }) 
-})
-
-     $(document).on('click','.middl',function(){
+    $(document).on('click','.middl',function(){
         var man = $(this).html();
         var mid = $(this).attr('ids');
         // var middlename = $(this).attr('idna');

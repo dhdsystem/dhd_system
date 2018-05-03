@@ -4,7 +4,7 @@ use Think\Controller;
 class BrokerController extends Controller {
    /*佣金*/
     public function broker_index(){
-       $data=M('cashier')->where('state=3')->select();
+       $data=M('cashier')->where('state=3')->order('id desc')->select();
        $this->assign('data',$data);
        $this->display();
     }
@@ -91,7 +91,7 @@ class BrokerController extends Controller {
     /*搜索*/
     public function broker_search(){
         $data=I('post.keyword');
-        $data=M('cashier')->where("state=3 and company like '%$data%'")->select();
+        $data=M('cashier')->where("state=3 and company like '%$data%'")->order('id desc')->select();
         $this->assign('data',$data);
         $this->display('broker_index');
     }

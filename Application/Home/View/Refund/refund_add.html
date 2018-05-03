@@ -53,10 +53,10 @@
             <dd>
                 <span class="dd_left">到账银行：</span>
                 <span class="dd_right">
-                    <select name="charge_bank" class="tab_select" id="signcompany" style="width: 320px;height: 42px;margin-left:4px;">
+                    <select name="charge_bank" class="tab_select" id="signcompany" style="width: 745px;height: 42px;margin-left:4px;">
                         <option value="0">请选择收款账户</option>
                         <foreach name="acontname" item="vo">
-                            <option value="{$vo['id']}">{$vo['name']}</option>
+                            <option value="{$vo.owner}-{$vo['name']}-{$vo['contnum']}">{$vo.owner}-{$vo['name']}-{$vo['contnum']}</option>
                         </foreach>
                     </select>
                 </span>

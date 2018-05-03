@@ -4,11 +4,11 @@ use Think\Controller;
 class RefeeController extends Controller {
    	   /*返退*/
     public function refee_index(){
-       $data=M('cashier')->where('state=4')->select();
+       $data=M('cashier')->where('state=4')->order('id desc')->select();
        $this->assign('data',$data);
        $this->display();
     }
-       /*返退*/
+       /*返退添加*/
     public function refee_add(){
     	if(IS_POST){
     	  $data=I('post.');
@@ -32,14 +32,14 @@ class RefeeController extends Controller {
     	}
       
     }
-       /*返退*/
+       /*返退展示*/
     public function refee_list(){
     	 $id = I('get.id');
       	 $data = M('cashier')->where(array('id'=>$id))->find();
          $this->assign('data',$data);
          $this->display();
     }
-       /*返退*/
+       /*返退修改*/
     public function refee_save(){
          
     	if(IS_POST){
@@ -51,6 +51,7 @@ class RefeeController extends Controller {
           $data['m_name']=$res['middle_man'];
           $data['m_tel']=$res['middle_tel'];
           $re=M('cashier')->where(array('id'=>$data['id']))->save($data);
+          // echo M('cashier')->getlastsql();die;
         if ($re) {
             $this->success('修改成功',U('refee_index'));
           }else{
@@ -70,7 +71,7 @@ class RefeeController extends Controller {
         /*搜索*/
     public function refee_search(){
         $data=I('post.keyword');
-        $data=M('cashier')->where("state=4 and company like '%$data%'")->select();
+        $data=M('cashier')->where("state=4 and company like '%$data%'")->order('id desc')->select();
         $this->assign('data',$data);
         $this->display('refee_index');
     }

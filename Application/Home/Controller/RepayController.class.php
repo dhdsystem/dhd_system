@@ -4,7 +4,7 @@ use Think\Controller;
 class RepayController extends Controller {
    /*报销管理*/
     public function repay_index(){
-       $data=M('cashier')->where('state=1')->select();
+       $data=M('cashier')->where('state=1')->order('id desc')->select();
        $this->assign('data',$data);
        $this->display();
     }
@@ -49,5 +49,13 @@ class RepayController extends Controller {
  		$data = M('cashier')->where(array('id'=>$id))->find();
 	    $this->assign('data',$data);
 	    $this->display();
+    }
+
+     /*搜索*/
+    public function repay_search(){
+        $data=I('post.keyword');
+        $data=M('cashier')->where("state=1 and erjikemu like '%$data%'")->order('id desc')->select();
+        $this->assign('data',$data);
+        $this->display('other_index');
     }
 }

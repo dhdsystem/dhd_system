@@ -60,7 +60,7 @@ $(document).ready(function() {
             <a href="__APP__/Repay/repay_add" class="add">新增</a>
         </div>
         <div class="search">
-        <form action="" method="post">
+        <form action="__APP__/repay/repay_search" method="post">
             
                 <input type="text" name="keyword" class="text" value="">
                 <input type="submit" class="so" value="搜 索">
@@ -85,7 +85,7 @@ $(document).ready(function() {
 	            <td class="tc">{$vo.department}</td>
 	            <td class="tc">{$vo.applicant}</td>
 	            <td class="tc">{$vo.declare|date='Y-m-d',###}</td>
-	            <td class="tc">{$vo.is_adopt}</td>
+	            <td class="tc"> <if condition="$vo.level eq '1'">待审核</if></td>
 	            <td class="tc fixed_w">
 	            <a href="__APP__/repay/repay_save/id/{$vo.id}" class="edit oper">修改</a>
 	            <a href="__APP__/repay/repay_list/id/{$vo.id}" class="see oper">查看</a>

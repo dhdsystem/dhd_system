@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>支出新增</title>
+    <link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
+    <script type="text/javascript" src="__JS__/jquery.js"></script>
+    <script type="text/javascript" src="__JS__/Public.js"></script>
+</head>
+<body>
+<div class="contract_cont"  id="content">
+    <h1>首页 > 费用管理  > 支出新增 </h1>
+    <h2>
+        <div class="h2_left">
+            <a href="javascript:history.back();" class="Retreat">后退</a>
+        </div>
+    </h2>
+    <form action="__APP__/other/other_save" method="post" id="addInfo">
+        <dl id="cdl">
+            <dd>
+                <span class="dd_left">一级科目：</span>
+                <span class="dd_right">
+                <input type="hidden" name="action_id" value="35" >
+                    <select name="yijikemu" class="tab_select" style="width: 745px;height: 42px;margin-left:4px;">
+                        <option value="0">请选择</option>
+                         <if condition="$data.yijikemu eq '应收款'">
+                            <option value="应收款" selected="selected">应收款</option>
+                            <option value="应付款">应付款</option>
+                        </if>
+                          <if condition="$data.yijikemu eq '应付款'">
+                            <option value="应收款" >应收款</option>
+                            <option value="应付款" selected="selected">应付款</option>
+                        </if>
+                    </select>
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">二级科目：</span>
+                <span class="dd_right">
+                    <select name="erjikemu" class="tab_select" style="width: 745px;height: 42px;margin-left:4px;">
+                        <option value="0">请选择</option>
+                         <if condition="$data.erjikemu eq '借款'">
+                                    <option value="借款" selected="selected">借款</option>
+                                    <option value="押金">押金</option> 
+                       </if>
+                        <if condition="$data.erjikemu eq '押金'">
+                                    <option value="借款" >借款</option>
+                                    <option value="押金" selected="selected">押金</option> 
+                       </if>
+                    </select>
+                </span>
+            </dd> 
+            <dd>
+                <span class="dd_left">支出金额：</span>
+                <span class="dd_right">
+                    <input type="text" class="qtext" name="back_money" value="{$data.back_money}">
+                    <input type="hidden" class="qtext" name="id" value="{$data.id}">
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">款项说明：</span>
+                <span class="dd_right">
+                    <textarea name="reason" cols="30" rows="3" class="text_box">{$data.reason}</textarea>
+                </span>
+            </dd>
+            <dd>
+                <span class="dd_left">发票：</span>
+                <span class="dd_right">
+                    <select name="invoice" class="tab_select bill selected" style="width: 745px;height: 42px;margin-left:4px;">
+                        <option value="0">请选择</option>
+                        <if condition="$data.invoice eq '有'">
+                            <option value="有" selected="selected">有</option>
+                             <option value="无">无</option>
+                        </if>
+                           <if condition="$data.invoice eq '无'">
+                            <option value="无" selected="selected">无</option>
+                            <option value="有">有</option>
+                        </if>
+                    </select>
+                </span>
+            </dd>
+            <dd class="billBox ie">
+                <span class="dd_left">无票原因：</span>
+                <span class="dd_right">
+                    <textarea name="i_reason" cols="30" rows="3" class="text_box">{$data.i_reason}</textarea>
+                </span>
+            </dd>
+            <dd>
+                <input type="submit" value="提交" class="submit">
+            </dd>
+
+        </dl>
+    </form>
+</div>
+</body>
+</html>
+<script>
+     var selected=$(".selected").val();
+        if(selected=='有'){
+                $(".ie").hide();
+            }else{
+                $(".ie").show();
+            }
+
+         $(".selected").change(function(){
+            var sel=$(this).val();
+            if(sel=='有'){
+                $(".ie").hide();
+            }else{
+                $(".ie").show();
+            }
+
+        })
+</script>

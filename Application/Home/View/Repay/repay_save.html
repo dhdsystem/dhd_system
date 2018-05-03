@@ -138,7 +138,7 @@
             <dd>
                 <span class="dd_left">发票：</span>
                 <span class="dd_right">
-                    <select name="invoice" class="tab_select bill" style="width: 320px;height: 42px;margin-left:4px;">
+                    <select name="invoice" class="tab_select bill selected" style="width: 320px;height: 42px;margin-left:4px;">
                         <option value="0">请选择</option>
                         <if condition="$data.invoice eq '有'">
                             <option value="有" selected="selected">有</option>
@@ -152,7 +152,7 @@
                     </select>
                 </span>
             </dd>
-            <dd class="billBox">
+            <dd class="billBox ie">
                 <span class="dd_left">无票原因：</span>
                 <span class="dd_right">
                     <textarea name="i_reason" cols="30" rows="3" class="text_box">{$data.i_reason}</textarea>
@@ -173,3 +173,21 @@
 </div>
 </body>
 </html>
+<script>
+     var selected=$(".selected").val();
+        if(selected=='有'){
+                $(".ie").hide();
+            }else{
+                $(".ie").show();
+            }
+
+         $(".selected").change(function(){
+            var sel=$(this).val();
+            if(sel=='有'){
+                $(".ie").hide();
+            }else{
+                $(".ie").show();
+            }
+
+        })
+</script>

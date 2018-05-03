@@ -3,25 +3,14 @@
 <head>
 <meta charset="utf-8" />
 <title>返费管理</title>
-<link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
-<link rel="csssheet" type="text/css" href="__CSS__/public.css"  />
-<script type="text/javascript" src="__JS__/jquery.js"></script>
-<script type="text/javascript" src="__JS__/Public.js"></script>
-<script type="text/javascript" src="__JS__/winpop.js"></script>
+	<link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
+	<link rel="csssheet" type="text/css" href="__CSS__/public.css"  />
+	<script type="text/javascript" src="__JS__/jquery.js"></script>
+	<script type="text/javascript" src="__JS__/Public.js"></script>
+	<script type="text/javascript" src="__JS__/winpop.js"></script>
 <script>
 $(document).ready(function() {
-	$('#content #table .tr .edit').click(function(event) {
-		event.preventDefault();
-		var id=$(this).attr('href');
-		if (id=='' || isNaN(id)) {
-			wintq('ID参数不正确',3,1000,1,'');
-			return false;
-		}else {
-			popload('修改账户信息',800,410,'__APP__/Role/roleedit/id/'+id);
-			addDiv($('#iframe_pop'));
-			popclose();
-		}
-	});
+
 	$('#content #table .tr .del').click(function(event) {
 		event.preventDefault();
 		if (!confirm('确定要删除该数据吗？')) {
@@ -62,7 +51,7 @@ $(document).ready(function() {
         <div class="search">
         <form action="__APP__/refee/refee_search" method="post">
             
-                <input type="text" name="keyword" class="text" value="">
+                <input type="text" name="keyword" class="text" value=""  placeholder="客户公司">
                 <input type="submit" class="so" value="搜 索">
             </form>
         </div>
@@ -90,9 +79,9 @@ $(document).ready(function() {
 	            <td class="tc">{$vo.r_id}</td>
 	            <td class="tc">{$vo.declare|date="Y-m-d",###}</td>
 	            <td class="tc">{$vo.r_id}</td>
-	            <td class="tc fixed_	w">
-	            <a href="__APP__/refee/refee/id/{$vo.id}" class="edit oper">修改</a>
-	            <a href="__APP__/refee/refee_list/id/{$vo.id}" class="see oper">查看</a>
+	            <td class="tc fixed_w">
+					<a href="__APP__/refee/refee_save/id/{$vo.id}" class="edit oper">修改</a>
+					<a href="__APP__/refee/refee_list/id/{$vo.id}" class="see oper">查看</a>
 	            <!-- <a href="../finish/finish1.html" class="finish oper">完成</a> -->
 	            </td>
 	        </tr>
