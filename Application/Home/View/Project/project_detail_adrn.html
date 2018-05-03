@@ -114,8 +114,8 @@
                     <td class="tc fixed_w">
                         <a href="{$vo.id}" class="edit oper">修改</a>
                         <a href="{$vo.id}" class="del oper">删除</a>
-                          <if condition="$vo['det_advance'] eq 1"> <a href="#"  class=" operr">预出</a></if>
-                          <if condition="$vo['det_advance'] neq 1"> <a href="{$vo.id}"  class="dels oper">预出</a></if>
+                          <if condition="$vo['det_advance'] neq 5"> <a href="#"  class=" operr">预出</a></if>
+                          <if condition="$vo['det_advance'] eq 5"> <a href="{$vo.id}"  class="dels oper">预出</a></if>
                        
                     </td>
                 </tr>
@@ -134,7 +134,7 @@
             <form action="__APP__/project/project_one" onsubmit="return check()" method="post">
                 <dl>
                 <dd>
-                    <span class="dd_left">预留地址</span>
+                    <span class="dd_left">公司名称</span>
                     <span class="dd_right" id="dizhi">
                         <input type="text" name="middleman" class="middleman" id="qtext" autocomplete="off">
                         <div id="quao"></div>

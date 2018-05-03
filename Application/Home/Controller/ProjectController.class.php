@@ -74,16 +74,74 @@ class ProjectController extends Controller {
         $class_id=I('get.pro_id');//项目id
         // print_r($class_id);die;
         $data=M('product');
+        //项目 产品的数据
         $na=$data->where("class_id=$class_id and class_is=0 and pro_del=1")
         ->join("dhd_class on dhd_product.class_id = dhd_class.id")
         ->field('dhd_product.id,class_id,class_name,pro_address,pro_sum')
         ->select();
-        /*$na=$data->where(array('class_id'=>$class_id,'det_type'=>1))
-        ->join('dhd_product on dhd_product.id=dhd_details.pro_id')
-        ->join('dhd_class on dhd_product.class_id = dhd_class.id')
-        ->field('dhd_details.id,class_id,pro_id,class_name,pro_address,pro_sum')
-        ->select();*/
-       //echo $data->getLastSql();
+
+        foreach ($na as $key => $value) {
+           // 1：大面积；2：普通注册号；3：工位；4：小房间；5销售注册号；//总数据
+            $na[$key]['count1']=M('product')->join('dhd_details on dhd_details.pro_id = dhd_product.id')->where(array('det_type'=>1,'pro_id'=>$value['id'],'pro_del'=>1,'det_del'=>0))->count();
+            $na[$key]['count2']=M('product')->join('dhd_details on dhd_details.pro_id = dhd_product.id')->where(array('det_type'=>2,'pro_id'=>$value['id'],'pro_del'=>1,'det_del'=>0))->count();
+            $na[$key]['count3']=M('product')->join('dhd_details on dhd_details.pro_id = dhd_product.id')->where(array('det_type'=>3,'pro_id'=>$value['id'],'pro_del'=>1,'det_del'=>0))->count();
+            $na[$key]['count4']=M('product')->join('dhd_details on dhd_details.pro_id = dhd_product.id')->where(array('det_type'=>4,'pro_id'=>$value['id'],'pro_del'=>1,'det_del'=>0))->count();
+            $na[$key]['count5']=M('product')->join('dhd_details on dhd_details.pro_id = dhd_product.id')->where(array('det_type'=>5,'pro_id'=>$value['id'],'pro_del'=>1,'det_del'=>0))->count();
+            // echo M('product')->getLastSql();die;
+           // 1：大面积；2：普通注册号；3：工位；4：小房间；5销售注册号；//总数据
+            $na[$key]['c1']=M('largearea')
+                ->join('dhd_details on dhd_details.id=dhd_largearea.details_id')
+                ->join('dhd_product on dhd_product.id=dhd_details.pro_id') 
+                ->join('dhd_class on dhd_class.id=dhd_product.class_id') 
+                ->join('dhd_contract on dhd_contract.id=dhd_largearea.contract')
+                ->join('dhd_client on dhd_client.id=dhd_contract.client_id')
+                ->join('dhd_collection on dhd_collection.contract=dhd_contract.id')
+                ->where("det_del=0 and det_type=1 and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 and is_del=0")
+                ->where(array('dhd_product.id' => $value['id']))
+                ->count();
+              
+            $na[$key]['c2']=M('houselet')
+                ->join('dhd_details on dhd_details.id=dhd_houselet.details_id')
+                ->join('dhd_product on dhd_product.id=dhd_details.pro_id') 
+                ->join('dhd_class on dhd_class.id=dhd_product.class_id') 
+                ->join('dhd_contract on dhd_contract.id=dhd_houselet.contract')
+                ->join('dhd_client on dhd_client.id=dhd_contract.client_id')
+                ->join('dhd_collection on dhd_collection.contract=dhd_contract.id')
+                ->where("det_del=0 and det_type=4 and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 and is_del=0")
+                ->where(array('dhd_product.id' => $value['id']))
+                ->count();  
+            $na[$key]['c3']=M('register')
+                ->join('dhd_details on dhd_details.id=dhd_register.details_id')
+                ->join('dhd_product on dhd_product.id=dhd_details.pro_id') 
+                ->join('dhd_class on dhd_class.id=dhd_product.class_id') 
+                ->join('dhd_contract on dhd_contract.id=dhd_register.contract')
+                ->join('dhd_client on dhd_client.id=dhd_contract.client_id')
+                ->join('dhd_collection on dhd_collection.contract=dhd_contract.id')
+                ->where("det_del=0 and det_type=2 and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 and is_del=0")
+                ->where(array('dhd_product.id' => $value['id']))
+                ->count(); 
+            $na[$key]['c4']=M('register')
+                ->join('dhd_details on dhd_details.id=dhd_register.details_id')
+                ->join('dhd_product on dhd_product.id=dhd_details.pro_id') 
+                ->join('dhd_class on dhd_class.id=dhd_product.class_id') 
+                ->join('dhd_contract on dhd_contract.id=dhd_register.contract')
+                ->join('dhd_client on dhd_client.id=dhd_contract.client_id')
+                ->join('dhd_collection on dhd_collection.contract=dhd_contract.id')
+                ->where("det_del=0 and det_type=5 and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 and is_del=0")
+                ->where(array('dhd_product.id' => $value['id']))
+                ->count(); 
+            $na[$key]['c5']=M('registration')
+                ->join('dhd_details on dhd_details.id=dhd_registration.details_id')
+                ->join('dhd_product on dhd_product.id=dhd_details.pro_id') 
+                ->join('dhd_class on dhd_class.id=dhd_product.class_id') 
+                ->join('dhd_contract on dhd_contract.id=dhd_registration.contract')
+                ->join('dhd_client on dhd_client.id=dhd_contract.client_id')
+                ->join('dhd_collection on dhd_collection.contract=dhd_contract.id')
+                ->where("det_del=0 and det_type=3 and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 and is_del=0")
+                ->where(array('dhd_product.id' => $value['id']))
+                ->count(); 
+        }
+        //print_r($na);die;
         $this->assign('volist',$na);
         $this->assign('class_id',$class_id);
         $this->display();
@@ -136,23 +194,23 @@ class ProjectController extends Controller {
         $list=M('largearea')
         ->join('dhd_details on dhd_details.id=dhd_largearea.details_id')
         ->join('dhd_product on dhd_product.id=dhd_details.pro_id') 
-        ->join('dhd_class on dhd_class.id=dhd_product.id') 
+        ->join('dhd_class on dhd_class.id=dhd_product.class_id') 
         ->join('dhd_contract on dhd_contract.id=dhd_largearea.contract')
         ->join('dhd_client on dhd_client.id=dhd_contract.client_id')
         ->join('dhd_collection on dhd_collection.contract=dhd_contract.id')
-        ->where(" dhd_class.id=$class_id and det_del=0 and det_type=1 and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 and is_del=0")
+        ->where(" dhd_product.id=$class_id and det_del=0 and det_type=1 and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 and is_del=0")
         ->field("dhd_largearea.id,rates,detailscoll,big_sum,client_name,rentstarttime,rentendtime,legalperson,legaltel,taxstyle,credit_code,paytype")
         ->page($p,$num)//($Page->firstRow,$Page->listRows)
         ->select();   
-        // echo M('largearea')->getLastSql();die;
+        //echo M('largearea')->getLastSql();die;
         $count=M('largearea')
         ->join('dhd_details on dhd_details.id=dhd_largearea.details_id')
         ->join('dhd_product on dhd_product.id=dhd_details.pro_id') 
-        ->join('dhd_class on dhd_class.id=dhd_product.id') 
+        ->join('dhd_class on dhd_class.id=dhd_product.class_id') 
         ->join('dhd_contract on dhd_contract.id=dhd_largearea.contract')
         ->join('dhd_client on dhd_client.id=dhd_contract.client_id')
         ->join('dhd_collection on dhd_collection.contract=dhd_contract.id')
-        ->where(" dhd_class.id=$class_id and det_del=0 and det_type=1 and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 and is_del=0")
+        ->where(" dhd_product.id=$class_id and det_del=0 and det_type=1 and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 and is_del=0")
         ->field("dhd_largearea.id,rates,detailscoll,big_sum,client_name,rentstarttime,rentendtime,legalperson,legaltel,taxstyle,credit_code,paytype")
         ->count();
         //echo M('largearea')->getLastSql();die;
@@ -237,11 +295,11 @@ class ProjectController extends Controller {
         $list=M('houselet')
         ->join('dhd_details on dhd_details.id=dhd_houselet.details_id')
         ->join('dhd_product on dhd_product.id=dhd_details.pro_id') 
-        ->join('dhd_class on dhd_class.id=dhd_product.id') 
+        ->join('dhd_class on dhd_class.id=dhd_product.class_id') 
         ->join('dhd_contract on dhd_contract.id=dhd_houselet.contract')
         ->join('dhd_client on dhd_client.id=dhd_contract.client_id')
         ->join('dhd_collection on dhd_collection.contract=dhd_contract.id')
-        ->where(" dhd_class.id=$class_id and det_del=0 and det_type=4 and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 and is_del=0")
+        ->where(" dhd_product.id=$class_id and det_del=0 and det_type=4 and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 and is_del=0")
         ->field("dhd_houselet.id,rates,detailscoll,big_sum,client_name,rentstarttime,rentendtime,legalperson,legaltel,taxstyle,credit_code,paytype")
         ->page($p,$num)
         ->select();   
@@ -249,11 +307,11 @@ class ProjectController extends Controller {
         $count=M('houselet')
         ->join('dhd_details on dhd_details.id=dhd_houselet.details_id')
         ->join('dhd_product on dhd_product.id=dhd_details.pro_id') 
-        ->join('dhd_class on dhd_class.id=dhd_product.id') 
+        ->join('dhd_class on dhd_class.id=dhd_product.class_id') 
         ->join('dhd_contract on dhd_contract.id=dhd_houselet.contract')
         ->join('dhd_client on dhd_client.id=dhd_contract.client_id')
         ->join('dhd_collection on dhd_collection.contract=dhd_contract.id')
-        ->where(" dhd_class.id=$class_id and det_del=0 and det_type=4 and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 and is_del=0")
+        ->where(" dhd_product.id=$class_id and det_del=0 and det_type=4 and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 and is_del=0")
         ->field("dhd_houselet.id,rates,detailscoll,big_sum,client_name,rentstarttime,rentendtime,legalperson,legaltel,taxstyle,credit_code,paytype")
         ->count();
   
@@ -308,23 +366,23 @@ class ProjectController extends Controller {
         $list=M('register')
         ->join('dhd_details on dhd_details.id=dhd_register.details_id')
         ->join('dhd_product on dhd_product.id=dhd_details.pro_id') 
-        ->join('dhd_class on dhd_class.id=dhd_product.id') 
+        ->join('dhd_class on dhd_class.id=dhd_product.class_id') 
         ->join('dhd_contract on dhd_contract.id=dhd_register.contract')
         ->join('dhd_client on dhd_client.id=dhd_contract.client_id')
         ->join('dhd_collection on dhd_collection.contract=dhd_contract.id')
-        ->where(" dhd_class.id=$class_id and det_del=0 and det_type=$state and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 and is_del=0")
+        ->where(" dhd_product.id=$class_id and det_del=0 and det_type=$state and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 and is_del=0")
         ->field("dhd_register.id,pro_address,detailscoll,client_name,rentstarttime,rentendtime,business,legalperson,legaltel,taxstyle,credit_code,paytype")
         ->page($p,$num)
         ->select();   
-        //echo M('register')->getLastSql();die;
+        // echo M('register')->getLastSql();die;
         $count=M('register')
         ->join('dhd_details on dhd_details.id=dhd_register.details_id')
         ->join('dhd_product on dhd_product.id=dhd_details.pro_id') 
-        ->join('dhd_class on dhd_class.id=dhd_product.id') 
+        ->join('dhd_class on dhd_class.id=dhd_product.class_id') 
         ->join('dhd_contract on dhd_contract.id=dhd_register.contract')
         ->join('dhd_client on dhd_client.id=dhd_contract.client_id')
         ->join('dhd_collection on dhd_collection.contract=dhd_contract.id')
-        ->where(" dhd_class.id=$class_id and det_del=0 and det_type=$state and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 and is_del=0")
+        ->where(" dhd_product.id=$class_id and det_del=0 and det_type=$state and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 and is_del=0")
         ->field("dhd_register.id,pro_address,detailscoll,client_name,rentstarttime,rentendtime,business,legalperson,legaltel,taxstyle,credit_code,paytype")
         ->count();
   
@@ -414,6 +472,7 @@ class ProjectController extends Controller {
         $class_id=I('get.class_id');
         $data=M('details');
         $na=$data->where(array('pro_id'=>$class_id,'det_type'=>3,'pro_del'=>1,'det_del'=>0))
+        ->where('det_advance !=3')
         ->join('dhd_product on dhd_product.id=dhd_details.pro_id')
         ->field('dhd_details.id,big_sum,det_type,detailscoll,pro_address,class_id')
         ->select();     
@@ -429,11 +488,11 @@ class ProjectController extends Controller {
         $list=M('registration')
         ->join('dhd_details on dhd_details.id=dhd_registration.details_id')
         ->join('dhd_product on dhd_product.id=dhd_details.pro_id') 
-        ->join('dhd_class on dhd_class.id=dhd_product.id') 
+        ->join('dhd_class on dhd_class.id=dhd_product.class_id') 
         ->join('dhd_contract on dhd_contract.id=dhd_registration.contract')
         ->join('dhd_client on dhd_client.id=dhd_contract.client_id')
         ->join('dhd_collection on dhd_collection.contract=dhd_contract.id')
-        ->where(" dhd_class.id=$class_id and det_del=0 and det_type=3 and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 and is_del=0")
+        ->where(" dhd_product.id=$class_id and det_del=0 and det_type=3 and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 and is_del=0")
         ->field("station,pro_address,detailscoll,client_name,rentstarttime,rentendtime,legalperson,legaltel,taxstyle,credit_code,paytype")
         ->page($p,$num)
         ->select();   
@@ -441,11 +500,11 @@ class ProjectController extends Controller {
         $count=M('registration')
         ->join('dhd_details on dhd_details.id=dhd_registration.details_id')
         ->join('dhd_product on dhd_product.id=dhd_details.pro_id') 
-        ->join('dhd_class on dhd_class.id=dhd_product.id') 
+        ->join('dhd_class on dhd_class.id=dhd_product.class_id') 
         ->join('dhd_contract on dhd_contract.id=dhd_registration.contract')
         ->join('dhd_client on dhd_client.id=dhd_contract.client_id')
         ->join('dhd_collection on dhd_collection.contract=dhd_contract.id')
-        ->where(" dhd_class.id=$class_id and det_del=0 and det_type=3 and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 and is_del=0")
+        ->where(" dhd_product.id=$class_id and det_del=0 and det_type=3 and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 and is_del=0")
         ->field("station,pro_address,detailscoll,client_name,rentstarttime,rentendtime,legalperson,legaltel,taxstyle,credit_code,paytype")
         ->count();
         $Page=new \Think\Page($count,$num);
@@ -464,11 +523,11 @@ class ProjectController extends Controller {
         $list=M('regclosed')
         ->join('dhd_details on dhd_details.id=dhd_regclosed.details_id')
         ->join('dhd_product on dhd_product.id=dhd_details.pro_id') 
-        ->join('dhd_class on dhd_class.id=dhd_product.id') 
+        ->join('dhd_class on dhd_class.id=dhd_product.class_id') 
         ->join('dhd_contract on dhd_contract.id=dhd_regclosed.contract')
         ->join('dhd_client on dhd_client.id=dhd_contract.client_id')
         ->join('dhd_collection on dhd_collection.contract=dhd_contract.id')
-        ->where(" dhd_class.id=$class_id and det_del=0 and det_type=3 and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 ")
+        ->where(" dhd_product.id=$class_id and det_del=0 and det_type=3 and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 ")
         ->field("station,pro_address,detailscoll,client_name,rentstarttime,rentendtime,legalperson,legaltel,taxstyle,credit_code,paytype")
         ->page($p,$num)
         ->select();   
@@ -476,11 +535,11 @@ class ProjectController extends Controller {
         $count=M('regclosed')
         ->join('dhd_details on dhd_details.id=dhd_regclosed.details_id')
         ->join('dhd_product on dhd_product.id=dhd_details.pro_id') 
-        ->join('dhd_class on dhd_class.id=dhd_product.id') 
+        ->join('dhd_class on dhd_class.id=dhd_product.class_id') 
         ->join('dhd_contract on dhd_contract.id=dhd_regclosed.contract')
         ->join('dhd_client on dhd_client.id=dhd_contract.client_id')
         ->join('dhd_collection on dhd_collection.contract=dhd_contract.id')
-        ->where(" dhd_class.id=$class_id and det_del=0 and det_type=3 and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 ")
+        ->where(" dhd_product.id=$class_id and det_del=0 and det_type=3 and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 ")
         ->field("station,pro_address,detailscoll,client_name,rentstarttime,rentendtime,legalperson,legaltel,taxstyle,credit_code,paytype")
         ->count();
         $Page=new \Think\Page($count,$num);
@@ -652,6 +711,8 @@ class ProjectController extends Controller {
     /*一键预留*/
     public function project_one(){
         $data=I('post.det_id');
+        $nn['id']=array('in',$data);
+        M('details')->where($nn)->save(array('det_advance'=>2));
         $data=explode(",",$data);
         foreach ($data as $key => $value) {
                 $arr[$key]['det_id']=$value;

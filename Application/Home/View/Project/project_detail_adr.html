@@ -38,8 +38,8 @@
             <volist name="list" id="vo">
                 <tr class="tr" value="1">
                     <td class="tc">{$vo.pro_address}--{$vo.detailscoll}</td>
-                    <td class="tc">{$client_name}</td>
-                    <td class="tc">{$business}</td>
+                    <td class="tc">{$vo.client_name}</td>
+                    <td class="tc">{$vo.business}</td>
                     <td class="tc">{$vo.rentstarttime|date='Y-m-d',###}--{$vo.rentendtime|date='Y-m-d',###}</td>
                     <td class="tc">{$vo.legalperson}</td>
                     <td class="tc">{$vo.legaltel}</td>

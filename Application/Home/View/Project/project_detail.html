@@ -82,11 +82,58 @@
                 <tr class="tr" value="1">
                     <td class="tc">{$vo.class_name}</td>
                     <td class="tc">{$vo.pro_address}</td>
-                    <td class="tc"><div class="operation"><a href="__APP__/project/project_detail_bign/class_id/{$vo.id}" class="chakan oper">查看</a></div></div></td>
-                    <td class="tc"><div class="operation"><a href="__APP__/project/project_detail_smln/class_id/{$vo.id}" class="chakan oper">查看</a></div></div></td>
-                    <td class="tc"><div class="operation"><a href="__APP__/project/project_detail_adm/class_id/{$vo.id}" class="chakan oper">查看</a></div></div></td>
-                    <td class="tc"><div class="operation"><a href="__APP__/project/project_detail_xsz/class_id/{$vo.id}" class="chakan oper">查看</a></div></div></td>
-                    <td class="tc"><div class="operation"><a href="__APP__/project/project_detail_gw/class_id/{$vo.id}" class="chakan oper">查看</a></div></div></td>
+                    <td class="tc">
+                    <if condition="$vo.count1 eq '0' ">                      
+                        <span class="pactnum">{$vo.count1}</span>
+                    </if>
+                    <if condition="$vo.count1 neq '0' ">                      
+                        <a href="__APP__/project/project_detail_bign/class_id/{$vo.id}" class="chakan oper">
+                        <span class="pactnum">{$vo.c1}/{$vo.count1}</span>查看
+                        </a>
+                    </if>
+                    </td>
+
+                    <td class="tc">
+                    <if condition="$vo.count4 eq '0' ">                      
+                        <span class="pactnum">{$vo.count4}</span>
+                    </if>
+                    <if condition="$vo.count4 neq '0' "> 
+                        <a href="__APP__/project/project_detail_smln/class_id/{$vo.id}" class="chakan oper">
+                        <span class="pactnum">{$vo.c2}/{$vo.count4}</span>查看
+                        </a>
+                    </if>
+                    </td>
+
+                    <td class="tc">
+                    <if condition="$vo.count2 eq '0' ">                      
+                        <span class="pactnum">{$vo.count2}</span>
+                    </if>
+                    <if condition="$vo.count2 neq '0' "> 
+                        <a href="__APP__/project/project_detail_adm/class_id/{$vo.id}" class="chakan oper">
+                        <span class="pactnum">{$vo.c3}/{$vo.count2}</span>查看
+                        </a>
+                    </if>
+                    </td>
+                    <td class="tc">
+                    <if condition="$vo.count5 eq '0' ">                      
+                        <span class="pactnum">{$vo.count5}</span>
+                    </if>
+                    <if condition="$vo.count5 neq '0' ">
+                        <a href="__APP__/project/project_detail_xsz/class_id/{$vo.id}" class="chakan oper">
+                        <span class="pactnum">{$vo.c4}/{$vo.count5}</span>查看
+                        </a>
+                    </if>
+                    </td>
+                    <td class="tc">
+                    <if condition="$vo.count3 eq '0' ">                      
+                       <span class="pactnum">{$vo.count3}</span>
+                    </if>
+                    <if condition="$vo.count3 neq '0' ">
+                        <a href="__APP__/project/project_detail_gw/class_id/{$vo.id}" class="chakan oper">
+                        <span class="pactnum">{$vo.c5}/{$vo.count3}</span>查看                         
+                        </a>
+                    </if>
+                    </td>
                     <td class="tc fixed_w">
                         <a href="{$vo.id}" class="edit oper">修改</a>
                         <a href="{$vo.id}" id="{$vo.class_id}" class="del oper">删除</a>
