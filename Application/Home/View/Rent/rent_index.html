@@ -181,6 +181,11 @@
             $('.checkBB label').css('background','url(../../images/checkBut1.png) no-repeat');
             $('.checkBB input').attr("checked",false);
         })  
+        // 控制表单自适应高度
+        var wheight=document.documentElement.clientHeight;
+        var sheight=$('.tableBox').offset().top;
+        // console.log(sheight);
+        $('.tableBox').css('height',wheight-sheight-50);
     })  
     // 即点即改
     $(document).on('click','.jdjg',function(){  
