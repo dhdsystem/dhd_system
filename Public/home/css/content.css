@@ -4,7 +4,7 @@
 input,button{outline:none;} 
 body { margin:0; padding:0; background:#eff0f4; }
 #content { height:92%; font-size:12px; color:#333; font-family:"微软雅黑";;background: #fff;
-padding: 26px;margin-top: 20px;margin-left: 20px;padding-bottom: 10px} 
+padding: 26px;margin-top: 20px;margin-left: 20px;padding-bottom: 10px;overflow: hidden;} 
 #content h1 { width:100%; height:30px; line-height:30px; font-size:16px; color:#666; font-weight:400; text-align:left;}
 .content_box {
     margin: 0 !important;

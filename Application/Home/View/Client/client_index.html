@@ -8,30 +8,34 @@
     <link rel="stylesheet" type="text/css" href="__CSS__/popwin.css"  />
     <script type="text/javascript" src="__JS__/jquery.js"></script>
     <script type="text/javascript" src="__JS__/Public.js"></script>
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#content .dgv .danyuan .edit').click(function(event) {  
-        event.preventDefault();
-        var id=$(this).attr('href');
-        var mychar = $(".tableBox").hide();
-        var mychar = $("#"+id).show();
-    });
-    $('#content .dgv .danyuan .duang').click(function(event){
-        event.preventDefault();
-        var id = $(this).attr('href');
-        if(id == '1'){
-            var mychar = $('.ding').show();
-            var th = $('.duang').attr("href","0");
-            var th = $('.duang').text('关闭︾');
-        }else{
-            var mychar = $('.ding').hide();
-            var th = $('.duang').attr("href","1");
-            var th = $('.duang').text('展开︽');
-        }
-        
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#content .dgv .danyuan .edit').click(function(event) {  
+            event.preventDefault();
+            var id=$(this).attr('href');
+            var mychar = $(".tableBox").hide();
+            var mychar = $("#"+id).show();
+        });
+        $('#content .dgv .danyuan .duang').click(function(event){
+            $(this).toggleClass('acti')
+            event.preventDefault();
+            var id = $(this).attr('href');
+            if(id == '1'){
+                var mychar = $('.ding').show();
+                var th = $('.duang').attr("href","0");
+                var th = $('.duang').text('关闭▲');
+            }else{
+                var mychar = $('.ding').hide();
+                var th = $('.duang').attr("href","1");
+                var th = $('.duang').text('展开▼');
+            }
+            
+        })
     })
-})
-</script>
+    </script>
+    <style type="text/css">
+
+    </style>
 </head>
 <body>
 <div id="content">
@@ -56,21 +60,13 @@ $(document).ready(function() {
         </h2>
         <div class="dgv">
             <div class="danyuan">
-                <span class="leiMing">项目：</span>
-                    <a href="1" class="duang">展开︽</a>
+                <div href="1" class="duang">展开▼</div>
                 <div class="ding" style="display:none">
+                    <span class="leiMing">项目：</span>
                     <volist name="list" id="li">
-                        <a href="{$li.id}" class="edit oper2">{$li.class_name}</a>&nbsp&nbsp&nbsp&nbsp
+                        <a href="{$li.id}" class="btn">{$li.class_name}</a>
                     </volist>
                 </div>
-            </div>
-            <div class="danyuan">
-                <span class="leiMing">产品：</span>
-                <a href="javascript:;">大面积</a>
-                <a href="javascript:;">小面积</a>
-                <a href="javascript:;">地址</a>
-                <a href="javascript:;">记账</a>
-                <a href="javascript:;">代理</a>
             </div>
             
         </div>

@@ -24,11 +24,20 @@ cursor: pointer;}
 border:1px solid #7ed321;color: #fff;cursor: pointer;}
 /*#popSub:hover{color:#f0f0f0;}*/
 /*单选过滤*/
-.dgv{width:80%;height:auto;font-size: 14px;}
+.dgv{width:98%;height:auto;font-size: 14px;}
 .danyuan{width:100%;padding:10px 0;}
 .danyuan span{color:#000;}
 .danyuan a{color:#8c8c8c;background-color:#fff;padding:5px 10px;text-decoration: none;border:1px solid #ccc;}
 .danyuan a.active{background:#7ed321;color:#fff;border:1px solid #7ed321;}
+
+/*5.4*/
+.duang{width:50px;height:30px;line-height:30px;color:#8c8c8c;background-color:#fff;text-align: center;
+border:1px solid #ccc;cursor: pointer;}
+.duang.acti{background:#7ed321;color:#fff;border:1px solid #7ed321;}
+.ding{padding:10px 0;}
+.btn{display: inline-block;margin:5px 10px 0 0;}
+
+
 #zhuijia {
     position: fixed;
     top: 50%;
