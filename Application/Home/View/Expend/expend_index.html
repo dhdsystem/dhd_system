@@ -35,7 +35,7 @@
 	        <form action="/?s=Home/Finance/dayStatic" method="post" id="dayStatic">
 	            <input type="text" value="" class="qtext" name="starttime" id="starttime2" style="width: 128px;" placeholder="开始时间"><div id="sdd2" style="left: 46px;top: 228px;"></div>&nbsp;～
 	            <input type="text" value="" class="qtext" name="endtime" id="endtime2" style="width: 128px;" placeholder="结束时间"><div id="edd2" style="left: 205px;top: 228px;"></div>&nbsp;
-	            <select class=" tab_select" style="width: 352px;height: 40px;">
+	            <select class=" tab_select" style="width: 280px;height: 40px;">
 	            	<option>请选择银行账户</option>
 	            	<option>工行1</option>
 	            	<option>农业银行</option>
@@ -53,9 +53,10 @@
     <div class="tableBox tableBox2">
 	   	<table id="table" border="1" bordercolor="#CCCCCC" cellpadding="0" cellspacing="0" style="width:100%;">
 	    	<tr>
-	        	<th>公司</th>
+	        	
 	            <th>一级科目</th>
 	            <th>二级科目</th>
+	            <th>公司</th>
 	            <th>金额</th>
 	            <th>支出账户</th>
 	            <th>支出日期</th>
@@ -65,9 +66,10 @@
 	        </tr>
 	        <volist name="data" id="li">
 		        <tr class="tr" value="1">
-		            <td class="tc">{$li.company}</td>
+		            
 		            <td class="tc">{$li.firststep}</td>
 		            <td class="tc">{$li.detail}</td>
+		            <td class="tc">{$li.company}</td>
 		            <td class="tc">{$li.money}</td>
 		            <td class="tc">{$li.name}</td>
 		            <td class="tc">{$li.deteofcollect|date="Y-m-d",###}</td>
