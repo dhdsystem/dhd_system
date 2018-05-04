@@ -8,6 +8,16 @@
     <link rel="stylesheet" type="text/css" href="__CSS__/popwin.css"  />
     <script type="text/javascript" src="__JS__/jquery.js"></script>
     <script type="text/javascript" src="__JS__/Public.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#content .dgv .danyuan .edit').click(function(event) {  
+        event.preventDefault();
+        var id=$(this).attr('href');
+        var mychar = $(".tableBox").hide();
+        var mychar = $("#"+id).show();
+    });
+})
+</script>
 </head>
 <body>
 <div id="content">
@@ -33,9 +43,9 @@
         <div class="dgv">
             <div class="danyuan">
                 <span class="leiMing">项目：</span>
-                <a href="javascript:;">财智国际大厦</a>
-                <a href="javascript:;">金隅嘉华大厦</a>
-                <a href="javascript:;">世纪科贸大厦</a>
+                <volist name="list" id="li">
+                    <a href="{$li.id}" class="edit oper2">{$li.class_name}</a>
+                </volist>
             </div>
             <div class="danyuan">
                 <span class="leiMing">产品：</span>
@@ -48,8 +58,8 @@
             
         </div>
     </div>
-    <div class="tableBox tableBox2">
-		<table id="table" border="1" bordercolor="#CCCCCC" cellpadding="0" cellspacing="0" style="width:150%">
+    <div class="tableBox tableBox2" id="0">
+        <table id="table" border="1" bordercolor="#CCCCCC" cellpadding="0" cellspacing="0" style="width:150%">
             <tr>
                 <th>公司名称</th>
                 <th>公司地址</th>
@@ -84,17 +94,55 @@
                                 <a href="javascript:;" class="detInfor oper2">详细信息</a>
                             </div>
                         </div>
-                        
                     </td>
                 </tr>
             </volist>
-        </table>	
-	</div>	
-    <div id="page">
-    {$page}   
+        </table>    
     </div>
-    
+    <foreach name="baed" item="v" key="k" >
+        <div class="tableBox tableBox2" id="{$k}" style="display:none">
+            <table id="table" border="1" bordercolor="#CCCCCC" cellpadding="0" cellspacing="0" style="width:150%">
+                <tr>
+                    <th>公司名称</th>
+                    <th>公司地址</th>
+                    <th>法人姓名</th>
+                    <th>法人电话</th>
+                    <th>纳税形式</th>
+                    <th>注册金额</th>
+                    <th>业务员</th>
+                    <th>操作</th>
+                </tr>
+                <foreach name="v" item="vv" key="kk" >
+                    <tr class="tr" value="1">
+                        <td class="tc">{$vv.client_name}</td>
+                        <td class="tc">{$vv.client_address}</td>
+                        <td class="tc">{$vv.legalperson}</td>
+                        <td class="tc">{$vv.legaltel}</td>
+                        <td class="tc">
+                            <if condition="$vv.taxstyle eq 1 ">一般人<else />小规模</if>
+                        </td>
+                        <td class="tc">{$vv.client_money}</td>
+                        <td class="tc">{$vv.real_name}</td>
+                        <td class="tc fixed_w">
+                            <div class="operation">更多
+                                <div class="operarea">
+                                    <a href="javascript:;" clientid="{$vv.id}" class="yuliu oper2">预留地址号</a>
+                                    <a href="__APP__/Client/client_save/id/{$vv.id}" class="edit oper2">修改/查看</a>
+                                    <a href="__APP__/Pact/pact_add/id/{$vv.id}" class="edit oper2">出合同</a>
+                                    <a href="__APP__/Client/client_del/id/{$vv.id}" class="del2 oper2">删除</a>
+                                    <a href="javascript:;" class="renewal oper2">续时</a>
+                                    <a href="javascript:;" class="mutual oper2">交互记录</a>
+                                    <a href="javascript:;" class="detInfor oper2">详细信息</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </foreach>
+            </table>    
+        </div>
+    </foreach>
 </div>
+
 <!-- 弹窗1 -->
 <div class="popWinBox popWinBox1">
     <div class="popWin popWin1">

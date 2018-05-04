@@ -4,9 +4,31 @@ use Think\Controller;
 class ClientController extends Controller {
    /*客户*/
     public function client_index(){
-    	$data = M('client as client')->field('client.id,client_name,client_address,legalperson,legaltel,taxstyle,client_money,real_name,username')->where('client_state=0')->join('dhd_user as user on client.sales_id = user.id')->select();
-        $list = M('class')->field('id,class_name')->where(array('class_is'=>0))->select();
+    	$data = M('client as client')
+                ->field('client.id,client_name,client_address,legalperson,legaltel,taxstyle,client_money,real_name,username')
+                ->join('dhd_user as user on client.sales_id = user.id')
+                ->where('client_state=0')
+                ->select();
+        $list = M('class')
+                ->field('id,class_name')
+                ->where(array('class_is'=>0))
+                ->select();
+        foreach($list as $k => $v){
+            // echo $v['id'];
+            $baed[$v['id']] = M('class as c')
+                    ->field('client.id,client_name,client_address,legalperson,legaltel,taxstyle,client_money,real_name,username')
+                    ->join('dhd_material as m on c.id = m.class_id')
+                    ->join('dhd_material_contract as mc on m.id = mc.m_id')
+                    ->join('dhd_contract as con on mc.con_id = con.id')
+                    ->join('dhd_client as client on con.client_id = client.id')
+                    ->join('dhd_user as user on client.sales_id = user.id')
+                    ->where('client_state=0 and c.id='.$v['id'])
+                    ->select();
+        }
+        // print_r($baed);die;
+        // print_r($list);die;
         $this->assign('list',$list);
+        $this->assign('baed',$baed);
     	$this->assign('volist',$data);
        	$this->display();
     }
