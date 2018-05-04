@@ -10,7 +10,13 @@
     <script type="text/javascript" src="__JS__/Public.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {
-        $('#content .dgv .danyuan .edit').click(function(event) {  
+
+        var wheight=document.documentElement.clientHeight;
+        var sheight=$('.tableBox').offset().top;
+        // console.log(sheight);
+        $('.tableBox').css('height',wheight-sheight-50);
+
+        $('#content .dgv .danyuan .btn').click(function(event) {  
             event.preventDefault();
             var id=$(this).attr('href');
             var mychar = $(".tableBox").hide();
@@ -57,12 +63,13 @@
         </h2>
         <div class="dgv">
             <div class="danyuan">
-                <div href="1" class="duang">展开▼</div>
+                <span class="leiMing">项目：</span>
+                <a href="1" class="duang">展开▼</a>
                 <div class="ding" style="display:none">
-                    <span class="leiMing">项目：</span>
                     <volist name="list" id="li">
                         <a href="{$li.id}" class="btn">{$li.class_name}</a>
                     </volist>
+                    <a href="0" class="btn">全部</a>
                 </div>
             </div>
             
