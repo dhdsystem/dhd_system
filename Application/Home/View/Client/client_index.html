@@ -16,6 +16,20 @@ $(document).ready(function() {
         var mychar = $(".tableBox").hide();
         var mychar = $("#"+id).show();
     });
+    $('#content .dgv .danyuan .duang').click(function(event){
+        event.preventDefault();
+        var id = $(this).attr('href');
+        if(id == '1'){
+            var mychar = $('.ding').show();
+            var th = $('.duang').attr("href","0");
+            var th = $('.duang').text('关闭︾');
+        }else{
+            var mychar = $('.ding').hide();
+            var th = $('.duang').attr("href","1");
+            var th = $('.duang').text('展开︽');
+        }
+        
+    })
 })
 </script>
 </head>
@@ -43,9 +57,12 @@ $(document).ready(function() {
         <div class="dgv">
             <div class="danyuan">
                 <span class="leiMing">项目：</span>
-                <volist name="list" id="li">
-                    <a href="{$li.id}" class="edit oper2">{$li.class_name}</a>
-                </volist>
+                    <a href="1" class="duang">展开︽</a>
+                <div class="ding" style="display:none">
+                    <volist name="list" id="li">
+                        <a href="{$li.id}" class="edit oper2">{$li.class_name}</a>&nbsp&nbsp&nbsp&nbsp
+                    </volist>
+                </div>
             </div>
             <div class="danyuan">
                 <span class="leiMing">产品：</span>
