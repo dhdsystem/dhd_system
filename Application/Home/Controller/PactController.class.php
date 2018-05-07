@@ -1,6 +1,6 @@
 <?php
 namespace Home\Controller;
-use Think\Controller;
+use Think\Controller; 
 class PactController extends Controller {
    /*合同*/
     public function pact_wait(){
@@ -234,15 +234,20 @@ class PactController extends Controller {
             $matter = M('industrial')->where($contractid)->find();
         }
         $collection = M('collection')->where($contractid)->find();
-        $prod = M('details as d ')->join('dhd_product as p on d.pro_id = p.id')->join('left join dhd_class as c on p.class_id = c.id')->where(array('d.id'=>$matter['details_id']))->find();
-        print_r($prod);die;
+        $prod = M('details as d ')
+        ->field('d.detailscoll,d.big_sum,p.pro_address,c.class_name')
+        ->join('dhd_product as p on d.pro_id = p.id')
+        ->join('left join dhd_class as c on p.class_id = c.id')
+        ->where(array('d.id'=>$matter['details_id']))
+        ->find();
+        // print_r($prod);die;
     	
-    	// 财务账户
-    	$account = M('account')->field('id,acc_name')->select();
-    	// 业务员信息
-    	$role = M('role')->field('id,role_name')->where(array('pid'=>0,'state'=>0))->select();
-    	// 产品项目信息
-    	$project = M('class')->field('id,class_name')->where(array('class_is'=>0))->select();
+    	// // 财务账户
+    	// $account = M('account')->field('id,acc_name')->select();
+    	// // 业务员信息
+    	// $role = M('role')->field('id,role_name')->where(array('pid'=>0,'state'=>0))->select();
+    	// // 产品项目信息
+    	// $project = M('class')->field('id,class_name')->where(array('class_is'=>0))->select();
     	// 客户中间商情况处理
     	if(!empty($client['middle_state'])){
 	    	if($client['middle_state'] == 0){
@@ -260,15 +265,15 @@ class PactController extends Controller {
     	if(empty($reserved)){
     		$reserved = 1;
     	}
-    	print_r($matter);die;
+    	// print_r($matter);die;
     	$this->assign('reserved',json_encode($reserved));
-    	$this->assign('project',json_encode($project));
     	$this->assign('client',$client);
     	$this->assign('contract',$contract);
     	$this->assign('matter',$matter);
     	$this->assign('collection',$collection);
-    	$this->assign('account',$account);
-    	$this->assign('role',$role);
+    	// $this->assign('account',$account);
+    	// $this->assign('role',$role);
+        // $this->assign('project',json_encode($project));
     	$this->display();
     }
     /**

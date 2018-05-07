@@ -12,7 +12,7 @@ class IndexController extends CommonController {
 		//二级栏目
 		foreach($listmain as $key=>$vo){
 				$where['p_id']=$vo['id'];
-				$volists=M('node')->where($where)->select();
+				$volists=M('node')->where($where)->order('grade')->select();
 				$listmain[$key]['san']=$volists;
 			
 		}

@@ -21,14 +21,15 @@
 
         
 		<div class="h2_left">
-			<form action="">
-			<select name="" id="" style="width: 90px;height: 40px;" class="tab_select">
-				<option value="">直销部</option>
-				<option value="">渠道一</option>
+
+			<form action="__APP__/Deduct/Deduct_save" method="post">
+			<select name="section" style="width: 90px;height: 40px;" class="tab_select">
+				<option value="直销部">直销部</option>
+				<option value="渠道一">渠道一</option>
 			</select>
-				<input type="text" class="text" name="" placeholder="新签提成比例">
-				<input type="text" class="text" name="" placeholder="到期提成比例">
-				<input type="text" class="text" name="" placeholder="应收提成比例">
+				<input type="text" class="text" name="target_norm" placeholder="新签提成比例">
+				<input type="text" class="text" name="expire_norm" placeholder="到期提成比例">
+				<input type="text" class="text" name="receiv_norm" placeholder="应收提成比例">
 				<input type="submit" class="button" value="提交">
 			</form>
 		</div>
