@@ -139,13 +139,13 @@ class ClientController extends Controller {
     {
         // print_r(I('post.'));die;
         $data['client_id'] = I('post.client_id');
-        $data['det_id'] = I('post.det_id');
+        $data['details_id'] = I('post.det_id');
         $data['res_state'] = 1;
         $data['add_time'] = time();
 
         $res = M('reserved')->add($data);
         if($res){
-            $re = M('details')->where(array('id'=>$data['det_id']))->setField('det_advance',2);
+            $re = M('details')->where(array('id'=>$data['details_id']))->setField('det_advance',2);
             if($re){
                 $this->success('预留成功', U('Client/client_index'));
             }else{

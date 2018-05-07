@@ -27,7 +27,7 @@
             <li class="xian">基础信息</li>
             <li class="iptBox">
                 <span class="ipt_left"><em class="red">*</em>签订日期：</span>
-                <input type="text" name="ac_time" id="ac_time" class="pact_ipt"/>
+                <input type="text" value="{$client.ac_time}" name="ac_time" id="ac_time" class="pact_ipt"/>
                 <div id="sdd" style="left: 243px;top: 284px;"></div>
                     
             </li>
@@ -129,10 +129,8 @@
                         <option value="注册地址">注册地址</option>
                     <else />
                     </if>
-                    
                     <option value="工位不注册办公">工位不注册办公</option>
                     <option value="会议室出租">会议室出租</option>
-                   
                     <option value="代理记账">代理记账</option>
                     <option value="工商代理">工商代理</option>                    
                 </select> 
@@ -164,31 +162,23 @@
             <input type="hidden" id="account_id" name="account_id">
                 <span class="ipt_left"><em class="red">*</em>收款账户：</span>
                 <select id="account"   class="pact_select" >
-                <option value="">请选择收款账户</option>
                 <foreach name="account" item="vo" >
-
-                    <option value="{$vo.id}">{$vo.acc_name}</option>
+                    <if condition="$collection.id EQ $vo.id ">
+                        <option value="{$vo.id}" selected="selected">{$vo.acc_name}</option>
+                    <else /> 
+                        <option value="{$vo.id}">{$vo.acc_name}</option>
+                    </if>
+                    
                 </foreach>
                 </select>
             </li>
             <div id="bank"></div>
             <li class="iptBox" style="position: relative;">
                 <span class="ipt_left"><em class="red">*</em>实际金额：</span>
-                <input type="text" name="actual_amount" value="" class="pact_ipt"/>
+                <input type="text" name="actual_amount" value="{$contract.actual_amount}" class="pact_ipt"/>
                 <span class="rightsp">元（大写）</span>
             </li>
-            <li class="zhushi">部门</li>
-            <li class="iptBox" style="margin-bottom: 30px;">
-                <span class="ipt_left"><em class="red">*</em>业务员：</span>
-                <select id="role_name"  class="pact_select" >
-                    <option value="0">请选择部门</option>
-                    <foreach name="role" item="vo" >
-                        <option value="{$vo.id}">{$vo.role_name}</option>
-                    </foreach>  
-                </select>
-            </li>
-            <div id="role"></div>
-            <div id="user"></div>
+
         </ul>
         <input type="submit" value="提交" class="submit">
     </form>

@@ -14,15 +14,23 @@ class PactController extends Controller {
     public function pact_add()
     {
     	$id =I('get.id');
-    	$client = M('client as c')->field('middle_name,middle_man,middle_tel,middle_address,middle_is,middle_state,c.id,client_name,nuddke_id,client_man,client_tel,client_address,client_money,legalperson,legaltel,legalidnum,other_man,other_tel,client_state,taxstyle')->join('left join dhd_middle as m on c.nuddke_id = m.id')->where(array('c.id'=>$id))->find();
+    	$client = M('client as c')
+        ->field('middle_name,middle_man,middle_tel,middle_address,middle_is,middle_state,c.id,client_name,nuddke_id,client_man,client_tel,client_address,client_money,legalperson,legaltel,legalidnum,other_man,other_tel,client_state,taxstyle')
+        ->join('left join dhd_middle as m on c.nuddke_id = m.id')
+        ->where(array('c.id'=>$id))->find();
     	foreach ($client as $k => $v) {
     		if(empty($v)){
     			unset($client[$k]);
     		}
     	}
     	// 预留地址信息
-    	$reserved = M('reserved as r')->field('d.id,d.detailscoll,p.pro_address,c.class_name')->join('dhd_details as d on d.id = r.details_id')->join('dhd_product as p on p.id = d.pro_id')->join('dhd_class as c on c.id = p.class_id')->where(array('client_id'=>$client['id']))->find();
-    	
+    	$reserved = M('reserved as r')
+        ->field('d.id,d.detailscoll,p.pro_address,c.class_name')
+        ->join('dhd_details as d on d.id = r.details_id')
+        ->join('dhd_product as p on p.id = d.pro_id')
+        ->join('dhd_class as c on c.id = p.class_id')
+        ->where(array('client_id'=>$client['id']))->find();
+    	// print_r($reserved);die;
     	// 财务账户
     	$account = M('account')->field('id,acc_name')->select();
     	// 业务员信息
@@ -67,9 +75,10 @@ class PactController extends Controller {
 		    $contract['contracttype'] = I('post.contracttype');
 		    $contract['account_id'] = I('post.account_id');
 		    $contract['stencil_id'] = I('post.stencil');
+            $contract['det_id'] = I('post.details_id');
 		    $contract['actual_amount'] = I('post.actual_amount');
-		    $contract['user_id'] = I('post.user_id');
-	    		$res = M('contract')->add($contract);	
+		    $contract['user_id'] = get_user_id();
+	    	$res = M('contract')->add($contract);	
 	    	
 	    	if($res){
 		    	if($contracttype=='大面积出租'){
@@ -235,7 +244,7 @@ class PactController extends Controller {
         }
         $collection = M('collection')->where($contractid)->find();
         $prod = M('details as d ')
-        ->field('d.detailscoll,d.big_sum,p.pro_address,c.class_name')
+        ->field('d.detailscoll,d.big_sum,p.pro_address,c.class_name,d.id')
         ->join('dhd_product as p on d.pro_id = p.id')
         ->join('left join dhd_class as c on p.class_id = c.id')
         ->where(array('d.id'=>$matter['details_id']))
@@ -243,11 +252,9 @@ class PactController extends Controller {
         // print_r($prod);die;
     	
     	// // 财务账户
-    	// $account = M('account')->field('id,acc_name')->select();
-    	// // 业务员信息
-    	// $role = M('role')->field('id,role_name')->where(array('pid'=>0,'state'=>0))->select();
+    	$account = M('account')->field('id,acc_name')->select();
     	// // 产品项目信息
-    	// $project = M('class')->field('id,class_name')->where(array('class_is'=>0))->select();
+    	$project = M('class')->field('id,class_name')->where(array('class_is'=>0))->select();
     	// 客户中间商情况处理
     	if(!empty($client['middle_state'])){
 	    	if($client['middle_state'] == 0){
@@ -270,10 +277,10 @@ class PactController extends Controller {
     	$this->assign('client',$client);
     	$this->assign('contract',$contract);
     	$this->assign('matter',$matter);
-    	$this->assign('collection',$collection);
-    	// $this->assign('account',$account);
-    	// $this->assign('role',$role);
-        // $this->assign('project',json_encode($project));
+        $this->assign('collection',$collection);
+    	$this->assign('prod',$prod);
+    	$this->assign('account',$account);
+        $this->assign('project',$project);
     	$this->display();
     }
     /**
