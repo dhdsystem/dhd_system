@@ -44,19 +44,27 @@
             <a href="javascript:history.back();" class="Retreat">后退</a>
         </div>
     </h2>
-            <form action="__APP__/Gather/gatheradd_do" method="post">
+            <form action="__APP__/Rece/rece_print_recei_do" method="post">
             <dl id="cdl" style="padding-bottom: 100px;">
+                <dd>
+                    <span class="dd_left">客户公司：</span>
+                    <input type="hidden" name="company" value="{$id}" id="middelid"/>
+                    <div id='quao'></div>
+                    <input type="text" id="company" name="client_name" value="{$name}" class="qtext" readonly="true">
+                </dd>
                 <dd>
                     <span class="dd_left">一级科目：</span>
                         <select name="firststep" class="tab_select" style="width: 754px;height: 40px;">
                             <option value="代收">代收</option>
                             <option value="销售收入">销售收入</option>
+                            <option value="主营业务收入">主营业务收入</option>
                             <option value="其他收入">其他收入</option>
                         </select>
                 </dd>
                 <dd>
                     <span class="dd_left">二级科目：</span>
                         <select name="detail" class="tab_select" style="width: 754px;height: 40px;">
+                            <option value="房租">房租</option>
                             <option value="电费">电费</option>
                             <option value="装修费">装修费</option>
                             <option value="代收缴税金">代收缴税金</option>
@@ -81,12 +89,6 @@
                         <input type="text" name="gathertiem" class="qtext dateofcollect" id="dateofcollect" />
                         <div id="gathDate" style="left: 134px;top: 40px;"></div>
                     </span>
-                </dd>
-                <dd>
-                    <span class="dd_left">客户公司：</span>
-                    <input type="hidden" name="company" id="middelid"/>
-                    <div id='quao'></div>
-                    <input type="text" id="company" class="qtext">
                 </dd>
                 <dd>
                     <span class="dd_left">收款账户：</span>
@@ -118,33 +120,33 @@
         setTimeout("$('#mername').empty()",300);
     })
     // 键盘抬起事件
-    $(document).on('keyup','#company',function(){
-        var company = $(this).val();
-        // alert(company);
-        var data = {'company':company}
-        $.ajax({
-           type: "POST",
-           url: "__APP__/Gather/gather_ajax",
-           data: data,
-           dataType:'json',
-           success: function(msg){
-            // alert(msg);
-                var html='<div class="unkwn">';
-                // console.log(msg);
-                if(msg=="")
-                {
-                    $('#quao').remove();
-                }else
-                {
-                    $(msg).each(function(i){
-                        html+="<p class='midd' idna='"+msg[i]['client_name']+"' ids='"+msg[i]['id']+"'>"+msg[i]['client_name']+"</p>";
-                    });
-                    $('#quao').empty().append(html);
-                }
-                html+='</div>'
-            }
-        });
-    })
+    // $(document).on('keyup','#company',function(){
+    //     var company = $(this).val();
+    //     // alert(company);
+    //     var data = {'company':company}
+    //     $.ajax({
+    //        type: "POST",
+    //        url: "__APP__/Gather/gather_ajax",
+    //        data: data,
+    //        dataType:'json',
+    //        success: function(msg){
+    //         // alert(msg);
+    //             var html='<div class="unkwn">';
+    //             // console.log(msg);
+    //             if(msg=="")
+    //             {
+    //                 $('#quao').remove();
+    //             }else
+    //             {
+    //                 $(msg).each(function(i){
+    //                     html+="<p class='midd' idna='"+msg[i]['client_name']+"' ids='"+msg[i]['id']+"'>"+msg[i]['client_name']+"</p>";
+    //                 });
+    //                 $('#quao').empty().append(html);
+    //             }
+    //             html+='</div>'
+    //         }
+    //     });
+    // })
     $(document).on('click','.midd',function(){
         var company = $(this).html();
         var middleid = $(this).attr('ids');

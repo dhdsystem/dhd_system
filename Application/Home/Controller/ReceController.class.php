@@ -179,18 +179,35 @@ class ReceController extends CommonController {
 
     // 应收款页面
     public function rece_print_recei(){
-        $id = I('post.id');
+        $id = I('get.id');
+        $name = I('get.name');
         // print_r($id);die;
+        // print_r($name);die;
         $bank = M('account')->select();
         $this->assign('bank',$bank);
         $this->assign('id',$id);
+        $this->assign('name',$name);
         $this->display();
     }
 
     // 应收款方法
     public function rece_print_recei_do(){
         $data = I('post.');
-        print_r($data);die;
+        // print_r($data);die;
+        $data['u_id'] = get_user_id();
+        $gathertiem = I('post.gathertiem');
+        $where=array('client_name'=>$data['client_name']);
+        $c_id = M('client')->field('id')->where($where)->select();
+        $data['company'] = $c_id[0]['id'];
+        $data['gathertiem'] = strtotime("$gathertiem");
+        // print_r($data);die;
+        $save = M('contract')->where(array('id'=>$data['company']))->save(array('account_audit'=>4));
+        $add = M('gather')->data($data)->add();
+        if($add && $save){
+            $this->success('收款成功', U('Gather/gather_index'));
+        }else{
+            $this->error('收款失败',U('Rece/rece_print_recei?id='.$data['.id.'].'&name='.$data['client_name']));
+        }
     }
 
     // 停租
