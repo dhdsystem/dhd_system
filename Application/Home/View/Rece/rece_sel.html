@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>出合同信息</title>
+    <link rel="stylesheet" type="text/css" href="__CSS__/content.css"/>
+    <link rel="stylesheet" type="text/css" href="__CSS__/public.css"/>
+    <link rel="stylesheet" type="text/css" href="__CSS__/pact_add.css"/>
+    <script type="text/javascript" src="__JS__/jquery.js"></script>
+    <script type="text/javascript" src="__JS__/Public.js"></script>
+    <script type="text/javascript" src="__JS__/winpop.js"></script>
+    <!-- 日期插件 -->
+    <script type="text/javascript" src="__JS__/laydate/laydate.js"></script>
+</head>
+<body>
+<div class="contract_cont"  id="content">
+
+    <h1>首页 >  合同管理 > 代收款合同</h1>
+    <h2>
+        <div class="h2_left">
+            <a href="javascript:history.back();" class="Retreat">后退</a>
+        </div>
+    </h2>
+        <ul>
+            <li class="xian">基础信息</li>
+            <li class="iptBox">
+                <span class="ipt_left"><em class="red">*</em>签订日期：</span>
+                <input type="text" name="ac_time" value="{$data.ac_time|date='Y-m-d',###}" class="pact_ipt"/>
+                <div id="sdd" style="left: 243px;top: 284px;"></div>
+                    
+            </li>
+            <li class="iptBox">
+                <span class="ipt_left"><em class="red">*</em>合同性质：</span>
+                 <if condition="$data.contractnature eq '1'">
+                    <input type="text" value="新注册" id="ac_time" class="pact_ipt"/>
+                 </if>
+                 <if condition="$data.contractnature eq '2'">
+                    <input type="text" value="变更" id="ac_time" class="pact_ipt"/>
+                 </if>
+                 <if condition="$data.contractnature eq '3'">
+                    <input type="text" value="续签" id="ac_time" class="pact_ipt"/>
+                 </if>
+            </li>
+            <li class="xian">客户信息</li>
+            <li class="iptBox">
+                <span class="ipt_left"><em class="red">*</em>客户分组：</span>
+                 <if condition="$data.middle_state eq '0'">
+                    <input type="text" name="middle_state" value="中间商" class="pact_ipt"/>
+                </if>
+                 <if condition="$data.middle_state eq '1'">
+                    <input type="text" name="middle_state" value="中介" class="pact_ipt"/>
+                </if>
+                  <if condition="$data.middle_state eq '2'">
+                    <input type="text" name="middle_state" value="平台" class="pact_ipt"/>
+                </if>
+                  <if condition="$data.middle_state gt '2'">
+                    <input type="text" name="middle_state" value="直接客户" class="pact_ipt"/>
+                </if>
+            </li>
+       
+            <li class="iptBox">
+                    <span class="ipt_left"><em class="red">*</em>公司：</span>
+                    <input type="text" name="middle_name" value="{$data.middle_name}" class="pact_ipt"/>
+                    <div id="vas"></div>
+                </li>
+                <li class="iptBox">
+                    <span class="ipt_left"><em class="red">*</em>联系人：</span>
+                    <input type="text" name="middle_man" value="{$data.middle_man}" class="pact_ipt"/>
+                </li>
+                <li class="iptBox">
+                    <span class="ipt_left"><em class="red">*</em>联系人电话：</span>
+                    <input type="text" name="middle_tel" value="{$data.middle_tel}" class="pact_ipt"/>
+                </li>
+
+                <li class="iptBox">
+                    <span class="ipt_left"><em class="red">*</em>办公地址：</span>
+                    <input type="text" name="middle_address" value="{$data.middle_address}" class="pact_ipt"/>
+                </li>
+            </if>
+            <br>
+            <!-- 客户公司信息 -->
+            <li class="iptBox">
+                <span class="ipt_left"><em class="red">*</em>客户公司：</span>
+                <input type="text" name="client_name" value="{$data.client_name}" class="pact_ipt"/>
+                <div id="vas"></div>
+            </li>
+            <li class="iptBox" style="position: relative;">
+                <span class="ipt_left"><em class="red">*</em>注册资金：</span>
+                <input type="text" name="client_money" value="{$data.client_money}" class="pact_ipt"/>
+                <span class="rightsp"> 万</span>
+            </li>
+            <li class="iptBox">
+                <span class="ipt_left"><em class="red">*</em>法人姓名：</span>
+                <input type="text" name="legalperson" value="{$data.legalperson}" class="pact_ipt"/>
+            </li>
+            <li class="iptBox">
+                <span class="ipt_left"><em class="red">*</em>法人联系电话：</span>
+                <input type="text" name="legaltel" value="{$data.legaltel}" class="pact_ipt"/>
+            </li>
+            <li class="iptBox">
+                <span class="ipt_left"><em class="red">*</em>法人身份证号：</span>
+                <input type="text" name="legalidnum" value="{$data.legalidnum}" class="pact_ipt"/>
+            </li>
+            <li class="iptBox">
+                <span class="ipt_left"><em class="red">*</em>纳税形式：</span>
+                <if condition="$data.taxstyle eq 0 ">
+                    <input type="text" name="taxstyle" value="小规模" class="pact_ipt"/>
+                <else />
+                    <input type="text" name="taxstyle" value="一般人" class="pact_ipt"/>
+                </if>
+            </li>
+            <li class="iptBox">
+                <span class="ipt_left"><em class="red">*</em>信用代码：</span>
+                <input type="text" name="credit_code" value="{$data.credit_code}" class="pact_ipt"/>
+            </li>            
+            <li class="iptBox">
+                <span class="ipt_left"><em class="red">*</em>办公地址：</span>
+                <input type="text" name="client_address" value="{$data.client_address}" class="pact_ipt"/>
+            </li>
+            <li class="iptBox">
+                <span class="ipt_left"><em class="red">*</em>其他联系人：</span>
+                <input type="text" name="client_man" value="{$data.other_man}" class="pact_ipt"/>
+            </li>
+            <li class="iptBox">
+                <span class="ipt_left"><em class="red">*</em>其他联系人电话：</span>
+                <input type="text" name="client_tel" value="{$data.other_tel}" class="pact_ipt"/>
+            </li>
+            <li class="xian">合同信息</li>
+            <li class="iptBox">
+               <div id="zhuijia">
+                        
+    <if condition="($data.contracttype eq '大面积出租') "> 
+
+                    
+                    <li class="iptBox">
+                        <span class="ipt_left"><em class="red">*</em>签订公司：</span>
+                        <input type="text" name="signcompany" value="{$data.signcompany}" class="pact_ipt"/>
+                    </li>
+                    <div class="moban"></div>
+                    <li class="xian">租赁房间信息</li>
+                    <div id="zhucedizhi"></div>
+    
+                    <li class="iptBox">
+                        <span class="ipt_left"><em class="red">*</em>项目：</span>
+                        <input type="text" name="signcompany" value="{$data.class_name}" class="pact_ipt"/>
+
+                    </li>
+
+                    <li class="iptBox">
+                        <span class="ipt_left"><em class="red">*</em>地址：</span>
+                        <input type="text" name="signcompany" value="{$data.class_address}" class="pact_ipt"/>
+                    </li>
+                    <li class="iptBox">
+                        <span class="ipt_left"><em class="red">*</em>房间号：</span>
+                        <input type="text" name="rentdatetime" value="{$data.detailscoll}" id="rentdatetime" class="pact_ipt" >
+                        
+                    </li>
+
+                    <li class="iptBox">
+                        <span class="ipt_left"><em class="red">*</em>建筑面积：</span>
+                        <input type="text"  value="{$data.big_sum}" id="room_area" class="pact_ipt" >
+                    </li>
+                    <li class="iptBox">
+                        <span class="ipt_left"><em class="red">*</em>服务期限：</span>
+                        <input type="text" name="rentdatetime" value="{$data.rentdatetime|date='Y年m月d日',###}" id="rentdatetime" class="pact_ipt" >
+                    </li>
+                    <li class="iptBox">
+                        <span class="ipt_left"><em class="red">*</em>租赁日期：</span>
+                        <span class="timeBox">
+                            <input type="text" name="rentstarttime" value="{$data.rentstarttime|date='Y年m月d日',###}" class="pact_ipt pact_ipt2" >
+                            <div id="rentstar" style="left: 0px;top: 40px;"></div>
+                        </span>
+                        <span style="line-height: 40px;display: inline-block;">～</span>
+                        <span class="timeBox">
+                            <input type="text" name="rentendtime" value="{$data.rentendtime|date='Y年m月d日',###}" class="pact_ipt pact_ipt2" >
+                            <div id="rentend" style="left: 0px;top: 40px;"></div>
+                        </span>
+                    </li>
+                    <li class="iptBox">
+                        <span class="ipt_left"><em class="red">*</em>免租期限：</span>
+                        <input type="text" name="freetime" id="freetime" value="{$data.freetime|date='Y年m月d日',###}" class="pact_ipt" >
+                    </li>
+                    <li class="iptBox">
+                        <span class="ipt_left"><em class="red">*</em>免租日期：</span>
+                        <input type="text" name="freestarttime" value="{$data.freestarttime|date='Y年m月d日',###}" class="pact_ipt pact_ipt2" id="freestarttime">
+                        <span style="line-height: 40px;display: inline-block;">～</span>
+                        <input type="text" name="freeendtime" value="{$data.freeendtime|date='Y年m月d日',###}" class="pact_ipt pact_ipt2" id="freeendtime">
+                    </li>
+
+                    <li class="xian">房屋及付款方式</li>
+                    <li class="iptBox">
+                        <span class="ipt_left"><em class="red">*</em>每周期前：</span>
+                        <input type="text" name="appoint" value="{$data.appoint}" id="appoint" value="" class="pact_ipt" >
+                    </li>
+                    <li class="iptBox">
+                        <span class="ipt_left"><em class="red">*</em>逾期滞纳金：</span>
+                        <input type="text" name="overdue" value="{$data.overdue}元" class="pact_ipt" >
+                    </li>
+
+                    <li class="iptBox">
+                        <span class="ipt_left"><em class="red">*</em>管理费标准：</span>
+                        <input type="text" name="rates" value="{$data.rates}" class="pact_ipt yuan">
+                    </li>
+                    <li class="iptBox">
+                        <span class="ipt_left"><em class="red">*</em>管理费是否含税：</span>
+                        <select  name="zjistax" class="pact_select" >
+                    <if condition="$data.middle_state eq '0'">
+                            <option value="" selected="selected">是</option>
+                            <!-- <option value="">否</option> -->
+                    </if>
+                     <if condition="$data.middle_state eq '1'">
+                            <!-- <option value="" selected="selected">是</option> -->
+                            <option value="">否</option>
+                    </if>
+                        </select>
+                    </li>
+                    <li class="iptBox">
+                        <span class="ipt_left"><em class="red">*</em>管理费递增：</span>
+                        <input type="text" name="increasing" value="{$data.increasing}" class="pact_ipt" style="width: 632px;display: inline-block;margin-right: 10px;">
+                        <select name="increayear" class="pact_select" style="width:100px;display: inline-block;">
+                            <option value="">{$data.increayear}年</option>
+                            <!-- <option value="2">2年</option> -->
+                        </select>
+                    </li>
+                    <li class="iptBox">
+                        <span class="ipt_left"><em class="red">*</em>付款方式：</span>
+                        <select  name="paytype" id="paytype" class="pact_select" >
+                    <if condition="$data.paytype eq '3,3'">
+                            <option value="3,3" >押三付三</option>
+                    </if>
+                    <if condition="$data.paytype eq '2,6'">
+
+                            <option value="2,6">押二付六</option>                    
+                    </if>
+                    <if condition="$data.paytype eq '1,12'">
+                            <option value="1,12">押一付十二</option>
+                    </if>
+                    <if condition="$data.paytype eq '1,6'">
+                            <option value="1,6">押一付六</option>
+                    </if>
+                    <if condition="$data.paytype eq '2,3'">
+                            <option value="2,3">押二付三</option>
+                    </if>
+                    <if condition="$data.paytype eq '1,3'">
+                            <option value="1,3">押一付三</option>
+                    </if>
+                        </select>
+                    </li>
+                    <li class="iptBox">
+                        <span class="ipt_left"><em class="red">*</em>月金额：</span>
+                        <input type="text" name="monthly_rent" id="monthly_rent" value="{$data.monthly_rent}元" class="pact_ipt">
+                    </li>
+                    <li class="iptBox">
+                        <span class="ipt_left"><em class="red">*</em>押金：</span>
+                        <input type="text" name="deposit" id="deposit" value="{$data.deposit}元" class="pact_ipt" >
+                    </li>
+                    <li class="iptBox">
+                        <span class="ipt_left"><em class="red">*</em>年金额：</span>
+                        <input type="text" name="year_rent" id="year_rent" value="{$data.year_rent}元" class="pact_ipt">
+                    </li>
+                    <li class="iptBox">
+                        <span class="ipt_left"><em class="red">*</em>每期金额：</span>
+                        <input type="text" name="each" id="each" value="{$data.each}元" class="pact_ipt">
+                    </li>
+                    <li class="iptBox">
+                        <span class="ipt_left"><em class="red">*</em>第一次付款时间：</span>
+                        <input type="text" name="paynext1" id="paynext1" value="{$data.paynext1}" class="pact_ipt">
+                    </li>
+                    <!-- <div id="payment"></div> -->
+                    <!-- <li class="iptBox">
+                        <span class="ipt_left"><em class="red">*</em>备注：</span>
+                        <textarea name="" class="pact_text_box" id="" cols="60" rows="5" style="display: inline; height: 49px;">{$data.}</textarea>
+                    </li> -->
+
+    <elseif condition="$data.cont eq 'mini房间'"/>
+                        
+                        <li class="iptBox">
+                            <span class="ipt_left"><em class="red">*</em>签订公司：</span>
+                            <input type="text"    name="signcompany" id="paynext1" value="{$data.signcompany}" class="pact_ipt">
+
+                              
+                        </li>
+                        <div class="moban"></div>
+                        <li class="xian">租赁房间信息</li>
+                        <div id="zhucedizhi"></div>
+
+                         <li class="iptBox">
+                        <span class="ipt_left"><em class="red">*</em>项目：</span>
+                        <input type="text" name="signcompany" value="{$data.class_name}" class="pact_ipt"/>
+
+                    </li>
+
+                    <li class="iptBox">
+                        <span class="ipt_left"><em class="red">*</em>地址：</span>
+                        <input type="text" name="signcompany" value="{$data.class_address}" class="pact_ipt"/>
+                    </li>
+                    <li class="iptBox">
+                        <span class="ipt_left"><em class="red">*</em>房间号：</span>
+                        <input type="text" name="rentdatetime" value="{$data.detailscoll}" id="rentdatetime" class="pact_ipt" >
+                        
+                    </li>
+
+                    <li class="iptBox">
+                        <span class="ipt_left"><em class="red">*</em>建筑面积：</span>
+                        <input type="text"  value="{$data.big_sum}" id="room_area" class="pact_ipt" >
+                    </li>
+                        <li class="iptBox">
+                            <span class="ipt_left"><em class="red">*</em>服务期限：</span>
+                            <input type="text" name="rentdatetime" value="{$data.rentdatetime}" id="rentdatetime" class="pact_ipt" >
+                        </li>
+                                 <li class="iptBox">
+                        <span class="ipt_left"><em class="red">*</em>租赁日期：</span>
+                        <span class="timeBox">
+                            <input type="text" name="rentstarttime" value="{$data.rentstarttime|date='Y年m月d日',###}" class="pact_ipt pact_ipt2" >
+                            <div id="rentstar" style="left: 0px;top: 40px;"></div>
+                        </span>
+                        <span style="line-height: 40px;display: inline-block;">～</span>
+                        <span class="timeBox">
+                            <input type="text" name="rentendtime" value="{$data.rentendtime|date='Y年m月d日',###}" class="pact_ipt pact_ipt2" >
+                            <div id="rentend" style="left: 0px;top: 40px;"></div>
+                        </span>
+                    </li>
+                        <li class="iptBox">
+                            <span class="ipt_left"><em class="red">*</em>商务服务费：</span>
+                            <input type="text" name="business" id="business" value="{$data.business}" class="pact_ipt">
+                        </li>
+                  <li class="iptBox">
+                        <span class="ipt_left"><em class="red">*</em>管理费是否含税：</span>
+                        <select  name="zjistax" class="pact_select" >
+                    <if condition="$data.middle_state eq '0'">
+                            <option value="" selected="selected">是</option>
+                            <!-- <option value="">否</option> -->
+                    </if>
+                     <if condition="$data.middle_state eq '1'">
+                            <!-- <option value="" selected="selected">是</option> -->
+                            <option value="">否</option>
+                    </if>
+                        </select>
+                    </li>
+                        <!-- 分割线 -->
+
+                        <li class="xian">房屋及付款方式</li>
+                        <li class="iptBox">
+                            <span class="ipt_left"><em class="red">*</em>每周期前：</span>
+                            <input type="text" name="swistax" value="{$data.swistax}" class="pact_ipt">
+                        </li>
+                        <li class="iptBox">
+                            <span class="ipt_left"><em class="red">*</em>付款方式：</span>
+                          <select  name="paytype" id="paytype" class="pact_select" >
+                                     <if condition="$data.paytype eq '3,3'">
+                            <option value="3,3" >押三付三</option>
+                    </if>
+                    <if condition="$data.paytype eq '2,6'">
+
+                            <option value="2,6">押二付六</option>                    
+                    </if>
+                    <if condition="$data.paytype eq '1,12'">
+                            <option value="1,12">押一付十二</option>
+                    </if>
+                    <if condition="$data.paytype eq '1,6'">
+                            <option value="1,6">押一付六</option>
+                    </if>
+                    <if condition="$data.paytype eq '2,3'">
+                            <option value="2,3">押二付三</option>
+                    </if>
+                    <if condition="$data.paytype eq '1,3'">
+                            <option value="1,3">押一付三</option>
+                    </if>
+                            </select>
+                        </li>
+
+                        <li class="iptBox">
+                            <span class="ipt_left"><em class="red">*</em>押金：</span>
+                            <input type="hidden" id="monthly_rent">
+                            <input type="text" name="deposit" id="deposit" value="{$data.deposit}" class="pact_ipt" >
+                        </li>
+                        <li class="iptBox">
+                            <span class="ipt_left"><em class="red">*</em>年金额：</span>
+                            <input type="text" name="year_rent" id="year_rent" value="{$data.year_rent}元" class="pact_ipt" >
+                        </li>
+                        <li class="iptBox">
+                            <span class="ipt_left"><em class="red">*</em>每期金额：</span>
+                            <input type="text" name="each" id="each" value="{$data.each}元" class="pact_ipt" >
+                        </li>
+                        <li class="iptBox">
+                            <span class="ipt_left"><em class="red">*</em>第一次付款时间：</span>
+                            <input type="text" name="paynext1" id="paynext1" value="{$data.paynext1}" class="pact_ipt" >
+                        </li>
+
+    <elseif condition="$data.cont eq '工位注册办公'"/>
+                            <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>签订公司：</span>
+                                <input type="text" name="signcompany" value="{$data.signcompany}" class="pact_ipt"/>
+
+                            </li>
+                            <div class="moban"></div>
+                            <li class="xian">租赁房间信息</li>
+                            <div id="zhucedizhi"></div>
+                             <li class="iptBox">
+                        <span class="ipt_left"><em class="red">*</em>项目：</span>
+                        <input type="text" name="signcompany" value="{$data.class_name}" class="pact_ipt"/>
+
+                    </li>
+
+                    <li class="iptBox">
+                        <span class="ipt_left"><em class="red">*</em>地址：</span>
+                        <input type="text" name="signcompany" value="{$data.class_address}" class="pact_ipt"/>
+                    </li>
+                            <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>工位号：</span>
+                                <input type="text" name="" value="{$data.detailscoll}" class="pact_ipt"/>
+                                
+                            </li>
+
+                            <!-- 分割线 -->
+
+                            <li class="xian">工位办公注册</li>
+                            <li class="iptBox">
+                            <span class="ipt_left"><em class="red">*</em>商务服务费：</span>
+                            <input type="text" name="business" id="business" value="{$data.business}" class="pact_ipt">
+                             </li>
+                          <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>是否含税：</span>
+                                <select  name="zjistax" class="pact_select" >
+                            <if condition="$data.middle_state eq '0'">
+                                    <option value="" selected="selected">是</option>
+                                    <!-- <option value="">否</option> -->
+                            </if>
+                             <if condition="$data.middle_state eq '1'">
+                                    <!-- <option value="" selected="selected">是</option> -->
+                                    <option value="">否</option>
+                            </if>
+                                </select>
+                            </li>
+                            <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>工位办公服务费用：</span>
+                                <input type="text" name="station" id="station" value="{$data.station}" class="pact_ipt">
+                            </li>
+                            <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>是否含税：</span>
+                                <input type="text" name="station" id="station" value="{$data.ggistax}" class="pact_ipt">
+                           
+                 
+                            </li>
+                            <li class="iptBox">
+                            <span class="ipt_left"><em class="red">*</em>服务期限：</span>
+                            <input type="text" name="rentdatetime" value="{$data.rentdatetime}" id="rentdatetime" class="pact_ipt" >
+                        </li>
+                                 <li class="iptBox">
+                        <span class="ipt_left"><em class="red">*</em>租赁日期：</span>
+                        <span class="timeBox">
+                            <input type="text" name="rentstarttime" value="{$data.rentstarttime|date='Y年m月d日',###}" class="pact_ipt pact_ipt2" >
+                            <div id="rentstar" style="left: 0px;top: 40px;"></div>
+                        </span>
+                        <span style="line-height: 40px;display: inline-block;">～</span>
+                        <span class="timeBox">
+                            <input type="text" name="rentendtime" value="{$data.rentendtime|date='Y年m月d日',###}" class="pact_ipt pact_ipt2" >
+                            <div id="rentend" style="left: 0px;top: 40px;"></div>
+                        </span>
+                    </li>
+
+                            <li class="xian">房屋及付款方式</li>
+                            <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>每周期前：</span>
+                                <input type="text" name="appoint" id="appoint" value="{$data.appoint}" class="pact_ipt" >
+                            </li>
+                            <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>付款方式：</span>
+                                <select name="paytype" id="paytype" class="pact_select" >
+                
+                                <if condition="$data.paytype eq '3,3'">
+                                    <option value="3,3" >押三付三</option>
+                                </if>
+                                <if condition="$data.paytype eq '2,6'">
+
+                                        <option value="2,6">押二付六</option>                    
+                                </if>
+                                <if condition="$data.paytype eq '1,12'">
+                                        <option value="1,12">押一付十二</option>
+                                </if>
+                                <if condition="$data.paytype eq '1,6'">
+                                        <option value="1,6">押一付六</option>
+                                </if>
+                                <if condition="$data.paytype eq '2,3'">
+                                        <option value="2,3">押二付三</option>
+                                </if>
+                                <if condition="$data.paytype eq '1,3'">
+                                        <option value="1,3">押一付三</option>
+                                </if>
+                            </select>
+                            </li>
+                            <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>月金额：</span>
+                                <input type="text" name="monthly_rent"  value="{$data.monthly_rent}" class="pact_ipt">
+                            </li>
+                               <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>押金：</span>
+                                <input type="hidden" id="monthly_rent">
+                                <input type="text" name="deposit" id="deposit" value="{$data.deposit}" class="pact_ipt" >
+                                </li>
+                                <li class="iptBox">
+                                    <span class="ipt_left"><em class="red">*</em>年金额：</span>
+                                    <input type="text" name="year_rent" id="year_rent" value="{$data.year_rent}元" class="pact_ipt" >
+                                </li>
+                                <li class="iptBox">
+                                    <span class="ipt_left"><em class="red">*</em>每期金额：</span>
+                                    <input type="text" name="each" id="each" value="{$data.each}元" class="pact_ipt" >
+                                </li>
+                                <li class="iptBox">
+                                    <span class="ipt_left"><em class="red">*</em>第一次付款时间：</span>
+                                    <input type="text" name="paynext1" id="paynext1" value="{$data.paynext1}" class="pact_ipt" >
+                                </li>
+                            <div id="payment"></div>
+                            <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>备注：</span>
+                                <textarea name="" class="pact_text_box" id="" cols="60" rows="5" style="display: inline; height: 49px;"></textarea>
+                            </li>
+
+    <elseif condition="$data.cont eq '注册地址'"/>
+                
+                            <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>签订公司：</span>
+                                 <input type="text" name="signcompany" value="{$data.signcompany}" 
+                                 class="pact_ipt"/>
+
+                            </li>
+                            <div class="moban"></div>
+                            <div id="zhucedizhi"></div>
+                            <li class="iptBox">
+                            <span class="ipt_left"><em class="red">*</em>服务期限：</span>
+                            <input type="text" name="rentdatetime" value="{$data.rentdatetime}" id="rentdatetime" class="pact_ipt" >
+                        </li>
+                                 <li class="iptBox">
+                        <span class="ipt_left"><em class="red">*</em>租赁日期：</span>
+                        <span class="timeBox">
+                            <input type="text" name="rentstarttime" value="{$data.rentstarttime|date='Y年m月d日',###}" class="pact_ipt pact_ipt2" >
+                            <div id="rentstar" style="left: 0px;top: 40px;"></div>
+                        </span>
+                        <span style="line-height: 40px;display: inline-block;">～</span>
+                        <span class="timeBox">
+                            <input type="text" name="rentendtime" value="{$data.rentendtime|date='Y年m月d日',###}" class="pact_ipt pact_ipt2" >
+                            <div id="rentend" style="left: 0px;top: 40px;"></div>
+                        </span>
+                    </li>
+                           <li class="iptBox">
+                            <span class="ipt_left"><em class="red">*</em>商务服务费：</span>
+                            <input type="text" name="business" id="business" value="{$data.business}" class="pact_ipt">
+                             </li>
+                          <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>是否含税：</span>
+                                <select  name="zjistax" class="pact_select" >
+                            <if condition="$data.middle_state eq '0'">
+                                    <option value="" selected="selected">是</option>
+                                    <!-- <option value="">否</option> -->
+                            </if>
+                             <if condition="$data.middle_state eq '1'">
+                                    <!-- <option value="" selected="selected">是</option> -->
+                                    <option value="">否</option>
+                            </if>
+                                </select>
+                            </li>
+
+    <elseif condition="$data.cont eq '代理记账'"/>
+                
+                            <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>签订公司：</span>
+                                 <input type="text" name="signcompany" value="{$data.signcompany}" class=
+                                 "pact_ipt"/>
+                            </li>
+                            <div class="moban"></div>
+                            <li class="xian">代理记账</li>
+                            <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>代理期限：</span>
+                                <span class="timeBox">
+                            <input type="text" name="rentstarttime" value="{$data.rentstarttime|date='Y年m月d日',###}" class="pact_ipt pact_ipt2" >
+                            <div id="rentstar" style="left: 0px;top: 40px;"></div>
+                        </span>
+                        <span style="line-height: 40px;display: inline-block;">～</span>
+                        <span class="timeBox">
+                            <input type="text" name="rentendtime" value="{$data.rentendtime|date='Y年m月d日',###}" class="pact_ipt pact_ipt2" >
+                            <div id="rentend" style="left: 0px;top: 40px;"></div>
+                        </span>
+                            </li>
+                            <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>会计服务费：</span>
+                                <input type="text" name="ta_kmoney" id="ta_kmoney" value="{$data.ta_kmoney}" class="pact_ipt" >
+                            </li>
+                            <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>是否含税：</span>
+                                <select  name="ta_kis" class="pact_select" >
+                                   <if condition="$data.ta_kis eq '0'">
+                                    <option value="" selected="selected">是</option>
+                                    <!-- <option value="">否</option> -->
+                            </if>
+                             <if condition="$data.middle_state eq '1'">
+                                    <!-- <option value="" selected="selected">是</option> -->
+                                    <option value="">否</option>
+                            </if>
+                                </select>
+                            </li>
+                            <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>工本费：</span>
+                                <input type="text" name="ta_gmoney" id="ta_gmoney" value="{$data.ta_gmoney}" class="pact_ipt" >
+                            </li>
+                            <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>是否含税：</span>
+                                <select  name="ta_gis" class="pact_select" >
+                                    <if condition="$data.ta_gis eq '0'">
+                                    <option value="" selected="selected">是</option>
+                                    <!-- <option value="">否</option> -->
+                            </if>
+                             <if condition="$data.middle_state eq '1'">
+                                    <!-- <option value="" selected="selected">是</option> -->
+                                    <option value="">否</option>
+                            </if>
+                                </select>
+                            </li>
+                            <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>是否安装税控机：</span>
+                                <select  name="ta_istaxcontrol" id="ta_istaxcontrol" class="pact_select" >
+                                    <if condition="$data.ta_istaxcontrol eq '0'">
+                                    <option value="" selected="selected">是</option>
+                                    <!-- <option value="">否</option> -->
+                            </if>
+                             <if condition="$data.middle_state eq '1'">
+                                    <!-- <option value="" selected="selected">是</option> -->
+                                    <option value="">否</option>
+                            </if>
+                                </select>
+                            </li>
+                            <div class="istaxcontrol" style="display:none">
+                                <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>税控机费：</span>
+                                <input type="text" name="ta_skmoney" id="ta_skmoney" value="{$data.ta_skmoney}" class="pact_ipt" >
+
+                               
+                            </li>
+                            <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>税控机费是否含税：</span>
+                                <select  name="ta_skistax" class="pact_select" >
+                                <if condition="$data.ta_istaxcontrol eq '1'">
+                                    <option value="" selected="selected">是</option>
+                                    <!-- <option value="">否</option> -->
+                            </if>
+                             <if condition="$data.middle_state eq '0'">
+                                    <!-- <option value="" selected="selected">是</option> -->
+                                    <option value="">否</option>
+                            </if>
+                                    
+                                </select>
+                            </li>
+                            </div>
+                            <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>付款方式：</span>
+                                <select  name="paytype" id="paytype" class="pact_select" >
+                                <if condition="$data.paytype eq '0,3'">
+                                    <option value="0,3" >季度</option>
+                                </if>
+                                <if condition="$data.paytype eq '0,6'">
+
+                                        <option value="0,6">半年</option>                    
+                                </if>
+                                <if condition="$data.paytype eq '0,12'">
+                                        <option value="0,12">年</option>
+                                </if>
+                                    <if condition="$data.paytype eq '0,0'">
+                                        <option value="0,0">一次性付清</option>
+                                </if>
+                                <if condition="$data.paytype eq '0,5'">
+                                        <option value="0,5">半年付送一个月</option>
+                                </if>
+                                <if condition="$data.paytype eq '0,10'">
+                                        <option value="0,10">年付送两个月</option>
+                                </if>
+                                <if condition="$data.paytype eq '0,11'">
+                                        <option value="0,11">年付送一个月</option>
+                                </if>
+            
+                                </select>
+                            </li>
+
+                            <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>年金额：</span>
+                                  <input type="hidden"  id="monthly_rent"  class="pact_ipt" >
+                                <input type="text" name="year_rent" id="year_rent" value="{$data.year_rent}" class="pact_ipt" >
+                            </li>
+                            <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>每期金额：</span>
+                                <input type="text" name="each" id="each" value="{$data.each}" class="pact_ipt" >
+                            </li>
+                            <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>第1次付款时间：</span>
+                                <input type="text" name="paynext1" id="paynext1" value="{$data.paynext1}" class="pact_ipt" >
+                            </li>
+                            <div id="payment"></div>
+
+                            <li class="xian">甲方联系人</li>
+                            <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>第一联系人：</span>
+                                <input type="text" name="legalperson" value="{$data.legalperson}" class="pact_ipt" >
+                            </li>
+                            <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>联系人电话：</span>
+                                <input type="text" name="legaltel" value="{$data.legaltel}" class="pact_ipt" >
+                            </li>
+                            <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>其他联系人：</span>
+                                <input type="text" name="other_man" value="{$data.other_man}" class="pact_ipt" >
+                            </li>
+                            <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>联系人电话：</span>
+                                <input type="text" name="other_tel" value="{$data.other_tel}" class="pact_ipt" >
+                            </li>
+    <elseif condition="$data.cont eq '工位不注册办公'"/>                            
+                            <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>签订公司：</span>
+                                <input type="text" name="signcompany" value="{$data.signcompany}" 
+                                class="pact_ipt"/>
+                            </li>
+                            <div class="moban"></div>
+                            <li class="xian">租赁房间信息</li>
+                            <li class="iptBox">
+                        <span class="ipt_left"><em class="red">*</em>项目：</span>
+                        <input type="text" name="signcompany" value="{$data.class_name}" class="pact_ipt"/>
+
+                    </li>
+
+                    <li class="iptBox">
+                        <span class="ipt_left"><em class="red">*</em>地址：</span>
+                        <input type="text" name="signcompany" value="{$data.class_address}" class="pact_ipt"/>
+                    </li>
+                            <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>工位号：</span>
+                                <input type="text" name="" value="{$data.detailscoll}" class="pact_ipt"/>
+                                
+                            </li>
+                       
+                            <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>工位办公服务费用：</span>
+                                <input type="text" name="station" id="station" value="{$data.station}" class="pact_ipt">
+                            </li>
+                            <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>是否含税：</span>
+                                <input type="text" name="station" id="station" value="{$data.ggistax}" class="pact_ipt">
+                           
+                 
+                            </li>
+                            <li class="iptBox">
+                            <span class="ipt_left"><em class="red">*</em>服务期限：</span>
+                            <input type="text" name="rentdatetime" value="{$data.rentdatetime}" id="rentdatetime" class="pact_ipt" >
+                        </li>
+                                 <li class="iptBox">
+                        <span class="ipt_left"><em class="red">*</em>租赁日期：</span>
+                        <span class="timeBox">
+                            <input type="text" name="rentstarttime" value="{$data.rentstarttime|date='Y年m月d日',###}" class="pact_ipt pact_ipt2" >
+                            <div id="rentstar" style="left: 0px;top: 40px;"></div>
+                        </span>
+                        <span style="line-height: 40px;display: inline-block;">～</span>
+                        <span class="timeBox">
+                            <input type="text" name="rentendtime" value="{$data.rentendtime|date='Y年m月d日',###}" class="pact_ipt pact_ipt2" >
+                            <div id="rentend" style="left: 0px;top: 40px;"></div>
+                        </span>
+                    </li>
+                            <li class="xian">房屋及付款方式</li>
+                            <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>每周期前：</span>
+                                <input type="text" name="appoint" id="appoint" value="{$data.appoint}" class="pact_ipt" >
+                            </li>
+                            <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>付款方式：</span>
+                                <select name="paytype" id="paytype" class="pact_select" >
+                
+                                <if condition="$data.paytype eq '3,3'">
+                                    <option value="3,3" >押三付三</option>
+                                </if>
+                                <if condition="$data.paytype eq '2,6'">
+
+                                        <option value="2,6">押二付六</option>                    
+                                </if>
+                                <if condition="$data.paytype eq '1,12'">
+                                        <option value="1,12">押一付十二</option>
+                                </if>
+                                <if condition="$data.paytype eq '1,6'">
+                                        <option value="1,6">押一付六</option>
+                                </if>
+                                <if condition="$data.paytype eq '2,3'">
+                                        <option value="2,3">押二付三</option>
+                                </if>
+                                <if condition="$data.paytype eq '1,3'">
+                                        <option value="1,3">押一付三</option>
+                                </if>
+                            </select>
+                            </li>
+                            <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>月金额：</span>
+                                <input type="text" name="monthly_rent"  value="{$data.monthly_rent}" class="pact_ipt">
+                            </li>
+                               <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>押金：</span>
+                                <input type="hidden" id="monthly_rent">
+                                <input type="text" name="deposit" id="deposit" value="{$data.deposit}" class="pact_ipt" >
+                                </li>
+                                <li class="iptBox">
+                                    <span class="ipt_left"><em class="red">*</em>年金额：</span>
+                                    <input type="text" name="year_rent" id="year_rent" value="{$data.year_rent}元" class="pact_ipt" >
+                                </li>
+                                <li class="iptBox">
+                                    <span class="ipt_left"><em class="red">*</em>每期金额：</span>
+                                    <input type="text" name="each" id="each" value="{$data.each}元" class="pact_ipt" >
+                                </li>
+                                <li class="iptBox">
+                                    <span class="ipt_left"><em class="red">*</em>第一次付款时间：</span>
+                                    <input type="text" name="paynext1" id="paynext1" value="{$data.paynext1}" class="pact_ipt" >
+                                </li>
+                          
+
+
+
+    <elseif condition="$data.cont eq '工商代理'"/>
+                
+                            <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>签订公司：</span>
+                                 <input type="text" name="signcompany" value="{$data.signcompany}" class=
+                                 "pact_ipt"/>
+                            </li>
+                            <div class="moban"></div>
+                            <li class="xian">委托事项</li>
+                            <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>委托事项：</span>
+                                <textarea name="entrust"  cols="30" rows="3" class="pact_text_box">{$data.entrust }</textarea>
+                            </li>
+                             <li class="iptBox">
+                            <span class="ipt_left"><em class="red">*</em>商务服务费：</span>
+                            <input type="text" name="business" id="business" value="{$data.business}" class="pact_ipt">
+                             </li>
+                          <li class="iptBox">
+                                <span class="ipt_left"><em class="red">*</em>是否含税：</span>
+                                <select  name="zjistax" class="pact_select" >
+                            <if condition="$data.middle_state eq '0'">
+                                    <option value="" selected="selected">是</option>
+                                    <!-- <option value="">否</option> -->
+                            </if>
+                             <if condition="$data.middle_state eq '1'">
+                                    <!-- <option value="" selected="selected">是</option> -->
+                                    <option value="">否</option>
+                            </if>
+                                </select>
+                            </li>
+
+
+                 
+    <else /> 
+   </if>
+
+            </div>
+            </li>
+            <li class="zhushi">收款信息</li>
+            <li class="iptBox">
+            <input type="hidden" id="account_id" name="account_id">
+                <span class="ipt_left"><em class="red">*</em>收款账户：</span>
+                <input type="text" name="owner" value="{$data.owner}" class="pact_ipt"/>
+            </li>
+            <li class="iptBox"><span class="ipt_left"><em class="red">*</em>开户行：</span><input type="text" name="opacontbank" value="{$data.opacontbank}" class="pact_ipt"/>
+            </li>
+            <li class="iptBox"><span class="ipt_left"><em class="red">*</em>银行卡号：</span><input type="text" name="contnum" value="{$data.contnum}" class="pact_ipt"/></li>
+            <div id="bank"></div>
+            <li class="iptBox" style="position: relative;">
+                <span class="ipt_left"><em class="red">*</em>实际金额：</span>
+                <input type="text" name="actual_amount" value="{$data.actual_amount}" class="pact_ipt"/>
+                <span class="rightsp">元（大写）</span>
+            </li>
+            <li class="zhushi">部门</li>
+          <li class="iptBox" style="margin-bottom: 30px;">
+                <span class="ipt_left"><em class="red">*</em>业务员：</span>
+                
+                <input type="text" name="real_name" value="{$data.real_name}" class="pact_ipt"/>
+
+            </li>
+            <li class="iptBox" style="margin-bottom: 30px;"><span class="ipt_left"><em class="red">*</em>职位：</span>
+                <input type="text" name="real_name" value="{$data.role_name}" class="pact_ipt"/>
+
+            </li>
+        </ul>
+        
+    </form>
+</div>
+
+</body>
+</html>
