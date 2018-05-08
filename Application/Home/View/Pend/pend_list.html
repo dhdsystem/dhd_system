@@ -19,8 +19,8 @@
             <a href="__APP__/pend/pend_list">未通过<span class="pactnum">{$count_no}</span></a>
         </div>
         <div class="search">
-            <form action="{:U('pend/pend_search')}" method="get" id="dayStatic">
-                <input type="text" name="company" placeholder="公司名称"  class="text"/>
+            <form action="{:U('pend/pend_searchn')}" method="get" id="dayStatic">
+                <input type="text" name="company" class="text"/>
                 <input type="submit" value="搜索" class="so" />
             </form>
         </div>
@@ -62,9 +62,7 @@
             
         </table>
 	</div>	
-    <div id="page">
-        {$page}
-        </div>
+    <div id="page">{$page}</div>
 </div>
 <script type="text/javascript">
     $(document).ready(function(){

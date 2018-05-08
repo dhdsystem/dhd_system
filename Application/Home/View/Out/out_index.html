@@ -9,13 +9,44 @@
     <script type="text/javascript" src="__JS__/jquery.js"></script>
     <script type="text/javascript" src="__JS__/Public.js"></script>
     <script type="text/javascript" src="__JS__/winpop.js"></script>
+     <script type="text/javascript">
+        $(document).ready(function() {
+            $('.offhire').click(function(event) {
+                event.preventDefault();
+                if (!confirm('确定要停租吗？')) {
+                    return false;
+                }
+                var id=$(this).attr('href');
+                if (id=='' || isNaN(id)) {
+                    wintq('ID参数不正确',3,1000,1,'');
+                    return false;
+                }else {
+                    wintq('正在处理，请稍后...',4,1000,0,'');
+                    $.ajax({
+                        url:'__APP__/out/out_ting/',
+                        dataType:'json',
+                        type:'POST',
+                        data:'id='+id,
+                        success: function(data) {
+                            // alert(data);
+                            if (data=='ok') {
+                                wintq('停租成功',1,1500,0,'?');
+                            }else {
+                                wintq('停租失败',3,1500,1,'?');
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 </head>
 <body>
 <div id="content">
     <h1>首页 > 合同管理 > 已出合同</h1>
     <h2>
         <div class="search">
-            <form action="__ACTION__" method="post" id="dayStatic">
+            <form action="{:U('out/out_search')}" method="get" id="dayStatic">
                 <input type="text" name="company" class="text"/>
                 <input type="submit" value="搜索" class="so" />
             </form>
@@ -23,7 +54,7 @@
         <a href="javascript:;" class="diy">自定义导出</a>
     </h2>
  	<div class="tableBox">
-		<table id="table" border="1" bordercolor="#CCCCCC" cellpadding="0" cellspacing="0" style="width:200%">
+		<table id="table" border="1" bordercolor="#CCCCCC" cellpadding="0" cellspacing="0" style="width:150%">
             <tr>
                 <th>编号</th>
                 <th>合同编号</th>
@@ -47,7 +78,7 @@
             <volist name="list" id="vo">
             <tr class="tr <eq name="mod" value="1">tr2</eq>">
                 <td class="tc"><input type="checkbox" class="delid" value="{$vo.id}" /></td>
-                <td class="tc">{$vo.contractnumber}</td>
+                <td class="tc">{$vo.id}</td>
                 <td class="tc">{$vo.client_name}</td>
                 <td class="tc">{$vo.contracttype}</td>
                 <td class="tc">{$vo.pro_address}-{$vo.detailscoll}</td>
@@ -63,12 +94,12 @@
                 <td class="tc fixed_w"> 
                     <div class="operation">更多
                         <div class="operarea">
-                            <a href="javascript:;" class="see oper2">查看</a>
-                            <a href="javascript:;" class="relet oper2">续签</a>
+                            <a href="__APP__/out/out_list/id/{$vo.id}" class="see oper2">查看</a>
+                            <a href="__APP__/out/out_save/id/{$vo.id}" class="relet oper2">续签</a>
                             <a href="pact_print_recei.html" class="recei oper2">收款</a>
                             <a href="javascript:;" class="download oper2">下载</a>
                             <a href="javascript:;" class="kaipiao oper2">开票</a>
-                            <a href="javascript:;" class="offhire oper2">停租</a>
+                            <a href="{$vo.id}" class="offhire oper2">停租</a>
                             <a href="javascript:;" class="refund oper2">退款</a>
                             
                         </div>
@@ -79,7 +110,7 @@
             
         </table>
 	</div>	
-    <div id="page"><{$page}></div>
+    <div id="page">{$page}</div>
 </div>
 <!-- 自定义导出 -->
 <div class="popWinBox popWinBox1">
