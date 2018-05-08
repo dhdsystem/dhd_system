@@ -266,14 +266,23 @@ class PactController extends Controller {
 	    	if($client['middle_state'] == 2){
 	    		$client['middle_state'] = '平台';
 	    	}
-    		}else{
-    			$client['middle_state'] = '直接客户';
+    	}else{
+			$client['middle_state'] = '直接客户';
     	}
-    	if(empty($reserved)){
-    		$reserved = 1;
-    	}
-    	// print_r($matter);die;
-    	$this->assign('reserved',json_encode($reserved));
+        // 合同模板信息
+        $stencil = M('stencil')
+        ->where(array('id'=>$contract['stencil_id']))->find();
+        // 预留地址信息
+        $reserved = M('reserved as r')
+        ->field('d.id,d.detailscoll,p.pro_address,c.class_name')
+        ->join('dhd_details as d on d.id = r.details_id')
+        ->join('dhd_product as p on p.id = d.pro_id')
+        ->join('dhd_class as c on c.id = p.class_id')
+        ->where(array('client_id'=>$client['id']))->find();
+    	
+    	// print_r($stencil);die;
+        $this->assign('stencil',$stencil);
+    	$this->assign('reserved',$reserved);
     	$this->assign('client',$client);
     	$this->assign('contract',$contract);
     	$this->assign('matter',$matter);

@@ -2,16 +2,31 @@
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>签订公司：</span>
     <select  name="signcompany" id="signcompany" class="pact_select" >
+        
         <option value="0">请选择签订公司</option>
+        
+        <option value="{$stencil['signcompany']}" selected>{$stencil['signcompany']}</option>
         <option value="北京东辉达科技孵化器有限公司">北京东辉达科技有限公司</option>
         <option value="北京去创创科技有限公司">北京去创创科技有限公司</option>
         <option value="北京融兴通远财务咨询有限公司">北京融兴通远财务咨询有限公司</option>
         <option value="北京创也江湖科技有限公司">北京创也江湖科技有限公司</option>  
     </select>
 </li>
-<div class="moban"></div>
+<div class="moban">
+    <li class="iptBox">
+        <span class="ipt_left"><em class="red">*</em>合同模板：</span>
+        <input type="text" class="pact_select" disabled value="{$stencil.stencil_name}">
+    </li>
+
+</div>
 <li class="xian">租赁房间信息</li>
-<div id="zhucedizhi"></div>
+<div id="zhucedizhi">
+    <li class="iptBox">
+        <span class="ipt_left"><em class="red">*</em>注册地址：</span>
+        <input type="text" class="pact_select" disabled value="{$reserved.class_name}-{$reserved.pro_address}-{$reserved.detailscoll}">
+    </li>
+    
+</div>
 
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>项目：</span>
@@ -32,18 +47,22 @@
     <span class="ipt_left"><em class="red">*</em>地址：</span>
     <select  name="" id="product" value="" class="pact_select" >
         <option value="0">请选择地址</option>
+        <option value="{$prod.pro_address}" selected="selected">{$prod.pro_address}</option>
+        
     </select>
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>房间号：</span>
+
     <select name="details_id"  class="pact_select" id="home">
         <option value="">请选择房间号</option>
+        <option value="{$prod.detailscoll}" selected="selected">{$prod.detailscoll}</option>
     </select>
 </li>
 
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>建筑面积：</span>
-    <input type="text"  value="" id="room_area" class="pact_ipt" placeholder="平米">
+    <input type="text"  value="{$prod.big_sum}" id="room_area" class="pact_ipt" placeholder="平米">
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>服务期限：</span>
@@ -52,11 +71,11 @@
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>租赁日期：</span>
     <span class="timeBox">
-        <input type="text" name="rentstarttime" value="{$matter.rentstarttime}" class="pact_ipt pact_ipt2" id="rentstarttime">
+        <input type="text" name="rentstarttime" value="{$matter.rentstarttime|date='Y年m月d日',###}" class="pact_ipt pact_ipt2" id="rentstarttime">
     </span>
     <span style="line-height: 40px;display: inline-block;">～</span>
     <span class="timeBox">
-        <input type="text" name="rentendtime" value="{$matter.rentendtime}" class="pact_ipt pact_ipt2" id="rentendtime">
+        <input type="text" name="rentendtime" value="{$matter.rentendtime|date='Y年m月d日',###}" class="pact_ipt pact_ipt2" id="rentendtime">
     </span>
 </li>
 <li class="iptBox">
@@ -65,9 +84,9 @@
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>免租日期：</span>
-    <input type="text" name="freestarttime" value="{$matter.freestarttime}" class="pact_ipt pact_ipt2" id="freestarttime">
+    <input type="text" name="freestarttime" value="{$matter.freestarttime|date='Y年m月d日',###}" class="pact_ipt pact_ipt2" id="freestarttime">
     <span style="line-height: 40px;display: inline-block;">～</span>
-    <input type="text" name="freeendtime" value="" class="pact_ipt pact_ipt2" id="freeendtime">
+    <input type="text" name="freeendtime" value="{$matter.freeendtime|date='Y年m月d日',###}" class="pact_ipt pact_ipt2" id="freeendtime">
 </li>
 
 <li class="xian">房屋及付款方式</li>
@@ -129,7 +148,7 @@
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>第一次付款时间：</span>
-    <input type="text" name="paynext1" id="paynext1" value="{$collection.paynext1}" class="pact_ipt" placeholder="第一次付款时间">
+    <input type="text" name="paynext1" id="paynext1" value="{$collection.paynext1|date='Y年m月d日',###}" class="pact_ipt" placeholder="第一次付款时间">
 </li>
 <div id="payment"></div>
 <li class="iptBox">
