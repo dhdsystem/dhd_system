@@ -19,6 +19,9 @@ class RefeeController extends Controller {
           $data['m_name']=$res['middle_man'];
           $data['m_tel']=$res['middle_tel'];
           $data['state']='4';
+          $user=M('user')->where(array('id'=>get_user_id()))->find();
+              $data['applicant']=$user['username'];
+              $data['trial_time']=time();
           $re=M('cashier')->add($data);
           if ($re) {
             $this->success('添加成功',U('refee_index'));

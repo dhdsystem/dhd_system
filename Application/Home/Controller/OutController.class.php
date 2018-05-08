@@ -411,4 +411,49 @@ class OutController extends CommonController {
         }
 
     }
+     /*退款*/
+    public function out_in(){
+            if(IS_POST){
+                $data=I('post.');
+                M('contract')->where(array('id'=>$data['id']))->save(array('account_audit'=>6));
+                $data['charge_time']=strtotime($data['charge_time']);
+                $data['state']="2";
+                $re = M('account')->where(array('id'=>$data['charge_bank']))->find();
+                $data['charge_bank']=$re['owner'].'-'.$re['name'].'-'.$re['contnum'];
+                // print_r($data);die;
+                $res=M('cashier')->add($data);
+                if($res){
+                    $this->success('添加成功',U('out_index'));
+                }else{
+                    $this->error('添加失败');
+                }
+        }else{
+               $id=I('get.id');
+               $acontname = M('account')->field('id,name,owner,contnum')->select();        //银行收款账户
+               $this->assign('acontname',$acontname);
+               $this->assign('id',$id);
+               $this->display();
+        }
+    }
+    /*开发票*/
+    public function out_on(){
+        if(IS_POST){
+            $data=I('post.');
+            $re=M('invoice')->add($data);
+            if($re){
+                $this->success('开发票成功',U('out_index'));
+            }else{
+                $this->error('开发票失败');
+            }
+        }else{
+        $id=I('get.id');
+        $re=M('collection')->where(array('contract'=>$id))->find();
+        // print_r($re);die;
+        if(empty($re['id'])){
+            $this->error('请先收款');
+        }
+        $this->assign('id',$id);
+        $this->display();
+        }
+    }
 }

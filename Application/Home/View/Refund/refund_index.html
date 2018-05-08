@@ -77,7 +77,7 @@ $(document).ready(function() {
 	            <td class="tc">{$vo.yijikemu}</td>
 	            <td class="tc">{$vo.charge_money}</td>
 	            <td class="tc">{$vo.applicant}</td>
-	            <td class="tc">{$vo.trial_time}</td>
+	            <td class="tc">{$vo.trial_time|date='Y年m月d日',###}</td>
 	            <td class="tc">{$vo.is_adopt}</td>
 	            <td class="tc fixed_w">
 	            <a href="__APP__/refund/refund_save/id/{$vo.id}" class="edit oper">修改</a>

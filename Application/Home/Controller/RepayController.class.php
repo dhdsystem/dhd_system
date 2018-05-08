@@ -14,6 +14,18 @@ class RepayController extends Controller {
      		$data=I('post.');
      		$data['state']="1";
      		$data['declare']=time();
+            $user=M('user')->where(array('id'=>get_user_id()))->find();
+            $data['applicant']=$user['username'];
+            $role=M('role')->where(array('id'=>$user['r_id']))->find();
+            if($role['pid']=='0')
+            {
+              $data['department']=$role['role_name'];
+
+            }else{
+                $role=M('role')->where(array('id'=>$role['pid']))->find();
+                $data['department']=$role['role_name'];
+            }
+            
      		$res=M('cashier')->add($data);
      		if($res){
      			$this->success('添加成功',U('repay_index'));

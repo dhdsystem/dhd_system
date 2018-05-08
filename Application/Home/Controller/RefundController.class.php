@@ -18,6 +18,9 @@ class RefundController extends Controller {
        			$data['state']="2";
        			$re = M('account')->where(array('id'=>$data['charge_bank']))->find();
        			$data['charge_bank']=$re['owner'].'-'.$re['name'].'-'.$re['contnum'];
+            $user=M('user')->where(array('id'=>get_user_id()))->find();
+              $data['applicant']=$user['username'];
+              $data['trial_time']=time();
        			// print_r($data);die;
  				$res=M('cashier')->add($data);
  				if($res){
