@@ -456,4 +456,34 @@ class OutController extends CommonController {
         $this->display();
         }
     }
+    /*收款*/
+     public function out_rece(){
+        if(IS_POST){
+                  $data = I('post.');
+                    // print_r($data);die;
+                    $data['u_id'] = get_user_id();
+                    $gathertiem = I('post.gathertiem');
+                    $c_id = M('client')->field('id')->where(array('client_name'=>$data['client_name']))->select();
+                    $data['company'] = $c_id[0]['id'];
+                    $data['gathertiem'] = strtotime("$gathertiem");
+                    // print_r($data);die;
+                    $save = M('contract')->where(array('id'=>$data['contract']))->save(array('account_audit'=>5));
+                    $add = M('gather')->data($data)->add();
+                    if($add && $save){
+                        $this->success('收款成功', U('Gather/gather_index'));
+                    }else{
+                        $this->error('收款失败',U('out/out_rece?id='.$data['.id.']));
+                    }
+        }
+        else{
+            $id = I('get.id');
+            $data=M('contract')->join('dhd_client on dhd_contract.client_id=dhd_client.id')
+            ->where(array('dhd_contract.id'=>$id))->field('dhd_contract.id,client_name')->find();
+            $bank = M('account')->select();
+            $this->assign('bank',$bank);
+            $this->assign('id',$id);
+            $this->assign('name',$data['client_name']);
+            $this->display();
+        }
+    }
 }

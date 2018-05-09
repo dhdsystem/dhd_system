@@ -5,10 +5,11 @@ class GatherController extends Controller {
    /*收款*/
     public function gather_index(){
     	$data = M('gather as g')
-    			->field('a.name,g.company,g.firststep,g.detail,g.money,g.gathertiem,c.client_name,c.nuddke_id,u.real_name,g.id')
+    			->field('con.contractnature,a.name,g.company,g.firststep,g.detail,g.money,g.gathertiem,c.client_name,c.nuddke_id,u.real_name,g.id')
     			->join('dhd_account as a on g.gather = a.id')
                 ->join('dhd_client as c on g.company = c.id')
     			->join('dhd_user as u on g.u_id = u.id')
+                ->join('dhd_contract as con on con.id=g.contract ')
     			->where('gather_state=0')
     			->select();
         foreach($data as $k => $v){

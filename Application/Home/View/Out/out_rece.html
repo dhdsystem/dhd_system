@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加收款记录</title>
+    <link rel="stylesheet" type="text/css" href="__CSS__/content.css"  />
+    <script type="text/javascript" src="__JS__/jquery.js"></script>
+    <script type="text/javascript" src="__JS__/jquery.validate.js"></script>
+    <script type="text/javascript" src="__JS__/winpop.js"></script>
+    <!-- 日期插件 -->
+    <link rel="stylesheet" type="text/css" href="__CSS__/calendar.css"/>
+    <script type="text/javascript" src="__JS__/calendar.js"></script>
+    <script type="text/javascript" src="__JS__/page.js"></script>
+    <style>
+        #mername{
+             z-index: 100000000;
+            background: #fff;
+            position: absolute;
+            top:30px;
+            width: 248px;
+            left: 126px;
+            box-shadow: 3px 7px 10px 2px #dadada;
+        }
+        #mername p{
+            cursor: pointer;
+        }
+        #mername p:hover{
+            background: #eee;
+        }
+        select{
+            width: 108px;
+        }
+        .unkwn{border:1px margin-left: 137px solid #ccc;background: #fff;position: absolute;top:40px;z-index: 22;width: 754px;}
+        .unkwn p{font-size: 14px;color:#000; margin-left: 137px;height:35px;line-height: 35px;padding-left:15px;cursor: pointer;}
+        .unkwn p:hover{background: #eee;}
+
+    </style>
+</head>
+<body>
+<div class="contract_cont"  id="content">
+    <h1>首页 > 财务管理 > 收款记录 > 添加其他收款记录 </h1>
+    <h2>
+        <div class="h2_left">
+            <a href="javascript:history.back();" class="Retreat">后退</a>
+        </div>
+    </h2>
+            <form action="__APP__/out/out_rece" method="post">
+            <dl id="cdl" style="padding-bottom: 100px;">
+                <dd>
+                    <span class="dd_left">客户公司：</span>
+                    <input type="hidden" name="contract" value="{$id}" id="middelid"/>
+                    <div id='quao'></div>
+                    <input type="text" id="company" name="client_name" value="{$name}" class="qtext" readonly="true">
+                </dd>
+                <dd>
+                    <span class="dd_left">一级科目：</span>
+                        <select name="firststep" class="tab_select" style="width: 754px;height: 40px;">
+                            <option value="代收">代收</option>
+                            <option value="销售收入">销售收入</option>
+                            <option value="主营业务收入">主营业务收入</option>
+                            <option value="其他收入">其他收入</option>
+                        </select>
+                </dd>
+                <dd>
+                    <span class="dd_left">二级科目：</span>
+                        <select name="detail" class="tab_select" style="width: 754px;height: 40px;">
+                            <option value="房租">房租</option>
+                            <option value="电费">电费</option>
+                            <option value="装修费">装修费</option>
+                            <option value="代收缴税金">代收缴税金</option>
+                            <option value="工商代垫费">工商代垫费</option>
+                            <option value="复印费">复印费</option>
+                            <option value="装修押金">装修押金</option>
+                            <option value="桌椅押金">桌椅押金</option>
+                            <option value="门禁钥匙押金">门禁钥匙押金</option>
+                            <option value="电话拉线押金">电话拉线押金</option>
+                            <option value="其他">其他</option>
+                        </select>
+                </dd>            
+                <dd>
+                    <span class="dd_left">收款金额：</span>
+                    <span>
+                        <input type="text" name="money" class="qtext" id="m" />
+                    </span>
+                </dd>
+                <dd>
+                    <span class="dd_left">收款日期：</span>
+                    <span>
+                        <input type="text" name="gathertiem" class="qtext dateofcollect" id="dateofcollect" />
+                        <div id="gathDate" style="left: 134px;top: 40px;"></div>
+                    </span>
+                </dd>
+                <dd>
+                    <span class="dd_left">收款账户：</span>
+                    <span>
+                        <select name="gather" class="tab_select" id="signcompany" class="qtext">
+                            <option value="0">请选择收款账户</option>
+                            <foreach name="bank" item="vo">
+                                <option value="{$vo['id']}" aid="{$vo['id']}">{$vo['name']}</option>
+                            </foreach>
+                        </select>
+                    </span>
+                </dd>
+
+                <dd>
+                    <span class="dd_left">备注：</span>
+                    <textarea cols="30" rows="3" class="text_box"></textarea>
+                </dd>
+                <dd>
+                    <span><input type="submit" value="提交" class="submit"/></span>
+                </dd>
+            </dl>
+            </form>
+</div>
+
+<script type="text/javascript">
+
+    $(document).on('blur','#customername',function(){
+
+        setTimeout("$('#mername').empty()",300);
+    })
+    $(document).on('click','.midd',function(){
+        var company = $(this).html();
+        var middleid = $(this).attr('ids');
+        var middlename = $(this).attr('idna');
+        $('#company').val(company);
+        $('#middelid').val(middleid);
+        $('#middlename').val(middlename);
+        $('#quao').empty();
+
+    })
+
+
+    $(document).on('change','#bank',function(){
+        var opacontbank_id = $(this).find("option:selected").attr('bid');
+        $.ajax({
+           type: "post",
+           url: "__APP__/Contract/collection_bank",
+           data:'opacontbank_id='+opacontbank_id,
+           dataType:"json",
+           success: function(msg){
+            var s = '<select class="tab_select" name="collectaccount[]" style="width: 201px;height: 42px;margin-left:4px;"><option value="'+msg.opacontnum+'">'+msg.opacontnum+'</option></select>';
+            $('#bank').nextAll().remove();
+            $('#bank').after(s);   
+           }
+       })    
+    })
+
+</script>
+</body>
+</html>
