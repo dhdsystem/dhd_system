@@ -50,7 +50,6 @@
                 <th>租赁日期</th>
                 <th>合同金额</th>
                 <th>法人姓名</th>
-                <th>中间商</th>
                 <th>电话</th>
                 <th>业务员</th>
                 <th>信用代码</th>
@@ -58,59 +57,41 @@
                 <th>操作</th>
             </tr>
             <!--顶级数据-->
-            <tr class="tr">
-                <td class="tc">1</td>
-                <td class="tc">416465</td>
-                <td class="tc">又是大项目</td>
-                <td class="tc">211</td>
-                <td class="tc">20000</td>
-                <td class="tc">2018/4/20</td>
-                <td class="tc">宏梦</td>
-                <td class="tc">宏梦</td>
-                <td class="tc">宏梦</td>
-                <td class="tc">宏梦</td>
-                <td class="tc">宏梦</td>
-                <td class="tc" value="1"><span class="jdjg">是否异常</span></td>
-                <td class="tc fixed_w"> 
-                    <div class="operation">更多
-                        <div class="operarea">
-                            <a href="javascript:;" class="see oper2">查看</a>
-                            <a href="javascript:;" class="relet oper2">续签</a>
-                            <a href="javascript:;" class="regain oper2">收回</a>
-                            <a href="javascript:;" class="download oper2">下载</a>
-                            <a href="javascript:;" class="abnormal oper2">拉异常</a>
+            <volist name="list" id="vo">
+                <tr class="tr">
+                    <td class="tc"><input type="checkbox" class="delid" value="{$vo.id}" /></td>
+                    <td class="tc">{$vo.contractnumber}</td>
+                    <td class="tc">{$vo.client_name}</td>
+                    <td class="tc">{$vo.pro_address}-{$vo.detailscoll}</td>
+                    <td class="tc">{$vo.ac_time|date="Y-m-d",###}</td>
+                    <td class="tc">{$vo.actual_amount}</td>
+                    <td class="tc">{$vo.legalperson}</td>
+                    <td class="tc">{$vo.legaltel}</td>
+                    <td class="tc">{$vo.real_name}</td>
+                    <td class="tc"></td>
+                    <td class="tc">
+                        <?php if($vo['abnormal'] == 1){
+                            echo "<span class='jdjg'>异常</span>";
+                        }else{
+                            echo"<span class='jdjg'>正常</span>";
+                        }?>
+                    </td>
+                    <td class="tc fixed_w"> 
+                        <div class="operation">更多
+                            <div class="operarea">
+                                <a href="__APP__/Rent/rent_sel/id/{$vo.id}" class="see oper2">查看</a>
+                                <a href="__APP__/Rent/rent_sel/id/{$vo.id}" class="relet oper2">续签</a>
+                                <a href="__APP__/Rent/rent_regain/id/{$vo.id}" class="regain oper2">收回</a>
+                                <a href="__APP__/Rent/rent_sel/id/{$vo.id}" class="download oper2">下载</a>
+                                <a href="__APP__/Rent/rent_abnormal/id/{$vo.id}" class="abnormal oper2">拉异常</a>
+                            </div>
                         </div>
-                    </div>
-                </td>
-            </tr>
-            <tr class="tr">
-                <td class="tc">1</td>
-                <td class="tc">416465</td>
-                <td class="tc">又是大项目</td>
-                <td class="tc">211</td>
-                <td class="tc">20000</td>
-                <td class="tc">2018/4/20</td>
-                <td class="tc">宏梦</td>
-                <td class="tc">宏梦</td>
-                <td class="tc">宏梦</td>
-                <td class="tc">宏梦</td>
-                <td class="tc">宏梦</td>
-                <td class="tc" value="2"><span class="jdjg">是否异常</span></td>
-                <td class="tc fixed_w"> 
-                    <div class="operation">更多
-                        <div class="operarea">
-                            <a href="javascript:;" class="relet oper2">续签</a>
-                            <a href="javascript:;" class="see oper2">查看</a>
-                            <a href="javascript:;" class="regain oper2">收回</a>
-                            <a href="javascript:;" class="download oper2">下载</a>
-                            <a href="javascript:;" class="abnormal oper2">拉异常</a>
-                        </div>
-                    </div>
-                </td>
-            </tr>
+                    </td>
+                </tr>
+            </volist>
         </table>
     </div>  
-    <div id="page"><{$page}></div>
+    <div id="page">{$page}</div>
 </div>
 <!-- 自定义导出 -->
 <div class="popWinBox popWinBox1">

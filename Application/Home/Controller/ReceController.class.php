@@ -47,7 +47,6 @@ class ReceController extends CommonController {
                 $this->assign('data',$list);
                 $this->display();
         }
-
         if($da['contracttype']=='mini房间'){
                  $list = M('contract as c')
                 ->where(array('c.id'=>$id))
@@ -196,12 +195,13 @@ class ReceController extends CommonController {
         // print_r($data);die;
         $data['u_id'] = get_user_id();
         $gathertiem = I('post.gathertiem');
-        $where=array('client_name'=>$data['client_name']);
-        $c_id = M('client')->field('id')->where($where)->select();
+        $c_id = M('client')->field('id')->where(array('client_name'=>$data['client_name']))->select();
         $data['company'] = $c_id[0]['id'];
         $data['gathertiem'] = strtotime("$gathertiem");
         // print_r($data);die;
-        $save = M('contract')->where(array('id'=>$data['company']))->save(array('account_audit'=>4));
+        $save = M('contract')->where(array('id'=>$data['contract']))->save(array('account_audit'=>4));
+        $det_id = M('contract')->field('det_id')->where(array('id'=>$data['contract']))->select();
+        $save = M('details')->where(array('id'=>$det_id[0]['det_id']))->save(array('det_advance'=>3));
         $add = M('gather')->data($data)->add();
         if($add && $save){
             $this->success('收款成功', U('Gather/gather_index'));

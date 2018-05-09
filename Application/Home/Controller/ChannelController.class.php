@@ -33,7 +33,7 @@ class ChannelController extends Controller {
               ->where('m.id='.$v['id'])
               ->select();
             // print_r($tsql);die;
-          $a = 0; $b = '1'; $c = 0; $d = 0;
+          $a = 0; $b = 0; $c = 0; $d = 0;
           foreach($tsql as $kk => $vv){
               
             if($vv['account_audit']=='4'){
