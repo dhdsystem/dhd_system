@@ -1,11 +1,12 @@
 
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>签订公司：</span>
-    <select  name="signcompany" id="signcompany" class="pact_select" >
-        
+
+    <select  name="signcompany" <?php if(!empty($stencil['signcompany'])){ echo 'disabled'; }?> id="signcompany" class="pact_select" >
         <option value="0">请选择签订公司</option>
-        
-        <option value="{$stencil['signcompany']}" selected>{$stencil['signcompany']}</option>
+        <notempty name="stencil['signcompany']">
+            <option value="{$stencil['signcompany']}" selected>{$stencil['signcompany']}</option>
+        </notempty>
         <option value="北京东辉达科技孵化器有限公司">北京东辉达科技有限公司</option>
         <option value="北京去创创科技有限公司">北京去创创科技有限公司</option>
         <option value="北京融兴通远财务咨询有限公司">北京融兴通远财务咨询有限公司</option>
@@ -13,25 +14,35 @@
     </select>
 </li>
 <div class="moban">
-    <li class="iptBox">
-        <span class="ipt_left"><em class="red">*</em>合同模板：</span>
-        <input type="text" class="pact_select" disabled value="{$stencil.stencil_name}">
-    </li>
+    <notempty name="stencil['stencil_name']">
+        <li class="iptBox">
+            <input type="hidden" class="pact_ipt"  value="{$stencil.id}">
+            <span class="ipt_left"><em class="red">*</em>合同模板：</span>
+            <input type="text" class="pact_ipt" disabled value="{$stencil.stencil_name}">
+        </li>
+    </notempty>
+    
 
 </div>
 <li class="xian">租赁房间信息</li>
 <div id="zhucedizhi">
     <li class="iptBox">
         <span class="ipt_left"><em class="red">*</em>注册地址：</span>
-        <input type="text" class="pact_select" disabled value="{$reserved.class_name}-{$reserved.pro_address}-{$reserved.detailscoll}">
+        <input type="text" class="pact_ipt" disabled value="{$reserved.class_name}-{$reserved.pro_address}-{$reserved.detailscoll}">
     </li>
     
 </div>
 
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>项目：</span>
-    <select  name="" id="project"  class="pact_select" >
+    <notempty name="stencil['signcompany']">
+            <input type="hidden" name="details_id" value="{$prod.id}">
+    </notempty>
+   
+    <select  name="" <?php if(!empty($prod['class_name'])){ echo 'disabled'; }?> id="project"  class="pact_select" >
+    <option value="">--请选择项目--</option>
         <foreach name="project" item="vo" >
+            
             <if condition="$prod.class_name eq $vo.class_name ">
                 <option value="{$vo.id}" selected="selected">{$vo.class_name}</option>
             <else /> 
@@ -45,7 +56,7 @@
 
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>地址：</span>
-    <select  name="" id="product" value="" class="pact_select" >
+    <select  name="" <?php if(!empty($prod['class_name'])){ echo 'disabled'; }?> id="product" value="" class="pact_select" >
         <option value="0">请选择地址</option>
         <option value="{$prod.pro_address}" selected="selected">{$prod.pro_address}</option>
         
@@ -53,8 +64,8 @@
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>房间号：</span>
-
-    <select name="details_id"  class="pact_select" id="home">
+    
+    <select name="details_id" <?php if(!empty($prod['class_name'])){ echo 'disabled'; }?> class="pact_select" id="home">
         <option value="">请选择房间号</option>
         <option value="{$prod.detailscoll}" selected="selected">{$prod.detailscoll}</option>
     </select>
@@ -62,7 +73,7 @@
 
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>建筑面积：</span>
-    <input type="text"  value="{$prod.big_sum}" id="room_area" class="pact_ipt" placeholder="平米">
+    <input type="text"  value="{$prod.big_sum}" <?php if(!empty($prod['class_name'])){ echo 'disabled'; }?> id="room_area" class="pact_ipt" placeholder="平米">
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>服务期限：</span>
@@ -106,23 +117,29 @@
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>管理费是否含税：</span>
     <select  name="zjistax" class="pact_select" >
-        <option value="">是</option>
-        <option value="">否</option>
+        <option value="1">是</option>
+        <option value="0">否</option>
     </select>
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>管理费递增：</span>
     <input type="text" name="increasing" value="{$matter.increasing}" class="pact_ipt" style="width: 632px;display: inline-block;margin-right: 10px;">
     <select name="increayear" class="pact_select" style="width:100px;display: inline-block;">
+        <option value="0">请选择</option>
+        <notempty name="matter['increayear']">
+            <option value="{$matter['increayear']}" selected>{$matter['increayear']}年</option>
+        </notempty>
         <option value="1">1年</option>
         <option value="2">2年</option>
     </select>
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>付款方式：</span>
-    <select  name="paytype" id="paytype" class="pact_select" >
-
-        <option value="3,3">押三付三</option>
+    <select  name="paytype" id="paytype" class="pact_select">
+        <notempty name="collection['paytype']">
+             <option value="{$collection.paytype} " selected>{$collection.paytypehan}</option>
+        </notempty>
+         <option value="3,3">押三付三</option>
         <option value="2,6">押二付六</option>
         <option value="1,12">押一付十二</option>
         <option value="1,6">押一付六</option>
@@ -147,13 +164,22 @@
     <input type="text" name="each" id="each" value="{$collection.each}" class="pact_ipt" placeholder="元 （大写）">
 </li>
 <li class="iptBox">
-    <span class="ipt_left"><em class="red">*</em>第一次付款时间：</span>
+    <span class="ipt_left"><em class="red">*</em>第1次付款时间：</span>
     <input type="text" name="paynext1" id="paynext1" value="{$collection.paynext1|date='Y年m月d日',###}" class="pact_ipt" placeholder="第一次付款时间">
 </li>
-<div id="payment"></div>
+<div id="payment">
+    <notempty name="collection.paynext2">
+        <foreach name="collection.paynext2" item="vo" key="k" >
+            <li class="iptBox">
+                <span class="ipt_left"><em class="red">*</em>第{$k+2}次付款时间：</span>
+                <input type="text" name="paynext2[]" id="paynext2" value="{$vo|date='Y年m月d日',###}" class="pact_ipt" placeholder="第一次付款时间">
+            </li>
+        </foreach>
+    </notempty>
+</div>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>备注：</span>
-    <textarea name="" class="pact_text_box" id="" cols="60" rows="5" style="display: inline; height: 49px;"></textarea>
+    <textarea name="ac_desc" class="pact_text_box" id="" cols="60" rows="5" style="display: inline; height: 49px;">{$matter.ac_desc}</textarea>
 </li>
 <script type="text/javascript">
         laydate.render({  

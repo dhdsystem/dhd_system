@@ -65,7 +65,7 @@ class PactController extends Controller {
     {
     	$contracttype = I('post.contracttype');
     	$data = I('post.');
-
+        // print_r(I('post.paynext2'));die;
     		// 合同表信息添加数据
 			// echo $contracttype;die;
     	if($contracttype != '0' || $contracttype != '会议室出租'){
@@ -76,7 +76,8 @@ class PactController extends Controller {
 		    $contract['account_id'] = I('post.account_id');
 		    $contract['stencil_id'] = I('post.stencil');
             $contract['det_id'] = I('post.details_id');
-		    $contract['actual_amount'] = I('post.actual_amount');
+            $contract['actual_amount'] = I('post.actual_amount');
+		    $contract['res_id'] = I('post.res_id');
 		    $contract['user_id'] = get_user_id();
 	    	$res = M('contract')->add($contract);	
 	    	
@@ -188,10 +189,17 @@ class PactController extends Controller {
 	       			$collection['year_rent'] = I('post.year_rent');
 	       			$collection['deposit'] = I('post.deposit');
 	       			$collection['each'] = I('post.each');
-	       			$collection['paynext1'] = I('post.paynext1');
-	       			$collection['paynext2'] = I('post.paynext2');
+	       			$collection['paynext1'] = inttime(I('post.paynext1'));
+                    $paynext2 = I('post.paynext2');
+                    foreach ($paynext2 as $k => $v) {
+                        $time[] = inttime($v);
+                    }
+                    $paynext = implode(',',$time);
+                    // print_r($paynext);die;
+	       			$collection['paynext2'] = $paynext;
 	       			$r = M('collection')->add($collection);
 	       			if($r){
+                        // die;
 	       				$this->success('合同新增成功', U('Pend/pend_index'));
 			        }else{
 			            $this->error('合同新增失败',U('Pend/pend_index'));
@@ -243,6 +251,11 @@ class PactController extends Controller {
             $matter = M('industrial')->where($contractid)->find();
         }
         $collection = M('collection')->where($contractid)->find();
+        $paty = explode(',',$collection['paytype']);
+        $ya = numToWord($paty[0]);
+        $fu = numToWord($paty[1]);
+        $collection['paytypehan'] = '押'.$ya.'付'.$fu;
+        $collection['paynext2'] = explode(',' , $collection['paynext2']);
         $prod = M('details as d ')
         ->field('d.detailscoll,d.big_sum,p.pro_address,c.class_name,d.id')
         ->join('dhd_product as p on d.pro_id = p.id')
@@ -252,7 +265,9 @@ class PactController extends Controller {
         // print_r($prod);die;
     	
     	// // 财务账户
-    	$account = M('account')->field('id,acc_name')->select();
+        $account = M('account')->field('id,acc_name')->select();
+        // // 合同收款账户
+    	$shoukuan = M('account')->where(array('id' => $contract['account_id']))->find();
     	// // 产品项目信息
     	$project = M('class')->field('id,class_name')->where(array('class_is'=>0))->select();
     	// 客户中间商情况处理
@@ -280,8 +295,9 @@ class PactController extends Controller {
         ->join('dhd_class as c on c.id = p.class_id')
         ->where(array('client_id'=>$client['id']))->find();
     	
-    	// print_r($stencil);die;
+    	// print_r($shoukuan);die;
         $this->assign('stencil',$stencil);
+        $this->assign('shoukuan',$shoukuan);
     	$this->assign('reserved',$reserved);
     	$this->assign('client',$client);
     	$this->assign('contract',$contract);
@@ -291,6 +307,147 @@ class PactController extends Controller {
     	$this->assign('account',$account);
         $this->assign('project',$project);
     	$this->display();
+    }
+    public function pactaudit_do()
+    {
+        $data = I('post.');
+
+        
+        // print_r($data);die;
+            // 合同表信息添加数据
+            $contracttype = I('post.contracttype');
+        
+            $where['contract_id'] = I('post.contract_id');
+            // print_r($where);die;
+            $contract['ac_time'] = inttime(I('post.ac_time'));
+            $contract['contractnumber'] = I('post.contractnumber');
+            $contract['contractnature'] = I('post.contractnature');
+            $contract['account_id'] = I('post.account_id');
+            $contract['stencil_id'] = I('post.stencil_id');
+            
+            $contract['account_audit'] = 4;
+            $contract['actual_amount'] = I('post.actual_amount');
+            $contract['user_id'] = get_user_id();
+            $res = M('contract')->where(array('id' =>  $where['contract_id']))->save($contract);   
+            
+            if($res){
+                if($contracttype=='大面积出租'){
+                    // 大面积合同信息添加内容
+                   
+                    $largearea['rentdatetime'] = I('post.rentdatetime');
+                    $largearea['rentstarttime'] = inttime(I('post.rentstarttime'));
+                    $largearea['rentendtime'] = inttime(I('post.rentendtime'));
+                    $largearea['freetime'] = I('post.freetime');
+                    $largearea['freestarttime'] = inttime(I('post.freestarttime'));
+                    $largearea['freeendtime'] = inttime(I('post.freeendtime'));
+                    $largearea['increasing'] = I('post.increasing');
+                    $largearea['increayear'] = I('post.increayear');
+                    $largearea['rates'] = I('post.rates');
+                    $largearea['zjistax'] = I('post.zjistax');
+                    $re = M('largearea')->where($where)->save($largearea);
+                }
+                if($contracttype=='mini房间'){
+                    // 小房间合同信息添加内容
+                    $houselet['rentdatetime'] = I('post.rentdatetime');
+                    $houselet['rentstarttime'] = inttime(I('post.rentstarttime'));
+                    $houselet['rentendtime'] = inttime(I('post.rentendtime'));
+                    $houselet['business'] = I('post.business');
+                    $houselet['swistax'] = I('post.swistax');
+                    $houselet['rates'] = I('post.rates');
+                    $houselet['zjistax'] = I('post.zjistax');
+
+                    $re = M('houselet')->where($where)->save($houselet);
+                }
+                if($contracttype=='工位注册办公'){
+                    // 工位注册办公合同信息内容
+                    $registration['business'] = I('post.business');
+                    $registration['station'] = I('post.station');
+                    $registration['rentdatetime'] = I('post.rentdatetime');
+                    $registration['rentstarttime'] = inttime(I('post.rentstarttime'));
+                    $registration['rentendtime'] = inttime(I('post.rentendtime'));
+                    $registration['ggistax'] = I('post.ggistax');
+
+                    $re = M('registration')->where($where)->save($registration);
+                }
+                if($contracttype=='注册地址'){
+                    // 工位注册合同信息内容
+                    $register['station'] = I('post.station');
+                    $register['ggistax'] = I('post.ggistax');
+                    $register['business'] = I('post.business');
+                    $register['rentdatetime'] = I('post.rentdatetime');
+                    $register['rentstarttime'] = inttime(I('post.rentstarttime'));
+                    $register['rentendtime'] = inttime(I('post.rentendtime'));
+          
+                    $re = M('register')->where($where)->save($register);
+                }
+                if($contracttype=='代理记账'){
+
+                    // 代理记账合同信息内容
+                    $tally['rentstarttime']= inttime(I('post.rentstarttime'));
+                    $tally['rentendtime']= inttime(I('post.rentendtime'));
+                    $tally['ta_kmoney']= I('post.ta_kmoney');
+                    $tally['ta_kis']= I('post.ta_kis');
+                    $tally['ta_gmoney']= I('post.ta_gmoney');
+                    $tally['ta_gis']= I('post.ta_gis');
+                    $tally['ta_istaxcontrol']= I('post.ta_istaxcontrol');
+                    $tally['ta_skistax']= I('post.ta_skistax');
+                    $tally['ta_skmoney']= I('post.ta_skmoney');
+                    $tally['skstarttime']= inttime(I('post.skstarttime'));
+                    $tally['skendtime']= inttime(I('post.skendtime'));
+
+                    $re = M('tally')->where($where)->save($tally);
+                }
+                if($contracttype=='工位不注册办公'){
+                    // 工位不注册办公合同信息内容
+                    $regclosed['station']= I('post.station');
+                    $regclosed['ggistax']= I('post.ggistax');
+                    $regclosed['rentdatetime']= I('post.rentdatetime');
+                    $regclosed['rentstarttime']= inttime(I('post.rentstarttime'));
+                    $regclosed['rentendtime']= inttime(I('post.rentendtime'));
+                    $re = M('regclosed')->where($where)->save($regclosed);
+                }
+                if($contracttype=='工商代理'){
+
+                    $industrial['entrust'] = I('post.entrust');
+                    $industrial['business'] = I('post.business');
+                    $industrial['swistax'] = I('post.swistax');
+                    $re = M('industrial')->where($where)->save($industrial);
+                }               
+               
+               
+                if($re!==false){
+
+                    $collection['appoint'] = I('post.appoint');
+                    $collection['overdue'] = I('post.overdue');
+                    $collection['paytype'] = I('post.paytype');
+                    $collection['monthly_rent'] = I('post.monthly_rent');
+                    $collection['year_rent'] = I('post.year_rent');
+                    $collection['deposit'] = I('post.deposit');
+                    $collection['each'] = I('post.each');
+                    $collection['paynext1'] = inttime(I('post.paynext1'));
+                    $paynext2 = I('post.paynext2');
+                    foreach ($paynext2 as $k => $v) {
+                        $time[] = inttime($v);
+                    }
+                    $paynext = implode(',',$time);
+                    // print_r($paynext);die;
+                    $collection['paynext2'] = $paynext;
+                    $r = M('collection')->where($where)->save($collection);
+                    if($r!== false){
+                        // die;
+                        $this->success('合同审核成功', U('Pend/pend_index'));
+                    }else{
+                        $this->error('合同审核失败',U('Pend/pend_index'));
+                    }
+                }else{
+                    $this->error('合同审核有误',U('Pend/pend_index'));
+                }
+            }else{
+                $this->error('合同信息审核失败',U('Pend/pend_index'));
+            }
+            
+        
+
     }
     /**
      * /

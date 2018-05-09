@@ -21,10 +21,16 @@
             <a href="javascript:history.back();" class="Retreat">后退</a>
         </div>
     </h2>
-    <form method="post" action="__APP__/Pact/pactadd_do" enctype="multipart/form-data">
-        <input type="hidden" name="client_id"  value="{$client.id}">
+    <form method="post" action="__APP__/Pact/pactaudit_do" enctype="multipart/form-data">
+        <input type="hidden" name="contract_id"  value="{$contract.id}">
         <ul>
             <li class="xian">基础信息</li>
+            <li class="iptBox">
+                <span class="ipt_left"><em class="red">*</em>合同编号：</span>
+                <input type="text" value="" name="contractnumber" id="contractnumber" class="pact_ipt"/>
+                
+                    
+            </li>
             <li class="iptBox">
                 <span class="ipt_left"><em class="red">*</em>签订日期：</span>
                 <input type="text" value="{$contract.ac_time|date='Y年m月d日',###}" name="ac_time" id="ac_time" class="pact_ipt"/>
@@ -57,7 +63,7 @@
             <li class="xian">客户信息</li>
             <li class="iptBox">
                 <span class="ipt_left"><em class="red">*</em>客户分组：</span>
-                <input type="text" name="middle_state" value="{$client.middle_state}" class="pact_ipt"/>
+                <input type="text" name="middle_state" disabled value="{$client.middle_state}" class="pact_ipt"/>
             </li>
             <if condition="$client.middle_state eq '直接客户' ">
                 
@@ -65,75 +71,76 @@
             <else /> 
                 <li class="iptBox">
                     <span class="ipt_left"><em class="red">*</em>{$client.middle_state}公司：</span>
-                    <input type="text" name="middle_name" value="{$client.middle_name}" class="pact_ipt"/>
+                    <input type="text" name="middle_name" disabled value="{$client.middle_name}" class="pact_ipt"/>
                     <div id="vas"></div>
                 </li>
                 <li class="iptBox">
                     <span class="ipt_left"><em class="red">*</em>{$client.middle_state}联系人：</span>
-                    <input type="text" name="middle_man" value="{$client.middle_man}" class="pact_ipt"/>
+                    <input type="text" name="middle_man" disabled value="{$client.middle_man}" class="pact_ipt"/>
                 </li>
                 <li class="iptBox">
                     <span class="ipt_left"><em class="red">*</em>{$client.middle_state}联系人电话：</span>
-                    <input type="text" name="middle_tel" value="{$client.middle_tel}" class="pact_ipt"/>
+                    <input type="text" name="middle_tel" disabled value="{$client.middle_tel}" class="pact_ipt"/>
                 </li>
 
                 <li class="iptBox">
                     <span class="ipt_left"><em class="red">*</em>{$client.middle_state}办公地址：</span>
-                    <input type="text" name="middle_address" value="{$client.middle_address}" class="pact_ipt"/>
+                    <input type="text" name="middle_address" disabled value="{$client.middle_address}" class="pact_ipt"/>
                 </li>
             </if>
             <br>
             <!-- 客户公司信息 -->
             <li class="iptBox">
                 <span class="ipt_left"><em class="red">*</em>客户公司：</span>
-                <input type="text" name="client_name" value="{$client.client_name}" class="pact_ipt"/>
+                <input type="text" name="client_name" disabled value="{$client.client_name}" class="pact_ipt"/>
                 <div id="vas"></div>
             </li>
             <li class="iptBox" style="position: relative;">
                 <span class="ipt_left"><em class="red">*</em>注册资金：</span>
-                <input type="text" name="client_money" value="{$client.client_money}" class="pact_ipt"/>
+                <input type="text" name="client_money" disabled value="{$client.client_money}" class="pact_ipt"/>
                 <span class="rightsp"> 万</span>
             </li>
             <li class="iptBox">
                 <span class="ipt_left"><em class="red">*</em>法人姓名：</span>
-                <input type="text" name="legalperson" value="{$client.legalperson}" class="pact_ipt"/>
+                <input type="text" name="legalperson" disabled value="{$client.legalperson}" class="pact_ipt"/>
             </li>
             <li class="iptBox">
                 <span class="ipt_left"><em class="red">*</em>法人联系电话：</span>
-                <input type="text" name="legaltel" value="{$client.legaltel}" class="pact_ipt"/>
+                <input type="text" name="legaltel" disabled value="{$client.legaltel}" class="pact_ipt"/>
             </li>
             <li class="iptBox">
                 <span class="ipt_left"><em class="red">*</em>法人身份证号：</span>
-                <input type="text" name="legalidnum" value="{$client.legalidnum}" class="pact_ipt"/>
+                <input type="text" name="legalidnum" disabled value="{$client.legalidnum}" class="pact_ipt"/>
             </li>
             <li class="iptBox">
                 <span class="ipt_left"><em class="red">*</em>纳税形式：</span>
                 <if condition="$client.taxstyle eq 0 ">
-                    <input type="text" name="taxstyle" value="小规模" class="pact_ipt"/>
+                    <input type="text" name="taxstyle" disabled value="小规模" class="pact_ipt"/>
                 <else />
-                    <input type="text" name="taxstyle" value="一般人" class="pact_ipt"/>
+                    <input type="text" name="taxstyle" disabled value="一般人" class="pact_ipt"/>
                 </if>
             </li>
             <li class="iptBox">
                 <span class="ipt_left"><em class="red">*</em>信用代码：</span>
-                <input type="text" name="credit_code" value="{$client.credit_code}" class="pact_ipt"/>
+                <input type="text" name="credit_code" disabled value="{$client.credit_code}" class="pact_ipt"/>
             </li>            
             <li class="iptBox">
                 <span class="ipt_left"><em class="red">*</em>办公地址：</span>
-                <input type="text" name="client_address" value="{$client.client_address}" class="pact_ipt"/>
+                <input type="text" name="client_address" disabled value="{$client.client_address}" class="pact_ipt"/>
             </li>
             <li class="iptBox">
                 <span class="ipt_left"><em class="red">*</em>其他联系人：</span>
-                <input type="text" name="client_man" value="{$client.client_man}" class="pact_ipt"/>
+                <input type="text" name="client_man" disabled value="{$client.client_man}" class="pact_ipt"/>
             </li>
             <li class="iptBox">
                 <span class="ipt_left"><em class="red">*</em>联系人电话：</span>
-                <input type="text" name="client_tel" value="{$client.client_tel}" class="pact_ipt"/>
+                <input type="text" name="client_tel" disabled value="{$client.client_tel}" class="pact_ipt"/>
             </li>
             <li class="xian">合同信息</li>
             <li class="iptBox">
                 <span class="ipt_left"><em class="red">*</em>合同类型：</span>
-                <select name="contracttype" id="contracttype" class="pact_select">
+                <input type="hidden" name="contracttype" value="{$contract['contracttype']}">
+                <select name="contracttype" <?php if(!empty($contract['contracttype'])){ echo 'disabled'; }?> id="contracttype" class="pact_select">
                     <option value="0">选择合同分类</option>
                     <option value="{$contract.contracttype}" selected="selected">{$contract.contracttype}</option>
                     <option value="大面积出租">大面积出租</option>
@@ -172,11 +179,11 @@
             </div>
             <li class="zhushi">合同信息</li>
             <li class="iptBox">
-            <input type="hidden" id="account_id" name="account_id">
+            <input type="hidden" id="account_id" name="account_id" value="{$contract.account_id}">
                 <span class="ipt_left"><em class="red">*</em>收款账户：</span>
                 <select id="account"   class="pact_select" >
                 <foreach name="account" item="vo" >
-                    <if condition="$collection.id EQ $vo.id ">
+                    <if condition="$contract.account_id EQ $vo.id ">
                         <option value="{$vo.id}" selected="selected">{$vo.acc_name}</option>
                     <else />
                         <option value="{$vo.id}">{$vo.acc_name}</option>
@@ -185,15 +192,43 @@
                 </foreach>
                 </select>
             </li>
-            <div id="bank"></div>
+            <div id="bank">
+                <li class="iptBox">
+                <span class="ipt_left"><em class="red">*</em>开户行：</span>
+                <input type="text" value="{$shoukuan.opacontbank}" class="pact_ipt"/>
+            </li>
+            <li class="iptBox">
+                <span class="ipt_left"><em class="red">*</em>银行卡号：</span>
+                <input type="text" value="{$shoukuan.contnum}" class="pact_ipt"/>
+            </li>
+            </div>
             <li class="iptBox" style="position: relative;">
                 <span class="ipt_left"><em class="red">*</em>实际金额：</span>
                 <input type="text" name="actual_amount" value="{$contract.actual_amount}" class="pact_ipt"/>
                 <span class="rightsp">元（大写）</span>
             </li>
+            <li>
+                <span class="ipt_left"><em class="red">*</em>是否通过审核：</span>
+                <select id="is_tongguo"   class="pact_select" >
+                    <option value="1">通过</option>
+                    <option value="2">不通过</option>
+                </select>
+            </li>
 
         </ul>
-        <input type="submit" value="提交" class="submit">
+        <input type="submit" id="tijiao" value="提交" class="submit">
+    </form>
+    <form action="">
+        <ul id="btg" style="display:none"> 
+            <li>
+                <span class="ipt_left"><em class="red">*</em>审核失败原因：</span>
+                <textarea name="audit_error" id="" cols="80" rows="10"></textarea>
+            </li>
+            <li>
+                 <input type="submit" value="提交" class="submit">
+            </li>
+        </ul>
+       
     </form>
 </div>
 
@@ -204,7 +239,18 @@
             format: 'yyyy年MM月dd日', 
             
         });
-               
+    $(document).on('change','#is_tongguo',function(){
+        var is = $(this).val();
+        if(is == 2){
+            $('#tijiao').attr('style','display:none');
+            $('#btg').attr('style','display:back');
+        }
+        if(is == 1){
+            $('#tijiao').attr('style','display:back');
+            $('#btg').attr('style','display:none');
+        }
+
+    })         
     // 合同类型
     $(document).on('change','#contracttype',function(){
 

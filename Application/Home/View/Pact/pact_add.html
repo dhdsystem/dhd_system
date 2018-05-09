@@ -43,78 +43,80 @@
             <li class="xian">客户信息</li>
             <li class="iptBox">
                 <span class="ipt_left"><em class="red">*</em>客户分组：</span>
-                <input type="text" name="middle_state" value="{$client.middle_state}" class="pact_ipt"/>
+                <input type="text" name="middle_state" disabled value="{$client.middle_state}" class="pact_ipt"/>
+                <input type="hidden" class="pact_ipt" name="res_id" value="{$reserved.id}">
             </li>
+
             <if condition="$client.middle_state eq '直接客户' ">
                 
 
             <else /> 
                 <li class="iptBox">
                     <span class="ipt_left"><em class="red">*</em>{$client.middle_state}公司：</span>
-                    <input type="text" name="middle_name" value="{$client.middle_name}" class="pact_ipt"/>
+                    <input type="text" name="middle_name" disabled value="{$client.middle_name}" class="pact_ipt"/>
                     <div id="vas"></div>
                 </li>
                 <li class="iptBox">
                     <span class="ipt_left"><em class="red">*</em>{$client.middle_state}联系人：</span>
-                    <input type="text" name="middle_man" value="{$client.middle_man}" class="pact_ipt"/>
+                    <input type="text" name="middle_man" disabled value="{$client.middle_man}" class="pact_ipt"/>
                 </li>
                 <li class="iptBox">
                     <span class="ipt_left"><em class="red">*</em>{$client.middle_state}联系人电话：</span>
-                    <input type="text" name="middle_tel" value="{$client.middle_tel}" class="pact_ipt"/>
+                    <input type="text" name="middle_tel" disabled value="{$client.middle_tel}" class="pact_ipt"/>
                 </li>
 
                 <li class="iptBox">
                     <span class="ipt_left"><em class="red">*</em>{$client.middle_state}办公地址：</span>
-                    <input type="text" name="middle_address" value="{$client.middle_address}" class="pact_ipt"/>
+                    <input type="text" name="middle_address" disabled value="{$client.middle_address}" class="pact_ipt"/>
                 </li>
             </if>
             <br>
             <!-- 客户公司信息 -->
             <li class="iptBox">
                 <span class="ipt_left"><em class="red">*</em>客户公司：</span>
-                <input type="text" name="client_name" value="{$client.client_name}" class="pact_ipt"/>
+                <input type="text" name="client_name" disabled  value="{$client.client_name}" class="pact_ipt"/>
                 <div id="vas"></div>
             </li>
             <li class="iptBox" style="position: relative;">
                 <span class="ipt_left"><em class="red">*</em>注册资金：</span>
-                <input type="text" name="client_money" value="{$client.client_money}" class="pact_ipt"/>
+                <input type="text" name="client_money" disabled value="{$client.client_money}" class="pact_ipt"/>
                 <span class="rightsp"> 万</span>
             </li>
             <li class="iptBox">
                 <span class="ipt_left"><em class="red">*</em>法人姓名：</span>
-                <input type="text" name="legalperson" value="{$client.legalperson}" class="pact_ipt"/>
+                <input type="text" name="legalperson" disabled value="{$client.legalperson}" class="pact_ipt"/>
             </li>
             <li class="iptBox">
                 <span class="ipt_left"><em class="red">*</em>法人联系电话：</span>
-                <input type="text" name="legaltel" value="{$client.legaltel}" class="pact_ipt"/>
+                <input type="text" name="legaltel" disabled value="{$client.legaltel}" class="pact_ipt"/>
             </li>
             <li class="iptBox">
                 <span class="ipt_left"><em class="red">*</em>法人身份证号：</span>
-                <input type="text" name="legalidnum" value="{$client.legalidnum}" class="pact_ipt"/>
+                <input type="text" name="legalidnum" disabled value="{$client.legalidnum}" class="pact_ipt"/>
             </li>
             <li class="iptBox">
                 <span class="ipt_left"><em class="red">*</em>纳税形式：</span>
                 <if condition="$client.taxstyle eq 0 ">
-                    <input type="text" name="taxstyle" value="小规模" class="pact_ipt"/>
+                    <input type="text" name="taxstyle" disabled  value="小规模" class="pact_ipt"/>
                 <else />
-                    <input type="text" name="taxstyle" value="一般人" class="pact_ipt"/>
+                    <input type="text" name="taxstyle" disabled value="一般人" class="pact_ipt"/>
                 </if>
             </li>
             <li class="iptBox">
                 <span class="ipt_left"><em class="red">*</em>信用代码：</span>
-                <input type="text" name="credit_code" value="{$client.credit_code}" class="pact_ipt"/>
+                <input type="text" name="credit_code" disabled value="{$client.credit_code}" class="pact_ipt"/>
             </li>            
             <li class="iptBox">
                 <span class="ipt_left"><em class="red">*</em>办公地址：</span>
-                <input type="text" name="client_address" value="{$client.client_address}" class="pact_ipt"/>
+                <input type="text" name="client_address" disabled value="{$client.client_address}" class="pact_ipt"/>
             </li>
             <li class="iptBox">
                 <span class="ipt_left"><em class="red">*</em>其他联系人：</span>
-                <input type="text" name="client_man" value="{$client.client_man}" class="pact_ipt"/>
+                <input type="text" name="client_man" disabled value="{$client.client_man}" class="pact_ipt"/>
             </li>
             <li class="iptBox">
                 <span class="ipt_left"><em class="red">*</em>联系人电话：</span>
-                <input type="text" name="client_tel" value="{$client.client_tel}" class="pact_ipt"/>
+                <input type="text" name="client_tel" disabled value="{$client.client_tel}" class="pact_ipt"/>
             </li>
             <li class="xian">合同信息</li>
             <li class="iptBox">
@@ -525,7 +527,7 @@
                     $.each(msg.nexttime,function(k,v){
                         var i = parseInt(k)+parseInt(1)
 
-                            nexttime +='<li class="iptBox"><span class="ipt_left">第'+i+'次付款日期：</span><input type="text" name="paynext2" value="'+v+'" class="pact_ipt" /></li>';
+                            nexttime +='<li class="iptBox"><span class="ipt_left">第'+i+'次付款日期：</span><input type="text" name="paynext2[]" value="'+v+'" class="pact_ipt" /></li>';
                             
                         
                     })

@@ -1,8 +1,11 @@
 
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>签订公司：</span>
-    <select  name="signcompany" id="signcompany" class="pact_select" >
+    <select  name="signcompany" <?php if(!empty($stencil['signcompany'])){ echo 'disabled'; }?> id="signcompany" class="pact_select" >
         <option value="0">请选择签订公司</option>
+          <notempty name="stencil['signcompany']">
+            <option value="{$stencil['signcompany']}" selected>{$stencil['signcompany']}</option>
+        </notempty>
         <option value="北京东辉达科技有限公司">北京东辉达科技有限公司</option>
         <option value="北京去创创科技有限公司">北京去创创科技有限公司</option>
         <option value="北京融兴通远财务咨询有限公司">北京融兴通远财务咨询有限公司</option>
@@ -13,27 +16,25 @@
 <div id="zhucedizhi"></div>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>服务期限：</span>
-    <input type="text" name="rentdatetime" value="" class="pact_ipt" placeholder="年">
+    <input type="text" name="rentdatetime" value="{$matter.rentdatetime}" id="rentdatetime" class="pact_ipt" placeholder="年">
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>租赁日期：</span>
     <span class="timeBox">
-        <input type="text" name="rentstarttime" value="" class="pact_ipt pact_ipt2" id="rentstarttime">
-        <div id="rentstar" style="left: 0px;top: 40px;"></div>
+        <input type="text" name="rentstarttime" value="{$matter.rentstarttime|date='Y年m月d日',###}" class="pact_ipt pact_ipt2" id="rentstarttime">
     </span>
     <span style="line-height: 40px;display: inline-block;">～</span>
     <span class="timeBox">
-        <input type="text" name="rentendtime" value="" class="pact_ipt pact_ipt2" id="rentendtime">
-        <div id="rentend" style="left: 0px;top: 40px;"></div>
+        <input type="text" name="rentendtime" value="{$matter.rentendtime|date='Y年m月d日',###}" class="pact_ipt pact_ipt2" id="rentendtime">
     </span>
 </li>
 <li class="iptBox">
-    <span class="ipt_left"><em class="red">*</em>商务服务费用：</span>
-    <input type="text" name="business" value="" class="pact_ipt" placeholder="元/月（大写）">
+    <span class="ipt_left"><em class="red">*</em>商务服务费：</span>
+    <input type="text" name="business" id="business" value="{$matter.business}" class="pact_ipt" placeholder="元（大写）">
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>是否含税：</span>
-    <select  name="swistax" class="pact_select" >
+    <select  name="" class="pact_select" >
         <option value="">是</option>
         <option value="">否</option>
     </select>

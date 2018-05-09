@@ -14,18 +14,18 @@
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>代理期限：</span>
     <span class="timeBox">
-        <input type="text" name="rentstarttime" value="" class="pact_ipt pact_ipt2" id="rentstarttime">
+        <input type="text" name="rentstarttime" value="{$matter.rentstarttime}" class="pact_ipt pact_ipt2" id="rentstarttime">
         <div id="rentstar" style="left: 0px;top: 40px;"></div>
     </span>
     <span style="line-height: 40px;display: inline-block;">～</span>
     <span class="timeBox">
-        <input type="text" name="rentendtime" value="" class="pact_ipt pact_ipt2" id="rentendtime">
+        <input type="text" name="rentendtime" value="{$matter.rentendtime}" class="pact_ipt pact_ipt2" id="rentendtime">
         <div id="rentend" style="left: 0px;top: 40px;"></div>
     </span>
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>会计服务费：</span>
-    <input type="text" name="ta_kmoney" id="ta_kmoney" value="" class="pact_ipt" placeholder="元/月（大写）">
+    <input type="text" name="ta_kmoney" id="ta_kmoney" value="{$matter.ta_kmoney}" class="pact_ipt" placeholder="元/月（大写）">
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>是否含税：</span>
@@ -36,7 +36,7 @@
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>工本费：</span>
-    <input type="text" name="ta_gmoney" id="ta_gmoney" value="" class="pact_ipt" placeholder="元/月（大写）">
+    <input type="text" name="ta_gmoney" id="ta_gmoney" value="{$matter.ta_gmoney}" class="pact_ipt" placeholder="元/月（大写）">
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>是否含税：</span>
@@ -56,7 +56,7 @@
 <div class="istaxcontrol" style="display:none">
     <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>税控机费：</span>
-    <input type="text" name="ta_skmoney" id="ta_skmoney" value="" class="pact_ipt" placeholder="元/月（大写）">
+    <input type="text" name="ta_skmoney" id="ta_skmoney" value="{$matter.ta_skmoney}" class="pact_ipt" placeholder="元/月（大写）">
 
    
 </li>
@@ -72,6 +72,9 @@
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>付款方式：</span>
     <select  name="paytype" id="paytype" class="pact_select" >
+        <notempty name="collection['paytype']">
+             <option value="{$collection.paytype} " selected>{$collection.paytypehan}</option>
+        </notempty>
         <option value="0,3">季度</option>
         <option value="0,6">半年</option>
         <option value="0,12">年</option>
@@ -85,34 +88,34 @@
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>年金额：</span>
       <input type="hidden"  id="monthly_rent"  class="pact_ipt" placeholder="元 （大写）">
-    <input type="text" name="year_rent" id="year_rent" value="" class="pact_ipt" placeholder="元 （大写）">
+    <input type="text" name="year_rent" id="year_rent" value="{$matter.year_rent}" class="pact_ipt" placeholder="元 （大写）">
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>每期金额：</span>
-    <input type="text" name="each" id="each" value="" class="pact_ipt" placeholder="元 （大写）">
+    <input type="text" name="each" id="each" value="{$matter.each}" class="pact_ipt" placeholder="元 （大写）">
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>第1次付款时间：</span>
-    <input type="text" name="paynext1" id="paynext1" value="" class="pact_ipt" placeholder="第一次付款时间">
+    <input type="text" name="paynext1" id="paynext1" value="{$matter.paynext1}" class="pact_ipt" placeholder="第一次付款时间">
 </li>
 <div id="payment"></div>
 
 <li class="xian">甲方联系人</li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>第一联系人：</span>
-    <input type="text" name="legalperson" value="" class="pact_ipt" >
+    <input type="text" name="legalperson" value="{$matter.legalperson}" class="pact_ipt" >
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>联系人电话：</span>
-    <input type="text" name="legaltel" value="" class="pact_ipt" >
+    <input type="text" name="legaltel" value="{$matter.legaltel}" class="pact_ipt" >
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>其他联系人：</span>
-    <input type="text" name="client_man" value="" class="pact_ipt" >
+    <input type="text" name="other_man" value="{$matter.other_man}" class="pact_ipt" >
 </li>
 <li class="iptBox">
     <span class="ipt_left"><em class="red">*</em>联系人电话：</span>
-    <input type="text" name="client_tel" value="" class="pact_ipt" >
+    <input type="text" name="other_tel" value="{$matter.other_tel}" class="pact_ipt" >
 </li>
 <script type="text/javascript">
         laydate.render({  
