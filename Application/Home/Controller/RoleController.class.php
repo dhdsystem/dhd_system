@@ -8,7 +8,7 @@ class RoleController extends CommonController {
     public function role_index(){
         $role = M('Role')->where(array('state'=>1))->select();
         $roletree=$this->GetTree($role,0,0);
-        //print_r($roletree);die;
+        //print_r($role);die;
         $this->assign('role',$roletree);
         $this->display();
     }
@@ -100,9 +100,23 @@ class RoleController extends CommonController {
                 $id=I('get.id');
                 // print_r($id);die;
                 $datas=M('role')->where('id='.$id)->find();
+                // 获取用户所有权限
+                $user_role = M('role_node')->field('o_id')->where(array('r_id' =>$id))->select();
+                // print_r($user_role);die;
                 /*权限名称展示*/
-                $role = M('Role')->select();
-                $node = M('Node')->select();
+                $role = M('role')->select();
+                $node = M('node')->select();
+                $result = array();
+                array_walk_recursive($user_role, function($value) use (&$result) {
+                    array_push($result, $value);
+                });
+                // 
+                foreach ($node as $key => $val) {
+                    if(in_array($val['id'], $result)){
+                        $node[$key]['is_p'] = 1;
+                    }
+                }
+                // print_r($node);die;
                 $roletree=$this->GetTree($role,0,0);
                 $node=$this->get_attr($node);
                 $data=json_encode($node);

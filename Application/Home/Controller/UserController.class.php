@@ -10,11 +10,26 @@ use Think\Controller;
 class UserController extends CommonController {
 	/*用户*/
     public function user_index(){
+        $p=!empty($_GET['page'])?$_GET['page']:0;
+        $num='2';
         $volist = M('user as u')
         ->field('u.id,u.username,u.password,u.state,u.description,u.logincount,u.dtime,u.real_name,u.real_name,u.ztime,r.role_name,r.description')
         ->join('dhd_role as r on u.r_id = r.id')
         ->where('u.state=0')
+        ->order('u.id desc')
+        ->page($p,$num)
         ->select();
+        $count = M('user as u')
+        ->field('u.id,u.username,u.password,u.state,u.description,u.logincount,u.dtime,u.real_name,u.real_name,u.ztime,r.role_name,r.description')
+        ->join('dhd_role as r on u.r_id = r.id')
+        ->where('u.state=0')
+        ->order('u.id desc')
+        ->count();
+        $Page=new \Think\Page($count,$num);
+        $show       = $Page->show();
+        $this->assign('list',$list);// 赋值数据集
+        $this->assign('page',$show);// 赋值分页输出
+        $this->assign('count',$count);// 赋值分页输出
         $this->assign('volist',$volist);
         $this->display();
     }

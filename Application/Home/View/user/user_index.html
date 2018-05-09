@@ -98,7 +98,7 @@ $(document).ready(function() {
   	<div class="tableBox">
   		<table id="table" border="1" bordercolor="#CCCCCC" cellpadding="0" cellspacing="0">
 	    	<tr>
-	        	<th><input type="checkbox" class="indel" value="del" /></th>
+	        	<!-- <th><input type="checkbox" class="indel" value="del" /></th> -->
 	        	<th>编号</th>
 	            <th>用户名</th>
 	            <th>用户真实名</th>
@@ -112,8 +112,8 @@ $(document).ready(function() {
 	        <!--顶级数据-->
 	        <volist name="volist" id="vo">
 	        <tr class="tr <eq name="mod" value="1">tr2</eq>">
-	        	<td class="tc"><input type="checkbox" class="delid" value="{$vo.id}" /></td>
-	            <td class="tc">{$vo.id}</td>
+<!-- 	        	<td class="tc"><input type="checkbox" class="delid" value="{$vo.id}" /></td>
+ -->	            <td class="tc">{$vo.id}</td>
 	            <td class="tc">{$vo.username}</td>
 	            <td class="tc">{$vo.real_name}</td>
 	            <td class="tc">{$vo.role_name}</td>
@@ -134,11 +134,7 @@ $(document).ready(function() {
 	        </volist>
 	    </table> 
   	</div>
-   	
-
-   
-    
-    <div id="page"><a href="javascript:;" class="selbox">全选</a><a href="javascript:;" class="anti">反选</a><a href="javascript:;" class="unselbox">全不选</a><a href="javascript:;" id="dely">删除</a>&nbsp;&nbsp;&nbsp;&nbsp;{$page}</div>
+    <div id="page">{$page}<!-- <a href="javascript:;" class="selbox">全选</a><a href="javascript:;" class="anti">反选</a><a href="javascript:;" class="unselbox">全不选</a><a href="javascript:;" id="dely">删除</a>&nbsp;&nbsp;&nbsp;&nbsp; --></div>
 </div>
 </body>
 </html>

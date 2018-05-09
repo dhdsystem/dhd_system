@@ -128,18 +128,34 @@
 		/*进行循环的代码在这里 @楠楠*/
 		$(json).each(function(i){
             console.log(json[i]);
+            if(json[i]['is_p'] == 1){
+            	var s0 = 'checked';
+            }else{
+            	var s0 = '';
+            }
             var ht = "<div>";
-            ht="<div class='yiji'><h1>+<input type='checkbox' name='one[]' value="+json[i]['id']+" class='s1'><span class='fold'>"+json[i]['opera_name']+"</span></h1>";
+            ht="<div class='yiji'><h1>+<input type='checkbox' name='one[]' "+s0+"  value="+json[i]['id']+" class='s1'><span class='fold'>"+json[i]['opera_name']+"</span></h1>";
             if(json[i]['children']!=''){
+
                 var son=json[i]['children'];
                 ht+="<div class='erji'>";
                 $(son).each(function(s){
-                    ht+="<div><h3><input type='checkbox' name='one[]' value="+son[s]['id']+" class='s2'><span class='fold'>"+son[s]['opera_name']+"</span></h3>"; 
+		            if(son[s]['is_p'] == 1){
+		            	var s1 = 'checked';
+		            }else{
+		            	var s1 = '';
+		            }
+                    ht+="<div><h3><input type='checkbox' name='one[]' "+s1+" value="+son[s]['id']+" class='s2'><span class='fold'>"+son[s]['opera_name']+"</span></h3>"; 
                     if(son[s]['children']!='') {
                         var chil = son[s]['children'];
                         ht+="<div class='sanji'>"; 
                          $(chil).each(function(k){
-                            ht+="<p><span><input type='checkbox' name='one[]' value="+chil[k]['id']+" class='s3'>"+chil[k]['opera_name']+"</span></p>";  
+     			            if(chil[k]['is_p'] == 1){
+				            	var s2 = 'checked';
+				            }else{
+				            	var s2 = '';
+				            }
+                            ht+="<p><span><input type='checkbox' name='one[]' "+s2+" value="+chil[k]['id']+" class='s3'>"+chil[k]['opera_name']+"</span></p>";  
                          });
                          ht+="</div>";
                     }
