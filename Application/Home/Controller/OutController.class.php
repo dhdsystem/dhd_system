@@ -457,7 +457,7 @@ class OutController extends CommonController {
         }
     }
     /*收款*/
-     public function out_rece(){
+     /*public function out_rece(){
         if(IS_POST){
                   $data = I('post.');
                     // print_r($data);die;
@@ -467,7 +467,9 @@ class OutController extends CommonController {
                     $data['company'] = $c_id[0]['id'];
                     $data['gathertiem'] = strtotime("$gathertiem");
                     // print_r($data);die;
-                    $save = M('contract')->where(array('id'=>$data['contract']))->save(array('account_audit'=>5));
+                    $save = M('contract')->where(array('id'=>$data['contract']))->save(array('account_audit'=>4));
+                    $det_id = M('contract')->field('det_id')->where(array('id'=>$data['contract']))->select();
+                    $save = M('details')->where(array('id'=>$det_id[0]['det_id']))->save(array('det_advance'=>3));
                     $add = M('gather')->data($data)->add();
                     if($add && $save){
                         $this->success('收款成功', U('Gather/gather_index'));
@@ -485,5 +487,5 @@ class OutController extends CommonController {
             $this->assign('name',$data['client_name']);
             $this->display();
         }
-    }
+    }*/
 }

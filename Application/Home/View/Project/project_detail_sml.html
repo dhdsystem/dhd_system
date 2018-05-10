@@ -40,12 +40,17 @@
                 <tr class="tr" value="1">
                     <td class="tc">{$vo.detailscoll}</td>
                     <td class="tc">{$vo.client_name}</td>
-                    <td class="tc">{$vo.paytype}</td>
+                    <td class="tc"><if condition="$vo.paytype eq '3,3'">押三付三</if>
+                    <if condition="$vo.paytype eq '2,6'"> 押二付六               </if>
+                    <if condition="$vo.paytype eq '1,12'"> 押一付十二</if>
+                    <if condition="$vo.paytype eq '1,6'"> 押一付六</if>
+                    <if condition="$vo.paytype eq '2,3'"> 押二付三</if>
+                    <if condition="$vo.paytype eq '1,3'"> 押一付三</if></td>
                     <td class="tc">{$vo.rentstarttime|date='Y-m-d',###}--{$vo.rentendtime|date='Y-m-d',###}</td>
-                    <td class="tc">{$vo.rates}</td>
+                    <td class="tc">{$vo.business}</td>
                     <td class="tc">{$vo.legalperson}</td>
                     <td class="tc">{$vo.legaltel}</td>
-                    <td class="tc">{$vo.taxstyle}</td>
+                    <td class="tc"><if condition="$vo.taxstyle eq 0 ">小规模<else />一般人</if></td>
                     <td class="tc">{$vo.credit_code}</td>
                     <td class="tc fixed_w">
                         <!-- <a href="" class="edit oper">修改</a> -->

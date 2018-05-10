@@ -300,7 +300,7 @@ class ProjectController extends Controller {
         ->join('dhd_client on dhd_client.id=dhd_contract.client_id')
         ->join('dhd_collection on dhd_collection.contract=dhd_contract.id')
         ->where(" dhd_product.id=$class_id and det_del=0 and det_type=4 and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 and is_del=0")
-        ->field("dhd_houselet.id,rates,detailscoll,big_sum,client_name,rentstarttime,rentendtime,legalperson,legaltel,taxstyle,credit_code,paytype")
+        ->field("dhd_houselet.id,business,rates,detailscoll,big_sum,client_name,rentstarttime,rentendtime,legalperson,legaltel,taxstyle,credit_code,paytype")
         ->page($p,$num)
         ->select();   
         //echo M('houselet')->getLastSql();die;
@@ -312,7 +312,7 @@ class ProjectController extends Controller {
         ->join('dhd_client on dhd_client.id=dhd_contract.client_id')
         ->join('dhd_collection on dhd_collection.contract=dhd_contract.id')
         ->where(" dhd_product.id=$class_id and det_del=0 and det_type=4 and pro_del=1 and class_is=0 and client_state=0 and det_advance =3 and is_del=0")
-        ->field("dhd_houselet.id,rates,detailscoll,big_sum,client_name,rentstarttime,rentendtime,legalperson,legaltel,taxstyle,credit_code,paytype")
+        ->field("dhd_houselet.id,business,rates,detailscoll,big_sum,client_name,rentstarttime,rentendtime,legalperson,legaltel,taxstyle,credit_code,paytype")
         ->count();
   
         $Page=new \Think\Page($count,$num);

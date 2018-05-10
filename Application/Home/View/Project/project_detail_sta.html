@@ -45,7 +45,7 @@
                     <td class="tc">{$vo.legaltel}</td>
                     <td class="tc">{$vo.rentstarttime|date='Y-m-d',###}--{$vo.rentendtime|date='Y-m-d',###}</td>
                     <td class="tc">{$vo.station}</td>
-                    <td class="tc">{$vo.taxstyle}</td>
+                    <td class="tc"><if condition="$vo.taxstyle eq 0 ">小规模<else />一般人</if></td>
                     <td class="tc">{$vo.credit_code}</td>
                     <!-- <td class="tc fixed_w">
                         <div class="operation"><a href="" class="chakan ">收回</a></div></div> 
