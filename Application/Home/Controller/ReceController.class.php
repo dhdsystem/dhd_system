@@ -17,8 +17,18 @@ class ReceController extends CommonController {
         ->join('dhd_user as u on u.id = c.user_id')
         ->select();
         // print_r($list);die;
+        $user = M('user')->field('id,real_name')->select();
+        $this->assign('user',$user);
         $this->assign('list',$list);
         $this->display();
+    }
+    // 分配
+    public function rece_allot(){
+        $user_id=I('post.user');
+        $rece_id=I('post.rece_id');
+        
+        // print_r($id);die;
+        // $this->display();
     }
 
  /*应收合同 详情*/
@@ -64,7 +74,7 @@ class ReceController extends CommonController {
                 ->field('*,c.contracttype as cont')
                 ->find();
                 // print_r($list);die;
-                //echo M('contract as c')->getlastsql();die;
+                // echo M('contract as c')->getlastsql();die;
                 $this->assign('data',$list);
                 $this->display();
         }
