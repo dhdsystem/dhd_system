@@ -325,7 +325,7 @@ class PactController extends Controller {
             $contract['account_id'] = I('post.account_id');
             $contract['stencil_id'] = I('post.stencil_id');
             
-            $contract['account_audit'] = 4;
+            $contract['account_audit'] = 2;
             $contract['actual_amount'] = I('post.actual_amount');
             $contract['user_id'] = get_user_id();
             $res = M('contract')->where(array('id' =>  $where['contract_id']))->save($contract);   
