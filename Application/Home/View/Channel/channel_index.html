@@ -83,7 +83,7 @@
                                 <a href="__APP__/channel/channel_save/id/{$vo.id}" class="edit oper2">修改</a>
                                 <a href="__APP__/channel/channel_del/id/{$vo.id}" class="del2 oper2">删除</a>
                                 <a href="javascript:;" class="yladdr oper2">预留地址号</a>
-                                <a href="javascript:;" class="seaddr oper2">查看预留</a>
+                                <a href="javascript:;" id="{$vo.id}" class="seaddr oper2">查看预留</a>
                             </div>
                         </div>
                     </td>
@@ -99,14 +99,16 @@
     <div class="popWin popWin1">
         <div style="padding:10px">
             <table class="popTable" border="1" bordercolor="#CCCCCC" cellpadding="0" cellspacing="0" style="width:100%">
-                <tr>
-                    <th>地址号</th>
-                    <th>出合同</th>
-                </tr>
-                <tr class="tr">
-                    <td class="tc"></td>
-                    <td class="tc"></td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>地址号</th>
+                        <th>出合同</th>
+                    </tr>
+                </thead>
+                <tbody id="aaaa">
+                    
+                </tbody>
+                
             </table>
             
         </div>
@@ -114,7 +116,33 @@
 </div>
 <script type="text/javascript">
     $('.seaddr').click(function(){
+        var id=$(this).attr('id');
         $('.popWinBox1').show();
+
+        $.ajax({
+            url:'__APP__/channel/channel_list',
+            dataType:'json',
+            type:'POST',
+            data:'id='+id,
+            success: function(data) {
+                var str;
+                var num='出合同';
+                $(data).each(function(i){
+                    // console.log($('#nn .tc').eq(0));
+                     // $('#nn .tc').eq(0).append(data[i]['detailscoll']);
+                     // $('#nn .tc').eq(1).append(data[i]['id']);
+                    str+="<tr class='tr'>";
+                    str+="<td class='tc'>"+data[i]['detailscoll']+"</td>";
+                    str+="<td class='tc'>";
+                    str+="<a href='__APP__/client/client_add/mid/"+data[i]['id']+"'>"+num+"</a>";
+                    str+="</td>";
+                    str+="</tr>";
+                });
+                // $(".popTable #nn").remove();
+                $("#aaaa").empty().append(str);
+            }
+                
+        }); 
         $('body').click(function(e) {
             var target = $(e.target);
             if(!target.is('.seaddr') && !target.is('.popWin1 *')) {

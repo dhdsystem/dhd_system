@@ -715,7 +715,7 @@ class ProjectController extends Controller {
         M('details')->where($nn)->save(array('det_advance'=>2));
         $data=explode(",",$data);
         foreach ($data as $key => $value) {
-                $arr[$key]['det_id']=$value;
+                $arr[$key]['details_id']=$value;
                 $arr[$key]['middle_id']=I('post.y_id');
                 $arr[$key]['res_state']=1;
                 $arr[$key]['add_time']=time();
