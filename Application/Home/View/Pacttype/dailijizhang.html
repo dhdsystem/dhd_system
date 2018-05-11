@@ -98,7 +98,16 @@
     <span class="ipt_left"><em class="red">*</em>第1次付款时间：</span>
     <input type="text" name="paynext1" id="paynext1" value="{$matter.paynext1}" class="pact_ipt" placeholder="第一次付款时间">
 </li>
-<div id="payment"></div>
+<div id="payment">
+    <notempty name="collection.paynext2">
+        <foreach name="collection.paynext2" item="vo" key="k" >
+            <li class="iptBox">
+                <span class="ipt_left"><em class="red">*</em>第{$k+2}次付款时间：</span>
+                <input type="text" name="paynext2[]" id="paynext2" value="{$vo|date='Y年m月d日',###}" class="pact_ipt" placeholder="第一次付款时间">
+            </li>
+        </foreach>
+    </notempty>
+</div>
 
 <li class="xian">甲方联系人</li>
 <li class="iptBox">

@@ -29,7 +29,7 @@ class CommonController extends Controller {
                         $this->error("抱歉，您没有权限访问该控制器");
                     }
                     if($action!='index'){
-                        $arrs = $this->arr();
+                        // $arrs = $this->arr();
                         if(in_array($action,$arrs)){
                             if(!in_array($action,$arr2)){
                                 $this->error("抱歉，您不能进行该操作");

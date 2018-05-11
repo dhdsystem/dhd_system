@@ -478,6 +478,7 @@
     }
     //获取下次付款时间
     function moeny(){
+         $('#payment').empty();
         var id = $('#paytype').val();                      //付款方式
         var ord = $('#contracttype').val();
         var appoint = $('#appoint').val()
@@ -537,7 +538,7 @@
                     
                 }
 
-                $('#payment').empty().append(nexttime);
+                $('#payment').append(nexttime);
             
            }
        })    
