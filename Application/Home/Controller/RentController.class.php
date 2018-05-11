@@ -32,12 +32,13 @@ class RentController extends CommonController {
 
     // 拉异常
     public function rent_abnormal(){
-        $id=I('get.id');
+        $id=I('post.id');
         $save = M('contract')->where(array('id'=>$id))->save(array('abnormal'=>1));
         if($save){
-            $this->success('拉异常成功', U('Rent/rent_index'));
+            print_r( json_encode('ok'));
         }else{
-            $this->error('拉异常失败',U('Rent/rent_index'));
+            $post['s'] = '拉异常操作失败';
+            print_r( json_encode($post));
         }
 
 

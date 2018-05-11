@@ -24,8 +24,14 @@ class ReceController extends CommonController {
     }
     // 分配
     public function rece_allot(){
-        $user_id=I('post.user');
+        $user_id=I('post.user_id');
         $rece_id=I('post.rece_id');
+        $save = M('contract')->where("id=$rece_id")->save(array('user_id' => $user_id));
+        if($save){
+             $this->success('分配成功', U('Rece/rece_index'));
+        }else{
+            $this->error('分配失败',U('Rece/rece_index'));
+        }
         
         // print_r($id);die;
         // $this->display();

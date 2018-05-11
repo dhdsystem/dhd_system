@@ -9,6 +9,37 @@
     <script type="text/javascript" src="__JS__/jquery.js"></script>
     <script type="text/javascript" src="__JS__/Public.js"></script>
     <script type="text/javascript" src="__JS__/winpop.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.abnormal').click(function(event) {
+                event.preventDefault();
+                if (!confirm('确定要拉异常吗？')) {
+                    return false;
+                }
+                var id=$(this).attr('href');
+                if (id=='' || isNaN(id)) {
+                    wintq('ID参数不正确',3,1000,1,'');
+                    return false;
+                }else {
+                    wintq('正在处理，请稍后...',4,1000,0,'');
+                    $.ajax({
+                        url:'__APP__/Rent/rent_abnormal/',
+                        dataType:'json',
+                        type:'POST',
+                        data:'id='+id,
+                        success: function(data) {
+                            // alert(data);
+                            if (data=='ok') {
+                                wintq('拉异常成功',1,1500,0,'?');
+                            }else {
+                                wintq('拉异常失败',3,1500,1,'?');
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 </head>
 <body>
 <div id="content">
@@ -83,7 +114,7 @@
                                 <a href="__APP__/Rent/rent_sel/id/{$vo.id}" class="relet oper2">续签</a>
                                 <a href="__APP__/Rent/rent_regain/id/{$vo.id}" class="regain oper2">收回</a>
                                 <a href="__APP__/Rent/rent_sel/id/{$vo.id}" class="download oper2">下载</a>
-                                <a href="__APP__/Rent/rent_abnormal/id/{$vo.id}" class="abnormal oper2">拉异常</a>
+                                <a href="{$vo.id}" class="abnormal oper2">拉异常</a>
                             </div>
                         </div>
                     </td>
@@ -179,22 +210,6 @@
         var id=$(this).parent().attr('value'); //获取要修改内容的value值  
         var val=$(this).val(); //获取修改后的值 
         $('td[value='+id+']').html("<span class='name' class='jdjg'>"+val+"</span>") 
-        // $.ajax({  
-        //     type:'post',  
-        //     url:'index.php/welcome/upd_pro',  
-        //     data:{  
-        //         id:id,  
-        //         val:val  
-        //     },  
-        //     success:function(msg){  
-        //         if(msg == 1){  
-        //             $('td[value='+id+']').html("<span class='name'>"+val+"</span>")  
-        //         }else{  
-        //             obj.parent().html("<span class='name'>"+old_val+"</span>")  
-        //         }  
-  
-        //     }  
-        // })  
     }) 
 </script>
 </body>

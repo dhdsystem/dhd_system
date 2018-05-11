@@ -127,6 +127,17 @@
                         <input type="submit" class="submit" value="分配" style="margin-left: 100px;" id="su" />
                     </form>
                     </div>
+                    <div class="allot" id="{$vo.id}" style="display:none">
+                    <form action="__APP__/Rece/rece_allot" method="post">
+                        <input type="hidden" name="rece_id" value='{$vo.id}' id="middelid"/>
+                        <select name="user_id">
+                            <volist name="user" id="name">
+                                <option value="{$name.id}">{$name.real_name}</option>
+                            </volist>
+                        </select>
+                        <input type="submit" class="submit" value="分配" style="margin-left: 100px;" id="su" />
+                    </form>
+                    </div>
                 </td>
             </tr>
             </volist>

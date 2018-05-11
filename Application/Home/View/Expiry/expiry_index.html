@@ -9,6 +9,44 @@
     <script type="text/javascript" src="__JS__/jquery.js"></script>
     <script type="text/javascript" src="__JS__/Public.js"></script>
     <script type="text/javascript" src="__JS__/winpop.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#content #table .tr .offhire').click(function(event) {
+                event.preventDefault();
+                if (!confirm('确定要停租吗？')) {
+                    return false;
+                }
+                var id=$(this).attr('href');
+                if (id=='' || isNaN(id)) {
+                    wintq('ID参数不正确',3,1000,1,'');
+                    return false;
+                }else {
+                    wintq('正在处理，请稍后...',4,1000,0,'');
+                    $.ajax({
+                        url:'__APP__/Expiry/expiry_ting/',
+                        dataType:'json',
+                        type:'POST',
+                        data:'id='+id,
+                        success: function(data) {
+                            // alert(data);
+                            if (data=='ok') {
+                                wintq('停租成功',1,1500,0,'?');
+                            }else {
+                                wintq('停租失败',3,1500,1,'?');
+                            }
+                        }
+                    });
+                }
+            });
+            // 分配
+            $('.refund').click(function(event){
+                $(this).toggleClass('acti')
+                event.preventDefault();
+                var id = $(this).attr('href');
+                var mychar = $('#'+id).show();
+            })
+        });
+    </script>
 </head>
 <body>
 <div id="content">
@@ -33,21 +71,21 @@
             <a href="javascript:;">小房间</a>
         </div>   
     </div>
- 	<div class="tableBox tableBox2">
-		<table id="table" border="1" bordercolor="#CCCCCC" cellpadding="0" cellspacing="0" style="width:200%">
+    <div class="tableBox tableBox2">
+        <table id="table" border="1" bordercolor="#CCCCCC" cellpadding="0" cellspacing="0" style="width:200%">
             <tr>
                 <th>编号</th>
                 <th>合同编号</th>
                 <th>公司名称</th>
-                <th>注册地址号</th>
+                <th>合同类型</th>
                 <th>房间号</th>
                 <th>租赁期限</th>
-                <th>到期日期</th>
+                <th>渠道公司名</th>
+                <th>联系电话</th>
                 <th>法人姓名</th>
                 <th>法人电话</th>
                 <th>支付方式</th>
                 <th>金额</th>
-                <th>业务员</th>
                 <th>签约公司</th>
                 <th>业务员</th>
                 <th>操作</th>
@@ -60,31 +98,42 @@
                 <td class="tc">{$vo.client_name}</td>
                 <td class="tc">{$vo.contracttype}</td>
                 <td class="tc">{$vo.pro_address}-{$vo.detailscoll}</td>
-                <td class="tc">{$vo.actual_amount}</td>
-                <td class="tc">{$vo.legalperson}</td>
-                <td class="tc">{$vo.legaltel}</td>
                 <td class="tc">{$vo.ac_time|date="Y-m-d",###}</td>
-                <td class="tc">{$vo.credit_code}</td>
                 <td class="tc">{$vo.middle_name}</td>
                 <td class="tc">{$vo.middle_tel}</td>
-                <td class="tc">{$vo.username}</td>
-                <td class="tc">{$vo.signcompany}</td>
+                <td class="tc">{$vo.legalperson}</td>
+                <td class="tc">{$vo.legaltel}</td>
+                <td class="tc"><?php $data = explode(',',$vo['paytype']);echo "押$data[0]付$data[1]";?></td>
+                <td class="tc">{$vo.actual_amount}</td>
+                <td class="tc"><!-- {$vo.signcompany} -->北京东辉达科技孵化器有限公司</td>
+                <td class="tc">{$vo.real_name}</td>
                 <td class="tc fixed_w"> 
                     <div class="operation">更多
                         <div class="operarea">
-                            <a href="javascript:;" class="see oper2">查看</a>
-                            <a href="javascript:;" class="relet oper2">续签</a>
-                            <a href="javascript:;" class="download oper2">下载</a>
-                            <a href="javascript:;" class="offhire oper2">停租</a>
-                            <a href="javascript:;" class="refund oper2">分配</a>
+                            <a href="__APP__/Expiry/expiry_sel/id/{$vo.id}" class="see oper2">查看</a>
+                            <a href="{$vo.id}" class="offhire oper2">停租</a>
+                            <a href="javascript:;" class="recei oper2">下载</a>
+                            <a href="{$vo.id}" class="refund oper2">分配</a>
+                            
                         </div>
+                    </div>
+                    <div class="allot" id="{$vo.id}" style="display:none">
+                    <form action="__APP__/Expiry/expiry_allot" method="post">
+                        <input type="hidden" name="rece_id" value='{$vo.id}' id="middelid"/>
+                        <select name="user_id">
+                            <volist name="user" id="name">
+                                <option value="{$name.id}">{$name.real_name}</option>
+                            </volist>
+                        </select>
+                        <input type="submit" class="submit" value="分配" style="margin-left: 100px;" id="su" />
+                    </form>
                     </div>
                 </td>
             </tr>
             </volist>
 
         </table>
-	</div>	
+    </div>
     <div id="page">{$page}</div>
 </div>
 <!-- 自定义导出 -->
