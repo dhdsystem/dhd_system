@@ -35,7 +35,17 @@ class ClientController extends Controller {
 
     // 客户添加页面
     public function client_add(){
-    	$this->display();
+        $mid=I('get.mid');
+        if(!empty($mid)){
+            $this->assign('mid',$mid);
+            $this->display();
+        }else{
+            $mid=" ";
+             $this->assign('mid',$mid);
+             $this->display();
+        }
+        
+       
     }
 
     // 客户添加ajax
@@ -54,11 +64,15 @@ class ClientController extends Controller {
     // 客户添加方法
     public function clientadd_do(){
         $data = I('post.');
+        // print_r($data);die;
     	// var_dump($data);die;
         $data['sales_id'] = get_user_id();
         // echo get_user_id();die;
         // print_r($data);die;
         $add = M('client')->data($data)->add();
+        if(!empty($data['mid'])){
+            M('reserved')->where(array('id'=>$data['mid']))->save(array('client_id'=>$add));
+        }
         if($add){
             $this->success('新增成功', U('client/client_index'));
         }else{
@@ -145,7 +159,7 @@ class ClientController extends Controller {
 
         $res = M('reserved')->add($data);
         if($res){
-            $re = M('details')->where(array('id'=>$data['details_id']))->setField('det_advance',2);
+            $re = M('details')->where(array('id'=>$data['details_id']))->setField('det_advance',3);
             if($re){
                 $this->success('预留成功', U('Client/client_index'));
             }else{

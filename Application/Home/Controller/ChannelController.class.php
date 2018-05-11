@@ -9,8 +9,9 @@ class ChannelController extends Controller {
             ->join('dhd_user as u on u.id = m.sales_id')
             ->where('middle_is=0')
             ->select();
-            // print_r($data);die;
+             // print_r($data);die;
       foreach ($data as $k => $v) {
+       
         $sql = M('middle as m')
             ->join('dhd_client as c on m.id = c.nuddke_id')
             ->join('dhd_contract as co on c.id = co.client_id')
@@ -63,6 +64,8 @@ class ChannelController extends Controller {
               $data[$k]['xq'] = $b;
               $data[$k]['zz'] = $c;
             }
+
+
           }
         }
         // print_r($data);die;
@@ -73,8 +76,9 @@ class ChannelController extends Controller {
       //     $data[$k]['zl']= $data[$k]['zl']+1;
       //   }
       // }
-      // print_r($data);die;
+       //print_r($data);die;
       $this->assign('volist',$data);
+      $this->assign('data',$data);
       $this->display();
     }
 
@@ -89,11 +93,13 @@ class ChannelController extends Controller {
    	public function channeladd_do()
    	{
    	  $data = I('post.');
+      print_r($data);die;
       $data['sales_id'] = get_user_id();
       // var_dump($data);die;
       $add = M('middle')->data($data)->add();
       // var_dump($add);die;
       if($add){
+        M('details')->where(array('id'=>$data['details_id']))->setField('det_advance',3);
         $this->success('新增成功', U('channel/channel_index'));
       }else{
         $this->error('新增失败',U('channel/channel_add'));
@@ -136,7 +142,18 @@ class ChannelController extends Controller {
         $this->error('删除失败',U('channel/channel_index'));
       }
     }
-
+    /*查看预留*/
+    public function channel_list(){
+      $id=I('post.id');
+      //print_r($id);die;
+      $data=M('reserved')
+        ->join('dhd_details on dhd_details.id= dhd_reserved.details_id')
+        ->field('dhd_reserved.id,dhd_details.detailscoll')
+        ->where(array('middle_id'=>$id,'dhd_details.det_advance'=>2))
+        ->select();
+      // print_r($data);die;  
+      echo  json_encode($data);
+    }
 
 
 
