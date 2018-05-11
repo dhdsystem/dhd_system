@@ -218,7 +218,7 @@
         </ul>
         <input type="submit" id="tijiao" value="提交" class="submit">
     </form>
-    <form action="">
+    <form action="__APP__/Pact/">
         <ul id="btg" style="display:none"> 
             <li>
                 <span class="ipt_left"><em class="red">*</em>审核失败原因：</span>
@@ -548,6 +548,7 @@
     }
     //获取下次付款时间
     function moeny(){
+         $('#payment').empty()
         var id = $('#paytype').val();                      //付款方式
         var ord = $('#contracttype').val();
         var appoint = $('#appoint').val()
@@ -592,6 +593,7 @@
             $('#each').val(msg.fu);
             $('#each').next('.daxie').html(convertCurrency(msg.fu));
             $('#deposit').next('.daxie').html(convertCurrency(msg.deposit));
+            alert(msg.nexttime)
             if(msg.nexttime != ''){
                 var nexttime ="";
                     $.each(msg.nexttime,function(k,v){
@@ -606,8 +608,8 @@
                    
                     
                 }
-
-                $('#payment').empty().append(nexttime);
+                // alert(nexttime);
+                $('#payment').append(nexttime);
             
            }
        })    
